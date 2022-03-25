@@ -9,12 +9,12 @@ public class MemberDTO {
 	private String memZipCode;
 	private String memAdd1;
 	private String memAdd2;
-	private int memStatus;
+	private String memOrigin;
 	private String memJoinDate;
+	private int memStatus;
 	private String memLastLogin;
 	private String memBirthday;
 	private String memAuthCode;
-	private String memOrigin;
 	private String memUpload;
 
 	public MemberDTO() {

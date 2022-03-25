@@ -2,20 +2,42 @@ package com.commonchicken.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.commonchicken.dto.MemberDTO;
+import com.commonchicken.mapper.MemberMapper;
+
 
 public class MemberDAOImpl implements MemberDAO{
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Override
 	public int insertMember(MemberDTO member) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.getMapper(MemberMapper.class).insertMember(member);
 	}
 
 	@Override
-	public List<MemberDTO> selectMemberList() {
-		// TODO Auto-generated method stub
-		return null;
+	public int updateMember(MemberDTO member) {
+		return sqlSession.getMapper(MemberMapper.class).updateMember(member);
 	}
+
+	@Override
+	public MemberDTO selectMember(String memEmail) {
+		return sqlSession.getMapper(MemberMapper.class).selectMember(memEmail);
+	}
+
+	@Override
+	public List<MemberDTO> selectAllMemberList() {
+		return sqlSession.getMapper(MemberMapper.class).selectAllMemberList();
+	}
+
+	@Override
+	public int deleteMember(String memEmail) {
+		return sqlSession.getMapper(MemberMapper.class).deleteMember(memEmail);
+	}
+
 
 }

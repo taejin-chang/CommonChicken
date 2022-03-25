@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- int insertMember(MemberDTO member);//회원가입
+	int updateMember(MemberDTO member);//회원정보 수정
+	MemberDTO selectMember(String memEmail);//회원정보 불러오기
+	List<MemberDTO> selectAllMemberList();//전체 회원정보 불러오기
+	int deleteMember(String memEmail);//회원탈퇴 -->
+	<!-- 
+	private String memEmail;
+	private String memNickname;
+	private String memPw;
+	private String memName;
+	private String memPhone;
+	private String memZipCode;
+	private String memAdd1;
+	private String memAdd2;
+	private String memOrigin;
+	private String memJoinDate;
+	private int memStatus;
+	private String memLastLogin;
+	private String memBirthday;
+	private String memAuthCode;
+	private String memUpload;
+		
+	 -->
 <mapper namespace="com.chicken.mapper.MemberMapper">
 	<insert id="insertMember">
 		insert into member_tb values(#{mem_email}, #{mem_nickname}, #{mem_pw}, #{mem_name}, #{mem_phone}, 
-										#{mem_zip_code}, #{mem_add1}, #{mem_add2}, #{mem_photo}, #{mem_join_date}, 
-										#{mem_status}, #{mem_last_login}, #{mem_birthday}, #{mem_auth_code})
+										#{mem_zip_code}, #{mem_add1}, #{mem_add2}, #{mem_origin}, #{mem_join_date}, 
+										#{mem_status}, #{mem_last_login}, #{mem_birthday}, #{mem_auth_code}, #{mem_upload})
 	</insert>
 	
-	<select id="selectMemberList" resultType="MemberDTO">
+	<update id="updateMember">
+		update member_tb set mem_email=#{mem_email},
+							 mem_nickname=#{mem_nickname},
+							 mem_pw=#{mem_pw}, 
+							 mem_name=#{mem_name}, 
+							 mem_phone=#{mem_phone}, 
+							 mem_zip_code=#{mem_zip_code}, 
+							 mem_add1=#{mem_add1}, 
+							 mem_add2=#{mem_add2}, 
+							 mem_photo=#{mem_photo}, 
+							 mem_join_date=#{mem_join_date}, 
+							 mem_status=#{mem_status}, 
+							 mem_last_login=#{mem_last_login}, 
+							 mem_birthday=#{mem_birthday}, 
+							 mem_auth_code=#{mem_auth_code})
+							where mem_email = #{mem_email}
+	</update>
+	
+	
+	<select id="selectMember" resultType="MemberDTO">
+		select * from member_tb where mem_email=#{mem_email}
+	</select>
+	
+	<select id="selectAllMemberList" resultType="MemberDTO">
 		select * from member_tb order by mem_email
 	</select>
+	
+	<update id="deleteMember">
+		update member_tb set mem_status=0 where mem_email = #{mem_email}
+	</update>
+	
+	
 </mapper>
