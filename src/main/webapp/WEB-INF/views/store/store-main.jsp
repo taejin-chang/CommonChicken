@@ -5,7 +5,7 @@
 
 <head>
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/style(yo).css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style(yo).css" type="text/css">
 </head>
 
 <body>
@@ -87,7 +87,7 @@
                         <div class="sub-title">
                             <span><strong>BBC 치킨 강남역점</strong></span>
                     	</div>
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/bp-1.jpg">
+                        <div class="blog__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/blog/bp-1.jpg">
                         </div>
                         <div class="blog__item__text">
                             <ul class="blog__item__tags">
@@ -150,7 +150,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
@@ -160,7 +160,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div> <br>                                 
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
@@ -170,7 +170,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div>
                                 </div>
                                 <div class="blog__item__text">
@@ -185,7 +185,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
@@ -195,7 +195,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>                                    
                                 </div>
                                 <div class="blog__item__text">
@@ -210,7 +210,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
@@ -220,7 +220,7 @@
 		                                        <li><i class="fa fa-money"></i>25,500원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>                                    
                                 </div>
                             </div>
@@ -290,7 +290,7 @@
                             <h4>Comment</h4>
                             <div class="listing__details__comment__item">
                                 <div class="listing__details__comment__item__pic">
-                                    <img src="img/listing/details/comment.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
                                 </div>
                                 <div class="listing__details__comment__item__text">
                                     <div class="listing__details__comment__item__rating">
@@ -308,7 +308,7 @@
                             </div>
                             <div class="listing__details__comment__item">
                                 <div class="listing__details__comment__item__pic">
-                                    <img src="img/listing/details/comment.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
                                 </div>
                                 <div class="listing__details__comment__item__text">
                                     <div class="listing__details__comment__item__rating">
@@ -326,7 +326,7 @@
                             </div>
                             <div class="listing__details__comment__item">
                                 <div class="listing__details__comment__item__pic">
-                                    <img src="img/listing/details/comment.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
                                 </div>
                                 <div class="listing__details__comment__item__text">
                                     <div class="listing__details__comment__item__rating">

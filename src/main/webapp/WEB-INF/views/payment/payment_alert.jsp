@@ -357,17 +357,17 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/jquery.barfiller.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.nice-select.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.nicescroll.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.barfiller.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.magnific-popup.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.slicknav.js"></script>
+    <script src="${pageContext.request.contextPath }/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath }/js/main.js"></script>
+    <script src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.

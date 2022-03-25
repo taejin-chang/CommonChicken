@@ -54,7 +54,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -68,7 +68,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -83,7 +83,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -97,7 +97,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -111,7 +111,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -126,7 +126,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -141,7 +141,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -155,7 +155,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -170,7 +170,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -185,7 +185,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -199,7 +199,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -214,7 +214,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -229,7 +229,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -243,7 +243,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -258,7 +258,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -273,7 +273,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -287,7 +287,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -302,7 +302,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -316,7 +316,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -330,7 +330,7 @@
                     	</div>                
               		</div>
 				</div>
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/listing/list-1.jpg">
                 </div>
                         <div class="listing__item__text__rating" style="font-size:12px;color:#ffc107;font-weight:100;text-align:right;padding-top:10px;padding-right:10px;">
                             간장치킨-순살
@@ -345,7 +345,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
@@ -359,7 +359,7 @@
 				<div class="listing__item__text" style="padding-top:0px;">	
   					<div class="listing__item__text__info" style="border-top:0px">
 						<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-1.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-1.png" alt="">
 	                          <span>수오니님</span>
                     	</div>
 						<div class="listing__item__text__info__right" style="color:#ffc107">
@@ -388,7 +388,7 @@
                 <hr>
                 <div class="listing__item__text" style="text-align:right; padding-top:10px; padding-right:0px;">
         				<div class="listing__item__text__info__left">
-	                          <img src="img/listing/list_icon-3.png" alt="">
+	                          <img src="${pageContext.request.contextPath }/img/listing/list_icon-3.png" alt="">
 	                          <span>사장님</span>
                     	</div>
                 </div>
