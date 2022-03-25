@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chicken.mapper.MemberMapper">
+	<insert id="insertOrder">
+		insert into order_tb values(#{ord_detail_num}, #{mem_email}, #{cm_num}, #{ord_bundle_num}, #{ord_quantity}, 
+										#{ord_status}, #{ord_zipcode}, #{ord_add1}, #{ord_add2}, #{ord_phone}, 
+										#{ord_request}, #{mem_pay_method}, #{prd_code}
+	</insert>
+	
+	<select id="selectOrderList" resultType="OrderDTO">
+		select * from order_tb order by ord_detail_num
+	</select>
+</mapper>

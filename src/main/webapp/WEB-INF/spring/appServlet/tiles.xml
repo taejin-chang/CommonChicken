@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Softward Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- definition : 클라이언트 요청에 대한 응답 템플릿 페이지를 설정하기 위한 엘리먼트 -->
+	<!-- name 속성 : definition 엘리먼트를 구분하기 위한 식별자를 속성값으로 설정 -->
+	<!-- => 요청 처리 메소드에서 제공되는 ViewName으로 사용 -->
+	<!-- template 속성 : 템플릿 페이지로 응답되기 위한 JSP 문서의 경로를 속성값으로 설정 -->
+	<definition name="main" template="/WEB-INF/views/layout/template.jsp">
+		<!-- put-attribute : 템플릿 페이지를 구성하는 JSP 문서를 제공하기 위한 엘리먼트 -->
+		<!-- name 속성 : put-attribute 엘리먼트를 구분하기 위한 식별자를 속성값으로 설정 -->
+		<!-- value 속성 : 템플릿 페이지에 포함될 JSP 문서의 경로를 속성값으로 설정 -->
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/layout/index.jsp"/>	
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp"/>	
+	</definition>
+	
+	<definition name="search/listing" template="/WEB-INF/views/layout/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/search/listing.jsp"/>	
+	</definition>
+	
+	<definition name="admin" template="/WEB-INF/views/admin/admin_template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/admin/admin_header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/admin/admin_main.jsp"/>	
+	</definition>
+	
+	<definition name="admin/*" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}.jsp"/>	
+	</definition>
+	
+	<definition name="admin/*/*" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>	
+	</definition>
+	
+	<!-- name 속성값을 [*]로 설정한 경우 요청 처리 메소드에 의해 [값] 형식으로 제공되는  
+	ViewName을 이용하여 템플릿 페이지로 응답되도록 처리 -->
+	<!-- extends 속성 : definition 엘리먼트의 식별자를 속성값으로 설정 -->
+	<!-- => definition 엘리먼트의 템플릿 페이지 정보를 상속받아 사용 -->
+	<definition name="*" extends="main">
+		<!-- 상속받은 definition 엘리먼트에서 put-attribute 엘리먼트의 식별자가 중복될 경우
+		기존 JSP 문서 대신 새로운 JSP 문서를 제공하여 템플릿 페이지에 포함 - Override -->
+		<!-- definition 엘리먼트의 name 속성값을 [*]로 설정한 경우 put-attribute 엘리먼트의
+		value 속성값으로 요청 처리 메소드에서 제공되는 ViewName를 {정수값}으로 표현  -->
+		<!-- => [*] 문자는 ViewName의 값을 1부터 1씩 증가된 정수값으로 표현 -->
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>	
+	</definition>
+	
+	<!-- name 속성값을 [*/*]로 설정한 경우 요청 처리 메소드에 의해 [값/값] 형식으로 제공되는  
+	ViewName을 이용하여 템플릿 페이지로 응답되도록 처리 -->
+	<definition name="*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>	
+	</definition>
+	
+	<!-- name 속성값을 [*/*]로 설정한 경우 요청 처리 메소드에 의해 [값/값/값] 형식으로 제공되는  
+	ViewName을 이용하여 템플릿 페이지로 응답되도록 처리 -->
+	<definition name="*/*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>	
+	</definition>
+</tiles-definitions>
+
+
+
+
+
+
+

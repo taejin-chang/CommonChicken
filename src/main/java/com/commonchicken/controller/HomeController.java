@@ -33,7 +33,20 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main";
+	}
+	
+	@RequestMapping("/index")
+	public String tiles() {
+		return "main";
+	}
+	
+	@RequestMapping("/listing")
+	public String listing(Model model) {
+		model.addAttribute("listing","listing_value");
+		return "search/listing";
 	}
 	
 }
+
+

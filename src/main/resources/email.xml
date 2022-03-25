@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<!-- 메일 전송기능을 제공하는 JavaMailSenderImpl 클래스를 Spring Bean으로 등록 -->
+	<!-- => SMTP 서비스를 제공하는 메일 서버의 정보(값)를 JavaMailSenderImpl 객체의 필드에 전달하여 저장(Value Injection) -->
+	<!--  
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="javaMailSender">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="username" value="abc123"/>
+		<property name="password" value="123456"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+	<!-- 핵심관심모듈이 선언된 클래스를 Spring Bean으로 등록 -->
+	<!-- => mailSender 필드에 JavaMailSenderImpl 클래스의 Spring Bean으로 의존관계 설정 - DI(Dependency Injection) -->
+	<!--  
+	<bean class="xyz.itwill07.aop.EmailSendBean" id="emailSendBean">
+		<property name="mailSender" ref="javaMailSender"/>
+	</bean>
+	
+	<bean class="xyz.itwill07.aop.EmailSendAdvice" id="emailSendAdvice"/>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* sendEmail(..))" id="emailSendPointcut"/>
+	
+		<aop:aspect ref="emailSendAdvice">
+			<aop:before method="beforeMessage" pointcut-ref="emailSendPointcut"/>
+			<aop:after-returning method="successMessage" pointcut-ref="emailSendPointcut" returning="email"/>
+			<aop:after-throwing method="failMessage" pointcut-ref="emailSendPointcut" throwing="exception"/>
+		</aop:aspect>
+	</aop:config>
+	-->
+</beans>
+
+
+
+
+
+
