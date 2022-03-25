@@ -16,7 +16,7 @@ public class ReviewDTO {
 	private String revNum;
 	private String ordDetailNum;
 	private String memEmail;
-	private String cmNum;
+	private int cmNum;
 	private String revContent;
 	private String revRated;
 	private String revDate;
@@ -52,11 +52,11 @@ public class ReviewDTO {
 		this.memEmail = memEmail;
 	}
 
-	public String getCmNum() {
+	public int getCmNum() {
 		return cmNum;
 	}
 
-	public void setCmNum(String cmNum) {
+	public void setCmNum(int cmNum) {
 		this.cmNum = cmNum;
 	}
 
@@ -107,6 +107,7 @@ public class ReviewDTO {
 	public void setRevUpload(String revUpload) {
 		this.revUpload = revUpload;
 	}
+
 	
 	
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commonchicken.mapper.SearchStoreMapper">
+	<resultMap type="SearchStoreVO" id="SearchStoreResultMap">
+		<id column="sto_num" property="stoNum"/>
+		<result column="sto_name" property="stoName"/>
+		<result column="sto_add1" property="stoAdd1"/>
+		<result column="sto_add2" property="stoAdd2"/>
+		<result column="sto_phone" property="stoPhone"/>
+		<result column="rev_rated" property="revRated"/>
+		<result column="cm_num" property="cmNum"/>
+		<result column="cm_goal_people" property="cmGoalPeople"/>
+		<result column="cm_delivery_time" property="cmDeliveryTime"/>
+		<result column="cm_close" property="cmClose"/>
+	</resultMap>
+
+	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
+		select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1||sto_add2 address,
+		sto_phone,cm_delivery_time,cm_close from store_tb a 
+		left join common_tb b on a.sto_num = b.sto_num 
+		left join (select cm_num, round(avg(rev_rated),1) rev_rated
+		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
+		where cm_delivery_time &gt;= #{deleveryTime} 
+		and sto_add1||sto_add2 like #{juso};
+	</select>
+
+	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
+        select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1sto_add2 address,
+        sto_phone,cm_delivery_time,cm_close from store_tb a 
+        left join common_tb b on a.sto_num = b.sto_num 
+        left join (select cm_num, round(avg(rev_rated),1) rev_rated
+        from review_tb group by cm_num) c on b.cm_num =c.cm_num 
+        where cm_delivery_time &gt;= #{deleveryTime} 
+        and sto_add1||sto_add2 like #{juso}
+
+        <if test="rated!=null">
+        	where rev_rated in
+            <foreach collection="list" item="rated" open="(" close=")" separator=",">
+                #{rated}
+            </foreach>
+        </if>
+        <if test="delivery_time!=null">
+            and cm_delivery_time=#{deliveryTime}
+        </if>
+        <if test="close_time!=null">
+            and cm_close_time=#{cmCloseTime}
+        </if>
+    </select>
+</mapper>
