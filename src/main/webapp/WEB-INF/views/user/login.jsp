@@ -58,10 +58,6 @@
 								<div id="login-box" class="login-box visible widget-box no-border">
 									<div class="widget-body">
 										<div class="widget-main">
-											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
-												로그인
-											</h4>
 
 											<div class="space-6"></div>
 
@@ -250,10 +246,7 @@
 								<div id="signup-box" class="signup-box widget-box no-border">
 									<div class="widget-body">
 										<div class="widget-main">
-											<h4 class="header green lighter bigger">
-												<i class="ace-icon fa fa-users blue"></i>
-												환영합니다 :)
-											</h4>
+											
 
 											<div class="space-6"></div>
 											<p> 회원가입 정보: </p>

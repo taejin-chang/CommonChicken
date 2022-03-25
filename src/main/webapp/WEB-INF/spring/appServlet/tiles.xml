@@ -19,6 +19,11 @@
 		<put-attribute name="content" value="/WEB-INF/views/search/listing.jsp"/>	
 	</definition>
 	
+	<definition name="login" template="/WEB-INF/views/layout/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>	
+		<put-attribute name="content" value="/WEB-INF/views/user/login.jsp"/>	
+	</definition>
+	
 	<definition name="admin" template="/WEB-INF/views/admin/admin_template.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/admin/admin_header.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/admin/admin_main.jsp"/>	

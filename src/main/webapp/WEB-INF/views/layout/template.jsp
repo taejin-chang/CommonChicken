@@ -36,15 +36,16 @@
   </style> -->
 </head>
 <body>
+	<c:if test="${empty(login) }">
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	
+	</c:if>
 	<div id="content">
 		<tiles:insertAttribute name="content"/>
 	</div>
 
- 	<c:if test="${empty(listing) }">
+ 	<c:if test="${empty(listing||login) }">
 		<div id="footer">
 			<tiles:insertAttribute name="footer"/>
 		</div>
