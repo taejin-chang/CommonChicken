@@ -263,6 +263,7 @@ ol {
 -----------------------*/
 
 .header {
+	background-color: white;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -357,8 +358,9 @@ ol {
 }
 
 .header__menu ul li a {
-	font-size: 15px;
-	color: #ffffff;
+ 	text-shadow: 0 0 10px white;
+	font-size: 20px;
+	color: black;
 	font-weight: 600;
 	padding: 5px 0;
 	display: block;
@@ -389,10 +391,10 @@ ol {
 
 .header__menu__right .login-btn {
 	font-size: 20px;
-	color: #ffffff;
+	color: black;
 	height: 42px;
 	width: 42px;
-	border: 1px solid #ffffff;
+	border: 1px solid black;
 	border-radius: 50%;
 	line-height: 38px;
 	text-align: center;
@@ -408,7 +410,7 @@ ol {
 -----------------------*/
 
 .hero {
-	padding: 120px 0;
+	padding: 80px 0;
 }
 
 .hero__text .section-title h2 {
@@ -447,6 +449,7 @@ ol {
 }
 
 .hero__search__form {
+	margin-top: 80px;
 	/* margin-bottom: 30px; */
 	background: rgba(255, 255, 255, 0.1);
 	padding: 20px;

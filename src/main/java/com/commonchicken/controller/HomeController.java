@@ -47,6 +47,10 @@ public class HomeController {
 		return "search/listing";
 	}
 	
+	@RequestMapping("store/owner")
+	public String storeInfo() {
+		return "store_mypage/store_owner_info";
+	}
 }
 
 
