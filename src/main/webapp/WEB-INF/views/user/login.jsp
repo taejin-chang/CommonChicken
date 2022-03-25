@@ -251,19 +251,25 @@
 											<div class="space-6"></div>
 											<p> 회원가입 정보: </p>
 
-											<form>
+											<form name="signinForm" enctype="multipart/form-data">
 												<fieldset>
 												<!-- 아이디 -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="이메일" />
+															<input name="memEmail" type="email" class="form-control" placeholder="이메일" />
 															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+													</label>
+													<!-- 닉네임 -->
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="memNickname" type="email" class="form-control" placeholder="닉네임" />
 														</span>
 													</label>
 													<!-- 비밀번호 -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="비밀번호" />
+															<input name="memPw" type="password" class="form-control" placeholder="비밀번호" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -277,24 +283,23 @@
 													<!--이름  -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="이름" />
+															<input name="memName" type="text" class="form-control" placeholder="이름" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 													<!-- 핸드폰번호 -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="핸드폰번호" />
-															<i class="ace-icon fa fa-retweet"></i>
+															<input name="memPhone" type="text" class="form-control" placeholder="핸드폰번호" />
 														</span>
 													</label>
 													<!-- 주소 api -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-															<input type="text" class="form-control"id="sample3_postcode" placeholder="우편번호">
-															<input type="text" class="form-control"id="sample3_address" placeholder="주소">
-															<input type="text" class="form-control"id="sample3_detailAddress" placeholder="상세주소">
+															<input name="memZipCode"type="text" class="form-control"id="sample3_postcode" placeholder="우편번호">
+															<input name="memAdd1"type="text" class="form-control"id="sample3_address" placeholder="주소">
+															<input name="memAdd2"type="text" class="form-control"id="sample3_detailAddress" placeholder="상세주소">
 															<input type="text" class="form-control"id="sample3_extraAddress" placeholder="참고항목">
 														</span>
 													</label>
@@ -307,7 +312,13 @@
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 														 프로필사진:
-															<input type="file" class="form-control" />
+															<input name="file" type="file" class="form-control" />
+														</span>
+													</label>
+													<!-- 생년월일 -->
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input name="memBirthday" type="text" class="form-control" placeholder="생년월일6자리" />
 														</span>
 													</label>
 													<label class="block">
@@ -325,7 +336,7 @@
 															<span class="bigger-110">초기화</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button type="button" onclick="submitCheck();" class="width-65 pull-right btn btn-sm btn-success">
 															<span class="bigger-110">회원등록</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -379,6 +390,48 @@
  window.jQuery || document.write("<script src='../assets/js/jquery1x.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+<script type="text/javascript">
+	signinForm.no.focus();
+
+	function submitCheck() {
+		if(signinForm.memEmail.value=="") {
+			alert("이메일을 입력해 주세요.");
+			signinForm.memEmail.focus();
+			return;
+		}
+		
+		
+		if(signinForm.memName.value=="") {
+			alert("이름을 입력해 주세요.");
+			signinForm.memName.focus();
+			return;
+		}
+
+		if(signinForm.memPhone.value=="") {
+			alert("전화번호를 입력해 주세요.");
+			signinForm.memPhone.focus();
+			return;
+		}
+
+
+		
+
+		if(signinForm.memBirthday.value=="") {
+			alert("생년월일을 입력해 주세요.");
+			signinForm.memBirthday.focus();
+			return;
+		}
+		
+		
+		
+		signinForm.method="post";
+		signinForm.action="${pageContext.request.contextPath}/sign_in";
+		signinForm.submit();
+	} 
+	</script>
+
+
+
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
 		</script>

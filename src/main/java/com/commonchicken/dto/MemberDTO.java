@@ -1,5 +1,7 @@
 package com.commonchicken.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberDTO {
 	private String memEmail;
 	private String memNickname;
@@ -16,6 +18,16 @@ public class MemberDTO {
 	private String memBirthday;
 	private String memAuthCode;
 	private String memUpload;
+	private MultipartFile file;
+	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
