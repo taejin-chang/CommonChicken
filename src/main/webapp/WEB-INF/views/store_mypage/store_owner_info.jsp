@@ -257,7 +257,7 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이메일</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" value="${storeOwner.memEmail }">
 														</div>
 													</div>
 													<div class="form-group">
@@ -269,7 +269,7 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">핸드폰 번호</label>
 														<div class="col-sm-9">
-															<input type="email" class="form-control" placeholder="">
+															<input type="email" class="form-control" value="${storeOwner.stoNum }">
 														</div>
 													</div>
 													<!-- 주소 api -->

@@ -144,19 +144,19 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" value="${storeInfo.stoName }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">대표자 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" value="${storeInfo.memEmail }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 전화번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" value="${storeInfo.stoPhone }">
 														</div>
 													</div>
 													<div class="form-group">
@@ -182,16 +182,11 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 주소</label>
 														<div class="col-sm-9">
-															<span> <input type="button"
-																onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-																<input type="text" class="form-control"
-																id="sample3_postcode" placeholder="우편번호"> <input
-																type="text" class="form-control" id="sample3_address"
-																placeholder="주소"> <input type="text"
-																class="form-control" id="sample3_detailAddress"
-																placeholder="상세주소"> <input type="text"
-																class="form-control" id="sample3_extraAddress"
-																placeholder="참고항목">
+															<span> <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
+																<input type="text" class="form-control" id="sample3_postcode" value="${storeInfo.stoZipCode }" placeholder="우편번호">
+																 <input type="text" class="form-control" id="sample3_address" value="${storeInfo.stoAdd1 }" placeholder="주소">
+																 <input type="text" class="form-control" id="sample3_detailAddress" value="${storeInfo.stoAdd2 }" placeholder="상세주소"> 
+																 <input type="text" class="form-control" id="sample3_extraAddress" placeholder="참고항목">
 															</span>
 														</div>
 													</div>
@@ -234,42 +229,37 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">영업시간</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
+															<input type="password" class="form-control" value="${storeInfo.stoOpenning }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">최소주문금액</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
+															<input type="password" class="form-control" value="${storeInfo.stoMinorder }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">결제수단</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
+															<input type="password" class="form-control" value="${storeInfo.stoPayment }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">치킨</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
+															<input type="password" class="form-control" value="${storeInfo.stoBoneOrg}">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">순살</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
+															<input type="password" class="form-control" value="${storeInfo.stoBonelessOrg }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">알림메세지</label>
 														<div class="col-sm-9">
-															<textarea rows="10" cols="45"></textarea> 
+															<textarea rows="10" cols="45">value="${storeInfo.stoMessage }"</textarea> 
 																
 														</div>
 													</div>

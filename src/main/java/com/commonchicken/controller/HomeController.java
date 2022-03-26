@@ -57,9 +57,15 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "store/owner", method = RequestMethod.GET)
+	public String storeOwnerInfo(@RequestParam(defaultValue = "6656")int StoName, Model model){
+		model.addAttribute("storeOwner", storeService.selectStore(StoName));
+		return "store_mypage/store_owner_info";
+	}
+	
+	@RequestMapping(value = "store/info", method = RequestMethod.GET)
 	public String storeInfo(@RequestParam(defaultValue = "6656")int StoName, Model model){
 		model.addAttribute("storeInfo", storeService.selectStore(StoName));
-		return "store_mypage/store_owner_info";
+		return "store_mypage/store_info";
 	}
 }
 
