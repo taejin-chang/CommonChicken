@@ -35,34 +35,7 @@ public class LoginController {
 	}
 	
 	
-	/*
-	@RequestMapping(value = "/file_upload", method = RequestMethod.POST)
-	public String fileUpload(@ModelAttribute FileBoard fileBoard) throws IllegalStateException, IOException {
-		if(fileBoard.getFile().isEmpty()) {
-			return "file/file_upload";
-		}
-	
-		String uploadDir=context.getServletContext().getRealPath("/WEB-INF/upload");
-		
-		//Àü´Ş ÆÄÀÏ¸íÀ» ¹İÈ¯¹Ş¾Æ ÀúÀå
-		String origin=fileBoard.getFile().getOriginalFilename();
-		
-		//¾÷·Îµå ÆÄÀÏ¸íÀ» °íÀ¯°ª(ÇöÀç ½Ã½ºÅÛÀÇ Å¸ÀÓ½ºÅÛÇÁ)À¸·Î ÀúÀå
-		// => ¾÷·Îµå Ã³¸®µÈ ÆÄÀÏ¸íÀÌ Áßº¹µÇÁö ¾Êµµ·Ï ¼³Á¤
-		String upload=System.currentTimeMillis()+"";
-		
-		//DTO °´Ã¼ÀÇ ÇÊµå°ª º¯°æ
-		fileBoard.setOrigin(origin);
-		fileBoard.setUpload(upload);
-		
-		fileBoard.getFile().transferTo(new File(uploadDir, upload));
-		
-		fileBoardService.addFileBoard(fileBoard);
-		
-		return "redirect:/file_list";
-	}
-	*/
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@RequestMapping(value = "/sign_in", method = RequestMethod.POST)
 	public String singIn(@ModelAttribute MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
@@ -83,40 +56,30 @@ public class LoginController {
 		return "redirect:/";
 				
 	}
-	/*
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@ModelAttribute Member member, Model model, HttpSession session) {
-		if(!member.getId().equals("abc123") || !member.getPasswd().equals("123456")) {//ÀÎÁõ ½ÇÆĞ
-			model.addAttribute("message", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØ ÁÖ¼¼¿ä.");
-			return "session/login_form";
-		}
-		
-		session.setAttribute("loginId", member.getId());
-		
-		return "session/login_result";
-	}
-	*/
+	//ë¡œê·¸ì¸
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute MemberDTO member, Model model,HttpSession session) throws LoginAuthFailException{
-		//¾ÆÀÌµğ°¡ ¾ø´Â°æ¿ì
+		//ì•„ì´ë”” ì˜ëª»ì…ë ¥í–ˆì„ë•Œ
 		if(loginService.selectMember(member.getMemEmail()).getMemEmail()==null) {
 			throw new LoginAuthFailException();
 		}
-		//¾ÆÀÌµğ´Â ÀÖ´Âµ¥ ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê´Â °æ¿ì
+		//ë¹„ë²ˆ í‹€ë ¸ì„ë•Œ
 		if(!loginService.selectMember(member.getMemEmail()).getMemPw().equals(member.getMemPw())) {
 			throw new LoginAuthFailException();
 		}
 		
+		MemberDTO loginMember =loginService.selectMember(member.getMemEmail());
+		session.setAttribute("loginMember", loginMember);
 		
-		session.setAttribute("loginId", member.getMemEmail());
-		System.out.println("·Î±×ÀÎ ¼º°ø");
+		
+		System.out.println("ë¡œê·¸ì¸ì„±ê³µ");
 		return "redirect:/";
 	}
 	
 	
 	@ExceptionHandler(value = LoginAuthFailException.class)
 	public String exceptionHandler(LoginAuthFailException exception, Model model) {
-		model.addAttribute("loginmessage", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ Àß¸ø ÀÔ·ÂµÇ¾ú½À´Ï´Ù.");
+		model.addAttribute("loginmessage", "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì˜ëª» ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤");
 		//model.addAttribute("userid", exception.getUserid());
 		return "user/login";
 	}
