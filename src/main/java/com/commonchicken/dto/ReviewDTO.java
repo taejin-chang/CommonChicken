@@ -18,7 +18,7 @@ public class ReviewDTO {
 	private String memEmail;
 	private int cmNum;
 	private String revContent;
-	private String revRated;
+	private int revRated;
 	private String revDate;
 	private String revViews;
 	private String revOrigin;
@@ -68,11 +68,11 @@ public class ReviewDTO {
 		this.revContent = revContent;
 	}
 
-	public String getRevRated() {
+	public int getRevRated() {
 		return revRated;
 	}
 
-	public void setRevRated(String revRated) {
+	public void setRevRated(int revRated) {
 		this.revRated = revRated;
 	}
 

@@ -1,19 +1,23 @@
 package com.commonchicken.dto;
 
+import java.util.List;
+
 public class SearchStoreVO {
 	private String stoNum;
 	private String stoName;
 	private String stoAdd1;
 	private String stoAdd2;	
 	private String stoPhone;
-	private String revRated;
+	private int revRated;
 	private int cmNum;
 	private int cmGoalPeople;
 	private String cmDeliveryTime;
 	private String cmClose;
-
-	public SearchStoreVO() {
-		// TODO Auto-generated constructor stub
+	private List<Integer> ratelist;
+	
+	@Override
+	public String toString() {
+		return stoNum+", "+stoName+", "+stoAdd1+"+"+stoAdd2+", "+stoPhone+", "+revRated+", "+cmNum+", "+cmGoalPeople+", "+cmDeliveryTime+", "+cmClose+", ";
 	}
 
 	public String getStoNum() {
@@ -56,11 +60,11 @@ public class SearchStoreVO {
 		this.stoPhone = stoPhone;
 	}
 
-	public String getRevRated() {
+	public int getRevRated() {
 		return revRated;
 	}
 
-	public void setRevRated(String revRated) {
+	public void setRevRated(int revRated) {
 		this.revRated = revRated;
 	}
 
@@ -95,6 +99,15 @@ public class SearchStoreVO {
 	public void setCmClose(String cmClose) {
 		this.cmClose = cmClose;
 	}
+
+	public List<Integer> getRatelist() {
+		return ratelist;
+	}
+
+	public void setRatelist(List<Integer> ratelist) {
+		this.ratelist = ratelist;
+	}
+
 	
 	
 }
