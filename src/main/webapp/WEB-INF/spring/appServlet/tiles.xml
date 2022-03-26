@@ -20,7 +20,6 @@
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/views/layout/template.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>	
 		<put-attribute name="content" value="/WEB-INF/views/user/login.jsp"/>	
 	</definition>
 	

@@ -55,7 +55,7 @@
 	
 	
 	<select id="selectMember" resultType="MemberDTO">
-		select * from member_tb where mem_email=#{mem_email}
+		select * from MEMBER_TB WHERE MEM_EMAIL=#{memEmail}
 	</select>
 	
 	<select id="selectAllMemberList" resultType="MemberDTO">

@@ -36,7 +36,7 @@
   </style> -->
 </head>
 <body>
-	<c:if test="${empty(login) }">
+	<c:if test="${empty(login||loginmessage) }">
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>

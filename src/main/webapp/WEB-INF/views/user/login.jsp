@@ -61,18 +61,18 @@
 
 											<div class="space-6"></div>
 
-											<form>
+											<form name="loginForm">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="이메일" />
+															<input name="memEmail" type="text" class="form-control" placeholder="이메일" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="비밀번호" />
+															<input name="memPw" type="password" class="form-control" placeholder="비밀번호" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
@@ -80,17 +80,15 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<label class="inline">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"> 로그인정보 저장</span>
-														</label>
+														
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="button" onclick="loginsubmitCheck();"class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">로그인</span>
 														</button>
+														
 													</div>
-
+													<p style="color:red;">${loginmessage }</p>
 													<div class="space-4"></div>
 												</fieldset>
 											</form>
@@ -391,7 +389,7 @@
 </script>
 <![endif]-->
 <script type="text/javascript">
-	signinForm.no.focus();
+	signinForm.memEmail.focus();
 
 	function submitCheck() {
 		if(signinForm.memEmail.value=="") {
@@ -430,7 +428,27 @@
 	} 
 	</script>
 
+<script type="text/javascript">
+	loginForm.memEmail.focus();
 
+	function loginsubmitCheck() {
+		if(loginForm.memEmail.value=="") {
+			alert("이메일을 입력해 주세요.");
+			loginForm.memEmail.focus();
+			return;
+		}
+		if(loginForm.memPw.value=="") {
+			alert("비밀번호를 입력해 주세요.");
+			loginForm.memPw.focus();
+			return;
+		}
+		
+		
+		loginForm.method="post";
+		loginForm.action="${pageContext.request.contextPath}/login";
+		loginForm.submit();
+	} 
+	</script>
 
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
