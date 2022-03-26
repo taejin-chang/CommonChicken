@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chicken.mapper.StoreMapper">
-	<!-- parameterType 속성 생략 가능 -->
+<!--
+STO_NUM          NOT NULL VARCHAR2(50)   
+MEM_EMAIL        NOT NULL VARCHAR2(50)   
+STO_CODE         NOT NULL VARCHAR2(50)   
+STO_NAME         NOT NULL VARCHAR2(50)   
+STO_CEO          NOT NULL VARCHAR2(50)   
+STO_CONDITION    NOT NULL VARCHAR2(50)   
+STO_SECTOR       NOT NULL VARCHAR2(50)   
+STO_ZIP_CODE     NOT NULL VARCHAR2(50)   
+STO_ADD1         NOT NULL VARCHAR2(50)   
+STO_ADD2         NOT NULL VARCHAR2(50)   
+STO_PHONE        NOT NULL VARCHAR2(50)   
+STO_STATUS       NOT NULL NUMBER(1)      
+STO_OPENNING     NOT NULL VARCHAR2(50)   
+STO_MINORDER     NOT NULL VARCHAR2(50)   
+STO_PAYMENT      NOT NULL VARCHAR2(50)   
+STO_BONE_ORG     NOT NULL VARCHAR2(50)   
+STO_BONELESS_ORG NOT NULL VARCHAR2(50)   
+STO_MESSAGE      NOT NULL VARCHAR2(1000) 
+STO_ORIGIN                VARCHAR2(100)  
+STO_UPLOAD                VARCHAR2(100)  
+ -->
+
+
+<mapper namespace="com.commonchicken.mapper.StoreMapper">
 	<insert id="insertStore">
-		insert into store_tb values(#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1}, #{stoAdd2}, #{stoPhone}, #{stoStatus}, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage})
+		insert into store_tb values(sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1, sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
+		values (#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1}, #{stoAdd2}, #{stoPhone}, #{stoStatus}, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
 	</insert>
 	
-	<select id="selectStoreList" resultType="StoreDTO">
-		select * from store_tb order by stoNum
+	<select id="selectStore" resultType="StoreDTO">
+		select * from store_tb where sto_num=#{stoNum}
 	</select>
+	
+	<select id="selectStoreList" resultType="StoreDTO">
+			select * from store_tb order by sto_num
+	</select>
+
 </mapper>
