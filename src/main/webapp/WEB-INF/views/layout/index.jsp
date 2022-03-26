@@ -21,23 +21,23 @@
                             <p>동네 친구들과 즐거움을 나누세요~! common comeon~</p>
                         </div> -->
                         <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" id="myLocation" placeholder="Search...">
+                            <form name="searchForm">
+                                <input type="text" name="juso" id="myLocation" placeholder="Search...">
                                 <div class="select__option">
-                                    <select>
-                                        <option value="">출발시간</option>
-										  <option value='1'>13시</option>
-										  <option value='2'>14시</option>
-										  <option value='3'>15시</option>
-										  <option value='4'>16시</option>
-										  <option value='5'>17시</option>
-										  <option value='6'>18시</option>
-										  <option value='7'>19시</option>
-										  <option value='8'>20시</option>
-										  <option value='9'>22시</option>
-										  <option value='10'>22시</option>
-										  <option value='11'>23시</option>
-										  <option value='12'>24시</option>
+                                    <select name="deliveryTime">
+                                        <option value="">배달출발시간</option>
+										  <option value="13:00:00">13시</option>
+										  <option value="14:00:00">14시</option>
+										  <option value="15:00:00">15시</option>
+										  <option value="16:00:00">16시</option>
+										  <option value="17:00:00">17시</option>
+										  <option value="18:00:00">18시</option>
+										  <option value="19:00:00">19시</option>
+										  <option value="20:00:00">20시</option>
+										  <option value="21:00:00">21시</option>
+										  <option value="22:00:00">22시</option>
+										  <option value="23:00:00">23시</option>
+										  <option value="24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
@@ -46,7 +46,7 @@
                                     </select>
                                 </div> -->
                                 <button onclick="findLocation()" type="button" style="width: 20%; background-color: #327258;">현재 위치</button>
-                                <button type="submit">Explore Now</button>
+                                <button type="button" onclick="search();">Explore Now</button>
                             </form>
                         </div>
                         <!-- <ul class="hero__categories__tags">
@@ -395,6 +395,14 @@
 				break;
 			}
 		}
+		
+		function search() {
+			searchForm.method="post";
+			searchForm.action="${pageContext.request.contextPath}/listing_search";
+			searchForm.submit();
+		}
+		
+		
 	</script>
     
 </body>
