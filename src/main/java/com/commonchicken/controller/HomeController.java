@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,8 +64,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "store/info", method = RequestMethod.GET)
-	public String storeInfo(@RequestParam(defaultValue = "6656")int StoName, Model model){
+	public String storeSelect(@RequestParam(defaultValue = "6656")int StoName, Model model){
 		model.addAttribute("storeInfo", storeService.selectStore(StoName));
+		return "store_mypage/store_info";
+	}
+	
+	@RequestMapping(value = "store/info", method = RequestMethod.POST)
+	public String storeModify(@ModelAttribute StoreDTO store){
+		storeService.updateStore(store);
 		return "store_mypage/store_info";
 	}
 }

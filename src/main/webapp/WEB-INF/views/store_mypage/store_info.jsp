@@ -101,11 +101,6 @@
 											</ul>
 										</div>
 									</div>
-
-									
-
-
-
 									<div class="collapse-box">
 										<h5 class="collapse-title">
 											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
@@ -131,6 +126,7 @@
 						<div class="inner-box">
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
+								<form id="storeModify" method="post">
 								<div id="accordion" class="panel-group">
 									<div class="panel panel-default">
 										<div class="panel-heading">
@@ -139,53 +135,55 @@
 											</h4>
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
+											<input type="hidden" name="stoStatus" value="1" >
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
+											<!-- -->	<div class="form-horizontal" role="form">
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" value="${storeInfo.stoName }">
+															<input type="text" class="form-control" name="stoName" value="${storeInfo.stoName }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">대표자 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" value="${storeInfo.memEmail }">
+															<input type="text" class="form-control" name="stoCeo" value="${storeInfo.stoCeo }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 전화번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" value="${storeInfo.stoPhone }">
+															<input type="text" class="form-control" name="stoPhone" value="${storeInfo.stoPhone }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="Phone" class="col-sm-3 control-label">사업자
 															등록증 사진</label>
 														<div class="col-sm-9">
-															<input type="file" class="form-control" id="Phone">
+															<img src="${pageContext.request.contextPath }/img/logo2.png" alt="사진">
+															<input type="file" class="form-control" name="stoOrigin" id="Phone">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">업태</label>
 														<div class="col-sm-9">
-															<select></select>
+															<input type="text" class="form-control" name="stoCondition" value="${storeInfo.stoCondition }">
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label">업종</label>
+														<label class="col-sm-3 control-label" >업종</label>
 														<div class="col-sm-9">
-															<select></select>
+															<input type="text" class="form-control" id="Phone" name=stoSector value="${storeInfo.stoSector }">
 														</div>
 													</div>
 													<!-- 주소 api -->
 													<div class="form-group">
-														<label class="col-sm-3 control-label">사업장 주소</label>
+														<label class="col-sm-3 control-label" >사업장 주소</label>
 														<div class="col-sm-9">
-															<span> <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-																<input type="text" class="form-control" id="sample3_postcode" value="${storeInfo.stoZipCode }" placeholder="우편번호">
-																 <input type="text" class="form-control" id="sample3_address" value="${storeInfo.stoAdd1 }" placeholder="주소">
-																 <input type="text" class="form-control" id="sample3_detailAddress" value="${storeInfo.stoAdd2 }" placeholder="상세주소"> 
+															<span> <input type="button" onclick="sample3_execDaumPostcode()" id="find_juso" value="우편번호 찾기"><br>
+																<input type="text" class="form-control" id="sample3_postcode" value="${storeInfo.stoZipCode }"  name="stoZipCode" placeholder="우편번호">
+																 <input type="text" class="form-control" id="sample3_address" value="${storeInfo.stoAdd1 }" name="stoAdd1" placeholder="주소">
+																 <input type="text" class="form-control" id="sample3_detailAddress" value="${storeInfo.stoAdd2 }" name="stoAdd2" placeholder="상세주소"> 
 																 <input type="text" class="form-control" id="sample3_extraAddress" placeholder="참고항목">
 															</span>
 														</div>
@@ -207,75 +205,78 @@
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">변경</button>
+															<button type="button" id="btnModify1" class="btn btn-default">변경</button>
 														</div>
 													</div>
-												</form>
+												</div>
 											</div>
 										</div>
 									</div>
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title">
-												<a href="#collapseB2" data-toggle="collapse"> 점포 상세정보 입력</a>
+												<a href="#collapseB2" data-toggle="collapse"> 점포 상세정보 입력 ▼</a>
 											</h4>
 										</div>
 										<div class="panel-collapse collapse" id="collapseB2">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
+												<div class="form-horizontal" role="form">
 													<div class="form-group">
 														<div class="col-sm-12"></div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">영업시간</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control" value="${storeInfo.stoOpenning }">
+															<input type="text" class="form-control" name="stoOpenning" value="${storeInfo.stoOpenning }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">최소주문금액</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control" value="${storeInfo.stoMinorder }">
+															<input type="text" class="form-control" name="stoMinorder" value="${storeInfo.stoMinorder } 원">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">결제수단</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control" value="${storeInfo.stoPayment }">
+															<input type="text" class="form-control" name="stoPayment" value="${storeInfo.stoPayment }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">치킨</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control" value="${storeInfo.stoBoneOrg}">
+															<input type="text" class="form-control" name="stoBoneOrg" value="${storeInfo.stoBoneOrg}">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">순살</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control" value="${storeInfo.stoBonelessOrg }">
+															<input type="text" class="form-control" name="stoBonelessOrg" value="${storeInfo.stoBonelessOrg }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">알림메세지</label>
 														<div class="col-sm-9">
-															<textarea rows="10" cols="45">value="${storeInfo.stoMessage }"</textarea> 
+															<textarea rows="10" cols="45" name="stoMessage" >${storeInfo.stoMessage }</textarea> 
 																
 														</div>
 													</div>
 													
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">수정</button>
+															<button type="button" id="btnModify2" class="btn btn-default">수정</button>
 														</div>
 													</div>
-												</form>
+												</div>
 											</div>
 										</div>
 									</div>
 
 								</div>
+								
+								
 								<!--/.row-box End-->
+							</form>
 							</div>
 						</div>
 					</div>
@@ -419,6 +420,7 @@
 							// 우편번호와 주소 정보를 해당 필드에 넣는다.
 							document.getElementById('sample3_postcode').value = data.zonecode;
 							document.getElementById("sample3_address").value = addr;
+							document.getElementById("sample3_detailAddress").value = "";
 							// 커서를 상세주소 필드로 이동한다.
 							document.getElementById("sample3_detailAddress")
 									.focus();
@@ -441,6 +443,27 @@
 			// iframe을 넣은 element를 보이게 한다.
 			element_wrap.style.display = 'block';
 		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() { 
+			$('#btnModify1').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					$('#storeModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+			
+			$('#btnModify2').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					$('#storeModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+		});
 	</script>
 </body>
 </html>

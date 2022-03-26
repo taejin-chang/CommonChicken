@@ -6,6 +6,7 @@ import com.commonchicken.dto.StoreDTO;
 
 public interface StoreDAO {
 	int insertStore(StoreDTO store);
+	int updateStore(StoreDTO store);
 	StoreDTO selectStore(int stoNum);
 	List<StoreDTO> selectStoreList();
 }

@@ -17,6 +17,11 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void insertStore(StoreDTO store) {
 		storeDAO.insertStore(store);
+	}
+	
+	@Override
+	public void updateStore(StoreDTO store) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -29,5 +34,5 @@ public class StoreServiceImpl implements StoreService {
 	public List<StoreDTO> selectStoreList() {
 		return storeDAO.selectStoreList();
 	}
-	
+
 }

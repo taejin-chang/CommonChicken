@@ -26,9 +26,19 @@ STO_UPLOAD                VARCHAR2(100)
 
 <mapper namespace="com.commonchicken.mapper.StoreMapper">
 	<insert id="insertStore">
-		insert into store_tb values(sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1, sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
-		values (#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1}, #{stoAdd2}, #{stoPhone}, #{stoStatus}, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
+		insert into store_tb values(sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1,
+		 sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
+		values (#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1},
+		 #{stoAdd2}, #{stoPhone}, #{stoStatus}, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
 	</insert>
+	
+	<update id="updateStore">
+		update store_tb set	sto_num=#{stoNum}, mem_email=#{memEmail}, sto_code=#{stoCode}, sto_name=#{stoName}, sto_ceo=#{stoCeo},
+		 sto_condition=#{stoCondition}, sto_sector=#{stoSector}, sto_zip_code=#{stoZipCode}, sto_add1=#{stoAdd1}, sto_add2=#{stoAdd2},
+		 sto_phone=#{stoPhone}, sto_status=#{stoStatus}, sto_openning=#{stoOpenning}, sto_minorder=#{stoMinorder}, sto_payment=#{stoPayment},
+		 sto_bone_org=#{stoBoneOrg}, sto_boneless_org=#{stoBonelessOrg}, sto_message=#{stoMessage}, sto_origin=#{stoOrigin}, sto_upload=#{stoUpload} where sto_num=#{stoNum}
+	</update>
+	
 	
 	<select id="selectStore" resultType="StoreDTO">
 		select * from store_tb where sto_num=#{stoNum}

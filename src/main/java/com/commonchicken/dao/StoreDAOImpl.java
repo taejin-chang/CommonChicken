@@ -21,6 +21,12 @@ public class StoreDAOImpl implements StoreDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(StoreMapper.class).insertStore(store);
 	}
+	
+	@Override
+	public int updateStore(StoreDTO store) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	@Override
 	public StoreDTO selectStore(int stoNum) {
@@ -33,5 +39,9 @@ public class StoreDAOImpl implements StoreDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(StoreMapper.class).selectStoreList();
 	}
+
+
+
+
 
 }
