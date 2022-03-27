@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.commonchicken.dao.MemberDAO;
 import com.commonchicken.dto.MemberDTO;
 @Service
-public class LoginServiceImpl implements LoginService{
+public class MemberServiceImpl implements MemberService{
 
 	@Autowired
 	MemberDAO memberDAO;

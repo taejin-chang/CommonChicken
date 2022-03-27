@@ -123,66 +123,6 @@
 
 					<div class="col-sm-9 page-content">
 						<div class="inner-box">
-							<div class="row">
-								<div class="col-md-5 col-xs-4 col-xxs-12">
-									<h3 class="no-padding text-center-480 useradmin">
-										<a href=""><img class="userImg" src="images/user.jpg"
-											alt="user"> Jhon Doe </a>
-									</h3>
-								</div>
-								<div class="col-md-7 col-xs-8 col-xxs-12">
-									<div class="header-data text-center-xs">
-
-										<!-- Traffic data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with red background -->
-												<i class="fa fa-eye ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">7000</a> <em>visits</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with green background -->
-												<i class="icon-th-thumb ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">12</a><em>Ads</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with blue background -->
-												<i class="fa fa-user ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">18</a> <em>Favorites </em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="inner-box">
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
 								<div id="accordion" class="panel-group">
@@ -194,54 +134,28 @@
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
+												<form class="form-horizontal" role="form" method="post" >
 													<div class="form-group">
 														<label class="col-sm-3 control-label">배달 출발 시간</label>
-														<div class="col-sm-3">
-															<input type="time" class="form-control" name="cmDeliveryTime">
+														<div class="col-sm-5">
+															<input type="datetime-local" id="cmStart" class="form-control" name="cmDeliveryTime">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">커먼 마감 시간</label>
+														<div class="col-sm-5">
+															<input type="datetime-local" id="cmClose" class="form-control" name="cmClose">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">모집인원 (명)</label>
 														<div class="col-sm-3">
-															<input type="time" class="form-control" name="cmClose">
+															<input style="text-align: center;" type="text" class="form-control" value="${storeOwner.stoNum }">
 														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">모집인원</label>
-														<div class="col-sm-9">
-															<input type="text"el" class="form-control" value="${storeOwner.stoNum }">
-														</div>
-													</div>
-													<!-- 주소 api -->
-													<div class="form-group">
-														<label class="col-sm-3 control-label">주소</label>
-														<div class="col-sm-9">
-															<input type="text" class="form-control"
-																id="sample3_postcode" placeholder="우편번호"> <input
-																type="text" class="form-control" id="sample3_address"
-																placeholder="주소"> <input type="text"
-																class="form-control" id="sample3_detailAddress"
-																placeholder="상세주소"> <input type="text"
-																class="form-control" id="sample3_extraAddress"
-																placeholder="참고항목">
-														</div>
-													</div>
-
-
-													<div class="form-group">
-														<label for="Phone" class="col-sm-3 control-label">사진변경</label>
-														<div class="col-sm-9">
-															<input type="file" class="form-control" id="Phone">
-														</div>
-													</div>
-
-													<div class="form-group">
-														<div class="col-sm-offset-3 col-sm-9"></div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">변경</button>
+															<button type="submit" id="btmId" class="btn btn-default">변경</button>
 														</div>
 													</div>
 												</form>
@@ -285,5 +199,18 @@
 		<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 		<!-- include custom script for site  -->
 		<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
+		
+
+	<script type="text/javascript">
+		$(document).ready(function() { 
+			$('#btmId').click(function() {
+				date.toISOString().replace('T', ' ').substring(0, 19)
+
+				alert('등록이 완료되었습니다.');
+			})
+		});
+		
+		
+	</script>
 </body>
 </html>

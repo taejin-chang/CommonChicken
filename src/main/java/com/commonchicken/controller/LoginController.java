@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.commonchicken.dto.MemberDTO;
 import com.commonchicken.exception.LoginAuthFailException;
-import com.commonchicken.service.LoginService;
+import com.commonchicken.service.MemberService;
 
 
 @Controller
@@ -26,7 +26,7 @@ public class LoginController {
 	private WebApplicationContext context;
 	
 	@Autowired
-	private LoginService loginService;
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -69,7 +69,7 @@ public class LoginController {
 			member.setMemUpload(member.getMemUpload());	
 		}
 		
-		loginService.insertMember(member);
+		memberService.insertMember(member);
 		
 		return "redirect:/";
 				
@@ -78,15 +78,15 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute MemberDTO member, Model model,HttpSession session) throws LoginAuthFailException{
 		//아이디 잘못입력했을때
-		if(loginService.selectMember(member.getMemEmail()).getMemEmail()==null) {
+		if(memberService.selectMember(member.getMemEmail()).getMemEmail()==null) {
 			throw new LoginAuthFailException();
 		}
 		//비번 틀렸을때
-		if(!loginService.selectMember(member.getMemEmail()).getMemPw().equals(member.getMemPw())) {
+		if(!memberService.selectMember(member.getMemEmail()).getMemPw().equals(member.getMemPw())) {
 			throw new LoginAuthFailException();
 		}
 		
-		MemberDTO loginMember =loginService.selectMember(member.getMemEmail());
+		MemberDTO loginMember =memberService.selectMember(member.getMemEmail());
 		session.setAttribute("loginMember", loginMember);
 		
 		

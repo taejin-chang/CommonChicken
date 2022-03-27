@@ -3,6 +3,8 @@ package com.commonchicken.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.commonchicken.dto.CommonDTO;
 import com.commonchicken.dto.StoreDTO;
+import com.commonchicken.service.CommonService;
 import com.commonchicken.service.StoreService;
 
 /**
@@ -33,6 +37,9 @@ public class HomeController {
 	
 	@Autowired
 	private StoreService storeService;
+	
+	@Autowired
+	private CommonService commonService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -113,8 +120,34 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "store/common", method = RequestMethod.GET)
-	public String CommonAdd(){
+	public String Common(){
 		return "store_mypage/store_common";
+	}
+	
+	@RequestMapping(value = "store/common", method = RequestMethod.POST)
+	public String CommonAdd(@ModelAttribute CommonDTO common) throws ParseException{
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date Delivery = sdf.parse(common.getCmDeliveryTime());
+		String cmDeliveryTime = output.format(Delivery);
+		
+		Date close = sdf.parse(common.getCmDeliveryTime());
+		String cmClose = output.format(close);
+
+		
+		common.setStoNum("6656");
+		common.setMemEmail("jmaster1020@gmail.com");
+		common.setCmDeliveryTime(cmDeliveryTime);
+		common.setCmClose(cmClose);
+		
+
+		logger.info(common.getCmDeliveryTime()+" "+common.getCmClose()+" "+ common.getCmGoalPeople());
+		
+		commonService.insertCommon(common);
+		
+		
+		return "redirect:/store/info";
 	}
 }
 
