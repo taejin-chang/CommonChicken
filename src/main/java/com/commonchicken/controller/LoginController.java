@@ -40,16 +40,34 @@ public class LoginController {
 	public String singIn(@ModelAttribute MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
 		
-		String uploadDir=context.getServletContext().getRealPath("/WEB-INF/upload");
-		
-		String origin=member.getFile().getOriginalFilename();
-		
-		String upload=System.currentTimeMillis()+"";
-		
-		member.setMemOrigin(origin);
-		member.setMemUpload(upload);
-		
-		member.getFile().transferTo(new File(uploadDir, upload));
+		if(!(member.getFile()==null)){
+			
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/profile");
+			
+			String originalFileName=member.getFile().getOriginalFilename();
+			
+			System.out.println(originalFileName);
+			
+			File file=new File(uploadDirectory, originalFileName);
+			
+			String uploadFilename=originalFileName;
+			
+			int i=0;
+			while(file.exists()) {
+				i++;
+				int index=originalFileName.lastIndexOf(".");
+				uploadFilename=originalFileName.substring(0, index)+"_"+i+originalFileName.substring(index);
+				file=new File(uploadDirectory, uploadFilename);
+			}
+			
+			member.getFile().transferTo(file);
+			
+			member.setMemOrigin(originalFileName);
+			member.setMemUpload(uploadFilename);
+		}else {
+			member.setMemOrigin(member.getMemOrigin());
+			member.setMemUpload(member.getMemUpload());	
+		}
 		
 		loginService.insertMember(member);
 		
