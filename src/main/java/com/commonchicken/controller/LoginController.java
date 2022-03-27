@@ -99,7 +99,7 @@ public class LoginController {
 	public String exceptionHandler(LoginAuthFailException exception, Model model) {
 		model.addAttribute("loginmessage", "아이디 또는 비밀번호가 잘못 입력되었습니다");
 		//model.addAttribute("userid", exception.getUserid());
-		return "user/login";
+		return "redirect:/login";
 	}
 	
 	

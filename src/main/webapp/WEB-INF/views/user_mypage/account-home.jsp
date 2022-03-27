@@ -133,8 +133,8 @@
 							<div class="row">
 								<div class="col-md-5 col-xs-4 col-xxs-12">
 									<h3 class="no-padding text-center-480 useradmin">
+										<img alt="프사" src="${pageContext.request.contextPath}/profile/${loginMember.memOrigin}">
 										<a href=""> ${loginMember.memName }님, 환영합니다. </a>
-										<img alt="프사" src="${pageContext.request.contextPath}/upload/${loginMember.memUpload }.png">
 									</h3>
 								</div>
 								<div class="col-md-7 col-xs-8 col-xxs-12">
@@ -202,7 +202,7 @@
 																type="text" class="form-control" id="sample3_address"
 																placeholder="주소"value="${loginMember.memAdd1 }"> <input type="text"
 																class="form-control" id="sample3_detailAddress"
-																placeholder="상세주소"value="${loginMember.memAdd2 }"> <input type="text"
+																placeholder="상세주소"value="${loginMember.memAdd2 }"> <input type="hidden"
 																class="form-control" id="sample3_extraAddress"
 																placeholder="참고항목">
 														</div>

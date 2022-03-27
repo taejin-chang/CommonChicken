@@ -149,42 +149,55 @@
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
+											
+											
+												<form name="StoreApplyForm" class="form-horizontal" role="form">
+												<!-- 회원이메일 -->
+												<input type="hidden" name="memEmail" value="${loginMember.getMemEmail }">
 													<div class="form-group">
-														<label class="col-sm-3 control-label">사업장 명</label>
+														<label class="col-sm-3 control-label">사업자번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input name="stoNum" type="text" class="form-control" placeholder="사업자번호">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">점포명</label>
+														<div class="col-sm-9">
+															<input name="stoName" type="text" class="form-control" placeholder="점포명">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">대표자 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input name="stoCeo"type="text" class="form-control" placeholder="대표자 명">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 전화번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input name="stoPhone"type="text" class="form-control" placeholder="사업장 전화번호">
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="Phone" class="col-sm-3 control-label">사업자
-															등록증 사진</label>
+														<label for="Phone" class="col-sm-3 control-label">사업장 사진</label>
 														<div class="col-sm-9">
-															<input type="file" class="form-control" id="Phone">
+															<input name="" type="file" class="form-control" id="Phone">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">업태</label>
 														<div class="col-sm-9">
-															<select></select>
+															<select name="stoCondition">
+																<option value="숙박및음식점">숙박및음식점</option>
+															</select>
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">업종</label>
 														<div class="col-sm-9">
-															<select></select>
+															<select name="stoSector">
+																<option value="치킨전문점">치킨전문점</option>
+															</select>
 														</div>
 													</div>
 													<!-- 주소 api -->
@@ -193,10 +206,10 @@
 														<div class="col-sm-9">
 															<span> <input type="button"
 																onclick="sample3_execDaumPostcode()" value="우편번호 찾기"><br>
-																<input type="text" class="form-control"
-																id="sample3_postcode" placeholder="우편번호"> <input
+																<input name="stoZipCode" type="text" class="form-control"
+																id="sample3_postcode" placeholder="우편번호"> <input name="stoAdd1"
 																type="text" class="form-control" id="sample3_address"
-																placeholder="주소"> <input type="text"
+																placeholder="주소"> <input name="stoAdd2" type="text"
 																class="form-control" id="sample3_detailAddress"
 																placeholder="상세주소"> <input type="text"
 																class="form-control" id="sample3_extraAddress"
@@ -212,6 +225,42 @@
 															style="cursor: pointer; position: absolute; right: 0px; top: -1px; z-index: 1"
 															onclick="foldDaumPostcode()" alt="접기 버튼">
 													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">영업시간</label>
+														<div class="col-sm-9">
+															<input name="stoOpenning"type="text" class="form-control" placeholder="영업시간">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">최소주문금액</label>
+														<div class="col-sm-9">
+															<input name="stoMinorder"type="text" class="form-control" placeholder="최소주문금액">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">결제수단</label>
+														<div class="col-sm-9">
+															<input name="stoPayment"type="text" class="form-control" placeholder="결제수단">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">원산지_치킨</label>
+														<div class="col-sm-9">
+															<input name="stoBoneOrg"type="text" class="form-control" placeholder="원산지_치킨">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">원산지_순살</label>
+														<div class="col-sm-9">
+															<input name="stoBonelessOrg"type="text" class="form-control" placeholder="원산지_순살">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">알림메세지</label>
+														<div class="col-sm-9">
+															<input name="stoMessage" type="text" class="form-control" placeholder="알림메세지">
+														</div>
+													</div>
 
 
 													
@@ -221,7 +270,7 @@
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">신청</button>
+															<button type="submit" onclick="submitCheck();"class="btn btn-default">신청</button>
 														</div>
 													</div>
 												</form>
@@ -248,7 +297,36 @@
 
 	<!-- Le javascript
 ================================================== -->
+	<script type="text/javascript">
+	StoreApplyForm.stoNum.focus();
 
+	function submitCheck() {
+		if(StoreApplyForm.stoNum.value=="") {
+			alert("사업자번호를 입력해 주세요.");
+			StoreApplyForm.stoNum.focus();
+			return;
+		}
+		if(StoreApplyForm.stoCeo.value=="") {
+			alert("대표명을 입력해 주세요.");
+			StoreApplyForm.stoCeo.focus();
+			return;
+		}
+		if(StoreApplyForm.stoPhone.value=="") {
+			alert("전화번호를 입력해 주세요.");
+			StoreApplyForm.stoPhone.focus();
+			return;
+		}
+		if(StoreApplyForm.stoName.value=="") {
+			alert("상호명을 입력해 주세요.");
+			StoreApplyForm.stoName.focus();
+			return;
+		}
+		
+		signinForm.method="post";
+		signinForm.action="${pageContext.request.contextPath}/store_apply";
+		signinForm.submit();
+	} 
+	</script>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
