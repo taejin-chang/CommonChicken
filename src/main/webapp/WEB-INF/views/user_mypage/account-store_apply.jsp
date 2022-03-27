@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +9,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="assets/ico/apple-touch-icon-144-precomposed.png">
+	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="assets/ico/apple-touch-icon-114-precomposed.png">
+	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="assets/ico/apple-touch-icon-72-precomposed.png">
+	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
-	href="ico/apple-touch-icon-57-precomposed.png">
-<link rel="shortcut icon" href="assets/ico/favicon.png">
+	href="${pageContext.request.contextPath }/ico/apple-touch-icon-57-precomposed.png">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/assets/ico/favicon.png">
 <title>BOOTCLASIFIED - Responsive Classified Theme</title>
 <!-- Bootstrap core CSS -->
-<link href="assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/assets/css/style.css" rel="stylesheet">
 
 <!-- styles needed for carousel slider -->
-<link href="assets/css/owl.carousel.css" rel="stylesheet">
-<link href="assets/css/owl.theme.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/assets/css/owl.carousel.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/assets/css/owl.theme.css" rel="stylesheet">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -40,7 +42,7 @@
 		elements : true
 	};
 </script>
-<script src="assets/js/pace.min.js"></script>
+<script src="${pageContext.request.contextPath }/assets/js/pace.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -65,7 +67,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
-												<li><a href="account-home.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/mypage"><i
 														class="icon-home"></i> 회원 정보</a></li>
 
 											</ul>
@@ -78,7 +80,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myads.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myCommon"><i
 														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
@@ -91,7 +93,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myboard.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myBoard"><i
 														class="icon-docs"></i> 공동주문 모집,리뷰 </a></li>
 
 											</ul>
@@ -105,7 +107,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a class="active" href="account-store_apply.html"><i
+												<li><a class="active" href="${pageContext.request.contextPath}/user/myStoreApply"><i
 														class="icon-docs"></i> 점포등록 신청 </a></li>
 											</ul>
 										</div>
@@ -120,7 +122,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
-												<li><a href="account-close.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myClose"><i
 														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>
@@ -252,25 +254,25 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 		
 	</script>
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- include checkRadio plugin //Custom check & Radio  -->
-	<script type="text/javascript" src="assets/js/icheck.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/icheck.min.js"></script>
 
 
 	<!-- include carousel slider plugin  -->
-	<script src="assets/js/owl.carousel.min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/js/owl.carousel.min.js"></script>
 
 	<!-- include equal height plugin  -->
-	<script src="assets/js/jquery.matchHeight-min.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/js/jquery.matchHeight-min.js"></script>
 
 	<!-- include jquery list shorting plugin plugin  -->
-	<script src="assets/js/hideMaxListItem.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/js/hideMaxListItem.js"></script>
 
 	<!-- include footable   -->
 
-	<script src="assets/js/footable.js?v=2-0-1" type="text/javascript"></script>
-	<script src="assets/js/footable.filter.js?v=2-0-1"
+	<script src="${pageContext.request.contextPath }/assets/js/footable.js?v=2-0-1" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath }/assets/js/footable.filter.js?v=2-0-1"
 		type="text/javascript"></script>
 	<script type="text/javascript">
 		$(function() {
@@ -307,10 +309,10 @@
 	</script>
 
 	<!-- include jquery.fs plugin for custom scroller and selecter  -->
-	<script src="assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js"></script>
-	<script src="assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 	<!-- include custom script for site  -->
-	<script src="assets/js/script.js"></script>
+	<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
 	<script
 		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>

@@ -307,12 +307,29 @@
 													
 													
 													<!-- 프로필사진 -->
-													<label class="block clearfix">
+													<label for="gdsImg" class="block clearfix">
 														<span class="block input-icon input-icon-right">
 														 프로필사진:
 															<input name="file" type="file" class="form-control" />
 														</span>
 													</label>
+													<div class="select_img"><img src="" /></div>
+													<script>
+  $("#gdsImg").change(function(){
+   if(this.files && this.files[0]) {
+    var reader = new FileReader;
+    reader.onload = function(data) {
+     $(".select_img img").attr("src", data.target.result).width(500);        
+    }
+    reader.readAsDataURL(this.files[0]);
+   }
+  });
+ </script>
+													
+													
+													
+													
+													
 													<!-- 생년월일 -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">

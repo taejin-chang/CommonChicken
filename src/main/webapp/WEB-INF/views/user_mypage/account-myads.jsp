@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,7 +70,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
-												<li><a href="account-home.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/mypage"><i
 														class="icon-home"></i> 회원 정보</a></li>
 
 											</ul>
@@ -81,7 +83,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a class="active" href="account-myads.html"><i
+												<li><a class="active" href="${pageContext.request.contextPath}/user/myCommon"><i
 														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
@@ -94,7 +96,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myboard.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myBoard"><i
 														class="icon-docs"></i> 공동주문 모집,리뷰 </a></li>
 
 											</ul>
@@ -108,7 +110,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-store_apply.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myStoreApply"><i
 														class="icon-docs"></i> 점포등록 신청 </a></li>
 											</ul>
 										</div>
@@ -123,7 +125,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
-												<li><a href="account-close.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myClose"><i
 														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>

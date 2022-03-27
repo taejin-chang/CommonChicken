@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +10,8 @@
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-144-precomposed.png">
-	
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
 	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-114-precomposed.png">
-	
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
 	href="${pageContext.request.contextPath }/assets/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed"
@@ -28,14 +28,6 @@
 <link href="${pageContext.request.contextPath }/assets/css/owl.carousel.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/owl.theme.css" rel="stylesheet">
 
-<!-- Just for debugging purposes. -->
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
-
-<!-- include pace script for automatic web page progress bar  -->
 
 <script>
 	paceOptions = {
@@ -67,7 +59,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
-												<li><a class="active" href="account-home.html"><i
+												<li><a class="active" href="${pageContext.request.contextPath}/user/mypage"><i
 														class="icon-home"></i> 회원 정보</a></li>
 
 											</ul>
@@ -80,7 +72,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myads.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myCommon"><i
 														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
@@ -93,7 +85,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myboard.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myBoard"><i
 														class="icon-docs"></i> 공동주문 모집,리뷰 </a></li>
 
 											</ul>
@@ -107,7 +99,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-store_apply.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myStoreApply"><i
 														class="icon-docs"></i> 점포등록 신청 </a></li>
 											</ul>
 										</div>
@@ -122,7 +114,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
-												<li><a href="account-close.html"><i
+												<li><a href="${pageContext.request.contextPath}/user/myClose"><i
 														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>
@@ -141,61 +133,35 @@
 							<div class="row">
 								<div class="col-md-5 col-xs-4 col-xxs-12">
 									<h3 class="no-padding text-center-480 useradmin">
-										<a href=""> Jhon Doe </a>
+										<a href=""> ${loginMember.memName }님, 환영합니다. </a>
+										<img alt="프사" src="${pageContext.request.contextPath}/upload/${loginMember.memUpload }.png">
 									</h3>
 								</div>
 								<div class="col-md-7 col-xs-8 col-xxs-12">
-									<div class="header-data text-center-xs">
-
-										<!-- Traffic data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with red background -->
-												<i class="fa fa-eye ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">7000</a> <em>visits</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with green background -->
-												<i class="icon-th-thumb ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">12</a><em>Ads</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<div class="mcol-left">
-												<!-- Icon with blue background -->
-												<i class="fa fa-user ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												<!-- Number of visitors -->
-												<p>
-													<a href="#">18</a> <em>Favorites </em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
-
+						<!-- 
+	private String memEmail;
+	private String memNickname;
+	private String memPw;
+	private String memName;
+	private String memPhone;
+	private String memZipCode;
+	private String memAdd1;
+	private String memAdd2;
+	private String memOrigin;
+	private String memJoinDate;
+	private int memStatus;
+	private String memLastLogin;
+	private String memBirthday;
+	private String memAuthCode;
+	private String memUpload;
+	private MultipartFile file;
+						
+						
+						 -->
 						<div class="inner-box">
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
@@ -212,19 +178,19 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이메일</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" placeholder=""value="${loginMember.memEmail }" readonly="readonly">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이름</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" placeholder="" value="${loginMember.memName }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">핸드폰 번호</label>
 														<div class="col-sm-9">
-															<input type="email" class="form-control" placeholder="">
+															<input type="email" class="form-control" placeholder="" value="${loginMember.memPhone }">
 														</div>
 													</div>
 													<!-- 주소 api -->
@@ -232,11 +198,11 @@
 														<label class="col-sm-3 control-label">주소</label>
 														<div class="col-sm-9">
 															<input type="text" class="form-control"
-																id="sample3_postcode" placeholder="우편번호"> <input
+																id="sample3_postcode" placeholder="우편번호"value="${loginMember.memZipCode }"> <input
 																type="text" class="form-control" id="sample3_address"
-																placeholder="주소"> <input type="text"
+																placeholder="주소"value="${loginMember.memAdd1 }"> <input type="text"
 																class="form-control" id="sample3_detailAddress"
-																placeholder="상세주소"> <input type="text"
+																placeholder="상세주소"value="${loginMember.memAdd2 }"> <input type="text"
 																class="form-control" id="sample3_extraAddress"
 																placeholder="참고항목">
 														</div>
