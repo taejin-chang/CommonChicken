@@ -103,6 +103,18 @@
 									</div>
 									<div class="collapse-box">
 										<h5 class="collapse-title">
+											커 관리<a href="#MyAds" data-toggle="collapse"
+												class="pull-right"></a>
+										</h5>
+										<div class="panel-collapse collapse in" id="MyAds">
+											<ul class="acc-list">
+												<li><a href="store-account-review.html"><i class="icon-heart"></i>커먼 등록</a></li>
+												
+											</ul>
+										</div>
+									</div>
+									<div class="collapse-box">
+										<h5 class="collapse-title">
 											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
 												class="pull-right"></a>
 										</h5>
@@ -126,7 +138,7 @@
 						<div class="inner-box">
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
-								<form id="storeModify" method="post">
+								<form id="storeModify" method="post" enctype="multipart/form-data">
 								<div id="accordion" class="panel-group">
 									<div class="panel panel-default">
 										<div class="panel-heading">
@@ -135,7 +147,10 @@
 											</h4>
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
+											<input type="hidden" name="stoNum" value="6656" >
 											<input type="hidden" name="stoStatus" value="1" >
+											<input type="hidden" name="stoOrigin" value="${storeInfo.stoOrigin }" >
+											<input type="hidden" name="stoUpdate" value="${storeInfo.stoUpload }" >
 											<div class="panel-body">
 											<!-- -->	<div class="form-horizontal" role="form">
 													<div class="form-group">
@@ -160,10 +175,18 @@
 														<label for="Phone" class="col-sm-3 control-label">사업자
 															등록증 사진</label>
 														<div class="col-sm-9">
-															<img src="${pageContext.request.contextPath }/img/logo2.png" alt="사진">
-															<input type="file" class="form-control" name="stoOrigin" id="Phone">
+															<img src="${pageContext.request.contextPath }/images/${storeInfo.stoUpload }" alt="사진">
+															<input type="file" class="form-control" name="file" id="Phone">
 														</div>
 													</div>
+<!-- 													<div class="form-group">
+														<label class="col-sm-3 control-label">매장 상태</label>
+														<div class="col-sm-9">
+															<select name="stoStatus">
+																<option></option>
+															</select>
+														</div>
+													</div> -->
 													<div class="form-group">
 														<label class="col-sm-3 control-label">업태</label>
 														<div class="col-sm-9">
@@ -233,7 +256,7 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">최소주문금액</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoMinorder" value="${storeInfo.stoMinorder } 원">
+															<input type="text" class="form-control" name="stoMinorder" value="${storeInfo.stoMinorder }">
 														</div>
 													</div>
 													<div class="form-group">

@@ -33,7 +33,7 @@ STO_UPLOAD                VARCHAR2(100)
 	</insert>
 	
 	<update id="updateStore">
-		update store_tb set	sto_num=#{stoNum}, mem_email=#{memEmail}, sto_code=#{stoCode}, sto_name=#{stoName}, sto_ceo=#{stoCeo},
+		update store_tb set sto_name=#{stoName}, sto_ceo=#{stoCeo},
 		 sto_condition=#{stoCondition}, sto_sector=#{stoSector}, sto_zip_code=#{stoZipCode}, sto_add1=#{stoAdd1}, sto_add2=#{stoAdd2},
 		 sto_phone=#{stoPhone}, sto_status=#{stoStatus}, sto_openning=#{stoOpenning}, sto_minorder=#{stoMinorder}, sto_payment=#{stoPayment},
 		 sto_bone_org=#{stoBoneOrg}, sto_boneless_org=#{stoBonelessOrg}, sto_message=#{stoMessage}, sto_origin=#{stoOrigin}, sto_upload=#{stoUpload} where sto_num=#{stoNum}

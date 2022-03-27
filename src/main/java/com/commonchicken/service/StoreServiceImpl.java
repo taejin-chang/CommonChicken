@@ -21,8 +21,7 @@ public class StoreServiceImpl implements StoreService {
 	
 	@Override
 	public void updateStore(StoreDTO store) {
-		// TODO Auto-generated method stub
-		
+		storeDAO.updateStore(store);		
 	}
 
 	@Override

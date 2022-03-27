@@ -7,24 +7,24 @@ public class CommonDTO {
 	private String cmClose;
 	private int cmGoalPeople;
 	private String cmRegdate;
-	private String cmExpdate;
+	private int cmStatus;
 	private int cmSales;
 	private String stoNum;
 	private String memEmail;
-	
+
 	public CommonDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public CommonDTO(int cmNum, String cmDeliveryTime, String cmClose, int cmGoalPeople, String cmRegdate,
-			String cmExpdate, int cmSales, String stoNum, String memEmail) {
+			int cmStatus, int cmSales, String stoNum, String memEmail) {
 		super();
 		this.cmNum = cmNum;
 		this.cmDeliveryTime = cmDeliveryTime;
 		this.cmClose = cmClose;
 		this.cmGoalPeople = cmGoalPeople;
 		this.cmRegdate = cmRegdate;
-		this.cmExpdate = cmExpdate;
+		this.cmStatus = cmStatus;
 		this.cmSales = cmSales;
 		this.stoNum = stoNum;
 		this.memEmail = memEmail;
@@ -70,12 +70,12 @@ public class CommonDTO {
 		this.cmRegdate = cmRegdate;
 	}
 
-	public String getCmExpdate() {
-		return cmExpdate;
+	public int getCmStatus() {
+		return cmStatus;
 	}
 
-	public void setCmExpdate(String cmExpdate) {
-		this.cmExpdate = cmExpdate;
+	public void setCmStatus(int cmStatus) {
+		this.cmStatus = cmStatus;
 	}
 
 	public int getCmSales() {
@@ -101,7 +101,5 @@ public class CommonDTO {
 	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
-	
-	
-	
+
 }

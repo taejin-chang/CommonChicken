@@ -1,5 +1,7 @@
 package com.commonchicken.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -25,6 +27,9 @@ import com.commonchicken.service.StoreService;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@Autowired
+	private WebApplicationContext context;
 	
 	@Autowired
 	private StoreService storeService;
@@ -70,9 +75,46 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "store/info", method = RequestMethod.POST)
-	public String storeModify(@ModelAttribute StoreDTO store){
+	public String storeModify(@ModelAttribute StoreDTO store) throws IllegalStateException, IOException{	
+		
+		if(!(store.getFile()==null)){
+		
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/images");
+			
+			String originalFileName=store.getFile().getOriginalFilename();
+			
+			System.out.println(originalFileName);
+			
+			File file=new File(uploadDirectory, originalFileName);
+			
+			String uploadFilename=originalFileName;
+			
+			int i=0;
+			while(file.exists()) {
+				i++;
+				int index=originalFileName.lastIndexOf(".");
+				uploadFilename=originalFileName.substring(0, index)+"_"+i+originalFileName.substring(index);
+				file=new File(uploadDirectory, uploadFilename);
+			}
+			
+			store.getFile().transferTo(file);
+			
+			store.setStoOrigin(originalFileName);
+			store.setStoUpload(uploadFilename);
+		}else {
+			store.setStoOrigin(store.getStoOrigin());
+			store.setStoUpload(store.getStoUpload());	
+		}
+		
+		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
+
 		storeService.updateStore(store);
-		return "store_mypage/store_info";
+		return "redirect:/store/info";
+	}
+	
+	@RequestMapping(value = "store/common", method = RequestMethod.GET)
+	public String CommonAdd(){
+		return "store_mypage/store_common";
 	}
 }
 
