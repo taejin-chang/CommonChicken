@@ -14,17 +14,28 @@
 		<result column="cm_close" property="cmClose"/>
 		<collection property="ratelist" ofType="Integer"/>
 	</resultMap>
-
+	
 	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
 		select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
 		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated
 		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-		where cm_delivery_time &gt;= #{deliveryTime} 
+		where cm_delivery_time &gt;= to_date('%'||#{deliveryTime})
 		and sto_add1||sto_add2 like '%'||#{juso}||'%'
 	</select>
-<!--  
+	<!--  
+	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
+		select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
+		sto_phone,cm_delivery_time,cm_close from store_tb a 
+		left join common_tb b on a.sto_num = b.sto_num 
+		left join (select cm_num, round(avg(rev_rated),1) rev_rated
+		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
+		where cm_delivery_time &gt;= <![CDATA[select substr(sysdate,1,10)|| ||#{deliveryTime} from dual]]>
+		and sto_add1||sto_add2 like '%'||#{juso}||'%'
+	</select>
+	-->
+<!--  select (substr(sysdate,1,10))||' '||'13:00:00' from dual;
 	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
         select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
         sto_phone,cm_delivery_time,cm_close from store_tb a 
@@ -47,14 +58,14 @@
             and cm_close_time=#{cmCloseTime}
         </if>
     </select>
--->    
+-->     
 	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
         select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
         sto_phone,cm_delivery_time,cm_close from store_tb a 
         left join common_tb b on a.sto_num = b.sto_num 
         left join (select cm_num, round(avg(rev_rated),1) rev_rated
         from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-        where cm_delivery_time &gt;= #{deliveryTime} 
+        where cm_delivery_time &gt;= (to_char(sysdate,'yyyy-mm-dd'))||#{deliveryTime} 
         and sto_add1||sto_add2 like '%'||#{juso}||'%'
 
         <if test="ratelist!=null">

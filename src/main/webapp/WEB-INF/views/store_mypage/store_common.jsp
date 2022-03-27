@@ -100,11 +100,6 @@
 											</ul>
 										</div>
 									</div>
-
-									
-
-
-
 									<div class="collapse-box">
 										<h5 class="collapse-title">
 											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
@@ -194,28 +189,28 @@
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title">
-												<a href="#collapseB1" data-toggle="collapse"> 내 정보 </a>
+												<a href="#collapseB1" data-toggle="collapse">커먼 등록</a>
 											</h4>
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
 											<div class="panel-body">
 												<form class="form-horizontal" role="form">
 													<div class="form-group">
-														<label class="col-sm-3 control-label">이메일</label>
-														<div class="col-sm-9">
-															<input type="text" class="form-control" value="${storeOwner.memEmail }">
+														<label class="col-sm-3 control-label">배달 출발 시간</label>
+														<div class="col-sm-3">
+															<input type="time" class="form-control" name="cmDeliveryTime">
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label">이름</label>
-														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+														<label class="col-sm-3 control-label">커먼 마감 시간</label>
+														<div class="col-sm-3">
+															<input type="time" class="form-control" name="cmClose">
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-sm-3 control-label">핸드폰 번호</label>
+														<label class="col-sm-3 control-label">모집인원</label>
 														<div class="col-sm-9">
-															<input type="email" class="form-control" value="${storeOwner.stoNum }">
+															<input type="text"el" class="form-control" value="${storeOwner.stoNum }">
 														</div>
 													</div>
 													<!-- 주소 api -->
@@ -253,45 +248,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h4 class="panel-title">
-												<a href="#collapseB2" data-toggle="collapse"> 비밀번호 변경 </a>
-											</h4>
-										</div>
-										<div class="panel-collapse collapse" id="collapseB2">
-											<div class="panel-body">
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-														<div class="col-sm-12"></div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">새 비밀번호</label>
-														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-sm-3 control-label">비밀번호 확인</label>
-														<div class="col-sm-9">
-															<input type="password" class="form-control"
-																placeholder="">
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">변경</button>
-														</div>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-
 								</div>
 								<!--/.row-box End-->
-
 							</div>
 						</div>
 						<!--/.page-content-->
@@ -300,25 +258,7 @@
 				</div>
 				<!--/.container-->
 			</div>
-			<!-- /.main-container -->
-			<!--  
-			<div class="footer" id="footer">
-				<div class="container">
-					<ul class=" pull-left navbar-link footer-nav">
-						<li><a href="index.html"> Home </a> <a href="about-us.html">
-								About us </a> <a href="#"> Terms and Conditions </a> <a href="#">
-								Privacy Policy </a> <a href="contact.html"> Contact us </a> <a
-							href="faq.html"> FAQ </a>
-					</ul>
-					<ul class=" pull-right navbar-link footer-nav">
-						<li>&copy; 2015 BootClassified</li>
-					</ul>
-				</div>
 
-			</div>
-			-->
-			<!--/.footer-->
-		</div>
 		<!-- /.wrapper -->
 		<!-- Le javascript
 ================================================== -->

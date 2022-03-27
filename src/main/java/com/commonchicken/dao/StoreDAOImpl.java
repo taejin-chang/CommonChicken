@@ -11,7 +11,7 @@ import com.commonchicken.mapper.StoreMapper;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {
-	
+
 	@Autowired
 	SqlSession sqlSession;
 	
@@ -25,7 +25,8 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public int updateStore(StoreDTO store) {
 		// TODO Auto-generated method stub
-		return 0;
+
+		return sqlSession.getMapper(StoreMapper.class).updateStore(store);
 	}
 
 	@Override

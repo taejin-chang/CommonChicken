@@ -20,6 +20,7 @@ STO_BONELESS_ORG          VARCHAR2(50)
 STO_MESSAGE               VARCHAR2(1000) 
  */
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class StoreDTO {
 	private String stoNum;
@@ -42,6 +43,7 @@ public class StoreDTO {
 	private String stoMessage;
 	private String stoOrigin;
 	private String stoUpload;
+	private MultipartFile file;
 	
 	public StoreDTO() {
 		// TODO Auto-generated constructor stub
@@ -207,5 +209,12 @@ public class StoreDTO {
 		this.stoUpload = stoUpload;
 	}
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	
 }

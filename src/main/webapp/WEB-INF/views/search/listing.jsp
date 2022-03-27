@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+	
 <html lang="zxx">
 
 <head>
@@ -276,7 +279,7 @@
     <section class="listing nice-scroll" style="padding-top: 20px;">
         <div class="listing__text__top">
             <div class="listing__text__top__left">
-                <h5>Restaurants</h5>
+                <h5>점포</h5>
                 <span>18 Results Found</span>
             </div>
             <div class="listing__text__top__right">
@@ -285,44 +288,85 @@
 	            <i class="fa fa-sort-amount-asc"></i>
             </div>
         </div>
+        
+        
+
+        
+        
         <div class="listing__list">
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
-                    <img src="img/listing/list_icon-1.png" alt="">
-                    <div class="listing__item__pic__tag">Popular</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Chinese Sausage Restaurant</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 236 Littleton St. New Philadelphia, Ohio, United
-                                States</li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-1.png" alt="">
-                            <span>Restaurant</span>
-                        </div>
-                        <div class="listing__item__text__info__right">Open Now</div>
-                    </div>
-                </div>
-            </div>
+        <!-- 점포리스트 -->        
+        
+        <c:choose>
+        	<c:when test="${empty(mainSearchList) }">
+	        	<div class="listing__item">
+	              <div class="listing__item__text__inside">
+	                  <h5>조건에 맞는 점포로 다시 검색해주세요</h5>
+	              </div>
+	            </div>
+        	</c:when>
+			<c:otherwise>
+        		<c:forEach var="searchStore" items="${mainSearchList}">
+		            <div class="listing__item">
+		            	<input name="stoNum" type="hidden" value="${mainSearchList.stoNum}">
+		            	<input name="cmNum" type="hidden" value="${mainSearchList.cmNum}">
+		                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+		                    <img src="img/listing/list_icon-1.png" alt="">
+		                    <div class="listing__item__pic__tag">Popular</div>
+		                    <div class="listing__item__pic__btns">
+		                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
+		                        <a href="#"><span class="icon_heart_alt"></span></a>
+		                    </div>
+		                </div>
+		                <div class="listing__item__text">
+		                    <div class="listing__item__text__inside">
+		                        <h5>${searchStore.stoName }</h5>
+		                        <div class="listing__item__text__rating">
+		                            <div class="listing__item__rating__star">
+		                            	<c:choose>
+		                            		<c:when test="${searchStore.stoName.revRated==1 }">
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==2 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==3 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==4 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.stoName.revRated==4.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:otherwise>
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                                </c:choose>
+		                            </div>
+		                            <!--  <h6>$40 - $70</h6>-->
+		                        </div>
+		                        <ul>
+		                            <li><span class="icon_pin_alt"></span>${searchStore.stoAdd1 }&nbsp;${searchStore.stoAdd2 }</li>
+		                            <li><span class="icon_phone"></span>${searchStore.stoPhone }</li>
+		                        </ul>
+		                    </div>
+		                    <div class="listing__item__text__info">
+		                        <div class="listing__item__text__info__left">
+		                            <img src="img/listing/list_small_icon-1.png" alt="">
+		                            <span>${searchStore.cmDeliveryTime }</span>
+		                        </div>
+		                        <div class="listing__item__text__info__right">${searchStore.cmClose }</div>
+		                    </div>
+		                </div>
+		            </div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+            
+            
+            
+            
+            <!--
             <div class="listing__item">
                 <div class="listing__item__pic set-bg" data-setbg="img/listing/list-2.jpg">
                     <img src="img/listing/list_icon-2.png" alt="">
@@ -508,6 +552,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
     </section>
     <!-- Listing Section End -->
