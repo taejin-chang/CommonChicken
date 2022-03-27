@@ -6,6 +6,8 @@
 <html lang="zxx">
 
 <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
 	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 	    .wrap * {padding: 0;margin: 0;}
@@ -40,44 +42,6 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header Section Begin -->
-<!--     <header class="header header--normal">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/footer-logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li class="active"><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
-                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header> -->
     <!-- Header Section End -->
     <section class="hero set-bg" style="padding: 100px 0; padding-bottom: 0px;"  data-setbg="img/logo11.png">
         <div class="container">
@@ -89,23 +53,24 @@
                             <p>동네 친구들과 즐거움을 나누세요~! common comeon~</p>
                         </div> -->
                         <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" id="myLocation" placeholder="Search...">
+                            <form name="searchForm">
+                             		<input type="text" name="juso" id="myLocation" placeholder="Search..."><input name="returnjuso" type="hidden" value="${juso}">
                                 <div class="select__option">
-                                    <select>
-                                        <option value="">출발시간</option>
-										  <option value='1'>13시</option>
-										  <option value='2'>14시</option>
-										  <option value='3'>15시</option>
-										  <option value='4'>16시</option>
-										  <option value='5'>17시</option>
-										  <option value='6'>18시</option>
-										  <option value='7'>19시</option>
-										  <option value='8'>20시</option>
-										  <option value='9'>22시</option>
-										  <option value='10'>22시</option>
-										  <option value='11'>23시</option>
-										  <option value='12'>24시</option>
+                                   	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
+                                    <select name="deliveryTime">
+                                        <option value="">배달출발시간</option>
+										  <option value="2022-03-09 13:00:00">13시</option>
+										  <option value="2022-03-09 14:00:00">14시</option>
+										  <option value="2022-03-09 15:00:00">15시</option>
+										  <option value="2022-03-09 16:00:00">16시</option>
+										  <option value="2022-03-09 17:00:00">17시</option>
+										  <option value="2022-03-09 18:00:00">18시</option>
+										  <option value="2022-03-09 19:00:00">19시</option>
+										  <option value="2022-03-09 20:00:00">20시</option>
+										  <option value="2022-03-09 21:00:00">21시</option>
+										  <option value="2022-03-09 22:00:00">22시</option>
+										  <option value="2022-03-09 23:00:00">23시</option>
+										  <option value="2022-03-09 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
@@ -114,7 +79,7 @@
                                     </select>
                                 </div> -->
                                 <button onclick="findLocation()" type="button" style="width: 20%; background-color: #327258;">현재 위치</button>
-                                <button type="submit">Explore Now</button>
+                                <button type="button" onclick="search();">Explore Now</button>
                             </form>
                         </div>
                         <!-- <ul class="hero__categories__tags">
@@ -184,92 +149,55 @@
         </div> -->
         	 <div>
            		 <p style="display: inline;">커먼 마감시간 :</p>
-				<select name='endtime'>
+				<select name='cmClose'>
 				  <option value=''>마감시간</option>
-				  <option value='1'>13시</option>
-				  <option value='2'>14시</option>
-				  <option value='3'>15시</option>
-				  <option value='4'>16시</option>
-				  <option value='5'>17시</option>
-				  <option value='6'>18시</option>
-				  <option value='7'>19시</option>
-				  <option value='8'>20시</option>
-				  <option value='9'>22시</option>
-				  <option value='10'>22시</option>
-				  <option value='11'>23시</option>
-				  <option value='12'>24시</option>
+				  <option value="2022-03-09 13:00:00">13시</option>
+				  <option value="2022-03-09 14:00:00">14시</option>
+				  <option value="2022-03-09 15:00:00">15시</option>
+				  <option value="2022-03-09 16:00:00">16시</option>
+				  <option value="2022-03-09 17:00:00">17시</option>
+				  <option value="2022-03-09 18:00:00">18시</option>
+				  <option value="2022-03-09 19:00:00">19시</option>
+				  <option value="2022-03-09 20:00:00">20시</option>
+				  <option value="2022-03-09 21:00:00">21시</option>
+				  <option value="2022-03-09 22:00:00">22시</option>
+				  <option value="2022-03-09 23:00:00">23시</option>
+				  <option value="2022-03-09 24:00:00">24시</option>
 				</select>
             </div>
             <br>            
         	 <div>
            		 <p style="display: inline;">배달시간 :</p>           		 
-				<select name='shiptime'>
+				<select name='deliveryTime2'>
 				  <option value=''>배달시간</option>
-				  <option value='1'>13시</option>
-				  <option value='2'>14시</option>
-				  <option value='3'>15시</option>
-				  <option value='4'>16시</option>
-				  <option value='5'>17시</option>
-				  <option value='6'>18시</option>
-				  <option value='7'>19시</option>
-				  <option value='8'>20시</option>
-				  <option value='9'>22시</option>
-				  <option value='10'>22시</option>
-				  <option value='11'>23시</option>
-				  <option value='12'>24시</option>
+				  <option value="2022-03-09 13:00:00">13시</option>
+				  <option value="2022-03-09 14:00:00">14시</option>
+				  <option value="2022-03-09 15:00:00">15시</option>
+				  <option value="2022-03-09 16:00:00">16시</option>
+				  <option value="2022-03-09 17:00:00">17시</option>
+				  <option value="2022-03-09 18:00:00">18시</option>
+				  <option value="2022-03-09 19:00:00">19시</option>
+				  <option value="2022-03-09 20:00:00">20시</option>
+				  <option value="2022-03-09 21:00:00">21시</option>
+				  <option value="2022-03-09 22:00:00">22시</option>
+				  <option value="2022-03-09 23:00:00">23시</option>
+				  <option value="2022-03-09 24:00:00">24시</option>
 				</select>
             </div>
             <br>
             <div>
             	<p>별점</p>
-            	<label><input type="checkbox" name="five" value="5">⭐️⭐️⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="four" value="4">⭐️⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="three" value="3">⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="two" value="2">⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="one" value="1">️⭐️</label>
+            	<label><input type="checkbox" name="rate" value="5">⭐️⭐️⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" name="rate" value="4">⭐️⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" name="rate" value="3">⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" name="rate" value="2">⭐️⭐️</label><br>
+            	<label><input type="checkbox" name="rate" value="1">️⭐️</label>
             </div>
-<!--         <div class="filter__tags">
-            <h6>Tag</h6>
-            <label for="coupon">
-                Coupons
-                <input type="checkbox" id="coupon">
-                <span class="checkmark"></span>
-            </label>
-            <label for="sa">
-                Smoking Allowed
-                <input type="checkbox" id="sa">
-                <span class="checkmark"></span>
-            </label>
-            <label for="camping">
-                Camping
-                <input type="checkbox" id="camping">
-                <span class="checkmark"></span>
-            </label>
-            <label for="hot-spots">
-                Hot Spots
-                <input type="checkbox" id="hot-spots">
-                <span class="checkmark"></span>
-            </label>
-            <label for="internet">
-                Internet
-                <input type="checkbox" id="internet">
-                <span class="checkmark"></span>
-            </label>
-            <label for="tr">
-                Top Rated
-                <input type="checkbox" id="tr">
-                <span class="checkmark"></span>
-            </label>
-            <label for="hd">
-                Hot Deal
-                <input type="checkbox" id="hd">
-                <span class="checkmark"></span>
-            </label>
-        </div> -->
+
         <br><br>
         
         <div class="filter__btns">
-            <button type="submit">필터 검색</button>
+            <button type="button" id="filterBtn" onclick="filtersearch();">필터 검색</button>
             <button type="submit" class="filter__reset">초기화</button>
         </div>
     </div>
@@ -292,8 +220,8 @@
         
 
         
-        
-        <div class="listing__list">
+        <div class="listing__list" id="detailListDiv"></div>
+        <div class="listing__list" id="storeListDiv">
         <!-- 점포리스트 -->        
         
         <c:choose>
@@ -306,9 +234,9 @@
         	</c:when>
 			<c:otherwise>
         		<c:forEach var="searchStore" items="${mainSearchList}">
-		            <div class="listing__item">
-		            	<input name="stoNum" type="hidden" value="${mainSearchList.stoNum}">
-		            	<input name="cmNum" type="hidden" value="${mainSearchList.cmNum}">
+		            <div class="listing__item" id="mainSearchStore">
+		            	<input name="stoNum" type="hidden" value="${searchStore.stoNum}">
+		            	<input name="cmNum" type="hidden" value="${searchStore.cmNum}">
 		                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
 		                    <img src="img/listing/list_icon-1.png" alt="">
 		                    <div class="listing__item__pic__tag">Popular</div>
@@ -323,21 +251,21 @@
 		                        <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
 		                            	<c:choose>
-		                            		<c:when test="${searchStore.stoName.revRated==1 }">
+		                            		<c:when test="${searchStore.revRated==1 }">
 		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==1.5 }">
+		                            		<c:when test="${searchStore.revRated==1.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==2 }">
+		                            		<c:when test="${searchStore.revRated==2 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==2.5 }">
+		                            		<c:when test="${searchStore.revRated==2.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==3 }">
+		                            		<c:when test="${searchStore.revRated==3 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==3.5 }">
+		                            		<c:when test="${searchStore.revRated==3.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==4 }">
+		                            		<c:when test="${searchStore.revRated==4 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.stoName.revRated==4.5 }">
+		                            		<c:when test="${searchStore.revRated==4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
 		                            		<c:otherwise>
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
@@ -363,196 +291,6 @@
 			</c:otherwise>
 		</c:choose>
             
-            
-            
-            
-            <!--
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-2.jpg">
-                    <img src="img/listing/list_icon-2.png" alt="">
-                    <div class="listing__item__pic__tag top_rate">Top Rate</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Shrimp floured and fried</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 1012 Vesper Dr. Columbus, Georgia(GA), United States
-                            </li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-2.png" alt="">
-                            <span>Food & Drink</span>
-                        </div>
-                        <div class="listing__item__text__info__right closed">Closed</div>
-                    </div>
-                </div>
-            </div>
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-4.jpg">
-                    <img src="img/listing/list_icon-4.png" alt="">
-                    <div class="listing__item__pic__tag">Popular</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Crab fried with tamarind</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 14320 Keenes Mill Rd. Cottondale, Alabama(AL), United
-                                States</li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-3.png" alt="">
-                            <span>Hotel</span>
-                        </div>
-                        <div class="listing__item__text__info__right closed">Closed</div>
-                    </div>
-                </div>
-            </div>
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-3.jpg">
-                    <img src="img/listing/list_icon-3.png" alt="">
-                    <div class="listing__item__pic__tag">Popular</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Sweet and sour pork ribs</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 251 Wiley St. Forks, Washington(WA), United States
-                            </li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-1.png" alt="">
-                            <span>Restaurant</span>
-                        </div>
-                        <div class="listing__item__text__info__right">Open Now</div>
-                    </div>
-                </div>
-            </div>
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-5.jpg">
-                    <img src="img/listing/list_icon-5.png" alt="">
-                    <div class="listing__item__pic__tag hot_deal">Hot Deal</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Tortoise grilled on salt</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 236 Littleton St. New Philadelphia, Ohio, United
-                                States</li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-4.png" alt="">
-                            <span>Shopping</span>
-                        </div>
-                        <div class="listing__item__text__info__right">Open Now</div>
-                    </div>
-                </div>
-            </div>
-            <div class="listing__item">
-                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-6.jpg">
-                    <img src="img/listing/list_icon-6.png" alt="">
-                    <div class="listing__item__pic__tag">Popular</div>
-                    <div class="listing__item__pic__btns">
-                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
-                        <a href="#"><span class="icon_heart_alt"></span></a>
-                    </div>
-                </div>
-                <div class="listing__item__text">
-                    <div class="listing__item__text__inside">
-                        <h5>Fish cooked with fishsauce</h5>
-                        <div class="listing__item__text__rating">
-                            <div class="listing__item__rating__star">
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star"></span>
-                                <span class="icon_star-half_alt"></span>
-                            </div>
-                            <h6>$40 - $70</h6>
-                        </div>
-                        <ul>
-                            <li><span class="icon_pin_alt"></span> 2604 E Drachman St. Tucson, Arizona, United States
-                            </li>
-                            <li><span class="icon_phone"></span> (+12) 345-678-910</li>
-                        </ul>
-                    </div>
-                    <div class="listing__item__text__info">
-                        <div class="listing__item__text__info__left">
-                            <img src="img/listing/list_small_icon-3.png" alt="">
-                            <span>Hotel</span>
-                        </div>
-                    6    <div class="listing__item__text__info__right">Open Now</div>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
     </section>
     <!-- Listing Section End -->
@@ -560,6 +298,217 @@
     <!-- Map Begin -->
     <div class="listing__map" style="margin-top: 0px;">
 		<div id="map" style="width:100%;height:100%;"></div>
+		
+    
+       <!--  <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423283.43556031643!2d-118.69192431097179!3d34.020730495817475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1586670019340!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
+    </div>
+    <!-- Map End -->
+
+	<!-- handlebars template -->
+	<script id="template" type="text/x-handlebars-template">
+        	{{#each .}}
+		            <div class="listing__item">
+		            	<input name="stoNum" type="hidden" value="{{stoNum}}">
+		            	<input name="cmNum" type="hidden" value="{{cmNum}}">
+		                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
+		                    <img src="img/listing/list_icon-1.png" alt="">
+		                    <div class="listing__item__pic__tag">Popular</div>
+		                    <div class="listing__item__pic__btns">
+		                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
+		                        <a href="#"><span class="icon_heart_alt"></span></a>
+		                    </div>
+		                </div>
+		                <div class="listing__item__text">
+		                    <div class="listing__item__text__inside">
+		                        <h5>{{stoName }}</h5>
+		            			            <div class="listing__item__text__rating">
+		                            <div class="listing__item__rating__star">
+											{{!--
+											{{ifratestar revRated "1"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span>{{/ifratestar}}
+											{{ifratestar revRated "1.5"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "2"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "2.5"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "3"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "3.5"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "4"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "4.5"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{ifratestar revRated "5"}}
+		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                                	--}}
+		                            </div>
+		                            <!--  <h6>$40 - $70</h6>-->
+		                        </div>
+		                        <ul>
+		                            <li><span class="icon_pin_alt"></span>{{stoAdd1 }}&nbsp;{{stoAdd2 }}</li>
+		                            <li><span class="icon_phone"></span>{{stoPhone }}</li>
+		                        </ul>
+		                    </div>
+		                    <div class="listing__item__text__info">
+		                        <div class="listing__item__text__info__left">
+		                            <img src="img/listing/list_small_icon-1.png" alt="">
+		                            <span>{{cmDeliveryTime }}</span>
+		                        </div>
+		                        <div class="listing__item__text__info__right">{{cmClose }}</div>
+		                    </div>
+		                </div>
+		            </div>
+				{{/each}}
+	</script>
+
+    <!-- Js Plugins -->
+
+	
+
+
+
+    <script type="text/javascript">
+    Handlebars.registerHelper('ifratestar', function(v1, v2, options){
+    	if(v1 === v2){
+    		return options.fn(this);
+    	} 
+    		return options.inverse(this);
+    });
+    
+    
+    
+    function filterdisplay() {
+    	$.ajax({
+			type: "post",
+			url: "listing_search/rest",
+			dataType: "json",
+			success: function(json) {
+				if(json.detailSearchList.length==0) {
+					$("#detailListDiv").html("검색된 게시글이 존재하지 않습니다.");
+					return;
+				}
+				
+				//응답된 게시글 목록을 HTML로 변환하도록 Handlebars 자바스크립트 라이브러리 이용
+				var source=$("#template").html();//템플릿 코드를 반환받아 저장
+				//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
+				var template=Handlebars.compile(source);
+				//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
+				$("#detailListDiv").html(template(json.detailSearchList));
+				
+			},
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});		
+    }
+    
+    function filtersearch() {
+    	$("#storeListDiv").hide();
+    	var cmClose=$("select[name=cmClose]").val();
+		var deliveryTime2=$("select[name=deliveryTime2]").val();
+		var rated=[];
+		$("input[name=rate]:checked").each(function(){
+			var chk = $(this).val();
+			rated.push(chk);
+		});
+		var returndeliveryTime=$("input[name=returndeliveryTime]").val();
+		var returnjuso=$("input[name=returnjuso]").val();
+		console.log(cmClose);
+		console.log(deliveryTime2);
+		console.log(rated);
+		console.log(returndeliveryTime);
+		console.log(returnjuso);
+		$.ajax({
+			type: "post",
+			url: "listing_searchdetail",
+			contentType: "application/json",
+			data: JSON.stringify({"deliveryTime":returndeliveryTime,"juso":returnjuso,"cmClose":cmClose,"deliveryTime2":deliveryTime2,"rated":rated}),
+			dateType: "text",
+			success: function(text) {
+				if(text=="success") {
+					$("select[name=cmClose]").val("");
+					$("select[name=deliveryTime2]").val("");
+					$("input[name=rate]").val("unchecked")
+					
+					filterdisplay();
+				}
+			},
+				/*if(json.detailSearchList.length==0) {
+					$("#storeListDiv").html("<div class='listing__item'>"+
+							"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
+							"</div></div>");
+					return;
+				}*/
+				/*if(json=="success") */
+					
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+		});		
+	};
+
+					/*
+					//신규 게시글 입력 영역 초기화
+					$(".insert").val("");
+					$("#insertDiv").hide();
+					
+					//게시글 목록을 검색하여 출력하는 함수 호출
+					boardDisplay(1);
+					*/
+
+	function search() {
+		searchForm.method="post";
+		searchForm.action="${pageContext.request.contextPath}/listing_search";
+		searchForm.submit();
+	}	
+			
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+		var loc = document.getElementById("myLocation");
+		function findLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showYourLocation, showErrorMsg);
+			} else { 
+				loc.innerHTML = "이 문장은 사용자의 웹 브라우저가 Geolocation API를 지원하지 않을 때 나타납니다!";
+			}
+		}
+
+		function showYourLocation(position) {
+			var userLat = position.coords.latitude;
+			var userLng = position.coords.longitude;
+			document.getElementById("myLocation").value = userLat +'  '+ userLng ;
+/* 			var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + userLat + "," + userLng + "&zoom=15&size=500x400&sensor=false";
+			document.getElementById("mapLocation").innerHTML = "<img src='"+imgUrl+"'>"; */
+		}
+		function showErrorMsg(error) {
+			switch(error.code) {
+				case error.PERMISSION_DENIED:
+				loc.innerHTML = "이 문장은 사용자가 Geolocation API의 사용 요청을 거부했을 때 나타납니다!"
+				break;
+				case error.POSITION_UNAVAILABLE:
+				loc.innerHTML = "이 문장은 가져온 위치 정보를 사용할 수 없을 때 나타납니다!"
+				break;
+				case error.TIMEOUT:
+				loc.innerHTML = "이 문장은 위치 정보를 가져오기 위한 요청이 허용 시간을 초과했을 때 나타납니다!"
+				break;
+				case error.UNKNOWN_ERROR:
+				loc.innerHTML = "이 문장은 알 수 없는 오류가 발생했을 때 나타납니다!"
+				break;
+			}
+		}
+	</script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3f2400bbaac1b16c5e6592a750160c2d"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
@@ -630,48 +579,6 @@
 			}
 			
 		</script>
-    
-       <!--  <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423283.43556031643!2d-118.69192431097179!3d34.020730495817475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1586670019340!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
-    </div>
-    <!-- Map End -->
-
-    <!-- Js Plugins -->
-
-        	<script>
-		var loc = document.getElementById("myLocation");
-		function findLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(showYourLocation, showErrorMsg);
-			} else { 
-				loc.innerHTML = "이 문장은 사용자의 웹 브라우저가 Geolocation API를 지원하지 않을 때 나타납니다!";
-			}
-		}
-
-		function showYourLocation(position) {
-			var userLat = position.coords.latitude;
-			var userLng = position.coords.longitude;
-			document.getElementById("myLocation").value = userLat +'  '+ userLng ;
-/* 			var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + userLat + "," + userLng + "&zoom=15&size=500x400&sensor=false";
-			document.getElementById("mapLocation").innerHTML = "<img src='"+imgUrl+"'>"; */
-		}
-		function showErrorMsg(error) {
-			switch(error.code) {
-				case error.PERMISSION_DENIED:
-				loc.innerHTML = "이 문장은 사용자가 Geolocation API의 사용 요청을 거부했을 때 나타납니다!"
-				break;
-				case error.POSITION_UNAVAILABLE:
-				loc.innerHTML = "이 문장은 가져온 위치 정보를 사용할 수 없을 때 나타납니다!"
-				break;
-				case error.TIMEOUT:
-				loc.innerHTML = "이 문장은 위치 정보를 가져오기 위한 요청이 허용 시간을 초과했을 때 나타납니다!"
-				break;
-				case error.UNKNOWN_ERROR:
-				loc.innerHTML = "이 문장은 알 수 없는 오류가 발생했을 때 나타납니다!"
-				break;
-			}
-		}
-	</script>.
 	
 </body>
 
