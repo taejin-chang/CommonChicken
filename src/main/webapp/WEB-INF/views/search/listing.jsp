@@ -85,6 +85,15 @@
                                 <button type="button" onclick="search();">Explore Now</button>
                             </form>
                         </div>
+                        <!-- <ul class="hero__categories__tags">
+                            <li><a href="#"><img src="img/hero/cat-1.png" alt=""> Restaurent</a></li>
+                            <li><a href="#"><img src="img/hero/cat-2.png" alt=""> Food & Drink</a></li>
+                            <li><a href="#"><img src="img/hero/cat-3.png" alt=""> Shopping</a></li>
+                            <li><a href="#"><img src="img/hero/cat-4.png" alt=""> Beauty</a></li>
+                            <li><a href="#"><img src="img/hero/cat-5.png" alt=""> Hotels</a></li>
+                            <li><a href="#"><img src="img/hero/cat-6.png" alt=""> All Categories</a></li>
+                        </ul> -->
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -211,6 +220,9 @@
             </div>
         </div>
         
+        
+
+        
         <div class="listing__list" id="detailListDiv"></div>
         <div class="listing__list" id="storeListDiv">
         <!-- 점포리스트 -->        
@@ -238,6 +250,7 @@
 		                </div>
 		                <div class="listing__item__text">
 		                    <div class="listing__item__text__inside">
+		                        <!--  <h5><a href='javascript:moveStore();'>[이전]">${searchStore.stoName }</a></h5>-->
 		                        <h5><a href='${pageContext.request.contextPath}/store?stoNum=${searchStore.stoNum}&cmNum=${searchStore.cmNum}'>${searchStore.stoName }</a></h5>
 		                        <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
@@ -312,7 +325,8 @@
 		                </div>
 		                <div class="listing__item__text">
 		                    <div class="listing__item__text__inside">
-		                        <h5>{{stoName }}</h5>
+		                        <h5><a href='{{baseUrl}}/cctest/store?stoNum={{stoNum}}&cmNum={{cmNum}}'>{{stoName }}</a></h5>
+		                        {{!--<h5>{{stoName }}</h5>--}}
 		            			            <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
 										{{!--<input type="hidden" value="{{revRated}}"--}}
@@ -383,6 +397,7 @@
 		console.log(returndeliveryTime);
 		console.log(returnjuso);
 		
+		
 		$.ajax({
 			type: "post",
 			url: "listing_searchdetail",
@@ -393,21 +408,49 @@
 				function(text) {
 				/*if(text=="success") */
 				
+					//처음 위치로 돌아가기
+
+
+					//$("select[name=deliveryTime2]").val("");
+					//$("input[name=rate]").val("unchecked");
+					
 					//응답된 게시글 목록을 HTML로 변환하도록 Handlebars 자바스크립트 라이브러리 이용
 					var source=$("#template").html();//템플릿 코드를 반환받아 저장
 					//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
 					var template=Handlebars.compile(source);
 					//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
 					$("#detailListDiv").html(template(text.detailSearchList));
+					
+					//filterdisplay();
+
 			},
+				/*if(json.detailSearchList.length==0) {
+					$("#storeListDiv").html("<div class='listing__item'>"+
+							"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
+							"</div></div>");
+					return;
+				}*/
+				/*if(json=="success") */
 					
 			error: function(xhr) {
 				alert("에러코드 = "+xhr.status);
 			}
 		});		
 
+
+		//$("#cmClose option:eq(0)").prop("selected", true);
+       // $("#deliveryTime2 option:eq(0)").prop("selected", true);
 	};
 
+					/*
+					//신규 게시글 입력 영역 초기화
+					$(".insert").val("");
+					$("#insertDiv").hide();
+					
+					//게시글 목록을 검색하여 출력하는 함수 호출
+					boardDisplay(1);
+					*/
+	
 					
 	function search() {
 		searchForm.method="post";
@@ -415,6 +458,25 @@
 		searchForm.submit();
 	};	
 
+
+					
+
+    
+    
+    /*
+		function resetbtn() {
+		    $(document).ready(function () {
+		    	  $(document).on("click", "button[id='resetBtn']", function () {
+		    			$("#cmClose option").prop("selected", false);
+		    	        $("#deliveryTime2 option").prop("selected", false);
+		    	  });
+		    	});
+		$("#cmClose option").prop("selected", false);
+        $("#deliveryTime2 option").prop("selected", false);
+		//document.getElementById("cmClose").value = '';
+		//document.getElementById("deliveryTime2").value = '';
+	};	
+		*/			
 					
 		var loc = document.getElementById("myLocation");
 		function findLocation() {
