@@ -40,7 +40,7 @@ public class LoginController {
 	public String singIn(@ModelAttribute MemberDTO member, Model model) throws IllegalStateException, IOException {
 		
 		
-		if(!(member.getFile()==null)){
+		if(!(member.getFile().isEmpty())){
 			
 			String uploadDirectory = context.getServletContext().getRealPath("/resources/profile");
 			

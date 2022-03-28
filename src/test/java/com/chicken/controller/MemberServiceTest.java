@@ -29,5 +29,30 @@ public class MemberServiceTest {
 	logger.info(member.getMemAdd1()+member.getMemAdd2());
 		
 	}
+	
+	@Test 
+	public void testUpdateMemberInfo() {
+		MemberDTO member = new MemberDTO();
+		member.setMemName("정현우");
+		member.setMemNickname("ㅋㅋㅋㅋ ");
+		member.setMemPhone("ㅋㅋㅋ");
+		member.setMemZipCode("ㅇㄴㄹㄴ");
+		member.setMemAdd1("ㄴㅇㄹㅇ");
+		member.setMemAdd2("호랑나비");
+		member.setMemOrigin("호랑나비");
+		member.setMemBirthday("호랑나비");
+		member.setMemUpload("호랑나비");
+		member.setMemEmail("test@naver.com");
+		member.setMemPw("1111");
+		
+		
+		
+		memberService.updateMember(member);
+		
+		
+		
+		logger.info(member.getMemAdd1()+member.getMemAdd2());
+		
+	}
 }
 

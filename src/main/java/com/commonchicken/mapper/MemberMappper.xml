@@ -35,22 +35,40 @@
 	
 	
 	
+<!-- 	<update id="updateMember">
+		update member_tb set mem_nickname=#{memNickname},
+							 mem_name=#{memName}, 
+							 mem_phone=#{memPhone}, 
+							 mem_zip_code=#{memZipCode}, 
+							 mem_add1=#{memAdd1}, 
+							 mem_add2=#{memAdd2}, 
+							 mem_origin=#{memOrigin}, 
+							 mem_birthday=#{memBirthday}, 
+							 mem_upload=#{memUpload}
+							 where mem_email = #{memEmail}
+	</update> -->
+	
 	<update id="updateMember">
-		update member_tb set mem_email=#{mem_email},
-							 mem_nickname=#{mem_nickname},
-							 mem_pw=#{mem_pw}, 
-							 mem_name=#{mem_name}, 
-							 mem_phone=#{mem_phone}, 
-							 mem_zip_code=#{mem_zip_code}, 
-							 mem_add1=#{mem_add1}, 
-							 mem_add2=#{mem_add2}, 
-							 mem_photo=#{mem_photo}, 
-							 mem_join_date=#{mem_join_date}, 
-							 mem_status=#{mem_status}, 
-							 mem_last_login=#{mem_last_login}, 
-							 mem_birthday=#{mem_birthday}, 
-							 mem_auth_code=#{mem_auth_code})
-							where mem_email = #{mem_email}
+		update member_tb	
+		<set>
+			<choose>
+				<when test="memPw==null or memPw==''">
+				 	 mem_nickname=#{memNickname},
+					 mem_name=#{memName}, 
+					 mem_phone=#{memPhone}, 
+					 mem_zip_code=#{memZipCode}, 
+					 mem_add1=#{memAdd1}, 
+					 mem_add2=#{memAdd2}, 
+					 mem_origin=#{memOrigin}, 
+					 mem_birthday=#{memBirthday}, 
+					 mem_upload=#{memUpload}			
+				</when>
+				<otherwise>
+					 mem_pw=#{memPw}			
+				</otherwise>
+			</choose>
+		</set>
+		where mem_email = #{memEmail}
 	</update>
 	
 	

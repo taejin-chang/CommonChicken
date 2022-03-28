@@ -130,10 +130,10 @@
 						<div class="inner-box">
 							<div class="row">
 								<div class="col-md-5 col-xs-4 col-xxs-12">
-									<h3 class="no-padding text-center-480 useradmin">
-										<a href=""><img class="userImg" src="images/user.jpg"
-											alt="user"> Jhon Doe </a>
-									</h3>
+									<h3 style="padding-top: 13px;" class="text-center-480 useradmin">
+										<img class="userImg" src="${pageContext.request.contextPath }/images/${storeOwner.memUpload }" alt="사진">${storeOwner.memName }
+<!-- 										<img class="userImg" src="images/user.jpg" alt="user"/> Jhon Doe 
+ -->									</h3>
 								</div>
 								<div class="col-md-7 col-xs-8 col-xxs-12">
 									<div class="header-data text-center-xs">
@@ -191,6 +191,10 @@
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
 								<div id="accordion" class="panel-group">
+									<form class="form-horizontal" id="memberModify" method="post" enctype="multipart/form-data">
+									<input type="hidden" name="memOrigin" value="${storeOwner.memOrigin }">
+									<input type="hidden" name="memUpload" value="${storeOwner.memUpload }">
+									
 									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h4 class="panel-title">
@@ -199,45 +203,53 @@
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이메일</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" value="${storeOwner.memEmail }">
+															<input type="text" class="form-control" name="memEmail" value="${storeOwner.memEmail }" readonly="readonly">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이름</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" placeholder="">
+															<input type="text" class="form-control" name="memName" value="${storeOwner.memName }">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">닉네임</label>
+														<div class="col-sm-9">
+															<input type="text" class="form-control"  name="memNickname" value="${storeOwner.memNickname }">
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">생년월일</label>
+														<div class="col-sm-5">
+															<input type="text" class="form-control"  name="memBirthday" value="${storeOwner.memBirthday }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">핸드폰 번호</label>
 														<div class="col-sm-9">
-															<input type="email" class="form-control" value="${storeOwner.stoNum }">
+															<input type="text" class="form-control" name="memPhone"  value="${storeOwner.memPhone }">
 														</div>
 													</div>
 													<!-- 주소 api -->
 													<div class="form-group">
 														<label class="col-sm-3 control-label">주소</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control"
-																id="sample3_postcode" placeholder="우편번호"> <input
-																type="text" class="form-control" id="sample3_address"
-																placeholder="주소"> <input type="text"
-																class="form-control" id="sample3_detailAddress"
-																placeholder="상세주소"> <input type="text"
-																class="form-control" id="sample3_extraAddress"
-																placeholder="참고항목">
+															<input type="text" class="form-control" id="sample3_postcode" name="memZipCode" placeholder="우편번호" value="${storeOwner.memZipCode }">
+															 <input type="text" class="form-control" id="sample3_address" name="memAdd1" placeholder="주소" value="${storeOwner.memAdd1 }"> 
+															 <input type="text" class="form-control" id="sample3_detailAddress"  name="memAdd2" placeholder="상세주소" value="${storeOwner.memAdd2 }"> 
+															 <input type="text" class="form-control" id="sample3_extraAddress" placeholder="참고항목">
 														</div>
 													</div>
 
 
 													<div class="form-group">
-														<label for="Phone" class="col-sm-3 control-label">사진변경</label>
+														<label for="Phone" class="col-sm-3 control-label">프로필 사진</label>
 														<div class="col-sm-9">
-															<input type="file" class="form-control" id="Phone">
+															<img src="${pageContext.request.contextPath }/images/${storeOwner.memUpload }" alt="사진">
+															<input type="file" name="file" class="form-control" >
 														</div>
 													</div>
 
@@ -246,10 +258,9 @@
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">변경</button>
+															<button type="button" id="btnModify1" class="btn btn-default">변경</button>
 														</div>
 													</div>
-												</form>
 											</div>
 										</div>
 									</div>
@@ -261,7 +272,6 @@
 										</div>
 										<div class="panel-collapse collapse" id="collapseB2">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form">
 													<div class="form-group">
 														<div class="col-sm-12"></div>
 													</div>
@@ -275,19 +285,19 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">비밀번호 확인</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
+															<input type="password" name="memPw" class="form-control"
 																placeholder="">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" class="btn btn-default">변경</button>
+															<button type="button" id="btnModify2" class="btn btn-default">변경</button>
 														</div>
 													</div>
-												</form>
 											</div>
 										</div>
 									</div>
+								</form>
 
 								</div>
 								<!--/.row-box End-->
@@ -300,25 +310,6 @@
 				</div>
 				<!--/.container-->
 			</div>
-			<!-- /.main-container -->
-			<!--  
-			<div class="footer" id="footer">
-				<div class="container">
-					<ul class=" pull-left navbar-link footer-nav">
-						<li><a href="index.html"> Home </a> <a href="about-us.html">
-								About us </a> <a href="#"> Terms and Conditions </a> <a href="#">
-								Privacy Policy </a> <a href="contact.html"> Contact us </a> <a
-							href="faq.html"> FAQ </a>
-					</ul>
-					<ul class=" pull-right navbar-link footer-nav">
-						<li>&copy; 2015 BootClassified</li>
-					</ul>
-				</div>
-
-			</div>
-			-->
-			<!--/.footer-->
-		</div>
 		<!-- /.wrapper -->
 		<!-- Le javascript
 ================================================== -->
@@ -345,5 +336,29 @@
 		<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 		<!-- include custom script for site  -->
 		<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
+	
+		<script type="text/javascript">
+		$(document).ready(function() { 
+			$('#btnModify1').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					$('#memberModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+			
+			$('#btnModify2').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					$('#memberModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+		});
+	</script>
+</body>
+
 </body>
 </html>

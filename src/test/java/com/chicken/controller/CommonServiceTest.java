@@ -1,7 +1,6 @@
 package com.chicken.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.commonchicken.dto.CommonDTO;
 import com.commonchicken.service.CommonService;
-import com.commonchicken.service.StoreService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
