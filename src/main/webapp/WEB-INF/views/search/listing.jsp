@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	
 <html lang="zxx">
 
 <head>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 	<style>
 	    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
 	    .wrap * {padding: 0;margin: 0;}
@@ -28,12 +30,13 @@
 			  overflow-y: scroll !important;
 			} */
 			
-			.nice-scroll {
-			height: 800px;
-			overflow-y: hidden;
-}
+		.nice-scroll {
+		height: 800px;
+		overflow-y: hidden;
+		}
 			
 	</style>
+
 </head>
 
 <body class="ov-hid">
@@ -58,7 +61,7 @@
                                 <div class="select__option">
                                    	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
                                     <select name="deliveryTime">
-                                        <option value="">배달출발시간</option>
+                                        <option>배달출발시간</option>
 										  <option value="2022-03-09 13:00:00">13시</option>
 										  <option value="2022-03-09 14:00:00">14시</option>
 										  <option value="2022-03-09 15:00:00">15시</option>
@@ -82,15 +85,6 @@
                                 <button type="button" onclick="search();">Explore Now</button>
                             </form>
                         </div>
-                        <!-- <ul class="hero__categories__tags">
-                            <li><a href="#"><img src="img/hero/cat-1.png" alt=""> Restaurent</a></li>
-                            <li><a href="#"><img src="img/hero/cat-2.png" alt=""> Food & Drink</a></li>
-                            <li><a href="#"><img src="img/hero/cat-3.png" alt=""> Shopping</a></li>
-                            <li><a href="#"><img src="img/hero/cat-4.png" alt=""> Beauty</a></li>
-                            <li><a href="#"><img src="img/hero/cat-5.png" alt=""> Hotels</a></li>
-                            <li><a href="#"><img src="img/hero/cat-6.png" alt=""> All Categories</a></li>
-                        </ul> -->
-                    <!-- </div> -->
                 </div>
             </div>
         </div>
@@ -149,7 +143,7 @@
         </div> -->
         	 <div>
            		 <p style="display: inline;">커먼 마감시간 :</p>
-				<select name='cmClose'>
+				<select name='cmClose' id="cmClose">
 				  <option value=''>마감시간</option>
 				  <option value="2022-03-09 13:00:00">13시</option>
 				  <option value="2022-03-09 14:00:00">14시</option>
@@ -168,7 +162,7 @@
             <br>            
         	 <div>
            		 <p style="display: inline;">배달시간 :</p>           		 
-				<select name='deliveryTime2'>
+				<select name='deliveryTime2' id="deliveryTime2">
 				  <option value=''>배달시간</option>
 				  <option value="2022-03-09 13:00:00">13시</option>
 				  <option value="2022-03-09 14:00:00">14시</option>
@@ -198,7 +192,7 @@
         
         <div class="filter__btns">
             <button type="button" id="filterBtn" onclick="filtersearch();">필터 검색</button>
-            <button type="submit" class="filter__reset">초기화</button>
+            <button type="button" id="resetBtn" class="filter__reset" >초기화</button>
         </div>
     </div>
     <!-- Filter End -->
@@ -217,9 +211,6 @@
             </div>
         </div>
         
-        
-
-        
         <div class="listing__list" id="detailListDiv"></div>
         <div class="listing__list" id="storeListDiv">
         <!-- 점포리스트 -->        
@@ -237,8 +228,8 @@
 		            <div class="listing__item" id="mainSearchStore">
 		            	<input name="stoNum" type="hidden" value="${searchStore.stoNum}">
 		            	<input name="cmNum" type="hidden" value="${searchStore.cmNum}">
-		                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
-		                    <img src="img/listing/list_icon-1.png" alt="">
+		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">
+		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png" alt="">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
 		                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
@@ -247,25 +238,25 @@
 		                </div>
 		                <div class="listing__item__text">
 		                    <div class="listing__item__text__inside">
-		                        <h5>${searchStore.stoName }</h5>
+		                        <h5><a href='${pageContext.request.contextPath}/store?stoNum=${searchStore.stoNum}&cmNum=${searchStore.cmNum}'>${searchStore.stoName }</a></h5>
 		                        <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
 		                            	<c:choose>
-		                            		<c:when test="${searchStore.revRated==1 }">
+		                            		<c:when test="${searchStore.revRated1==1 }">
 		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==1.5 }">
+		                            		<c:when test="${searchStore.revRated1==1.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==2 }">
+		                            		<c:when test="${searchStore.revRated1==2 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==2.5 }">
+		                            		<c:when test="${searchStore.revRated1==2.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==3 }">
+		                            		<c:when test="${searchStore.revRated1==3 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==3.5 }">
+		                            		<c:when test="${searchStore.revRated1==3.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==4 }">
+		                            		<c:when test="${searchStore.revRated1==4 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated==4.5 }">
+		                            		<c:when test="${searchStore.revRated1==4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
 		                            		<c:otherwise>
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
@@ -280,7 +271,7 @@
 		                    </div>
 		                    <div class="listing__item__text__info">
 		                        <div class="listing__item__text__info__left">
-		                            <img src="img/listing/list_small_icon-1.png" alt="">
+		                            <img src="${pageContext.request.contextPath}/img/listing/list_small_icon-1.png" alt="">
 		                            <span>${searchStore.cmDeliveryTime }</span>
 		                        </div>
 		                        <div class="listing__item__text__info__right">${searchStore.cmClose }</div>
@@ -307,12 +298,12 @@
 
 	<!-- handlebars template -->
 	<script id="template" type="text/x-handlebars-template">
-        	{{#each .}}
+		{{#each .}}
 		            <div class="listing__item">
 		            	<input name="stoNum" type="hidden" value="{{stoNum}}">
 		            	<input name="cmNum" type="hidden" value="{{cmNum}}">
-		                <div class="listing__item__pic set-bg" data-setbg="img/listing/list-1.jpg">
-		                    <img src="img/listing/list_icon-1.png" alt="">
+		                <div class="listing__item__pic set-bg" data-setbg="{{baseUrl}}${pageContext.request.contextPath}/img/listing/list-1.jpg">
+		                    <img src="{{baseUrl}}${pageContext.request.contextPath}/img/listing/list_icon-1.png">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
 		                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
@@ -324,28 +315,26 @@
 		                        <h5>{{stoName }}</h5>
 		            			            <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
-											{{!--
-											{{ifratestar revRated "1"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span>{{/ifratestar}}
-											{{ifratestar revRated "1.5"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "2"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "2.5"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "3"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "3.5"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "4"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "4.5"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
-		                            		{{ifratestar revRated "5"}}
-		                            		<span class="icon_star"><input type="hidden" value={{revRated}}></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
-		                                	--}}
+										{{!--<input type="hidden" value="{{revRated}}"--}}
+											{{#ifratestar revRated "1"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span>{{/ifratestar}}
+											{{#ifratestar revRated 1.5}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "2"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "2.5"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated 3}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "3.5"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "4"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "4.5"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		{{#ifratestar revRated "5"}}
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
 		                            </div>
-		                            <!--  <h6>$40 - $70</h6>-->
 		                        </div>
 		                        <ul>
 		                            <li><span class="icon_pin_alt"></span>{{stoAdd1 }}&nbsp;{{stoAdd2 }}</li>
@@ -354,7 +343,7 @@
 		                    </div>
 		                    <div class="listing__item__text__info">
 		                        <div class="listing__item__text__info__left">
-		                            <img src="img/listing/list_small_icon-1.png" alt="">
+		                            <img src="${pageContext.request.contextPath}/img/listing/list_small_icon-1.png" alt="">
 		                            <span>{{cmDeliveryTime }}</span>
 		                        </div>
 		                        <div class="listing__item__text__info__right">{{cmClose }}</div>
@@ -366,116 +355,67 @@
 
     <!-- Js Plugins -->
 
-	
-
-
-
     <script type="text/javascript">
-    Handlebars.registerHelper('ifratestar', function(v1, v2, options){
-    	if(v1 === v2){
-    		return options.fn(this);
-    	} 
-    		return options.inverse(this);
-    });
-    
-    
-    
-    function filterdisplay() {
-    	$.ajax({
-			type: "post",
-			url: "listing_search/rest",
-			dataType: "json",
-			success: function(json) {
-				if(json.detailSearchList.length==0) {
-					$("#detailListDiv").html("검색된 게시글이 존재하지 않습니다.");
-					return;
-				}
-				
-				//응답된 게시글 목록을 HTML로 변환하도록 Handlebars 자바스크립트 라이브러리 이용
-				var source=$("#template").html();//템플릿 코드를 반환받아 저장
-				//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
-				var template=Handlebars.compile(source);
-				//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
-				$("#detailListDiv").html(template(json.detailSearchList));
-				
-			},
-			error: function(xhr) {
-				alert("에러코드 = "+xhr.status);
-			}
-		});		
-    }
+
     
     function filtersearch() {
+    	
+    	Handlebars.registerHelper('ifratestar', function(v1, v2, options) {
+        	if(v1 === v2){
+        		return options.fn(this);
+        	} 
+        		return options.inverse(this);
+        })
+    	
     	$("#storeListDiv").hide();
     	var cmClose=$("select[name=cmClose]").val();
 		var deliveryTime2=$("select[name=deliveryTime2]").val();
-		var rated=[];
+		var ratelist=[];
 		$("input[name=rate]:checked").each(function(){
 			var chk = $(this).val();
-			rated.push(chk);
+			ratelist.push(chk);
 		});
 		var returndeliveryTime=$("input[name=returndeliveryTime]").val();
 		var returnjuso=$("input[name=returnjuso]").val();
 		console.log(cmClose);
 		console.log(deliveryTime2);
-		console.log(rated);
+		console.log(ratelist);
 		console.log(returndeliveryTime);
 		console.log(returnjuso);
+		
 		$.ajax({
 			type: "post",
 			url: "listing_searchdetail",
 			contentType: "application/json",
-			data: JSON.stringify({"deliveryTime":returndeliveryTime,"juso":returnjuso,"cmClose":cmClose,"deliveryTime2":deliveryTime2,"rated":rated}),
-			dateType: "text",
-			success: function(text) {
-				if(text=="success") {
-					$("select[name=cmClose]").val("");
-					$("select[name=deliveryTime2]").val("");
-					$("input[name=rate]").val("unchecked")
-					
-					filterdisplay();
-				}
+			data: JSON.stringify({"deliveryTime":returndeliveryTime,"juso":returnjuso,"cmClose":cmClose,"deliveryTime2":deliveryTime2,"ratelist":ratelist}),
+			dateType: "json",
+			success: 
+				function(text) {
+				/*if(text=="success") */
+				
+					//응답된 게시글 목록을 HTML로 변환하도록 Handlebars 자바스크립트 라이브러리 이용
+					var source=$("#template").html();//템플릿 코드를 반환받아 저장
+					//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
+					var template=Handlebars.compile(source);
+					//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
+					$("#detailListDiv").html(template(text.detailSearchList));
 			},
-				/*if(json.detailSearchList.length==0) {
-					$("#storeListDiv").html("<div class='listing__item'>"+
-							"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
-							"</div></div>");
-					return;
-				}*/
-				/*if(json=="success") */
 					
 			error: function(xhr) {
 				alert("에러코드 = "+xhr.status);
 			}
 		});		
+
 	};
 
-					/*
-					//신규 게시글 입력 영역 초기화
-					$(".insert").val("");
-					$("#insertDiv").hide();
 					
-					//게시글 목록을 검색하여 출력하는 함수 호출
-					boardDisplay(1);
-					*/
-
 	function search() {
 		searchForm.method="post";
 		searchForm.action="${pageContext.request.contextPath}/listing_search";
 		searchForm.submit();
-	}	
-			
+	};	
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+					
 		var loc = document.getElementById("myLocation");
 		function findLocation() {
 			if (navigator.geolocation) {

@@ -8,7 +8,7 @@ public class SearchStoreVO {
 	private String stoAdd1;
 	private String stoAdd2;	
 	private String stoPhone;
-	private int revRated;
+	private double revRated1;
 	private int cmNum;
 	private int cmGoalPeople;
 	private String cmDeliveryTime;
@@ -17,7 +17,7 @@ public class SearchStoreVO {
 	
 	@Override
 	public String toString() {
-		return stoNum+", "+stoName+", "+stoAdd1+"+"+stoAdd2+", "+stoPhone+", "+revRated+", "+cmNum+", "+cmGoalPeople+", "+cmDeliveryTime+", "+cmClose+", ";
+		return stoNum+", "+stoName+", "+stoAdd1+"+"+stoAdd2+", "+stoPhone+", "+revRated1+", "+cmNum+", "+cmGoalPeople+", "+cmDeliveryTime+", "+cmClose+", ";
 	}
 
 	public String getStoNum() {
@@ -60,12 +60,13 @@ public class SearchStoreVO {
 		this.stoPhone = stoPhone;
 	}
 
-	public int getRevRated() {
-		return revRated;
+
+	public double getRevRated1() {
+		return revRated1;
 	}
 
-	public void setRevRated(int revRated) {
-		this.revRated = revRated;
+	public void setRevRated1(double revRated1) {
+		this.revRated1 = revRated1;
 	}
 
 	public int getCmNum() {

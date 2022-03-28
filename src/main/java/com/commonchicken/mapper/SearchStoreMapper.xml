@@ -7,7 +7,7 @@
 		<result column="sto_add1" property="stoAdd1"/>
 		<result column="sto_add2" property="stoAdd2"/>
 		<result column="sto_phone" property="stoPhone"/>
-		<result column="rev_rated" property="revRated"/>
+		<result column="rev_rated1" property="revRated1"/>
 		<result column="cm_num" property="cmNum"/>
 		<result column="cm_goal_people" property="cmGoalPeople"/>
 		<result column="cm_delivery_time" property="cmDeliveryTime"/>
@@ -16,69 +16,39 @@
 	</resultMap>
 	
 	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
-		select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
-		sto_phone,cm_delivery_time,cm_close from store_tb a 
+		 <![CDATA[
+		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
+		sto_phone,cm_delivery_time,cm_close from store2_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
-		left join (select cm_num, round(avg(rev_rated),1) rev_rated
+		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
 		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-		where cm_delivery_time &gt;= to_date('%'||#{deliveryTime})
+		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD hh24:mi:ss')
 		and sto_add1||sto_add2 like '%'||#{juso}||'%'
+		]]>
 	</select>
-	<!--  
-	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
-		select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
-		sto_phone,cm_delivery_time,cm_close from store_tb a 
+	
+	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">				
+		<![CDATA[
+		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
+		sto_phone,cm_delivery_time,cm_close from store2_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
-		left join (select cm_num, round(avg(rev_rated),1) rev_rated
+		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
 		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-		where cm_delivery_time &gt;= <![CDATA[select substr(sysdate,1,10)|| ||#{deliveryTime} from dual]]>
+		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD HH24-MI-SS')
 		and sto_add1||sto_add2 like '%'||#{juso}||'%'
-	</select>
-	-->
-<!--  select (substr(sysdate,1,10))||' '||'13:00:00' from dual;
-	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
-        select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
-        sto_phone,cm_delivery_time,cm_close from store_tb a 
-        left join common_tb b on a.sto_num = b.sto_num 
-        left join (select cm_num, round(avg(rev_rated),1) rev_rated
-        from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-        where cm_delivery_time &gt;= #{deliveryTime} 
-        and sto_add1||sto_add2 like '%'||#{juso}||'%'
-
-        <if test="rated!=null">
-        	and rev_rated in
-            <foreach collection="ratelist" item="rated" open="(" close=")" separator=",">
-                #{rated}
-            </foreach>
-        </if>
-        <if test="delivery_time!=null">
-            and cm_delivery_time=#{deliveryTime}
-        </if>
-        <if test="close_time!=null">
-            and cm_close_time=#{cmCloseTime}
-        </if>
-    </select>
--->     
-	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
-        select a.sto_num,sto_name,rev_rated,cm_goal_people,sto_add1,sto_add2,
-        sto_phone,cm_delivery_time,cm_close from store_tb a 
-        left join common_tb b on a.sto_num = b.sto_num 
-        left join (select cm_num, round(avg(rev_rated),1) rev_rated
-        from review_tb group by cm_num) c on b.cm_num =c.cm_num 
-        where cm_delivery_time &gt;= (to_char(sysdate,'yyyy-mm-dd'))||#{deliveryTime} 
-        and sto_add1||sto_add2 like '%'||#{juso}||'%'
-
+		]]>
         <if test="ratelist!=null">
         	and
             <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
-               rev_rated = #{item}
+               <![CDATA[rev_rated1 between #{item} and ${item}]]>+1
             </foreach>
         </if>
         <if test="deliveryTime2!=null">
-            and cm_delivery_time&gt;=#{deliveryTime2}
+            and cm_delivery_time&gt;=<![CDATA[TO_DATE(#{deliveryTime2},'YYYY-MM-DD HH24-MI-SS')]]>
         </if>
         <if test="cmClose!=null">
-            and cm_close=#{cmClose}
+            and cm_close=<![CDATA[TO_DATE(#{cmClose},'YYYY-MM-DD HH24-MI-SS')]]>
         </if>
+        
     </select>
 </mapper>
