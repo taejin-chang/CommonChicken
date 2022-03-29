@@ -169,10 +169,9 @@ public class HomeController {
 
 		storeService.updateStore(store);
 		return "redirect:/store/info";
+		
 	}
-	
-	
-	
+		
 	
 	
 	
@@ -230,6 +229,15 @@ public class HomeController {
 		return "redirect:/store/commonlist";
 	}
 	
+	//공지사항 
+	@RequestMapping(value = "admin/notice", method = RequestMethod.GET)
+	public String selectNotice(){
+//			model.addAttribute("storeInfo", storeService.selectStore(StoName));
+		return "admin/admin_notice";
+	}
 }
+
+
+
 
 
