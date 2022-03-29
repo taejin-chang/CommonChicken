@@ -18,7 +18,7 @@
 	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
 		 <![CDATA[
 		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
-		sto_phone,cm_delivery_time,cm_close from store2_tb a 
+		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
 		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
@@ -30,7 +30,7 @@
 	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">				
 		<![CDATA[
 		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
-		sto_phone,cm_delivery_time,cm_close from store2_tb a 
+		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
 		from review_tb group by cm_num) c on b.cm_num =c.cm_num 
