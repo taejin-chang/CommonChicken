@@ -190,18 +190,18 @@
             <br>
             <div>
             	<p>별점</p>
-            	<label><input type="checkbox" name="rate" value="5">⭐️⭐️⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="rate" value="4">⭐️⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="rate" value="3">⭐️⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="rate" value="2">⭐️⭐️</label><br>
-            	<label><input type="checkbox" name="rate" value="1">️⭐️</label>
+            	<label><input type="checkbox" class="rate" name="rate" value="5">⭐️⭐️⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="4">⭐️⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="3">⭐️⭐️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="2">⭐️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="1">️⭐️</label>
             </div>
 
         <br><br>
         
-        <div class="filter__btns">
+        <div >
             <button type="button" id="filterBtn" onclick="filtersearch();">필터 검색</button>
-            <button type="button" id="resetBtn" class="filter__reset" >초기화</button>
+            <button type="button" id="resetBtn">초기화</button>
         </div>
     </div>
     <!-- Filter End -->
@@ -420,7 +420,7 @@
 					var template=Handlebars.compile(source);
 					//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
 					$("#detailListDiv").html(template(text.detailSearchList));
-					
+
 					//filterdisplay();
 
 			},
@@ -436,7 +436,15 @@
 				alert("에러코드 = "+xhr.status);
 			}
 		});		
+		
+		$("#deliveryTime2").val("").prop("selected", true);
+		$("#cmClose").val("").prop("selected", true);
 
+	        var obj = document.getElementsByClassName('rate');
+	 
+	        for (var i = 0; i < obj.length; i++) {
+	            obj[i].checked = false;
+	        }
 
 		//$("#cmClose option:eq(0)").prop("selected", true);
        // $("#deliveryTime2 option:eq(0)").prop("selected", true);
@@ -476,7 +484,6 @@
 		//document.getElementById("cmClose").value = '';
 		//document.getElementById("deliveryTime2").value = '';
 	};	
-		*/			
 					
 		var loc = document.getElementById("myLocation");
 		function findLocation() {
@@ -491,8 +498,8 @@
 			var userLat = position.coords.latitude;
 			var userLng = position.coords.longitude;
 			document.getElementById("myLocation").value = userLat +'  '+ userLng ;
-/* 			var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + userLat + "," + userLng + "&zoom=15&size=500x400&sensor=false";
-			document.getElementById("mapLocation").innerHTML = "<img src='"+imgUrl+"'>"; */
+// 			var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + userLat + "," + userLng + "&zoom=15&size=500x400&sensor=false";
+			//document.getElementById("mapLocation").innerHTML = "<img src='"+imgUrl+"'>"; 
 		}
 		function showErrorMsg(error) {
 			switch(error.code) {
@@ -510,7 +517,9 @@
 				break;
 			}
 		}
+		*/
 	</script>
+	<!--  
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3f2400bbaac1b16c5e6592a750160c2d"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
@@ -581,7 +590,20 @@
 			}
 			
 		</script>
-	
+		-->
+	<script type="text/javascript">
+		$("#resetBtn").click(function() {
+			$("#deliveryTime2").val("").prop("selected", true);
+			$("#cmClose").val("").prop("selected", true);
+
+		        var obj = document.getElementsByClassName('rate');
+		 
+		        for (var i = 0; i < obj.length; i++) {
+		            obj[i].checked = false;
+		        }
+			  //alert( "Handler for .click() called." );
+			});
+	</script>
 </body>
 
 </html>
