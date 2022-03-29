@@ -26,6 +26,12 @@ public class SearchStoreDAOImpl implements SearchStoreDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(SearchStoreMapper.class).selectDetailSearch(map);
 	}
+
+	@Override
+	public List<SearchStoreVO> selectAllSearch() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(SearchStoreMapper.class).selectAllSearch();
+	}
 	
 	
 }

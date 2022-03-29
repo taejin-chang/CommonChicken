@@ -8,5 +8,6 @@ import com.commonchicken.dto.SearchStoreVO;
 public interface SearchStoreDAO {
 	List<SearchStoreVO>selectMainSearch(Map<String, Object> map);
 	List<SearchStoreVO>selectDetailSearch(Map<String, Object> map);
+	List<SearchStoreVO>selectAllSearch();
 }
 

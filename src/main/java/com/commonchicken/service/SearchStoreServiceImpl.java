@@ -16,14 +16,17 @@ public class SearchStoreServiceImpl implements SearchStoreService {
 
 	@Override
 	public List<SearchStoreVO> getMainSearch(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return searchStoreDAO.selectMainSearch(map);
 	}
 
 	@Override
 	public List<SearchStoreVO> getDetailSearch(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return searchStoreDAO.selectDetailSearch(map);
+	}
+
+	@Override
+	public List<SearchStoreVO> getTotalSearch() {
+		return searchStoreDAO.selectAllSearch();
 	}
 	
 	

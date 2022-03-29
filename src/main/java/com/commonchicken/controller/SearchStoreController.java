@@ -23,9 +23,11 @@ public class SearchStoreController {
 	
 	//메인페이지에서 헤더메뉴를 통해 들어온 상세페이지
 	@GetMapping("/listing")
-	public String searchMain() {
+	public String searchMain(Model model) {
+		model.addAttribute("mainSearchList", searchStoreService.getTotalSearch());
 		return "search/listing";
 	}
+	
 	
 	//메인페이지에서 검색을 통해 들어온 상세페이지
 	@PostMapping("/listing_search")

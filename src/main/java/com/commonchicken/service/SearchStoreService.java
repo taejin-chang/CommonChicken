@@ -8,5 +8,6 @@ import com.commonchicken.dto.SearchStoreVO;
 public interface SearchStoreService {
 	List<SearchStoreVO>getMainSearch(Map<String, Object> map);
 	List<SearchStoreVO>getDetailSearch(Map<String, Object> map);
+	List<SearchStoreVO>getTotalSearch();
 
 }
