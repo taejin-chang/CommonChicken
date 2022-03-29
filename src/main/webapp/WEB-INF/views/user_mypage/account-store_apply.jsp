@@ -153,7 +153,7 @@
 											
 												<form name="StoreApplyForm" class="form-horizontal" role="form">
 												<!-- 회원이메일 -->
-												<input type="hidden" name="memEmail" value="${loginMember.getMemEmail }">
+												<input type="hidden" name="memEmail" value="${loginMember.memName }">
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업자번호</label>
 														<div class="col-sm-9">
@@ -322,9 +322,9 @@
 			return;
 		}
 		
-		signinForm.method="post";
-		signinForm.action="${pageContext.request.contextPath}/store_apply";
-		signinForm.submit();
+		StoreApplyForm.method="post";
+		StoreApplyForm.action="${pageContext.request.contextPath}/store_apply";
+		StoreApplyForm.submit();
 	} 
 	</script>
 	<!-- Placed at the end of the document so the pages load faster -->

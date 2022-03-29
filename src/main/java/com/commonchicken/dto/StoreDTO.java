@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class StoreDTO {
 	private String stoNum;
 	private String memEmail;
-	private String stoCode;
+	private int stoCode;
 	private String stoName;
 	private String stoCeo;
 	private String stoCondition;
@@ -65,11 +65,11 @@ public class StoreDTO {
 		this.memEmail = memEmail;
 	}
 
-	public String getStoCode() {
+	public int getStoCode() {
 		return stoCode;
 	}
 
-	public void setStoCode(String stoCode) {
+	public void setStoCode(int stoCode) {
 		this.stoCode = stoCode;
 	}
 

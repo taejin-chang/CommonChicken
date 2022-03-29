@@ -411,9 +411,6 @@
 			return;
 		}
 
-
-		
-
 		if(signinForm.memBirthday.value=="") {
 			alert("생년월일을 입력해 주세요.");
 			signinForm.memBirthday.focus();
