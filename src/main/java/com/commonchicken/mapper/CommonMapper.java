@@ -9,4 +9,5 @@ public interface CommonMapper {
 	int updateCommon(CommonDTO common);
 	CommonDTO selectCommon(int cmNum);
 	List<CommonDTO> selectCommonList();
+	int deleteCommon(int cmNum);
 }

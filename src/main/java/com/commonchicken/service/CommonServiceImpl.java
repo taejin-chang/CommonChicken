@@ -33,8 +33,12 @@ public class CommonServiceImpl implements CommonService {
 
 	@Override
 	public List<CommonDTO> selectCommonList() {
-		// TODO Auto-generated method stub
-		return null;
+		return commonDAO.selectCommonList();
+	}
+
+	@Override
+	public void deleteCommon(int cmNum) {
+		commonDAO.deleteCommon(cmNum);
 	}
 	
 

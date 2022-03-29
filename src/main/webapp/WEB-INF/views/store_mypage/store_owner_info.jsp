@@ -64,12 +64,12 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
-												<li><a class="active" href="store-account-home.html"><i
+												<li><a  href="store-account-home.html"><i
 														class="icon-home"></i> 관리자 회원 정보</a></li>
 
 											</ul>
 											<ul class="acc-list">
-												<li><a href="store-account-info.html"><i
+												<li><a class="active"href="store-account-info.html"><i
 														class="icon-home"></i> 점포 정보</a></li>
 
 											</ul>
@@ -82,7 +82,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="account-myads.html"><i
+												<li><a href="store-account-myads.html"><i
 														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
@@ -96,15 +96,22 @@
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
 												<li><a href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
-
+												
 											</ul>
 										</div>
 									</div>
-
-									
-
-
-
+									<div class="collapse-box">
+										<h5 class="collapse-title">
+											커먼 관리<a href="#MyAds" data-toggle="collapse"
+												class="pull-right"></a>
+										</h5>
+										<div class="panel-collapse collapse in" id="MyAds">
+											<ul class="acc-list">
+												<li><a href="store-account-review.html"><i class="icon-heart"></i>커먼 등록</a></li>
+												
+											</ul>
+										</div>
+									</div>
 									<div class="collapse-box">
 										<h5 class="collapse-title">
 											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
@@ -358,6 +365,32 @@
 			})
 		});
 	</script>
+<!-- 	<script type="text/javascript">
+
+$("#repasswdForm").submit(function() {
+	var submitResult=true;
+	
+	var pwReg=/^(?=.*[a-zA-Z])(?=.*[0-9]).{6,20}$/g;
+	if($("#member_repassword").val()=="") {
+		$("#Msg").text("비밀번호를 입력해 주세요.");
+		submitResult=false;
+	} else if(!pwReg.test($("#member_repassword").val())) {
+		$("#Msg").text("영어 대소문자/숫자 포함 6~20자리");
+		submitResult=false;
+	} 
+	
+	if($("#repw").val()=="") {
+		$("#Msg").text("비밀번호 확인을 입력해 주세요.");
+		submitResult=false;
+	} else if($("#member_repassword").val()!=$("#repw").val()) {
+		$("#hMsg").text("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+		submitResult=false;
+	}
+	return submitResult;
+});
+</script> -->
+	
+	
 </body>
 
 </body>

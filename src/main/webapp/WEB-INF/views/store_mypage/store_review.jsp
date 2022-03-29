@@ -60,18 +60,18 @@
 								<div class="user-panel-sidebar">
 									<div class="collapse-box">
 										<h5 class="collapse-title no-border">
-											ê´ë¦¬ìì© ë§ì´íì´ì§ <a href="#MyClassified" data-toggle="collapse"
+											관리자용 마이페이지 <a href="#MyClassified" data-toggle="collapse"
 												class="pull-right"><i class="fa fa-angle-down"></i></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
 												<li><a  href="store-account-home.html"><i
-														class="icon-home"></i> ê´ë¦¬ì íì ì ë³´</a></li>
+														class="icon-home"></i> 관리자 회원 정보</a></li>
 
 											</ul>
 											<ul class="acc-list">
-												<li><a href="store-account-info.html"><i
-														class="icon-home"></i> ì í¬ ì ë³´</a></li>
+												<li><a class="active"href="store-account-info.html"><i
+														class="icon-home"></i> 점포 정보</a></li>
 
 											</ul>
 										</div>
@@ -79,42 +79,49 @@
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											ì£¼ë¬¸<a href="#MyAds" data-toggle="collapse" class="pull-right"></a>
+											주문<a href="#MyAds" data-toggle="collapse" class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a  href="store-account-myads.html"><i
-														class="icon-docs"></i> ì£¼ë¬¸ íí© </a></li>
+												<li><a href="store-account-myads.html"><i
+														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
 									</div>
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											ë¦¬ë·° ê´ë¦¬<a href="#MyAds" data-toggle="collapse"
+											리뷰 관리<a href="#MyAds" data-toggle="collapse"
 												class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a class="active" href="store-account-review.html"><i class="icon-heart"></i> ë¦¬ë·° </a></li>
+												<li><a href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
 												
 											</ul>
 										</div>
 									</div>
-
-									
-
-
-
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											ìë¹ì¤ íí´ <a href="#TerminateAccount" data-toggle="collapse"
+											커먼 관리<a href="#MyAds" data-toggle="collapse"
+												class="pull-right"></a>
+										</h5>
+										<div class="panel-collapse collapse in" id="MyAds">
+											<ul class="acc-list">
+												<li><a href="store-account-review.html"><i class="icon-heart"></i>커먼 등록</a></li>
+												
+											</ul>
+										</div>
+									</div>
+									<div class="collapse-box">
+										<h5 class="collapse-title">
+											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
 												class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
 												<li><a href="store-account-close.html"><i
-														class="icon-cancel-circled "></i> íí´íê¸° </a></li>
+														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>
 									</div>

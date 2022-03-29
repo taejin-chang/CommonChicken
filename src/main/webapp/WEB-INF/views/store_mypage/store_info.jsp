@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,6 +137,54 @@
 
 					<div class="col-sm-9 page-content">
 						<div class="inner-box">
+							<div class="row">
+								<div class="col-md-5 col-xs-4 col-xxs-12">
+									<h3 style="padding-top: 13px;" class="text-center-480 useradmin">
+										<img class="userImg" src="${pageContext.request.contextPath }/images/${storeInfo.stoUpload }" alt="사진">
+									</h3>
+								</div>
+								<div class="col-md-7 col-xs-8 col-xxs-12">
+									<div class="header-data text-center-xs">
+
+										<!-- Traffic data -->
+		<!-- 								<div class="hdata">
+											<div class="mcol-left">
+												Icon with red background
+												<i class="fa fa-eye ln-shadow"></i>
+											</div>
+											<div class="mcol-right">
+												Number of visitors
+												<p>
+													<a href="#">7000</a> <em>visits</em>
+												</p>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+
+										revenue data
+										<div class="hdata">
+											<div class="mcol-left">
+												Icon with green background
+												<i class="icon-th-thumb ln-shadow"></i>
+											</div>
+											<div class="mcol-right">
+												Number of visitors
+												<p>
+													<a href="#">12</a><em>Ads</em>
+												</p>
+											</div>
+											<div class="clearfix"></div>
+										</div> -->
+
+										<!-- revenue data -->
+										<div class="hdata">
+											<button type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="inner-box">
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
 								<form id="storeModify" method="post" enctype="multipart/form-data">
@@ -172,8 +221,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label for="Phone" class="col-sm-3 control-label">사업자
-															등록증 사진</label>
+														<label for="Phone" class="col-sm-3 control-label">점포 사진</label>
 														<div class="col-sm-9">
 															<img src="${pageContext.request.contextPath }/images/${storeInfo.stoUpload }" alt="사진">
 															<input type="file" class="form-control" name="file" id="Phone">
@@ -204,6 +252,7 @@
 														<label class="col-sm-3 control-label" >사업장 주소</label>
 														<div class="col-sm-9">
 															<span> <input type="button" onclick="sample3_execDaumPostcode()" id="find_juso" value="우편번호 찾기"><br>
+																<span id="wrap"></span>
 																<input type="text" class="form-control" id="sample3_postcode" value="${storeInfo.stoZipCode }"  name="stoZipCode" placeholder="우편번호">
 																 <input type="text" class="form-control" id="sample3_address" value="${storeInfo.stoAdd1 }" name="stoAdd1" placeholder="주소">
 																 <input type="text" class="form-control" id="sample3_detailAddress" value="${storeInfo.stoAdd2 }" name="stoAdd2" placeholder="상세주소"> 
@@ -294,7 +343,10 @@
 											</div>
 										</div>
 									</div>
-
+									<br><br><br>
+									<div style="text-align: center;">
+										<button type="button" class="btn btn-danger" onClick="location.href='<c:url value="/store/common"/>';">점포 해지하기</button>
+									</div>
 								</div>
 								
 								
@@ -465,6 +517,7 @@
 
 			// iframe을 넣은 element를 보이게 한다.
 			element_wrap.style.display = 'block';
+			element_wrap.style.border = 'solid black 1px';
 		}
 	</script>
 	<script type="text/javascript">

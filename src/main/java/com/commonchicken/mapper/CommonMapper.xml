@@ -29,7 +29,11 @@
 	</select>
 
 	<select id="selectCommonList" resultType="CommonDTO">
-	
+		select * from common_tb where cm_status !=9 order by cm_num
 	</select>
+	
+	<update id="deleteCommon">
+		update common_tb set cm_status=9 where cm_num = #{cmNum}
+	</update>
 
 </mapper>

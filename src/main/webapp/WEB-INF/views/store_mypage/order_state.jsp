@@ -71,7 +71,7 @@
 
 											</ul>
 											<ul class="acc-list">
-												<li><a href="store-account-info.html"><i
+												<li><a class="active"href="store-account-info.html"><i
 														class="icon-home"></i> 점포 정보</a></li>
 
 											</ul>
@@ -84,7 +84,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a  class="active" href="store-account-myads.html"><i
+												<li><a href="store-account-myads.html"><i
 														class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
@@ -102,11 +102,18 @@
 											</ul>
 										</div>
 									</div>
-
-									
-
-
-
+									<div class="collapse-box">
+										<h5 class="collapse-title">
+											커먼 관리<a href="#MyAds" data-toggle="collapse"
+												class="pull-right"></a>
+										</h5>
+										<div class="panel-collapse collapse in" id="MyAds">
+											<ul class="acc-list">
+												<li><a href="store-account-review.html"><i class="icon-heart"></i>커먼 등록</a></li>
+												
+											</ul>
+										</div>
+									</div>
 									<div class="collapse-box">
 										<h5 class="collapse-title">
 											서비스 탈퇴 <a href="#TerminateAccount" data-toggle="collapse"
@@ -125,6 +132,7 @@
 							<!-- /.inner-box  -->
 
 						</aside>
+
 					</div>
 					<!--/.page-sidebar-->
 
