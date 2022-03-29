@@ -13,14 +13,14 @@ REV_VIEWS               NUMBER
 
 
 public class ReviewDTO {
-	private String revNum;
+	private int revNum;
 	private String ordDetailNum;
 	private String memEmail;
 	private int cmNum;
 	private String revContent;
 	private int revRated;
 	private String revDate;
-	private String revViews;
+	private int revViews;
 	private String revOrigin;
 	private String revUpload;
 	
@@ -28,11 +28,11 @@ public class ReviewDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getRevNum() {
+	public int getRevNum() {
 		return revNum;
 	}
 
-	public void setRevNum(String revNum) {
+	public void setRevNum(int revNum) {
 		this.revNum = revNum;
 	}
 
@@ -84,11 +84,11 @@ public class ReviewDTO {
 		this.revDate = revDate;
 	}
 
-	public String getRevViews() {
+	public int getRevViews() {
 		return revViews;
 	}
 
-	public void setRevViews(String revViews) {
+	public void setRevViews(int revViews) {
 		this.revViews = revViews;
 	}
 

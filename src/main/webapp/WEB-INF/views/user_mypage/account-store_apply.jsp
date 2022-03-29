@@ -151,7 +151,7 @@
 											<div class="panel-body">
 											
 											
-												<form name="StoreApplyForm" class="form-horizontal" role="form">
+												<form name="StoreApplyForm" class="form-horizontal" role="form"enctype="multipart/form-data">
 												<!-- 회원이메일 -->
 												<input type="hidden" name="memEmail" value="${loginMember.memName }">
 													<div class="form-group">
@@ -181,7 +181,7 @@
 													<div class="form-group">
 														<label for="Phone" class="col-sm-3 control-label">사업장 사진</label>
 														<div class="col-sm-9">
-															<input name="" type="file" class="form-control" id="Phone">
+															<input name="file" type="file" class="form-control" id="Phone">
 														</div>
 													</div>
 													<div class="form-group">

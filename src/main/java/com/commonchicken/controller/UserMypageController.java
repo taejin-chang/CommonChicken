@@ -59,7 +59,7 @@ public class UserMypageController {
 	}
 	
 	@RequestMapping(value = "/store_apply", method = RequestMethod.POST)
-	public String StoreApply(@ModelAttribute StoreDTO store,Model model ) throws IllegalStateException, IOException {
+	public String storeApply(@ModelAttribute StoreDTO store) throws IllegalStateException, IOException {
 		
 		if(!(store.getFile()==null)){
 			
