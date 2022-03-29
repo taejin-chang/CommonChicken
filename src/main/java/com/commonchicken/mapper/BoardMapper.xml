@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 
+BRD_NUM      NOT NULL NUMBER(20)     
+MEM_EMAIL    NOT NULL VARCHAR2(50)   
+BRD_TITLE    NOT NULL VARCHAR2(50)   
+BRD_CONTENT  NOT NULL VARCHAR2(2000) 
+BRD_IMG               VARCHAR2(100)  
+BRD_DATE     NOT NULL DATE           
+BRD_VIEWS    NOT NULL NUMBER         
+BRD_CATEGORY NOT NULL NUMBER(1)      
+BRD_STATUS   NOT NULL NUMBER(1)       
+-->
+
+
+<mapper namespace="com.commonchicken.mapper.BoardMapper">
+	<insert id="insertBoard">
+		<selectKey resultType="int" keyProperty="brdNum" order="BEFORE">
+			select board_seq.nextval from dual
+		</selectKey>
+		
+		insert into board_tb (BRD_NUM, MEM_EMAIL, BRD_TITLE, BRD_CONTENT, BRD_IMG, BRD_CATEGORY)
+		values(#{brdNum}, #{memEmail}, #{brdTitle}, #{brdContent}, #{brdImg}, #{brdCategory})
+	</insert>
+
+
+	<update id="updateBoard">
+
+	</update>
+
+
+	<select id="selectBoard" resultType="BoardDTO">
+
+
+	</select>
+
+	<select id="selectBoardList" resultType="BoardDTO">
+		select * from board_tb where brd_category = #{brdCategory}
+	</select>
+	
+	<update id="deleteBoard">
+<!-- 		update Board_tb set cm_status=9 where cm_num = #{cmNum}
+ -->	</update>
+
+</mapper>
