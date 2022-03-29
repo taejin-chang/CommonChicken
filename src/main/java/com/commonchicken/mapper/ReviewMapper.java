@@ -7,5 +7,7 @@ import com.commonchicken.dto.ReviewDTO;
 
 public interface ReviewMapper {
 	int insertReview(ReviewDTO review);
-	List<ReviewDTO> selectReviewList();
+	int updateReiew(ReviewDTO review);
+	ReviewDTO selectReview(int revNum);
+	List<ReviewDTO> selectAllReview();
 }

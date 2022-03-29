@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chicken.mapper.ReviewMapper">
-	<!-- parameterType 속성 생략 가능 -->
+<mapper namespace="com.commonchicken.mapper.ReviewMapper">
+	<!--
+private int revNum;
+	private String ordDetailNum;
+	private String memEmail;
+	private int cmNum;
+	private String revContent;
+	private int revRated;
+	private String revDate;
+	private int revViews;
+	private String revOrigin;
+	private String revUpload;
+	private MultipartFile file;
+-->
 	<insert id="insertReview">
 		<selectKey resultType="int" keyProperty="revNum" order="BEFORE">
-			select review_tb_seq.nextval from dual
+			select review_seq.nextval from dual
 		</selectKey>
-		insert into review_tb values(#{revNum}, #{revNum}, #{ordDetailNum}, #{cmNum}, #{revContent}, #{revImg1}, #{revRated}, #{revDate}, #{revViews})
+		insert into review_tb (REV_NUM,ORD_DETAIL_NUM,MEM_EMAIL,CM_NUM,REV_CONTENT,REV_RATED,REV_DATE,REV_VIEWS,REV_ORIGIN,REV_UPLOAD)
+		values(#{revNum}, #{ordDetailNum}, #{memEmail}, #{cmNum}, #{revContent}, #{revRated}, #{revDate}, #{revViews}, #{revOrigin}, #{revUpload})
 	</insert>
 	
 	<select id="selectReviewList" resultType="ReviewDTO">

@@ -11,6 +11,7 @@ REV_DATE                DATE
 REV_VIEWS               NUMBER         
  */
 
+import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewDTO {
 	private int revNum;
@@ -23,7 +24,16 @@ public class ReviewDTO {
 	private int revViews;
 	private String revOrigin;
 	private String revUpload;
+	private MultipartFile file;
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public ReviewDTO() {
 		// TODO Auto-generated constructor stub
 	}
