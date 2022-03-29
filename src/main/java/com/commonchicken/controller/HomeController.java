@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -171,6 +172,10 @@ public class HomeController {
 	}
 	
 	
+	
+	
+	
+	
 	//커먼 페이지 
 	@RequestMapping(value = "store/common", method = RequestMethod.GET)
 	public String Common(){
@@ -190,7 +195,7 @@ public class HomeController {
 
 		
 		common.setStoNum("6656");
-		common.setMemEmail("jmaster1020@gmail.com");
+		common.setMemEmail("nolang@naver.com");
 		common.setCmDeliveryTime(cmDeliveryTime);
 		common.setCmClose(cmClose);
 		
@@ -200,8 +205,31 @@ public class HomeController {
 		commonService.insertCommon(common);
 		
 		
-		return "redirect:/store/info";
+		return "redirect:/store/commonlist";
 	}
+	
+	
+	
+	//커먼 리스트
+	@RequestMapping(value = "store/commonlist", method = RequestMethod.GET)
+	public String CommonList(Model model) {
+		
+		model.addAttribute("commonList", commonService.selectCommonList());
+		
+		return "store_mypage/store_common_list";
+	}
+	
+	
+	//커먼 삭제
+	@RequestMapping(value="/store/deleteCommon/{cmNum}", method = RequestMethod.GET)
+	public String deleteommon(@PathVariable int cmNum) {
+		System.out.println("헤이 !!! ");
+		System.out.println(cmNum);
+		
+		commonService.deleteCommon(cmNum);		
+		return "redirect:/store/commonlist";
+	}
+	
 }
 
 

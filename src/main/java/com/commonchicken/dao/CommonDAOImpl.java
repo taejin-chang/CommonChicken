@@ -40,8 +40,12 @@ public class CommonDAOImpl implements CommonDAO {
 
 	@Override
 	public List<CommonDTO> selectCommonList() {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.getMapper(CommonMapper.class).selectCommonList();
+	}
+
+	@Override
+	public int deleteCommon(int cmNum) {
+		return sqlSession.getMapper(CommonMapper.class).deleteCommon(cmNum);
 	}
 
 }
