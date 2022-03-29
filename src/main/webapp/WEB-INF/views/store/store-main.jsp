@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <!-- Css Styles -->
+    <!-- Css Styles --><!-- 테스트 -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style(yo).css" type="text/css">
 </head>
 <script src="js/jquery-3.3.1.min.js"></script>
