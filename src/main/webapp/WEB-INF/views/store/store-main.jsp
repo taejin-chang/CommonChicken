@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,70 +9,13 @@
     <!-- Css Styles -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style(yo).css" type="text/css">
 </head>
-
+<script src="js/jquery-3.3.1.min.js"></script>
 <body>
-    <!-- Page Preloder -->
+    <!-- Page Preloder 
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
-    <!-- Header Section Begin -->
-    <!-- 
-    <header class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
-                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-
-
-    <div class="breadcrumb-area set-bg" data-setbg="img/breadcrumb/breadcrumb-blog.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>점포정보</h2>
-                        <div class="breadcrumb__option">
-                            <a href="#"><i class="fa fa-home"></i> Home</a>
-                            <span>점포정보</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
+   -->
     <!-- Header Section End -->
     <!-- Blog Section Begin -->
     <br>
@@ -84,31 +29,55 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog__item__large">
+                    	
                         <div class="sub-title">
-                            <span><strong>BBC 치킨 강남역점</strong></span>
+                            <span><strong>${storeInfo.storeDTO.stoName}</strong></span>
                     	</div>
                         <div class="blog__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/blog/bp-1.jpg">
                         </div>
                         <div class="blog__item__text">
                             <ul class="blog__item__tags">
-                                <li>★★★★★</li>
+		                            	<c:choose>
+		                            		<c:when test="${storeInfo.revRatedAvg==0 }">
+		                            		<span>☆</span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==0.5 }">
+		                            		<span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==1 }">
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==2 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==3 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==4 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==4.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:otherwise>
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                                </c:choose>
                             </ul>
-                            <h3><a href="#">커먼시 커먼구 커먼와로 12 2층</a></h3>
+                            <h3><a href="#">${storeInfo.storeDTO.stoAdd1}&nbsp;${storeInfo.storeDTO.stoAdd2}</a></h3>
                             <ul class="blog__item__widget">
-                                <li><i class="fa fa-phone"></i> 02-000-0000</li>
-                                <li><i class="fa fa-user"></i> 후기 14개</li>
+                                <li><i class="fa fa-phone"></i> ${storeInfo.storeDTO.stoPhone}</li>
+                                <li><i class="fa fa-user"></i> 후기 ${storeInfo.revRatedCount}개</li>
                             </ul>
                             <div class="">
                             <ul class="blog__item__widget">
 	                            <li style="align-content: center;">커먼정보 :  </li>
 	                            <li><select class="">
-		                            	<option>마감시간 15시&nbsp;배달시간 18시</option>
-		                            	<option>마감시간 16시&nbsp;배달시간 19시</option>
-		                            	<option>마감시간 17시&nbsp;배달시간 20시</option>
+		                            	<option>마감시간&nbsp;:&nbsp;${storeInfo.cmClose}&nbsp;배달시간&nbsp;:&nbsp;${storeInfo.cmDeliveryTime}</option>
 	                           		</select></li>
                             </ul>
                             </div>
+                            
                         </div>
+                            	                           	
                     </div>
                     <div class="most__search__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -142,86 +111,64 @@
                                         <li><i class="fa fa-tags"></i><FONT size="4px"><strong>메인메뉴</strong></FONT></li>
                                     </ul><br>
                                    
+	                    	<c:forEach var="productlist" items="${storeProductInfo}">
+	                    		<c:choose>
+                    			<c:when test="${productlist.productDTO.prdCategory=='0'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
-		                                    <a href="javascript:prdmenu();"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
+		                                    <a href="javascript:prdmenu();"><FONT size="4px" color="black"><strong>${productlist.productDTO.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
+		                                        <li><i class="fa fa-money"></i>${productlist.productDTO.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
 		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
-                                    <div class="row">
-	                                    <div class="col-xs-6 text-left">
-		                                    <a href="#"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
-		                                    <br>
-		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
-		                                    </ul>
-	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
-                                    </div> <br>                                 
-                                    <div class="row">
-	                                    <div class="col-xs-6 text-left">
-		                                    <a href="#"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
-		                                    <br>
-		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
-		                                    </ul>
-	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
-                                    </div>
+                                </c:when>
+                                </c:choose>
+                               </c:forEach>
                                 </div>
                                 <div class="blog__item__text">
                                     <ul class="blog__item__tags">
                                         <li><i class="fa fa-tags"></i><FONT size="4px"><strong>사이드 메뉴</strong></FONT></li>
                                     </ul>
+								<c:forEach var="productlist" items="${storeProductInfo}">
+	                    		<c:choose>
+                                <c:when test="${productlist.productDTO.prdCategory=='1'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
-		                                    <a href="#"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
+		                                    <a href="#"><FONT size="4px" color="black"><strong>${productlist.productDTO.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
+		                                        <li><i class="fa fa-money"></i>${productlist.productDTO.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
 		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
-                                    <div class="row">
-	                                    <div class="col-xs-6 text-left">
-		                                    <a href="#"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
-		                                    <br>
-		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
-		                                    </ul>
-	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
-                                    </div><br>                                    
+                                </c:when>
+                                </c:choose>
+                                </c:forEach>
                                 </div>
                                 <div class="blog__item__text">
                                     <ul class="blog__item__tags">
                                         <li><i class="fa fa-tags"></i><FONT size="4px"><strong>음료 메뉴</strong></FONT></li>
                                     </ul>
+								<c:forEach var="productlist" items="${storeProductInfo}">
+	                    		<c:choose>    
+                                <c:when test="${productlist.productDTO.prdCategory=='2'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
-		                                    <a href="'javascript:prdmenu();'"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
+		                                    <a href="'javascript:prdmenu();'"><FONT size="4px" color="black"><strong>${productlist.productDTO.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
+		                                        <li><i class="fa fa-money"></i>${productlist.productDTO.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
 		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
                                     </div><br>
-                                    <div class="row">
-	                                    <div class="col-xs-6 text-left">
-		                                    <a href="#"><FONT size="4px" color="black"><strong>후라이드+양념 반반</strong></FONT></a>
-		                                    <br>
-		                                    <ul class="blog__item__widget">
-		                                        <li><i class="fa fa-money"></i>25,500원</li>
-		                                    </ul>
-	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
-                                    </div><br>                                    
+                                </c:when>
+                                </c:choose>
+                                </c:forEach>
                                 </div>
                             </div>
                         </div>
@@ -233,15 +180,34 @@
                                 <div class="listing__details__rating">
                             <h4>Rate</h4>
                             <div class="listing__details__rating__overall">
-                                <h2>4.7</h2>
+                                <h2>${storeInfo.revRatedAvg}</h2>
                                 <div class="listing__details__rating__star">
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
-                                    <span class="icon_star"></span>
+                                	<c:choose>
+		                            		<c:when test="${storeInfo.revRatedAvg==0 }">
+		                            		<span>☆</span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==0.5 }">
+		                            		<span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==1 }">
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==2 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==3 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==4 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${storeInfo.revRatedAvg==4.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:otherwise>
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                                </c:choose>
                                 </div>
-                                <span>(120 Rating)</span>
+                                <span>(${storeInfo.revRatedCount} Rating)</span>
                             </div>
                             <!--  
                             <div class="listing__details__rating__bar">
@@ -351,22 +317,17 @@
 		                    <div class="listing__details__text">
 			                    <div class="listing__details__about">
 			                            <h4>사장님 알림</h4>
-			                            <p>치킨 주문시 1마리당 콜라 245ml + 무 1개 기본으로 드립니다. (후라이드는 양념소스도 넣어드립니다.)
-											245ml -> 1.25l 변경은 추가선택에서 변경 선택하시면 됩니다!
-											나무젓가락 필요시 주문시에 말씀해주셔야 넣어드려요!!
-											<br>
-											2마리 주문시 콜라는 245ml 두개가 아닌 1.25l 드립니다! (두마리 주문후에 한마리에 1.25l 변경을 요청하시면 1.25l+245ml)
-											사이다로 변경을 원하시면 주문할때 말씀해주세요!</p>
+			                            <p>${selectStore.stoMessage }</p>
 		                        </div>
 			                    <div class="listing__details__about">
 			                            <h4>업체정보</h4>
 			                            <table>
 			                            <tr>
 			                            <th><i class="info-item">영업시간</i></th>
-			                            <td>09:00~16:00</td></tr>
+			                            <td>${selectStore.stoOpenning }</td></tr>
 			                            <tr>
 			                            <th><i class="info-item">주소</i></th>
-			                            <td>커먼시 커먼구 커먼로</td></tr>
+			                            <td>${selectStore.stoAdd1 }&nbsp;${selectStore.stoAdd2 }</td></tr>
 			                            </table>
 		                        </div>
 			                    <div class="listing__details__about">
@@ -374,10 +335,10 @@
 			                            <table>
 			                            <tr>
 			                            <th><i class="info-item">최소주문금액</i></th>
-			                            <td>16,000원</td></tr>
+			                            <td>${selectStore.stoMinorder }원</td></tr>
 			                            <tr>
 			                            <th><i class="info-item">결제수단</i></th>
-			                            <td>요기서결제</td></tr>
+			                            <td>${selectStore.stoPayment }</td></tr>
 			                            </table>
 		                        </div>
 			                    <div class="listing__details__about">
@@ -385,10 +346,10 @@
 			                            <table>
 			                            <tr>
 			                            <th><i class="info-item">상호명</i></th>
-			                            <td>BBC치킨 강남역점</td></tr>
+			                            <td>${selectStore.stoName }</td></tr>
 			                            <tr>
 			                            <th><i class="info-item">사업자등록번호</i></th>
-			                            <td>106-11-11111</td></tr>
+			                            <td>${selectStore.stoCode }</td></tr>
 			                            </table>
 		                        </div>
 		                        </div>
@@ -397,10 +358,10 @@
 			                            <table>
 			                            <tr>
 			                            <th><i class="info-item">치킨</i></th>
-			                            <td>국내산</td></tr>
+			                            <td>${selectStore.stoBoneOrg }</td></tr>
 			                            <tr>
 			                            <th><i class="info-item">순살</i></th>
-			                            <td>국내산</td></tr>
+			                            <td>${selectStore.stoBonelessOrg }</td></tr>
 			                            </table>
 		                        </div>
 				                <div class="col-lg-12">
@@ -687,7 +648,7 @@
 	    function prdmenu() {
 		    $(".list-group").append(
 		    		"<li class='list-group-item clearfix ng-scope'>"+
-		          	"<div class='menu-name ng-binding'>후라이드</div>"+
+		          	"<div class='menu-name ng-binding' value='$(this).val()'></div>"+
 		          	"<div class='row'>"+
 			            "<div class='col-xs-6 pull-left'>"+
 			              "<button class='btn btn-del-menu'>삭제</button>"+

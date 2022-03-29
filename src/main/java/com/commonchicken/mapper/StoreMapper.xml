@@ -23,7 +23,7 @@ STO_ORIGIN                VARCHAR2(100)
 STO_UPLOAD                VARCHAR2(100)
 	private String stoNum;
 	private String memEmail;
-	private int stoCode;
+	private String stoCode;
 	private String stoName;
 	private String stoCeo;
 	private String stoCondition;
@@ -44,16 +44,84 @@ STO_UPLOAD                VARCHAR2(100)
 	private MultipartFile file;  
  -->
 
-
 <mapper namespace="com.commonchicken.mapper.StoreMapper">
+
+	<resultMap type="CommonStoreVO" id="CommonStoreResultMap">
+		<id column="cm_num" property="cmNum"/>
+		<result column="cm_delivery_time" property="cmDeliveryTime"/>
+		<result column="cm_close" property="cmClose"/>
+		<result column="rev_rated_avg" property="revRatedAvg"/>
+		<result column="rev_rated_count" property="revRatedCount"/>
+		<association property="storeDTO" javaType="StoreDTO">
+			<id column="sto_num" property="stoNum"/>
+			<result column="sto_name" property="stoName"/>
+			<result column="sto_add1" property="stoAdd1"/>
+			<result column="sto_add2" property="stoAdd2"/>
+			<result column="sto_phone" property="stoPhone"/>
+			<result column="sto_openning" property="stoOpenning"/>
+			<result column="sto_minorder" property="stoMinorder"/>
+			<result column="sto_payment" property="stoPayment"/>
+			<result column="sto_bone_org" property="stoBoneOrg"/>
+			<result column="sto_boneless_org" property="stoBonelessOrg"/>
+			<result column="sto_message" property="stoMessage"/>
+			<result column="sto_upload" property="stoUpload"/>
+		</association>
+		<association property="productDTO" javaType="ProductDTO">
+			<id column="prd_code" property="prdCode"/>
+			<result column="prd_name" property="prdName"/>	
+			<result column="prd_price" property="prdPrice"/>	
+			<result column="prd_category" property="prdCategory"/>	
+			<result column="prd_upload" property="prdUpload"/>	
+		</association>
+		<association property="reviewDTO" javaType="ReviewDTO">
+			<id column="rev_num" property="revNum"/>
+			<result column="mem_email" property="memEmail"/>
+			<result column="rev_content" property="revContent"/>
+			<result column="rev_rated" property="revRated"/>
+			<result column="rev_date" property="revDate"/>
+			<result column="rev_upload" property="revUpload"/>
+		</association>
+		<association property="memberDTO" javaType="MemberDTO">
+			<id column="mem_nickname" property="memNickname"/>
+			<result column="mem_upload" property="memUpload"/>
+		</association>
+	</resultMap>
+
+	<select id="selectCommonStore" parameterType="map" resultMap="CommonStoreResultMap">
+	<![CDATA[
+	select c.cm_num,cm_delivery_time,cm_close,s.sto_num,sto_name,sto_add1,sto_add2,sto_phone,
+	sto_openning,sto_minorder,sto_payment,sto_bone_org,sto_boneless_org,sto_message,sto_upload,
+	p.prd_code,prd_name,prd_price,prd_category,prd_upload,rev_rated_avg,rr.rev_num,rr.mem_email,
+	rr.rev_content,rr.rev_rated,rr.rev_date,rr.rev_upload,m.mem_nickname,m.mem_upload
+	from (store_tb s left join common_tb c on s.sto_num =c.sto_num
+	left join product_tb p on s.sto_num =p.sto_num 
+	left join 
+	(select cm_num,round(avg(rev_rated),1) rev_rated_avg from review_tb group by cm_num) r on c.cm_num =r.cm_num
+	left join review_tb rr on r.cm_num = rr.cm_num
+	left join member_tb m on rr.mem_email =m.mem_email)
+	where c.cm_num = #{cmNum} and s.sto_num = #{stoNum}
+	]]>
+	</select>
+	
+	<select id="selectStoreInfo" parameterType="map" resultMap="CommonStoreResultMap">
+	select s.sto_num, c.cm_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated_avg, r.rev_rated_count, c.cm_delivery_time, c.cm_close from
+	store_tb s left join common_tb c on s.sto_num = c.sto_num
+	left join (select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num = r.cm_num 
+	where s.sto_num = #{stoNum} and c.cm_num = #{cmNum}
+	</select>
+	
+	<select id="selectStoreProductInfo" resultMap="CommonStoreResultMap">
+	select s.sto_num, p.prd_code,prd_name,prd_price,prd_category,prd_upload from store_tb s left join product_tb p on s.sto_num = p.sto_num
+	where s.sto_num = #{stoNum}
+	</select>
 	
 	<insert id="insertStore">
-		<selectKey resultType="int" keyProperty="stoCode" order="BEFORE">
-			select store_seq.nextval from dual
+		<selectKey resultType="int" keyProperty="code" order="BEFORE">
+			select rest_board_seq.nextval from dual
 		</selectKey>
-		insert into store_tb (sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1,
+		insert into store_tb values(sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1,
 		 sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
-		values (#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1},
+		values (#{stoNum}, #{memEmail}, #{code}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1},
 		 #{stoAdd2}, #{stoPhone},0, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
 	</insert>
 	
