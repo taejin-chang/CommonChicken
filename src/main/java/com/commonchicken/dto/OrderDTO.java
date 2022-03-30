@@ -13,7 +13,7 @@ public class OrderDTO {
 	private String ordPhone;
 	private String ordRequest;
 	private int ordPayMethod;
-	private String payCode;
+	private String prdCode;
 	
 	public OrderDTO() {
 		// TODO Auto-generated constructor stub
@@ -115,13 +115,14 @@ public class OrderDTO {
 		this.ordPayMethod = ordPayMethod;
 	}
 
-	public String getPayCode() {
-		return payCode;
+	public String getPrdCode() {
+		return prdCode;
 	}
 
-	public void setPayCode(String payCode) {
-		this.payCode = payCode;
+	public void setPrdCode(String prdCode) {
+		this.prdCode = prdCode;
 	}
+
 	
 	
 
