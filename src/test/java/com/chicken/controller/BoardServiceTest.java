@@ -1,6 +1,8 @@
 package com.chicken.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,19 +41,37 @@ public class BoardServiceTest {
 //	public void testInsertBoard() {
 //		BoardDTO board = new BoardDTO();
 //		board.setMemEmail("nolang@naver.com");
-//		board.setBrdTitle("제목2");
-//		board.setBrdContent("내용2");
-//		board.setBrdImg("이미지2");
+//		board.setBrdTitle("제목3");
+//		board.setBrdContent("내용3");
+//		board.setBrdImg("이미지3");
 //		board.setBrdCategory(1);
 //		
 //
 //		boardService.insertBoard(board);		
 //	}
 	
-	@Test 
-	public void testSelectBoard() {
+//	@Test 
+//	public void testSelectBoard() {
+//		
+//		//boardService.selectBoard(1);		
+//		boardService.selectBoardList(1);		
+//	}
+//	@Test 
+//	public void testDeleteBoard() {
+//		
+//		boardService.deleteBoard(10);		
+//	}
+	
+	@Test
+	public void updateBoard() {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("brdTitle", "하하");
+		map.put("brdContent", "하하");
+		map.put("brdImg", "하하");
+		map.put("brdStatus", 2);
+		map.put("brdNum", 10);
 		
-		boardService.selectBoardList(1);		
+		boardService.updateBoard(map);
 	}
 }
 

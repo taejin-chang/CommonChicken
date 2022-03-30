@@ -23,6 +23,7 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="${pageContext.request.contextPath }/admin/images/favicon.png" />
   
+  
 </head>
 
 <body>
@@ -157,38 +158,46 @@
                 <div class="card-body">
                   <h2>공지사항</h2>
                   <p class="card-description" style="font-size: 20px">
-                    글쓰기 페이지입니다.
+                   상세 페이지입니다.
                   </p>
                   <form class="forms-sample" method="post" enctype="multipart/form-data" >
                     <input type="hidden" name="memEmail" value="nolang@naver.com">
-<!--                     <input type="hidden" name="brdImg" value=" ">
- -->                    <div class="form-group row" style="margin-bottom: 0;">
-                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label">제목</label>
+                     <input type="hidden" name="brdImg" value=" ">
+                  <div class="form-group row" style="margin-bottom: 0;">
+                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="font-size: 25px;"  >제목</label>
                       <div class="col-sm-10" >
-                        <input type="text" class="form-control" style="width: 50%; display: inline;" name="brdTitle" id="exampleInputUsername2" placeholder="제목을 입력해주세요.">
-                      </div>
+
+                        <input type="text" readonly="readonly" class="form-control" style="width: 50%; display: inline; background-color: white;" name="brdTitle" id="exampleInputUsername2" value="${noticeDetail.brdTitle}" placeholder="제목을 입력해주세요.">
+                 </div>
                     </div>
                     <div class="form-group row" style="margin-bottom: 0;">
-                      <label for="exampleInputEmail2" class="col-sm-2 col-form-label">작성자</label>
+                      <label for="exampleInputEmail2" class="col-sm-2 col-form-label" style="font-size: 25px;">작성자</label>
                       <div class="col-sm-10" style="padding-top: 15px;">
-                        <input type="text" class="form-control" style="width: 300px;" value="관리자" readonly="readonly">
+                        <input type="text" class="form-control" style="width: 300px; background-color: white;" value="관리자" readonly="readonly">
                     </div>
                     </div>
+                      <br>
+                    
                     <div class="form-group row" style="margin-bottom: 0;">
-                      <label for="exampleInputEmail2" class="col-sm-2 col-form-label">파일 업로드</label>
+                      <label for="exampleInputEmail2" class="col-sm-2 col-form-label" style="font-size: 25px;">파일 업로드</label>
                       <div class="col-sm-10" >
-						<input type="file" name="file" style="padding-top: 10px;">
+						<c:if test="${noticeDetail.brdImg==null }">등록된 사진이 없습니다.</c:if>
+						<c:if test="${noticeDetail.brdImg!=null }">
+	                      <img class="userImg" src="${pageContext.request.contextPath }/images/${noticeDetail.brdImg }" alt="${noticeDetail.brdImg }">
+						</c:if>
                       </div>
                     </div>
+                    <br>
                     <div class="form-group row" >
-                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label">내용</label>
+                      <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="font-size: 25px;">내용</label>
                       <div class="col-sm-10" >
-                      <textarea class="form-control" id="exampleTextarea1" rows="25" name="brdContent"></textarea>
+                      <textarea class="form-control" style= "background-color: white;" readonly="readonly" id="exampleTextarea1" rows="25" name="brdContent">${noticeDetail.brdContent}</textarea>
                       </div>
                     </div>
                    	<div style="text-align: right;">
-                    	<button type="submit" class="btn btn-primary mr-2">저장</button>
-                    	<button type="button" class="btn btn-w" onclick="location.href='<c:url value='/admin/notice'/>'">취소</button>
+                    	<button type="button" class="btn btn-primary mr-2" onclick="location.href='<c:url value='/admin/noticeModify/'/>${noticeDetail.brdNum }'">수정</button>
+                    	<button type="button" id="delete" class="btn btn-danger">삭제</button>
+                    	<button type="button" class="btn btn-success" onclick="location.href='<c:url value='/admin/notice'/>'">취소</button>
                   	</div>
                   </form>
                 </div>
@@ -230,6 +239,17 @@
   <script src="${pageContext.request.contextPath }/admin/js/typeahead.js"></script>
   <script src="${pageContext.request.contextPath }/admin/js/select2.js"></script>
   <!-- End custom js for this page-->
+  <script type="text/javascript">
+  	$(function(){
+  		$('#delete').click(function(){
+  			var result = confirm('정말로 삭제하시겠습니까?');
+  			if(result) {
+				 location.href = '<c:url value="/admin/deleteNotice/"/>${noticeDetail.brdNum}';
+			 } else { 
+  				
+  			}
+  		});
+  	});
+  </script>
 </body>
-
 </html>

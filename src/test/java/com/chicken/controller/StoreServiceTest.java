@@ -45,7 +45,7 @@ public class StoreServiceTest {
 		StoreDTO store = new StoreDTO();
 		store.setStoNum("6656");
 		store.setMemEmail("nolang@naver.com");
-		store.setStoCode("123");
+		store.setStoCode(123);
 		store.setStoName("교촌치킨 일산점");
 		store.setStoCeo("정현우님");
 		store.setStoCondition("1");
@@ -66,7 +66,7 @@ public class StoreServiceTest {
 		
 		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
 
-		
+	
 		storeService.updateStore(store);
 		
 	}

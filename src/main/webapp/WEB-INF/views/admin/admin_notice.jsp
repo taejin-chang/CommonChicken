@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,16 +10,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="css/feather.css">
-  <link rel="stylesheet" href="css/themify-icons.css">
-  <link rel="stylesheet" href="css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/feather.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/themify-icons.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" href="${pageContext.request.contextPath }/admin/images/favicon.png" />
 </head>
 
 <body>
@@ -294,7 +295,7 @@
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       
-       <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px; id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px;" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html">
@@ -360,7 +361,9 @@
       <div class="main-panel">
         <div class="content-wrapper" style="margin-top: 60px;">
         <div style="text-align: right;">
-        	<button type="button" class="btn btn-primary"><strong>글쓰기</strong></button>	
+        	<button type="button" class="btn btn-primary" onclick="location.href='<c:url value='/admin/notice_writing'/>'">
+        		<strong>글쓰기</strong>
+       		</button>	
         </div>
         <br>
           <div class="row">
@@ -376,28 +379,35 @@
 								<th>제목</th>
 								<th width="15%">작성자</th>
 								<th width="15%">작성일</th>
+								<th width="10%">게시글상태</th>
 								<th width="5%">조회수</th>
-								<th width="15%">게시글상태</th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="noticeList" items="${noticeList}">
 							<tr>
-								<td class="py-1" style="text-align: center;">1</td>
-								<td>게시물 1 입니다!</td>
-								<td style="text-align: center;"><img src="images/faces/face1.jpg" alt="image"/>  홍길동</td>
-								<td style="text-align: center;">2022년 10월 20일</td>
-								<td style="text-align: center;">123</td>
+								<td class="py-1" style="text-align: center;">${noticeList.brdNum }</td>
 								<td style="text-align: center;">
-								<select name="member">
+								<a href="<c:url value='/admin/noticeDetail/'/>${noticeList.brdNum }">
+								${noticeList.brdTitle }</a></td>
+								<td style="text-align: center;">관리자</td>
+								<td style="text-align: center;">${noticeList.brdDate}</td>
+								<td style="text-align: center;">
+									<c:if test="${noticeList.brdStatus==1}">게시중</c:if>
+									<c:if test="${noticeList.brdStatus==2}">비공개</c:if>
+								</td>
+								<td style="text-align: center;">${noticeList.brdViews}</td>
+<!-- 								<select name="member">
 									<option value="">상태 선택</option>
 									<option value="public" selected="selected">공개글</option>
 									<option value="private">비공개글</option>
 									<option value="delete">삭제글</option>
 								</select>
 								<button type="button" class="btn btn-primary btn-sm">수정</button>								
-								</td>
+								</td> -->
 							</tr>
-							<tr>
+							</c:forEach>
+<!-- 							<tr>
 								<td class="py-1" style="text-align: center;">2</td>
 								<td>게시물 2 입니다!</td>
 								<td style="text-align: center;"><img src="images/faces/face1.jpg" alt="image"/>  홍길동</td>
@@ -428,7 +438,7 @@
 								</select>
 								<button type="button" class="btn btn-primary btn-sm">수정</button>								
 								</td>
-							</tr>
+							</tr> -->
 							
 						</tbody>
 					</table>
@@ -464,16 +474,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="js/vendor.bundle.base.js"></script>
+  <script src="${pageContext.request.contextPath }/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/off-canvas.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/hoverable-collapse.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/template.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/settings.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

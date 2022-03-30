@@ -1,5 +1,7 @@
 package com.commonchicken.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO {
 	
 	private int brdNum;
@@ -11,13 +13,17 @@ public class BoardDTO {
 	private int brdViews;
 	private int brdCategory;
 	private int brdStatus;
+	private MultipartFile file;
+
 	
 	public BoardDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	public BoardDTO(int brdNum, String memEmail, String brdTitle, String brdContent, String brdImg, String brdDate,
-			int brdViews, int brdCategory, int brdStatus) {
+			int brdViews, int brdCategory, int brdStatus, MultipartFile file) {
 		super();
 		this.brdNum = brdNum;
 		this.memEmail = memEmail;
@@ -28,7 +34,9 @@ public class BoardDTO {
 		this.brdViews = brdViews;
 		this.brdCategory = brdCategory;
 		this.brdStatus = brdStatus;
+		this.file = file;
 	}
+
 
 	public int getBrdNum() {
 		return brdNum;
@@ -100,6 +108,14 @@ public class BoardDTO {
 
 	public void setBrdStatus(int brdStatus) {
 		this.brdStatus = brdStatus;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
 	

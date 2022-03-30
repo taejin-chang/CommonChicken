@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -21,21 +22,19 @@ public class BoardDAOImpl implements BoardDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public int insertBoard(BoardDTO common) {
+	public int insertBoard(BoardDTO notice) {
 
-		return sqlSession.getMapper(BoardMapper.class).insertBoard(common);
+		return sqlSession.getMapper(BoardMapper.class).insertBoard(notice);
 	}
 
 	@Override
-	public int updateBoard(BoardDTO common) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateBoard(Map<String, Object> map) {
+		return sqlSession.getMapper(BoardMapper.class).updateBoard(map);
 	}
 
 	@Override
-	public BoardDTO selectBoard(int cmNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardDTO selectBoard(int brdNum) {
+		return sqlSession.getMapper(BoardMapper.class).selectBoard(brdNum);
 	}
 
 	@Override
@@ -44,8 +43,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int deleteBoard(int cmNum) {
-		return sqlSession.getMapper(BoardMapper.class).deleteBoard(cmNum);
+	public int deleteBoard(int brdNum) {
+		return sqlSession.getMapper(BoardMapper.class).deleteBoard(brdNum);
 	}
 
 }

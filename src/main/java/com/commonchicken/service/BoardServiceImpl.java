@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,20 +16,18 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO commonDAO;
 
 	@Override
-	public void insertBoard(BoardDTO common) {
-		commonDAO.insertBoard(common);
+	public void insertBoard(BoardDTO notice) {
+		commonDAO.insertBoard(notice);
 	}
 
 	@Override
-	public void updateBoard(BoardDTO common) {
-		// TODO Auto-generated method stub
-
+	public void updateBoard(Map<String,Object> map) {
+		commonDAO.updateBoard(map);
 	}
 
 	@Override
-	public BoardDTO selectBoard(int cmNum) {
-		// TODO Auto-generated method stub
-		return null;
+	public BoardDTO selectBoard(int brdNum) {
+		return commonDAO.selectBoard(brdNum);
 	}
 
 	@Override
@@ -37,8 +36,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteBoard(int cmNum) {
-		commonDAO.deleteBoard(cmNum);
+	public void deleteBoard(int brdNum) {
+		commonDAO.deleteBoard(brdNum);
 	}
 
 }

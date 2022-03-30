@@ -22,26 +22,26 @@ BRD_STATUS   NOT NULL NUMBER(1)
 		</selectKey>
 		
 		insert into board_tb (BRD_NUM, MEM_EMAIL, BRD_TITLE, BRD_CONTENT, BRD_IMG, BRD_CATEGORY)
-		values(#{brdNum}, #{memEmail}, #{brdTitle}, #{brdContent}, #{brdImg}, #{brdCategory})
+		values(#{brdNum}, #{memEmail}, #{brdTitle}, #{brdContent}, #{brdImg, jdbcType=VARCHAR}, #{brdCategory})
 	</insert>
 
 
-	<update id="updateBoard">
-
+	<update id="updateBoard" parameterType="map">
+		update board_tb set brd_title = #{brdTitle}, brd_content=#{brdContent}, brd_img=#{brdImg, jdbcType=VARCHAR}, brd_status=#{brdStatus} where brd_num = #{brdNum}
+		
 	</update>
 
 
 	<select id="selectBoard" resultType="BoardDTO">
-
-
+		select * from board_tb where brd_num = #{brdNum}
 	</select>
 
 	<select id="selectBoardList" resultType="BoardDTO">
-		select * from board_tb where brd_category = #{brdCategory}
+		select * from board_tb where brd_status != 9 and brd_category = #{brdCategory} order by brd_num desc
 	</select>
 	
 	<update id="deleteBoard">
-<!-- 		update Board_tb set cm_status=9 where cm_num = #{cmNum}
- -->	</update>
+ 		update board_tb set brd_status=9 where brd_num = #{brd_num}
+ 	</update>
 
 </mapper>
