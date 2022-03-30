@@ -1,5 +1,7 @@
 package com.commonchicken.dto;
 
+import java.util.List;
+
 public class CommonStoreVO {
 	private int cmNum;
 	private String cmDeliveryTime;
@@ -7,7 +9,7 @@ public class CommonStoreVO {
 	private double revRatedAvg;
 	private int revRatedCount;
 	private StoreDTO storeDTO;
-	private ProductDTO productDTO;
+	private List<ProductDTO> productlist;
 	private ReviewDTO reviewDTO;
 	private MemberDTO memberDTO;
 	
@@ -47,12 +49,6 @@ public class CommonStoreVO {
 	public void setStoreDTO(StoreDTO storeDTO) {
 		this.storeDTO = storeDTO;
 	}
-	public ProductDTO getProductDTO() {
-		return productDTO;
-	}
-	public void setProductDTO(ProductDTO productDTO) {
-		this.productDTO = productDTO;
-	}
 	public ReviewDTO getReviewDTO() {
 		return reviewDTO;
 	}
@@ -64,6 +60,12 @@ public class CommonStoreVO {
 	}
 	public void setMemberDTO(MemberDTO memberDTO) {
 		this.memberDTO = memberDTO;
+	}
+	public List<ProductDTO> getProductlist() {
+		return productlist;
+	}
+	public void setProductlist(List<ProductDTO> productlist) {
+		this.productlist = productlist;
 	}
 	
 	

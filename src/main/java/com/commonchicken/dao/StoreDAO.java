@@ -15,5 +15,7 @@ public interface StoreDAO {
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreProductInfo(int stoNum);
 	List<CommonStoreVO> selectCommonStore(Map<String, Object> map);
+	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
+
 
 }

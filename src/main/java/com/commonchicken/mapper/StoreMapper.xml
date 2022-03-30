@@ -66,13 +66,6 @@ STO_UPLOAD                VARCHAR2(100)
 			<result column="sto_message" property="stoMessage"/>
 			<result column="sto_upload" property="stoUpload"/>
 		</association>
-		<association property="productDTO" javaType="ProductDTO">
-			<id column="prd_code" property="prdCode"/>
-			<result column="prd_name" property="prdName"/>	
-			<result column="prd_price" property="prdPrice"/>	
-			<result column="prd_category" property="prdCategory"/>	
-			<result column="prd_upload" property="prdUpload"/>	
-		</association>
 		<association property="reviewDTO" javaType="ReviewDTO">
 			<id column="rev_num" property="revNum"/>
 			<result column="mem_email" property="memEmail"/>
@@ -85,21 +78,36 @@ STO_UPLOAD                VARCHAR2(100)
 			<id column="mem_nickname" property="memNickname"/>
 			<result column="mem_upload" property="memUpload"/>
 		</association>
+		<collection property="productlist" ofType="ProductDTO">
+			<id column="prd_code" property="prdCode"/>
+			<result column="prd_name" property="prdName"/>	
+			<result column="prd_price" property="prdPrice"/>	
+			<result column="prd_category" property="prdCategory"/>	
+			<result column="prd_upload" property="prdUpload"/>
+		</collection>
 	</resultMap>
 
 	<select id="selectCommonStore" parameterType="map" resultMap="CommonStoreResultMap">
 	<![CDATA[
 	select c.cm_num,cm_delivery_time,cm_close,s.sto_num,sto_name,sto_add1,sto_add2,sto_phone,
 	sto_openning,sto_minorder,sto_payment,sto_bone_org,sto_boneless_org,sto_message,sto_upload,
-	p.prd_code,prd_name,prd_price,prd_category,prd_upload,rev_rated_avg,rr.rev_num,rr.mem_email,
+	p.prd_code,prd_name,prd_price,prd_category,prd_upload, r.rev_rated_avg, r.rev_rated_count, rr.rev_num,rr.mem_email,
 	rr.rev_content,rr.rev_rated,rr.rev_date,rr.rev_upload,m.mem_nickname,m.mem_upload
 	from (store_tb s left join common_tb c on s.sto_num =c.sto_num
 	left join product_tb p on s.sto_num =p.sto_num 
 	left join 
-	(select cm_num,round(avg(rev_rated),1) rev_rated_avg from review_tb group by cm_num) r on c.cm_num =r.cm_num
+	(select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num =r.cm_num
 	left join review_tb rr on r.cm_num = rr.cm_num
 	left join member_tb m on rr.mem_email =m.mem_email)
 	where c.cm_num = #{cmNum} and s.sto_num = #{stoNum}
+	]]>
+	</select>
+	
+	<select id="selectStoreCommonlist" resultMap="CommonStoreResultMap">
+	<![CDATA[
+	select s.sto_num, c.cm_num, cm_delivery_time,cm_close from 
+	store_tb s left join common_tb c on s.sto_num = c.sto_num where s.sto_num = #{stoNum}
+	and substr(c.cm_delivery_time,0,10) = TO_DATE('2022-03-22','YYYY-MM-DD') order by c.cm_delivery_time
 	]]>
 	</select>
 	

@@ -61,6 +61,11 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.getMapper(StoreMapper.class).selectStoreProductInfo(stoNum);
 	}
 
+	@Override
+	public List<CommonStoreVO> selectStoreCommonlist(int stoNum) {
+		return sqlSession.getMapper(StoreMapper.class).selectStoreCommonlist(stoNum);
+	}
+
 
 
 

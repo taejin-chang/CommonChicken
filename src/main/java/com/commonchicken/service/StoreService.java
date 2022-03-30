@@ -15,5 +15,5 @@ public interface StoreService {
 	CommonStoreVO getStoreInfo(Map<String, Object> map);
 	List<CommonStoreVO> getStoreProductInfo(int stoNum);
 	List<CommonStoreVO> getCommonStore(Map<String, Object> map);
-
+	List<CommonStoreVO> getStoreCommonlist(int stoNum);
 }

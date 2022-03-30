@@ -30,8 +30,12 @@ public class CommonStoreServiceTest {
 	public void testCommonStoreService() throws ParseException {
 		
 		Map<String, Object> returnMap1 = new HashMap<String, Object>();
-		returnMap1.put("cmNum", "2");
-		returnMap1.put("stoNum", "7841");
+		//SimpleDateFormat input_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		//returnMap1.put("deliveryTime", (Date)input_format.parse("2022-03-09 15:00:00"));
+		//returnMap1.put("juso", "서울시 테헤란로 111");
+		returnMap1.put("cmNum", "1");
+		returnMap1.put("stoNum", "6656");
 		
 		List<CommonStoreVO> commonstorelist1 = storeService.getCommonStore(returnMap1);
 		

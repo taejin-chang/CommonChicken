@@ -47,10 +47,7 @@ public class HomeController2 {
 	public String review() {
 		return "community/review";
 	}
-	@RequestMapping("/order")
-	public String order() {
-		return "order/order";
-	}
+
 	
 	
 	
