@@ -116,14 +116,14 @@ STO_UPLOAD                VARCHAR2(100)
 	</select>
 	
 	<insert id="insertStore">
-		<selectKey resultType="int" keyProperty="code" order="BEFORE">
-			select rest_board_seq.nextval from dual
-		</selectKey>
-		insert into store_tb values(sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1,
-		 sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
-		values (#{stoNum}, #{memEmail}, #{code}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1},
-		 #{stoAdd2}, #{stoPhone},0, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
-	</insert>
+      <selectKey resultType="int" keyProperty="stoCode" order="BEFORE">
+         select store_seq.nextval from dual
+      </selectKey>
+      insert into store_tb (sto_num, mem_email, sto_code, sto_name, sto_ceo, sto_condition, sto_sector, sto_zip_code, sto_add1,
+       sto_add2, sto_phone, sto_status, sto_openning, sto_minorder, sto_payment, sto_bone_org, sto_boneless_org, sto_message, sto_origin, sto_upload)
+      values (#{stoNum}, #{memEmail}, #{stoCode}, #{stoName}, #{stoCeo}, #{stoCondition}, #{stoSector}, #{stoZipCode}, #{stoAdd1},
+       #{stoAdd2}, #{stoPhone},0, #{stoOpenning}, #{stoMinorder}, #{stoPayment}, #{stoBoneOrg}, #{stoBonelessOrg}, #{stoMessage}, #{stoOrigin}, #{stoUpload})
+   </insert>
 	
 	<update id="updateStore">
 		update store_tb set sto_name=#{stoName}, sto_ceo=#{stoCeo},
