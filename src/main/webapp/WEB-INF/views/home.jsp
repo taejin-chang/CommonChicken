@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	The last commit
+	The last commit test
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
