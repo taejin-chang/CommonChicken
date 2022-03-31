@@ -26,6 +26,8 @@ public class StoreController {
 		returnMap.put("stoNum", stoNum);
 		model.addAttribute("commonStore", storeService.getCommonStore(returnMap));
 		model.addAttribute("storecommonlist", storeService.getStoreCommonlist(stoNum));
+		model.addAttribute("cmNum", cmNum);
+		model.addAttribute("stoNum", stoNum);
 		
 		
 		return "store/store-main";

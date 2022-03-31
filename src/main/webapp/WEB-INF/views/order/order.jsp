@@ -319,8 +319,8 @@
     }
 </script>
     <script type="text/javascript">
-    var cmNum = ${param.cmNum};
-    var stoNum = ${param.stoNum};
+    var cmNum = ${cmNum};
+    var stoNum = ${stoNum};
     //var ordprdamount = ${amountList};
     //var ordprdprice = ${ordprdprice};
    // console.log=ordprdamount;
