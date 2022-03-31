@@ -174,7 +174,7 @@
 <!-- 	                    	   	 <p><strong> <a href="ads-details.html" title="Brend New Nexus 4">22/03/09</a> </strong></p>-->	  
 	                       		<div> <strong>배달시간 </strong>: ${commonList.cmClose }</div>
 	                          	<div> <strong>마감시간 </strong>: ${commonList.cmDeliveryTime }</div>
-								<div> <strong>모집인원 </strong>: ${commonList.cmNum }</div>
+								<div> <strong>모집인원 </strong>: ${commonList.cmGoalPeople }</div>
 	                          	
 	                    	  </div>
                       	</td>

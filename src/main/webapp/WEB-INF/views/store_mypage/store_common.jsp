@@ -168,7 +168,7 @@
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" id="btmId" class="btn btn-default">변경</button>
+															<button type="submit" id="btmId" class="btn btn-default">등록</button>
 														</div>
 													</div>
 												</form>

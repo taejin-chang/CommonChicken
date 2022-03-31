@@ -9,7 +9,7 @@
 	<div class="row">
 		<div class="col-lg-3 col-md-3">
 			<div class="header__logo">
-				<a href="./index.html"><img
+				<a href="${pageContext.request.contextPath}/"><img
 					src="${pageContext.request.contextPath }/img/logo2.png" alt=""></a>
 			</div>
 		</div>
@@ -17,9 +17,9 @@
 			<div class="header__nav">
 				<nav class="header__menu mobile-menu">
 				<ul>
-					<li class="active"><a href="./index.html">홈</a></li>
-					<li><a href="./listing.html">제품리스트</a></li>
-					<li><a href="#">리뷰</a></li>
+					<li class="active"><a href="${pageContext.request.contextPath}/">홈</a></li>
+					<li><a href="${pageContext.request.contextPath}/listing">제품리스트</a></li>
+					<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
 					<li><a href="#">공지</a>
 						<ul class="dropdown">
 							<li><a href="./about.html">공지사항</a></li>
