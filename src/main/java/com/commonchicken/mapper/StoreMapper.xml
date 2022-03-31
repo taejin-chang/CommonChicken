@@ -113,9 +113,9 @@ STO_UPLOAD                VARCHAR2(100)
 	
 	<select id="selectStoreInfo" parameterType="map" resultMap="CommonStoreResultMap">
 	select s.sto_num, c.cm_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated_avg, r.rev_rated_count, c.cm_delivery_time, c.cm_close from
-	store_tb s left join common_tb c on s.sto_num = c.sto_num
-	left join (select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num = r.cm_num 
-	where s.sto_num = #{stoNum} and c.cm_num = #{cmNum}
+	store_tb s join common_tb c on s.sto_num = c.sto_num
+	join (select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num = r.cm_num 
+	where s.sto_num = #{stoNum}
 	</select>
 	
 	<select id="selectStoreProductInfo" resultMap="CommonStoreResultMap">

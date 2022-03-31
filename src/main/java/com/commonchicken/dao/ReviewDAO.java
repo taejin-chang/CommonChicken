@@ -13,5 +13,5 @@ public interface ReviewDAO {
 	int getReviewCount(String memEmail);
 	List<ReviewVO> selectAllReview();
 	List<ReviewVO> selectPagerReview(Map<String, Object> map);
-	
+	List<ReviewVO> selectStoreReviewList(String stoNum);
 }

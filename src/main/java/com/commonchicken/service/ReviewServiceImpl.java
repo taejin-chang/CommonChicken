@@ -44,6 +44,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewVO> selectPagerReview(Map<String, Object> map) {
 		return reviewDAO.selectPagerReview(map);
 	}
+
+	@Override
+	public List<ReviewVO> selectStoreReviewList(String stoNum) {
+		// TODO Auto-generated method stub
+		return reviewDAO.selectStoreReviewList(stoNum);
+	}
 	
 	
 

@@ -97,7 +97,7 @@
                             <h3><a href="#">${commons.storeDTO.stoAdd1}&nbsp;${commons.storeDTO.stoAdd2}</a></h3>
                             <ul class="blog__item__widget">
                                 <li><i class="fa fa-phone"></i> ${commons.storeDTO.stoPhone}</li>
-                                <li><i class="fa fa-user"></i> 후기 ${commons.revRatedCount}개</li>
+                                <li><i class="fa fa-user"></i> 후기 ${selectStoreInfo.revRatedCount}개</li>
                             </ul>
                             <div class="">
                             <ul class="blog__item__widget">
@@ -218,34 +218,34 @@
                                 <div class="listing__details__rating">
                             <h4>Rate</h4>
                             <div class="listing__details__rating__overall">
-                                <h2>${commons.revRatedAvg}</h2>
+                                <h2>${selectStoreInfo.revRatedAvg}</h2>
                                 <div class="listing__details__rating__star">
                                 	<c:choose>
-		                            		<c:when test="${commons.revRatedAvg==0 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==0 }">
 		                            		<span>☆</span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==0.5 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==0.5 }">
 		                            		<span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==1 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==1 }">
 		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==1.5 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==1.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==2 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==2 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==2.5 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==2.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==3 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==3 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==3.5 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==3.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==4 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==4 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==4.5 }">
+		                            		<c:when test="${selectStoreInfo.revRatedAvg==4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
 		                            		<c:otherwise>
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
 		                                </c:choose>
                                 </div>
-                                <span>(${commons.revRatedCount} Rating)</span>
+                                <span>(${selectStoreInfo.revRatedCount} Rating)</span>
                             </div>
                             <!--  
                             <div class="listing__details__rating__bar">
@@ -293,58 +293,33 @@
                         <div class="listing__details__comment">
                             <h4>Comment</h4>
                             <div class="listing__details__comment__item">
+                               <c:forEach var="review" items="${storereviewlist}">
                                 <div class="listing__details__comment__item__pic">
-                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/review/${review.revUpload}" alt="">
                                 </div>
                                 <div class="listing__details__comment__item__text">
                                     <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
+                                        <c:choose>
+		                            		<c:when test="${review.revRated==0 }">
+		                            		<span>☆</span></c:when>
+		                            		<c:when test="${review.revRated==1 }">
+		                            		<i class="fa fa-star"></i></c:when>
+		                            		<c:when test="${review.revRated==2 }">
+		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+		                            		<c:when test="${review.revRated==3 }">
+		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+		                            		<c:when test="${review.revRated==4 }">
+		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+		                            		<c:otherwise>
+		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:otherwise>
+		                                </c:choose>
+                                        
                                     </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
+                                    <span>${review.revDate }</span>
+                                    <h5>${review.memEmail }</h5>
+                                    <p>${review.revContent }</p>
                                 </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                </div>
-                            </div>
-                            <div class="listing__details__comment__item">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${pageContext.request.contextPath }/img/listing/details/comment.png" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <span>March 22, 2019</span>
-                                    <h5>Marry Jane</h5>
-                                    <p>From ships to airports, museums to burger vans, from revered Michelin star
-                                        establish to the fleeting dynamism of pop-ups.</p>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                             </div>

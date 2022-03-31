@@ -141,13 +141,7 @@
                                 <label for="mobile">휴대전화</label>
 	                            <div class="row">
 	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="firstName" name="phone1" value="${fn:substring(loginMember.phone, 0, 2)}" required>
-	                                </div>
-	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="lastName" name="phone2" value="${fn:substring(loginMember.phone, 4, 8)}" required>
-	                                </div>
-	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="lastName" name="phone3" value="${fn:substring(loginMember.phone, 10, 13)}" required>
+	                                    <input type="text" class="form-control" id="firstName" name="ordPhone" value="${loginMember.memPhone}" required>
 	                                </div>
 	                            </div>
 							</div>	
@@ -315,10 +309,15 @@
     };	
     
     function orderinsert() {
+	    var ordPay = $("input[name='paymentMethod']:checked").val();
+    	var ordPayMethod = $("#ordPayMethod").val(ordPay);
+    	 
     	orderlist.method="post";
+    	orderlist.setAttribute("ordPayMethod","ordPayMethod")
     	orderlist.action="${pageContext.request.contextPath}/payment?cmNum=${cmNum}";
     	orderlist.submit();
 	}
+    
     </script>
 </body>
 

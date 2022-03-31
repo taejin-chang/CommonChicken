@@ -12,12 +12,18 @@
 		<result column="cm_goal_people" property="cmGoalPeople"/>
 		<result column="cm_delivery_time" property="cmDeliveryTime"/>
 		<result column="cm_close" property="cmClose"/>
+		<!--  <collection property="" ofType="CommonDTO">
+			<id column="cm_num" property="cmNum"/>
+			<result column="cm_goal_people" property="cmGoalPeople"/>
+			<result column="cm_delivery_time" property="cmDeliveryTime"/>
+			<result column="cm_close" property="cmClose"/>
+		</collection>-->
 		<collection property="ratelist" ofType="Integer"/>
 	</resultMap>
 	
 	<select id="selectAllSearch" resultMap="SearchStoreResultMap">
 		  <![CDATA[
-		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
+		select a.sto_num,sto_name,nvl(rev_rated1,0),cm_goal_people,b.cm_num,sto_add1,sto_add2,
 		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
@@ -28,7 +34,7 @@
 	
 	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
 		  <![CDATA[
-		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
+		select a.sto_num,sto_name,nvl(rev_rated1,0),cm_goal_people,b.cm_num,sto_add1,sto_add2,
 		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
@@ -40,7 +46,7 @@
 	
 	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
         <![CDATA[
-		select a.sto_num,sto_name,rev_rated1,cm_goal_people,b.cm_num,sto_add1,sto_add2,
+		select a.sto_num,sto_name,nvl(rev_rated1,0),cm_goal_people,b.cm_num,sto_add1,sto_add2,
 		sto_phone,cm_delivery_time,cm_close from store_tb a 
 		left join common_tb b on a.sto_num = b.sto_num 
 		left join (select cm_num, round(avg(rev_rated),1) rev_rated1
@@ -48,18 +54,46 @@
 		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD HH24-MI-SS')
 		and sto_add1||sto_add2 like '%'||#{juso}||'%'
 		]]>
-        <if test="ratelist!=null">
+            <if test="ratelist!=null">
         	and
-            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
-               <![CDATA[rev_rated1 between #{item} and ${item}]]>+1
-            </foreach>
-        </if>
+	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[nvl(rev_rated1,0) between #{item} and ${item}]]>+1
+           		</foreach>
+        	</if>
+        	<if test="ratelist=0">
+        	and
+	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[nvl(rev_rated1,0) is null]]>
+           		</foreach>
+        	</if>
+        	<if test="ratelist=null">
+        	and
+	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[nvl(rev_rated1,0) is null]]>
+           		</foreach>
+        	</if>
         <if test="deliveryTime2!=null">
             and cm_delivery_time&gt;=<![CDATA[TO_DATE(#{deliveryTime2},'YYYY-MM-DD HH24-MI-SS')]]>
         </if>
         <if test="cmClose!=null">
-            and cm_close=<![CDATA[TO_DATE(#{cmClose},'YYYY-MM-DD HH24-MI-SS')]]>
+            and cm_close&gt;=<![CDATA[TO_DATE(#{cmClose},'YYYY-MM-DD HH24-MI-SS')]]>
         </if>
 
     </select>
 </mapper>
+
+<!--  
+        	<if test="rev_rated1!=null">
+        	and
+	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[rev_rated1 between #{item} and ${item}]]>+1
+           		</foreach>
+        	</if>
+        	<if test="rev_rated1=0">
+        	and
+	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[rev_rated1 is null]]>
+           		</foreach>
+        	</if>
+        	
+        	-->

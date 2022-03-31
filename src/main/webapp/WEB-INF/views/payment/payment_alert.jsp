@@ -434,6 +434,22 @@
             $('#account_view').hide();
         }
     };	
+    
+    //var memEmail = ${loginMember.memEmail};
+    var cmNum = ${cmNum};
+    var ordQuantity = ${amountList};
+    //var ordStatus = ${ordStatus};
+    var ordZipcode = ${ordZipcode};
+    //var ordAdd1 = ${ordAdd1};
+    var ordAdd2 = ${ordAdd2};
+    //var ordPhone = ${phone1};"+"${phone2};"+"${phone3};
+    var ordRequest = ${ordRequest};
+    var ordPayMethod = ${ordPayMethod};
+    var prdCode = ${prdCodelist};
+    console.log(ordQuantity);
+    console.log(prdCodelist);
+    
+    
     </script>
 </body>
 

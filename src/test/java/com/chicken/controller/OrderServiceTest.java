@@ -1,5 +1,8 @@
 package com.chicken.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +42,69 @@ public class OrderServiceTest {
 //		
 //
 //	}
-	@Test
+	/*@Test
 	public void testOrderSelect() {
 
 		orderService.selectOrderManager(10);
 		
+	}
+	 */
+	
+	@Test
+	public void testOrderInsert() {
+		//OrderDTO order;
 		
+		String ordBundleNum = System.currentTimeMillis()+"";
+		//order.setOrdBundleNum(ordBundleNum);
+
+		String prdCodeList[] = {"AA1", "AB2", "B1"};
+		List<String> productList = new ArrayList<String>();
+		for(String prdCode : prdCodeList) {
+			productList.add(prdCode);
+		}
+		//returnMap.put("prdCodelist", productList);
+		
+		String prdAmount[] = {"1","1","1"};
+		
+		List<String> prdAmountList = new ArrayList<String>();
+		for(String prdAM : prdAmount) {
+			prdAmountList.add(prdAM);
+		}
+		
+		for(int i=0;i<prdCodeList.length;i++) {
+			OrderDTO orderNew = new OrderDTO();
+			orderNew.setPrdCode(productList.get(i));
+			orderNew.setOrdQuantity(prdAmountList.get(i));
+			orderNew.setOrdBundleNum(ordBundleNum);
+			orderNew.setOrdDetailNum(i);
+			orderNew.setMemEmail("abc@naver.cmo");
+			orderNew.setCmNum(1);
+			orderNew.setOrdZipcode("111");
+			orderNew.setOrdAdd1("111");
+			orderNew.setOrdAdd2("111");
+			orderNew.setOrdPhone("010-22222");
+			orderNew.setOrdRequest("ㅇ자식");
+			orderNew.setOrdPayMethod(0);
+			orderNew.setOrdBundleNum(ordBundleNum);
+			orderService.insertOrder(orderNew);
+		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

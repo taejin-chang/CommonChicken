@@ -194,7 +194,8 @@
             	<label><input type="checkbox" class="rate" name="rate" value="4">⭐️⭐️⭐️⭐️</label><br>
             	<label><input type="checkbox" class="rate" name="rate" value="3">⭐️⭐️⭐️</label><br>
             	<label><input type="checkbox" class="rate" name="rate" value="2">⭐️⭐️</label><br>
-            	<label><input type="checkbox" class="rate" name="rate" value="1">️⭐️</label>
+            	<label><input type="checkbox" class="rate" name="rate" value="1">️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="0">☆</label>
             </div>
 
         <br><br>
@@ -237,7 +238,7 @@
 	            </div>
         	</c:when>
 			<c:otherwise>
-        		<c:forEach var="searchStore" items="${mainSearchList}">
+        		<c:forEach var="searchStore" items="${mainSearchList}" varStatus="status" >
 		            <div class="listing__item" id="mainSearchStore">
 		            	<input name="stoNum" type="hidden" value="${searchStore.stoNum}">
 		            	<input name="cmNum" type="hidden" value="${searchStore.cmNum}">
@@ -286,9 +287,9 @@
 		                    <div class="listing__item__text__info">
 		                        <div class="listing__item__text__info__left">
 		                            <img src="${pageContext.request.contextPath}/img/listing/list_small_icon-1.png" alt="">
-		                            <span>${searchStore.cmDeliveryTime }</span>
+		                            <span>배달시간 : ${searchStore.cmDeliveryTime }</span>
 		                        </div>
-		                        <div class="listing__item__text__info__right">${searchStore.cmClose }</div>
+		                        <div class="listing__item__text__info__right">마감시간 : ${searchStore.cmClose }</div>
 		                    </div>
 		                </div>
 		            </div>

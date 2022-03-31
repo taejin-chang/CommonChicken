@@ -41,6 +41,15 @@ private int revNum;
 		where (rn between #{startRow} and #{endRow}) and (MEM_EMAIL =#{memEmail})
 	</select>
 	
+	<select id="selectStoreReviewList" resultType="ReviewVO">
+		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM,a.MEM_EMAIL MEM_EMAIL,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
+		from review_tb a
+		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
+		left join product_tb c on b.PRD_CODE = c.PRD_CODE
+		order by a.REV_DATE) board)
+		where STO_NUM = #{stoNum}
+	</select>
+	
 	<select id="getReviewCount" resultType="int">
 		select count(*) from review_tb where MEM_EMAIL =#{memEmail}
 	</select>
