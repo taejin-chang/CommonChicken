@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
 		commonDAO.deleteBoard(brdNum);
 	}
 
+	@Override
+	public void updateViews(int brdNum) {
+		commonDAO.updateViews(brdNum);
+	}
+
 }

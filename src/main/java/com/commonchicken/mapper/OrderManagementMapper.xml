@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="com.commonchicken.mapper.OrderManagementMapper">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="selectOrderMgtList">
+		select a.cm_num, b.sto_name, cm_delivery_time, cm_close, cm_goal_people, cm_sales, cm_status
+		,ord_detail_num, a.mem_email, ord_bundle_num, ord_quantity, ord_status,
+		ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method, c.prd_code
+		,prd_name, prd_price, prd_category, prd_upload from common_tb a 
+		left join store_tb b on a.sto_num = b.sto_num 
+		left join order_tb c on a.cm_num = c.cm_num
+		left join product_tb d on c.prd_code = d.prd_code order by a.cm_num
+	</select>
+
+
+</mapper>

@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -338,6 +340,8 @@ public class HomeController {
 	@RequestMapping(value="/admin/noticeDetail/{brdNum}", method = RequestMethod.GET)
 	public String selectnoticeDetail(@PathVariable int brdNum, Model model) {
 		model.addAttribute("noticeDetail", boardService.selectBoard(brdNum));
+		boardService.updateViews(brdNum);
+
 		return "admin/admin_notice_detail";
 	}
 	
@@ -406,6 +410,20 @@ public class HomeController {
 		return "admin/admin_notice_detail";
 	}
 	
+	
+	@RequestMapping(value = "/adminMng/order", method = RequestMethod.GET)
+	public String adminOrder(){
+		System.out.println("하이!");
+		
+		return "admin/admin_order";
+	}
+	
+	//------------------------------------------------------------------------------
+	@RequestMapping(value = "/adminMng/order", method= RequestMethod.POST)
+	@ResponseBody
+	public List<CommonDTO> restOrderMngList() {	
+		return commonService.selectCommonList();
+	}
 
 	
 }

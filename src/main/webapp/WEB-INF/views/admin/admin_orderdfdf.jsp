@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,33 +9,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Skydash Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/feather.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/themify-icons.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/feather.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/themify-icons.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="${pageContext.request.contextPath }/admin/images/favicon.png" />  
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
-  
-  <%-- handlebars 라이브러리 : JSON 형식으로 표현된 JavaScrit 객체를 전달받아 HTML 태그로 변환하는
-기능을 제공하는 자바스크립트 템플릿 라이브러리 --%>
-<%-- => https://cdnjs.com 사이트에서 handlebars 라이브러리를 검색하여 JSP 문서에 포함 --%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="shortcut icon" href="${pageContext.request.contextPath }/images/favicon.png" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/table_extend.css">
   
 </head>
 
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-<!--     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+       <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img href="${pageContext.request.contextPath }/images/logo.svg" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img href="${pageContext.request.contextPath }/images/logo-mini.svg" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -129,10 +122,10 @@
         </button>
       </div>
     </nav>
- -->    <!-- partial -->
+   <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
+       <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
@@ -149,8 +142,7 @@
             <div class="tiles default"></div>
           </div>
         </div>
-<!--       </div>
-      <div id="right-sidebar" class="settings-panel">
+  <div id="right-sidebar" class="settings-panel"> 
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
           <li class="nav-item">
@@ -237,7 +229,7 @@
               <p class="text-gray mb-0 ">Call Sarah Graves</p>
             </div>
           </div>
-          To do section tab ends
+          <!-- To do section tab ends -->
           <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
             <div class="d-flex align-items-center justify-content-between border-bottom">
               <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
@@ -297,13 +289,12 @@
               </li>
             </ul>
           </div>
-          chat tab ends
+          <!-- chat tab ends -->
         </div>
- -->      </div>
+      </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      
-       <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px;" id="sidebar">
+         <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html">
@@ -367,18 +358,12 @@
       </nav>
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper" style="margin-top: 60px;">
-        <div style="text-align: right;">
-        	<button type="button" class="btn btn-primary" onclick="location.href='<c:url value='/admin/notice_writing'/>'">
-        		<strong>글쓰기</strong>
-       		</button>	
-        </div>
-        <br>
+        <div class="content-wrapper">
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h1 class="card-title">공지사항 관리</h1>
+                  <h1 class="card-title">점포 관리</h1>
                   <div class="table-responsive">
 					<table class="table table-expandable">
 							<thead style="background: #4747A1; color: white;">
@@ -394,7 +379,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr style="background-color: #f0f0f0;">
+								<tr>
 									<td>1</td>
 									<td>154654</td>
 									<td>호식이 두마리</td>							
@@ -416,162 +401,6 @@
 													<th>주문자</th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>2022년 10월 20일</td>
-													<td>16754541</td>
-													<td>500000원</td>
-													<td>홍길동</td>
-												</tr>
-												<tr>
-													<td colspan="8">
-														<table class="table table-striped">
-														<thead style="background: #7DA0FA; color: white;">
-																<tr>
-																	<th>번호</th>
-																	<th>상품명</th>
-																	<th>수량</th>
-																	<th>가격</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-															</tbody>
-														</table>
-													</td>
-												</tr>
-											</tbody>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>2022년 10월 20일</td>
-													<td>16754541</td>
-													<td>500000원</td>
-													<td>홍길동</td>
-												</tr>
-												<tr>
-													<td colspan="8">
-														<table class="table table-striped">
-														<thead style="background: #7DA0FA; color: white;">
-																<tr>
-																	<th>번호</th>
-																	<th>상품명</th>
-																	<th>수량</th>
-																	<th>가격</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-															</tbody>
-														</table>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-							<tbody>
-								<tr style="background-color: #f0f0f0;">
-									<td>1</td>
-									<td>154654</td>
-									<td>호식이 두마리</td>							
-									<td>11시20분</td>
-									<td>500000원</td>
-									<td>10명</td>
-									<td>배송중</td>
-								</tr>
-								<tr>
-									<td colspan="8">
-										<table class="table table-expandable">
-											<thead style="background: #7978E9; color: white;">
-
-												<tr>
-													<th>번호</th>
-													<th>구매일시</th>
-													<th>주문번호</th>
-													<th>결제금액</th>
-													<th>주문자</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>2022년 10월 20일</td>
-													<td>16754541</td>
-													<td>500000원</td>
-													<td>홍길동</td>
-												</tr>
-												<tr>
-													<td colspan="8">
-														<table class="table table-striped">
-														<thead style="background: #7DA0FA; color: white;">
-																<tr>
-																	<th>번호</th>
-																	<th>상품명</th>
-																	<th>수량</th>
-																	<th>가격</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-															</tbody>
-														</table>
-													</td>
-												</tr>
-											</tbody>
 											<tbody>
 												<tr>
 													<td>1</td>
@@ -620,6 +449,7 @@
 								</tr>
 							</tbody>
 						</table>
+
 					<br>
                     <div style="text-align: center;">
                       <button type="button" class="btn btn-primary btn-icon"><</button>                        
@@ -652,18 +482,17 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
+  <script src="${pageContext.request.contextPath }/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="${pageContext.request.contextPath }/admin/js/off-canvas.js"></script>
-  <script src="${pageContext.request.contextPath }/admin/js/hoverable-collapse.js"></script>
-  <script src="${pageContext.request.contextPath }/admin/js/template.js"></script>
-  <script src="${pageContext.request.contextPath }/admin/js/settings.js"></script>
-  <script src="${pageContext.request.contextPath }/admin/js/todolist.js"></script>
-  
-    <script type="text/javascript">
+  <script src="${pageContext.request.contextPath }/js/off-canvas.js"></script>
+  <script src="${pageContext.request.contextPath }/js/hoverable-collapse.js"></script>
+  <script src="${pageContext.request.contextPath }/js/template.js"></script>
+  <script src="${pageContext.request.contextPath }/js/settings.js"></script>
+  <script src="${pageContext.request.contextPath }/js/todolist.js"></script>
+  <script type="text/javascript">
 /*     var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);
   _gaq.push(['_setDomainName', 'jqueryscript.net']);
@@ -695,7 +524,6 @@
 	    });
 	})(jQuery); 
   </script>
-  
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

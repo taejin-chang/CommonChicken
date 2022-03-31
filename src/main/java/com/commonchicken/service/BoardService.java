@@ -8,6 +8,7 @@ import com.commonchicken.dto.BoardDTO;
 public interface BoardService {
 	void insertBoard(BoardDTO notice);
 	void updateBoard(Map<String, Object> map);
+	void updateViews(int brdNum);
 	BoardDTO selectBoard(int brdNum);
 	List<BoardDTO> selectBoardList(int brdCategory);
 	void deleteBoard(int brdNum);

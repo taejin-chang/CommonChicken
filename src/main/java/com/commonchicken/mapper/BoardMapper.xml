@@ -30,6 +30,10 @@ BRD_STATUS   NOT NULL NUMBER(1)
 		update board_tb set brd_title = #{brdTitle}, brd_content=#{brdContent}, brd_img=#{brdImg, jdbcType=VARCHAR}, brd_status=#{brdStatus} where brd_num = #{brdNum}
 		
 	</update>
+	
+	<update id="updateViews">
+			update board_tb set brd_views= brd_views+1 where brd_num = #{brdNum}
+	</update>
 
 
 	<select id="selectBoard" resultType="BoardDTO">
@@ -39,6 +43,8 @@ BRD_STATUS   NOT NULL NUMBER(1)
 	<select id="selectBoardList" resultType="BoardDTO">
 		select * from board_tb where brd_status != 9 and brd_category = #{brdCategory} order by brd_num desc
 	</select>
+	
+	
 	
 	<update id="deleteBoard">
  		update board_tb set brd_status=9 where brd_num = #{brd_num}

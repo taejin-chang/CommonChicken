@@ -47,4 +47,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.getMapper(BoardMapper.class).deleteBoard(brdNum);
 	}
 
+	@Override
+	public int updateViews(int brdNum) {
+		return sqlSession.getMapper(BoardMapper.class).updateViews(brdNum);
+	}
+
 }

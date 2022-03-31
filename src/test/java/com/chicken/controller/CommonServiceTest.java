@@ -35,20 +35,25 @@ public class CommonServiceTest {
 //	STO_NUM          NOT NULL VARCHAR2(50) 
 //	MEM_EMAIL        NOT NULL VARCHAR2(50) 
 	
-
+//
+//	@Test 
+//	public void testUpdateStoreUserInfo() {
+//		CommonDTO common = new CommonDTO();
+//		common.setCmDeliveryTime("2020-03-27 22-00-00");
+//		common.setCmClose("2020-03-27 22-00-00");
+//		common.setCmGoalPeople(20);
+//		common.setStoNum("6656");
+//		common.setMemEmail("nolang@naver.com");
+//		
+////		logger.info(common.getCmDeliveryTime()+common.getCmClose()+common.getCmGoalPeople()+common.getCmSales()+
+////				common.getStoNum()+common.getMemEmail());
+//
+//		commonService.insertCommon(common);		
+//	}
+	
 	@Test 
-	public void testUpdateStoreUserInfo() {
-		CommonDTO common = new CommonDTO();
-		common.setCmDeliveryTime("2020-03-27 22-00-00");
-		common.setCmClose("2020-03-27 22-00-00");
-		common.setCmGoalPeople(20);
-		common.setStoNum("6656");
-		common.setMemEmail("nolang@naver.com");
-		
-//		logger.info(common.getCmDeliveryTime()+common.getCmClose()+common.getCmGoalPeople()+common.getCmSales()+
-//				common.getStoNum()+common.getMemEmail());
-
-		commonService.insertCommon(common);		
+	public void testSelectUserInfo() {
+		commonService.selectCommonList();		
 	}
 }
 

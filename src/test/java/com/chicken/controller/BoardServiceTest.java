@@ -62,16 +62,21 @@ public class BoardServiceTest {
 //		boardService.deleteBoard(10);		
 //	}
 	
+//	@Test
+//	public void updateBoard() {
+//		Map<String,Object> map = new HashMap<String, Object>();
+//		map.put("brdTitle", "하하");
+//		map.put("brdContent", "하하");
+//		map.put("brdImg", "하하");
+//		map.put("brdStatus", 2);
+//		map.put("brdNum", 10);
+//		
+//		boardService.updateBoard(map);
+//	}
+	
 	@Test
-	public void updateBoard() {
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("brdTitle", "하하");
-		map.put("brdContent", "하하");
-		map.put("brdImg", "하하");
-		map.put("brdStatus", 2);
-		map.put("brdNum", 10);
-		
-		boardService.updateBoard(map);
+	public void updateViews() {		
+		boardService.updateViews(10);
 	}
 }
 
