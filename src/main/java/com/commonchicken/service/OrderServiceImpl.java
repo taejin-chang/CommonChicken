@@ -1,5 +1,7 @@
 package com.commonchicken.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,10 @@ public class OrderServiceImpl implements OrderService {
 	public void insertOrder(OrderDTO order) {
 		orderDAO.insertOrder(order);
 		
+	}
+
+	@Override
+	public List<OrderDTO> selectOrderManager(int cnNum) {
+		return orderDAO.selectOrderManager(cnNum);
 	}
 }

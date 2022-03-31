@@ -19,6 +19,11 @@ public class OrderDAOImpl implements OrderDAO {
 	public int insertOrder(OrderDTO order) {
 		return sqlSession.getMapper(OrderMapper.class).insertOrder(order);
 	}
+	
+	@Override
+	public List<OrderDTO> selectOrderManager(int cnNum) {
+		return sqlSession.getMapper(OrderMapper.class).selectOrderManager(cnNum);
+	}
 
 	@Override
 	public List<OrderDTO> selectOrderList() {

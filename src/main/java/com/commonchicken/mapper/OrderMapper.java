@@ -6,5 +6,6 @@ import com.commonchicken.dto.OrderDTO;
 
 public interface OrderMapper {
 	int insertOrder(OrderDTO order);
+	List<OrderDTO> selectOrderManager(int cnNum);
 	List<OrderDTO> selectOrderList();
 }

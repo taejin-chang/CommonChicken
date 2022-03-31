@@ -11,6 +11,12 @@
 		#{ordRequest}, #{ordPayMethod}, #{prdCode})
 	</insert>
 	
+	<select id="selectOrderManager" resultType="OrderDTO">
+		select * from order_tb where cm_num =  #{cmNum}
+	</select>
+	
+	
+	
 	<select id="selectOrderList" resultType="OrderDTO">
 		select * from order_tb order by ord_detail_num
 	</select>

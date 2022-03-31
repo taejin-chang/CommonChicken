@@ -29,10 +29,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.commonchicken.dto.BoardDTO;
 import com.commonchicken.dto.CommonDTO;
 import com.commonchicken.dto.MemberDTO;
+import com.commonchicken.dto.OrderDTO;
 import com.commonchicken.dto.StoreDTO;
 import com.commonchicken.service.BoardService;
 import com.commonchicken.service.CommonService;
 import com.commonchicken.service.MemberService;
+import com.commonchicken.service.OrderService;
 import com.commonchicken.service.StoreService;
 
 /**
@@ -57,6 +59,9 @@ public class HomeController {
 	
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -412,17 +417,19 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/adminMng/order", method = RequestMethod.GET)
-	public String adminOrder(){
+	public String adminOrder(Model model){
 		System.out.println("하이!");
-		
+		model.addAttribute("commonList", commonService.selectCommonList());
+
 		return "admin/admin_order";
 	}
 	
 	//------------------------------------------------------------------------------
-	@RequestMapping(value = "/adminMng/order", method= RequestMethod.POST)
+	@RequestMapping(value = "/adminMng/orderManager", method= RequestMethod.GET)
 	@ResponseBody
-	public List<CommonDTO> restOrderMngList() {	
-		return commonService.selectCommonList();
+	public List<OrderDTO> restOrderMngList() {	
+		
+		return orderService.selectOrderManager(1);
 	}
 
 	

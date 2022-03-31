@@ -40,7 +40,8 @@
 								class="login-btn"><i class="fa fa-user"></i></a>
 						</c:when>
 						<c:when test="${loginMember.memStatus eq 2}">
-							<a href="#" class="login-btn"><i class="fa fa-user"></i></a>
+							<a href="${pageContext.request.contextPath}/admin/info" class="login-btn">
+							<i class="fa fa-user"></i></a>
 						</c:when>
 						<c:otherwise>
 							<a href="#" class="login-btn"><i class="fa fa-user"></i></a>

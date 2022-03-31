@@ -65,12 +65,12 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyClassified">
 											<ul class="acc-list">
-												<li><a  href="store-account-home.html"><i
-														class="icon-home"></i> 관리자 회원 정보</a></li>
+												<li><a  href="${pageContext.request.contextPath}/store/owner">
+												<i class="icon-home"></i> 관리자 회원 정보</a></li>
 
 											</ul>
 											<ul class="acc-list">
-												<li><a class="active"href="store-account-info.html"><i
+												<li><a  href="${pageContext.request.contextPath}/store/info"><i
 														class="icon-home"></i> 점포 정보</a></li>
 
 											</ul>
@@ -83,32 +83,32 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="store-account-myads.html"><i
-														class="icon-docs"></i> 주문 현황 </a></li>
+												<li><a  href="${pageContext.request.contextPath}/store/order">
+												<i class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
 									</div>
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											리뷰 관리<a href="#MyAds" data-toggle="collapse"
-												class="pull-right"></a>
+											리뷰 관리<a href="${pageContext.request.contextPath}/store/review" data-toggle="collapse"
+											class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
+												<li><a class="active" href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
 												
 											</ul>
 										</div>
 									</div>
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											커먼 관리<a href="#MyAds" data-toggle="collapse"
+											커먼 관리<a href="${pageContext.request.contextPath}/store/commonlist" data-toggle="collapse"
 												class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="store-account-review.html"><i class="icon-heart"></i>커먼 등록</a></li>
+												<li><a href="${pageContext.request.contextPath}/store/commonlist"><i class="icon-heart"></i>커먼 리스트</a></li>
 												
 											</ul>
 										</div>
@@ -120,7 +120,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
-												<li><a href="store-account-close.html"><i
+												<li><a  href="${pageContext.request.contextPath}/store/out"><i
 														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>
