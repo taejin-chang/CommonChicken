@@ -334,7 +334,7 @@
 															<span class="bigger-110">초기화</span>
 														</button>
 
-														<button type="button" onclick="submitCheck();" class="width-65 pull-right btn btn-sm btn-success">
+														<button style="background-color: orange;" type="button" onclick="submitCheck();" class="width-65 pull-right btn btn-sm btn-success">
 															<span class="bigger-110">회원등록</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>

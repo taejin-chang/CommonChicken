@@ -8,6 +8,7 @@ public class ReviewVO {
 	private String revDate;
 	private String revUpload;
 	private String prdName;
+	private String stoNum;
 	
 	public ReviewVO() {
 		// TODO Auto-generated constructor stub
@@ -15,8 +16,29 @@ public class ReviewVO {
 	
 	
 	
+
+
+
+	public String getStoNum() {
+		return stoNum;
+	}
+
+
+
+
+
+
+	public void setStoNum(String stoNum) {
+		this.stoNum = stoNum;
+	}
+
+
+
+
+
+
 	public ReviewVO(int revNum, String memEmail, String revContent, int revRated, String revDate, String revUpload,
-			String prdName) {
+			String prdName, String stoNum) {
 		super();
 		this.revNum = revNum;
 		this.memEmail = memEmail;
@@ -25,7 +47,11 @@ public class ReviewVO {
 		this.revDate = revDate;
 		this.revUpload = revUpload;
 		this.prdName = prdName;
+		this.stoNum = stoNum;
 	}
+
+
+
 
 
 

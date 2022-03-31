@@ -68,6 +68,13 @@ public class UserMypageController {
 		return "user_mypage/account-myboard";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("user/myStoreApply")
 	public String myStoreApply() {
 		return "user_mypage/account-store_apply";
