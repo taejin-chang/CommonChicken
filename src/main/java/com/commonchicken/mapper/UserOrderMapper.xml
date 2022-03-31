@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.commonchicken.mapper.UserOrderMapper">
+
+	<select id="selectPagerOrderList" resultType="OrderVO">
+
+		select * from (select rownum rn, board.* from (select a.ORD_DETAIL_NUM,a.MEM_EMAIL,a.CM_NUM,a.ORD_BUNDLE_NUM,a.ORD_QUANTITY,a.ORD_STATUS,a.ORD_ADD1,a.ORD_ADD2,a.ORD_PHONE,a.ORD_REQUEST,b.PRD_NAME,c.sto_name
+		from order_tb a
+		left join product_tb b on a.prd_code=b.prd_code
+		left join store_tb c on b.sto_num = c.sto_num
+		order by ORD_BUNDLE_NUM) board)
+		where (rn between #{startRow} and #{endRow}) and (MEM_EMAIL =#{memEmail})
+
+	</select>
+
+
+
+
+
+	
+	<select id="getOrderCount" resultType="int">
+		select count(*) from review_tb where MEM_EMAIL=#{memEmail}
+	</select>
+	
+	
+	<select id="selectReview" resultType="ReviewDTO">
+		select * from review_tb where REV_NUM=#{revNum}
+	</select>
+	
+	
+	
+</mapper>

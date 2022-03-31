@@ -88,6 +88,7 @@ public class LoginController {
 		
 		MemberDTO loginMember =memberService.selectMember(member.getMemEmail());
 		session.setAttribute("loginMember", loginMember);
+		session.setAttribute("loginId", loginMember.getMemEmail());
 		
 		
 		System.out.println("로그인성공");

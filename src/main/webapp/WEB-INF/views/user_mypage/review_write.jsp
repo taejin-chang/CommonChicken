@@ -86,11 +86,10 @@
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2 class="text-center">리뷰 작성</h2>
-			<form name="reviewWriteForm" id="myform">
+			<form name="reviewWriteForm" id="myform" enctype="multipart/form-data">
 					<!-- hidden으로 넘겨지는 값들 -->
-					<input type="hidden" name="ordDetailNum" value=""/>
-					<input type="hidden" name="memEmail" value="${loginMember.memEmail }"/>
-					<input type="hidden" name="cmNum" value=""/>
+					<input type="hidden" name="ordDetailNum" value="${ordDetailNum }"/>
+					<input type="hidden" name="cmNum" value="${ cmNum}"/>
 					
 					<table class="table table-striped">
 					<tr>
@@ -102,11 +101,11 @@
 						<td>별점</td>
 						<td>
 							<fieldset>
-								<input type="radio" name="revRated" value="1" id="rate1"><label for="rate1">⭐</label> 
-								<input type="radio" name="revRated" value="2" id="rate2"><label for="rate2">⭐</label> 
+								<input type="radio" name="revRated" value="5" id="rate1"><label for="rate1">⭐</label> 
+								<input type="radio" name="revRated" value="4" id="rate2"><label for="rate2">⭐</label> 
 								<input type="radio" name="revRated" value="3" id="rate3"><label for="rate3">⭐</label> 
-								<input type="radio" name="revRated" value="4" id="rate4"><label for="rate4">⭐</label> 
-								<input type="radio" name="revRated" value="5" id="rate5"><label for="rate5">⭐</label>
+								<input type="radio" name="revRated" value="2" id="rate4"><label for="rate4">⭐</label> 
+								<input type="radio" name="revRated" value="1" id="rate5"><label for="rate5">⭐</label>
 							</fieldset>
 						</td>
 					</tr>
@@ -134,29 +133,11 @@
 reviewWriteForm.stoNum.focus();
 
 	function submitCheck() {
-		if(reviewWriteForm.stoNum.value=="") {
-			alert("사업자번호를 입력해 주세요.");
-			reviewWriteForm.stoNum.focus();
-			return;
-		}
-		if(reviewWriteForm.stoCeo.value=="") {
-			alert("대표명을 입력해 주세요.");
-			reviewWriteForm.stoCeo.focus();
-			return;
-		}
-		if(reviewWriteForm.stoPhone.value=="") {
-			alert("전화번호를 입력해 주세요.");
-			reviewWriteForm.stoPhone.focus();
-			return;
-		}
-		if(reviewWriteForm.stoName.value=="") {
-			alert("상호명을 입력해 주세요.");
-			reviewWriteForm.stoName.focus();
-			return;
-		}
+		
+		
 		
 		reviewWriteForm.method="post";
-		reviewWriteForm.action="${pageContext.request.contextPath}/review_insert";
+		reviewWriteForm.action="${pageContext.request.contextPath}/review/write";
 		reviewWriteForm.submit();
 	} 
 	</script>

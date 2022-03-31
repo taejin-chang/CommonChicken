@@ -11,7 +11,7 @@ public interface ReviewMapper {
 	int insertReview(ReviewDTO review);
 	int updateReiew(ReviewDTO review);
 	ReviewDTO selectReview(int revNum);
-	int getReviewCount();
+	int getReviewCount(String memEmail);
 	List<ReviewVO> selectAllReview();
 	List<ReviewVO> selectPagerReview(Map<String, Object> map);
 }

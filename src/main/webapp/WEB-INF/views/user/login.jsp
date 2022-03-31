@@ -35,6 +35,14 @@
 		<script src="../assets/js/html5shiv.js"></script>
 		<script src="../assets/js/respond.js"></script>
 		<![endif]-->
+		<style type="text/css">
+		.login-box .toolbar > div {
+ 		  	 width: auto;
+   			 display: inline-block;
+   			 padding: 9px 0 11px;
+			}
+		
+		</style>
 	</head>
 
 	<body class="login-layout">
@@ -139,10 +147,6 @@
 								<div id="forgot-box1" class="forgot-box widget-box no-border">
 									<div class="widget-body">
 										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												아이디 찾기
-											</h4>
 
 											<div class="space-6"></div>
 											<p>
@@ -186,10 +190,6 @@
 								<div id="forgot-box" class="forgot-box widget-box no-border">
 									<div class="widget-body">
 										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												비밀번호 찾기
-											</h4>
 
 											<div class="space-6"></div>
 											<p>

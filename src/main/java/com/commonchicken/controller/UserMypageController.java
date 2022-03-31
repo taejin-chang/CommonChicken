@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.commonchicken.dto.OrderVO;
 import com.commonchicken.dto.ReviewDTO;
 import com.commonchicken.dto.ReviewVO;
 import com.commonchicken.dto.StoreDTO;
 import com.commonchicken.service.ReviewService;
 import com.commonchicken.service.StoreService;
+import com.commonchicken.service.UserOrderService;
 import com.commonchicken.util.Pager;
 
 
@@ -38,6 +42,10 @@ public class UserMypageController {
 	@Autowired
 	private ReviewService reviewService;
 	
+	@Autowired
+	private UserOrderService userOrderService;
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@RequestMapping("user/mypage")
@@ -46,13 +54,29 @@ public class UserMypageController {
 	}
 	
 	@RequestMapping("user/myCommon")
-	public String myCommonpage() {
+	public String myCommonpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
+		System.out.println("메소드작동전");
+		int totalBoard=userOrderService.getOrderCount((String)session.getAttribute("loginId"));
+		int pageSize=5;//하나의 페이지에 출력될 게시글의 갯수 저장
+		int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+		System.out.println(totalBoard);
+		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+		Map<String, Object> pagerMap=new HashMap<String, Object>();
+		pagerMap.put("startRow", pager.getStartRow());
+		pagerMap.put("endRow", pager.getEndRow());
+		pagerMap.put("memEmail", (String)session.getAttribute("loginId"));
+		
+		model.addAttribute("orderPagerList",userOrderService.selectPagerOrderList(pagerMap));
+		model.addAttribute("pager",pager);
+		System.out.println("메소드작동후");
+		
 		return "user_mypage/account-myads";
+		
 	}
 	
 	@RequestMapping("user/myBoard")
-	public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model) {
-		int totalBoard=reviewService.getReviewCount();
+	public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
+		int totalBoard=reviewService.getReviewCount((String)session.getAttribute("loginId"));
 		int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
 		int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
 		
@@ -61,6 +85,7 @@ public class UserMypageController {
 		Map<String, Object> pagerMap=new HashMap<String, Object>();
 		pagerMap.put("startRow", pager.getStartRow());
 		pagerMap.put("endRow", pager.getEndRow());
+		pagerMap.put("memEmail", (String)session.getAttribute("loginId"));
 		
 		model.addAttribute("reviewPagerList",reviewService.selectPagerReview(pagerMap));
 		model.addAttribute("pager",pager);
@@ -86,10 +111,58 @@ public class UserMypageController {
 	}
 	
 	
+	//리뷰작성하러들어가는 페이지
 	@RequestMapping("review/write")
-	public String reviewWrite() {
+	public String reviewWrite(@RequestParam int ordDetailNum,int cmNum,Model model) {
+		String ordDetailNum1=Integer.toString(ordDetailNum);
+		model.addAttribute("ordDetailNum",ordDetailNum1);
+		model.addAttribute("cmNum",cmNum);
 		return "user_mypage/review_write";
 	}
+	
+	//리뷰추가메소드
+	@RequestMapping(value = "review/write", method = RequestMethod.POST )
+	public String reviewInsert(@ModelAttribute ReviewDTO review,Model model,HttpSession session) throws IllegalStateException, IOException {
+		
+		if(!(review.getFile()==null)){
+			
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/review");
+			
+			String originalFileName=review.getFile().getOriginalFilename();
+			
+			System.out.println(originalFileName);
+			
+			File file=new File(uploadDirectory, originalFileName);
+			
+			String uploadFilename=originalFileName;
+			
+			int i=0;
+			while(file.exists()) {
+				i++;
+				int index=originalFileName.lastIndexOf(".");
+				uploadFilename=originalFileName.substring(0, index)+"_"+i+originalFileName.substring(index);
+				file=new File(uploadDirectory, uploadFilename);
+			}
+			
+			review.getFile().transferTo(file);
+			
+			review.setRevOrigin(originalFileName);
+			review.setRevUpload(uploadFilename);
+		}else {
+			review.setRevOrigin(review.getRevOrigin());
+			review.setRevUpload(review.getRevUpload());	
+		}
+		
+		
+		review.setMemEmail((String)session.getAttribute("loginId"));
+		
+		reviewService.insertReview(review);
+		System.out.println("리뷰작성 완료!");
+		return "user_mypage/account-home";
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "/store_apply", method = RequestMethod.POST)
 	public String storeApply(@ModelAttribute StoreDTO store) throws IllegalStateException, IOException {
@@ -166,56 +239,7 @@ public class UserMypageController {
 		
 		return "user_mypage/account-home";
 	}
-	
-	/*
-	@RequestMapping(value = "/board_list", method = RequestMethod.GET)
-	@ResponseBody
-	public Map<String, Object> restBoardList(@RequestParam(defaultValue = "1") int pageNum) {
-		//System.out.println("pageNum = "+pageNum);
-		
-		//REST_BOARD 테이블에 저장된 모든 게시글의 갯수를 검색하여 반환받아 저장
-		int totalBoard=restBoardService.getRestBoardCount();
-		int pageSize=5;//하나의 페이지에 출력될 게시글의 갯수 저장
-		int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
-		
-		//페이징 처리 관련 값을 제공하는 Pager 클래스로 객체를 생성하여 저장
-		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
-		
-		//RestBoardService 클래스의 메소드 호출을 위해 매개변수에 전달하기 위한 Map 객체 생성
-		// => 요청 페이지의 시작 행번호와 종료 행번호를 Map 객체의 엔트리로 저장하여 SQL 명령에 제공
-		Map<String, Object> pagerMap=new HashMap<String, Object>();
-		pagerMap.put("startRow", pager.getStartRow());
-		pagerMap.put("endRow", pager.getEndRow());
-		
-		//요청 처리 메소드의 반환값으로 사용될 Map 객체 생성
-		// => 요청 페이지에 대한 게시글 목록과 페이징 처리 관련 정보를 Map 객체의 엔트리로 저장하여 반환
-		Map<String, Object> returnMap=new HashMap<String, Object>();
-		returnMap.put("restBoardList", restBoardService.getRestBoardList(pagerMap));
-		returnMap.put("pager", pager);
-		
-		return returnMap;
-	}
-	*/
-	public String showReviewList(@RequestParam(defaultValue="1") int pageNum){
-		int totalBoard=reviewService.getReviewCount();
-		int pageSize=4;//하나의 페이지에 출력될 게시글의 갯수 저장
-		int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
-		
-		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
-		
-		Map<String, Object> pagerMap=new HashMap<String, Object>();
-		pagerMap.put("startRow", pager.getStartRow());
-		pagerMap.put("endRow", pager.getEndRow());
-		
-		Map<String, Object> returnMap=new HashMap<String, Object>();
-		returnMap.put("reviewList", reviewService.selectPagerReview(pagerMap));
-		returnMap.put("pager", pager);
-		
-		return "user_mypage/account-myboard";
-		
-	}
-	
-	
+
 	
 	
 	

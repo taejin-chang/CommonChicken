@@ -157,7 +157,7 @@
 									<c:forEach var="reviewPagerList" items="${reviewPagerList}">
 										<tr>
 											<td  class="add-img-selector">${reviewPagerList.revNum}</td>
-											<td  class="add-img-td">${reviewPagerList.revUpload}</td>
+											<td  class="add-img-td"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
 											<td  class="add-img-td">${reviewPagerList.prdName}</td>
 											<td  class="ads-details-td">${reviewPagerList.revContent}</td>
 											<td  class="price-td">${reviewPagerList.revRated}</td>

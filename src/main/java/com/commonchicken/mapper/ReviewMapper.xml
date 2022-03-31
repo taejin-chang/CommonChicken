@@ -19,7 +19,7 @@ private int revNum;
 			select review_seq.nextval from dual
 		</selectKey>
 		insert into review_tb (REV_NUM,ORD_DETAIL_NUM,MEM_EMAIL,CM_NUM,REV_CONTENT,REV_RATED,REV_DATE,REV_VIEWS,REV_ORIGIN,REV_UPLOAD)
-		values(#{revNum}, #{ordDetailNum}, #{memEmail}, #{cmNum}, #{revContent}, #{revRated}, #{revDate}, #{revViews}, #{revOrigin}, #{revUpload})
+		values(#{revNum}, #{ordDetailNum}, #{memEmail}, #{cmNum}, #{revContent}, #{revRated}, sysdate, 0, #{revOrigin}, #{revUpload})
 	</insert>
 	
 	<!-- 리뷰게시판용 -->
@@ -33,18 +33,16 @@ private int revNum;
 	
 	<!-- 마이페이지 리뷰용 -->
 	<select id="selectPagerReview" resultType="ReviewVO">
-		
 		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM,a.MEM_EMAIL MEM_EMAIL,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
 		from review_tb a
 		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
 		left join product_tb c on b.PRD_CODE = c.PRD_CODE
 		order by a.REV_DATE) board)
-		where rn between #{startRow} and #{endRow}
-		
+		where (rn between #{startRow} and #{endRow}) and (MEM_EMAIL =#{memEmail})
 	</select>
 	
 	<select id="getReviewCount" resultType="int">
-		select count(*) from review_tb
+		select count(*) from review_tb where MEM_EMAIL =#{memEmail}
 	</select>
 	
 	

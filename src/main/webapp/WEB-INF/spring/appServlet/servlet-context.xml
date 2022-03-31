@@ -30,6 +30,8 @@
 	<resources mapping="/scss/**" location="/resources/scss/" />
 	<resources mapping="/images/**" location="/resources/images/" />
 	<resources mapping="/profile/**" location="/resources/profile/" />
+	<resources mapping="/review/**" location="/resources/review/" />
+	<resources mapping="/storeImg/**" location="/resources/storeImg/" />
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 

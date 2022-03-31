@@ -31,8 +31,8 @@ public class ReviewServiceImpl implements ReviewService{
 	}
 
 	@Override
-	public int getReviewCount() {
-		return reviewDAO.getReviewCount();
+	public int getReviewCount(String memEmail) {
+		return reviewDAO.getReviewCount(memEmail);
 	}
 
 	@Override

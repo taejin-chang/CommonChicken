@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Fav and touch icons -->
@@ -150,22 +151,22 @@
 							<div id="fuelux-wizard-container">
 								<!-- #section:plugins/fuelux.wizard.steps -->
 								<ul class="steps">
-									<li data-step="1" class="active"><span class="step">1</span>
+									<li id="zero" data-step="1" ><span class="step">1</span>
 										<span class="title">입금대기</span></li>
 
-									<li data-step="2" class="active"><span class="step">2</span> <span
+									<li id="one" data-step="2" ><span class="step">2</span> <span
 										class="title">주문접수</span></li>
 
-									<li data-step="3" class="active"><span class="step">3</span> <span
+									<li id="three" data-step="3" ><span class="step">3</span> <span
 										class="title">커먼완료</span></li>
 
-									<li data-step="4" class="active"><span class="step">4</span> <span
-										class="title">배달시작</span></li>
-									<li data-step="4"><span class="step">5</span> <span
+									<li id="four" data-step="4" ><span class="step">4</span> <span
+										class="title">배달중</span></li>
+									<li id="five" data-step="4"><span class="step">5</span> <span
 										class="title">배달완료</span></li>
-									<li data-step="4"><span class="step">6</span> <span
+									<li id="six" data-step="4"><span class="step">6</span> <span
 										class="title">커먼실패</span></li>
-									<li data-step="4"><span class="step">7</span> <span
+									<li id="seven" data-step="4"><span class="step">7</span> <span
 										class="title">주문취소</span></li>
 									
 								</ul>
@@ -177,17 +178,7 @@
 								<div class="table-action">
 
 									<hr>
-									<!--  
-									<div class="table-search pull-right col-xs-7">
-										<div class="form-group">
-											<label class="col-xs-5 control-label text-right">검색
-											</label>
-											<div class="col-xs-7 searchpan">
-												<input type="text" class="form-control" id="filter">
-											</div>
-										</div>
-									</div>
-									-->
+									
 								</div>
 								<table id="addManageTable"
 									class="table table-striped table-bordered add-manage-table table demo"
@@ -196,48 +187,77 @@
 										<tr>
 											<th style="width: 10%">주문번호</th>
 											<th style="width: 20%">점포명</th>
-											<th style="width: 20%">결제금액</th>
+											<th style="width: 10%">주문주소</th>
 											<th style="width: 20%">요청사항</th>
-											<th >주문상세</th>
+											<th >주문상태</th>
 											<th style="width: 10%">리뷰쓰기</th>
+											<th style="width: 10%">상태보기</th>
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="orderPagerList" items="${orderPagerList}">
 										<tr>
-											<td class="add-img-selector"><div class="checkbox">
-													<label> <input type="checkbox">
-													</label>
-												</div></td>
-											<td class="add-img-td"></td>
-											<td class="ads-details-td"><div>
-													<p>
-														<strong> <a href="ads-details.html"
-															title="Brend New Nexus 4">30,000원</a>
-														</strong>
-													</p>
-
-												</div></td>
-											<td class="price-td"><div>
-													<strong> 빨리와주세요</strong>
-												</div></td>
-											<td class="action-td"><div>
-													교촌치킨순살 1개
-													
-												</div></td>
-											<td class="action-td"><div>
-													<p>
-														<a class="btn btn-primary btn-xs"> <i
-															class="fa fa-edit"></i> 리뷰작성
-														</a>
-													</p>
-													
-												</div></td>	
-												
+											<td  class="add-img-selector">${orderPagerList.ordDetailNum}</td>
+											<td  class="add-img-td">${orderPagerList.stoName}</td>
+											<td  class="add-img-td">${orderPagerList.ordAdd2}</td>
+											<td  class="ads-details-td">${orderPagerList.ordRequest}</td>
+											<td  id="number" class="price-td" >
+												<c:choose>
+													<c:when test="${orderPagerList.ordStatus eq 0}">
+														입금 대기													
+													</c:when>
+													<c:when test="${orderPagerList.ordStatus eq 1}">
+														주문 접수													
+													</c:when>
+													<c:when test="${orderPagerList.ordStatus eq 2}">
+														커먼완료													
+													</c:when>
+													<c:when test="${orderPagerList.ordStatus eq 3}">
+														배달중													
+													</c:when>
+													<c:when test="${orderPagerList.ordStatus eq 4}">
+														배달완료													
+													</c:when>
+													<c:when test="${orderPagerList.ordStatus eq 5}">
+														커먼실패													
+													</c:when>
+													<c:otherwise>
+														주문취소
+													</c:otherwise>
+												</c:choose>
+											</td>
+											<td  class="action-td">
+											<a href="<c:url value='/review/write'/>?ordDetailNum=${ orderPagerList.ordDetailNum}&cmNum=${ orderPagerList.cmNum}" 
+											class="btn btn-primary btn-xs"> <i class="fa fa-edit"></i>리뷰작성
+														</a></td>
+											<td  class="ads-details-td"><button type="button" onclick="viewMenu(${orderPagerList.ordStatus});">보기</button></td>
 										</tr>
-
-
+										</c:forEach>
 									</tbody>
 								</table>
+								<c:choose>
+									<c:when test="${pager.startPage } gt ${pager.blockSize }">
+										<a href="<c:url value='/user/myBoard'/>">[처음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+									</c:when>
+									<c:otherwise>
+										[처음] [이전]
+									</c:otherwise>
+								</c:choose>
+								
+								<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }">
+									<a href="<c:url value='/user/myCommon'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+								</c:forEach>
+								
+								<c:choose>
+									<c:when test="${pager.startPage }>${pager.blockSize }">
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${pager.endPage}">[마지막]</a>
+									</c:when>
+									<c:otherwise>
+										[다음] [마지막]
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<!--/.row-box End-->
 
@@ -250,14 +270,54 @@
 			<!--/.container-->
 		</div>
 		<!-- /.main-container -->
-
+</div>
 
 	<!-- Le javascript
 ================================================== -->
+	<script type="text/javascript">
+		
+       $('#fuelux-wizard-container').hide();
+		
+       function viewMenu(status) {
+    	  if(status==0){ 
+          document.getElementById('zero').className = 'active'
+ 	   	  
+    	  }else if(status==1){
+          document.getElementById('zero').className = 'active'
+          document.getElementById('one').className = 'active'
+    		
+    	  }else if(status==2){
+          document.getElementById('zero').className = 'active'
+          document.getElementById('one').className = 'active'
+          document.getElementById('two').className = 'active'
+    		  
+    	  }else if(status==3){
+          document.getElementById('zero').className = 'active'
+          document.getElementById('one').className = 'active'
+          document.getElementById('two').className = 'active'
+          document.getElementById('three').className = 'active'
+    		  
+    	  }else if(status==4){
+          document.getElementById('zero').className = 'active'
+          document.getElementById('one').className = 'active'
+          document.getElementById('two').className = 'active'
+          document.getElementById('three').className = 'active'
+          document.getElementById('four').className = 'active'
+    		  
+    	  }else if(status==5){
 
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+          document.getElementById('five').className = 'active'
+    		  
+    	  }else{
+	  
+    	  document.getElementById('six').className = 'active'	  
+    	  }
+          
+          
+          
+          $('#fuelux-wizard-container').show();
+       };
+       
 		
 	</script>
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.min.js"></script>
