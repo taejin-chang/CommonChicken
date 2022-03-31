@@ -150,6 +150,7 @@
                                   <c:when test="${product.prdCategory=='0'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
+	                                    	<input type="hidden" value="${product.prdCode}">
 		                                    <a href="javascript:prdmenu(this);"><FONT size="4px" color="black"><strong>${product.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
@@ -171,6 +172,7 @@
                                   <c:when test="${product.prdCategory=='1'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
+	                                    	<input type="hidden" value="${product.prdCode}">
 		                                    <a href="javascript:prdmenu(this);"><FONT size="4px" color="black"><strong>${product.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
@@ -193,6 +195,7 @@
                                   <c:when test="${product.prdCategory=='2'}">
                                     <div class="row">
 	                                    <div class="col-xs-6 text-left">
+	                                    	<input type="hidden" value="${product.prdCode}">
 		                                    <a href="javascript:prdmenu(this);"><FONT size="4px" color="black"><strong>${product.prdName}</strong></FONT></a>
 		                                    <br>
 		                                    <ul class="blog__item__widget">
@@ -416,13 +419,15 @@
 									    <span>주문표</span>
 									   </div>
 									   <form name="ordersheet">
+									   <c:forEach var="commons" items="${commonStore}">
+									   <input name="stoPayment"type="hidden" value="${commons.storeDTO.stoPayment }">
 									  <div class="cart">
 									    <ul class="list-group">
 									    </ul>
 										<ul>
 									      <li class="list-group-item d-flex justify-content-between">
 				                                <span class="menu-name ng-binding">합계</span>
-				                                <strong class="order-price ng-binding"><input type="text" id="order-total" value="" style="border:0 solid black"></strong>
+				                                <strong class="order-price ng-binding"><input type="text" name="ordertotal" id="order-total" style="border:0 solid black"></strong>
 				                          </li>
 				                        </ul>  
 										<!-- 
@@ -432,6 +437,7 @@
 										 -->
 										 
 										 </div>
+										 </c:forEach>
 										 </form>
 									    <div class="cart-btn clearfix">
 									      <button type="button" onclick="ordercommon();"class="btn btn-lg btn-ygy1 btn-block">주문하기</button>
@@ -451,7 +457,8 @@
         
     <script type="text/javascript">
     	var t;
-    	var t_price;
+    	var orderprice;
+    	var prdCode;
 
 	    function viewMenu() {
 		    $('#menu').show();
@@ -508,22 +515,23 @@
 			
 		    $(".list-group").append(
 		    		"<li class='list-group-item clearfix ng-scope'>"+
+		    		"<input name='prdCode' type='hidden' value='"+prdCode+"' >"+
 		          	"<div class='menu-name ng-binding' name='ordprdname'>"+t+"</div>"+
 		          	"<div class='row'>"+
 			            "<div class='col-xs-6 pull-left'>"+
 			              "<button class='btn btn-del-menu'>삭제</button>"+
-			              "<span class='order-price ng-binding'><input type='hidden' id='order-price' value='"+t_price+"' style='border:0 solid black' name='ordprdprice'>"+t_price+"</span>"+
+			              "<span class='order-price ng-binding'><input type='hidden' id='orderprice' value='"+orderprice+"' style='border:0 solid black' name='ordprdprice'>"+orderprice+"</span>"+
 			           	"</div>"+
 			           	"<div class='col-xs-6 text-right'>"+
 			              "<button class='btn btn-min'></button>"+
-			              "<input name='ordprdamount'class='order-num ng-binding' value='1' style='width:20px; border:0px' type='text' readonly='readonly'/>"+
+			              "<input name='ordprdamount' class='order-num ng-binding' value='1' style='width:20px; border:0px' type='text' readonly='readonly'/>"+
 			              "<button class='btn btn-pl'></button>"+
 			            "</div>"+
 			        "</div>"+
 			      "</li>"
 		    )
 	    	var sum = 0;
-	    	$("input#order-price").each(function(){
+	    	$("input#orderprice").each(function(){
 	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
 	    	});
 	    	$('input[id=order-total]').val(sum+'원');
@@ -532,9 +540,11 @@
 	    $(document).on('click','.btn-pl', function(){
 	    	var quantity = $(this).parent('div').find('input').val();
 	    	$(this).parent("div").find("input").val(++quantity);
+    		console.log(quantity);
+
 	    	
 	    	var sum = 0;
-	    	$("input#order-price").each(function(){
+	    	$("input#orderprice").each(function(){
 	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
 	    	});
 	    	$('input[id=order-total]').val(sum+'원');
@@ -543,10 +553,11 @@
 	    $(document).on('click','.btn-min', function(){
 	    	var quantity = $(this).parent('div').find('input').val();
 	    	if(quantity > 1){
-	    		$(this).parent('div').find('input').val(--quantity);		
+	    		$(this).parent('div').find('input').val(--quantity);
+	    		console.log(prdCode||quantity);
 	    	}
 	    	var sum = 0;
-	    	$("input#order-price").each(function(){
+	    	$("input#orderprice").each(function(){
 	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
 	    	});
 	    	$('input[id=order-total]').val(sum+'원');
@@ -554,7 +565,7 @@
 	    $(document).on('click','.btn-del-menu', function(){
 	    	$(this).parent().parent().parent('li').remove();
 	    	var sum = 0;
-	    	$("input#order-price").each(function(){
+	    	$("input#orderprice").each(function(){
 	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
 	    	});
 	    	$('input[id=order-total]').val(sum+'원');
@@ -562,7 +573,7 @@
 	    
 	    $(document).ready(function totalprice() {
 	    	var sum = 0;
-	    	$("input#order-price").each(function(){
+	    	$("input#orderprice").each(function(){
 	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
 	    	});
 	    	$('input[id=order-total]').val(sum+'원');
@@ -570,7 +581,9 @@
 	    
 	    $(document).on('click', '#menudiv a', function() {
     		    t = $(this).text();
-    			t_price = $(this).parent().find("li").text();
+    		    orderprice = $(this).parent().find("li").text();
+    			prdCode = $(this).parent().find("input").val();
+    			
     	});
 	    /*
 	    $(document).ready(function() {
@@ -593,7 +606,7 @@
 	    
 	    function ordercommon() {
 	    	ordersheet.method="post";
-	    	ordersheet.action="${pageContext.request.contextPath}/order";
+	    	ordersheet.action="${pageContext.request.contextPath}/order?stoNum=${stoNum}&cmNum=${cmNum}";
 	    	ordersheet.submit();
 		}
 	    

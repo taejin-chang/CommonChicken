@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -15,7 +17,7 @@
     <meta name="description" lang="en" content="Checkout Bootstrap 4 pricing template , Responsive and Modern HTML5 Template made from bootstrap 4.">
     <meta name="keywords" lang="en" content="pricing template, bootstrap 4 template,bootstrap 4 checkout template, responsive bootstrap 4 template, bootstrap 4, bootstraping, bootstrap4, oribitthemes">
     <meta name="robots" content="index, follow">
-    <link rel="shortcut icon" href="${pageContext.request.contextPath }img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <meta name="description" content="">    
     <title>Directing | Template</title>
 
@@ -57,39 +59,36 @@
                     <h2 class="my-3">주&nbsp;&nbsp;문</h2>
                 </div>
                 <div class="row py-5">
+        <form name="orderlist">
                     <div class="col-md-4 order-md-2 mb-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-muted">상품 정보</span>
-                            <span class="badge badge-secondary badge-pill">3</span>
                         </h4>
                         <ul class="list-group mb-3">
+                        	<li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                	<h6 class="my-0">상품명</h6>
+                                </div>
+                                <span class="text-muted">&nbsp;상품가격</span>
+                                <span class="text-muted">수량</span>
+                            </li>
+                        <c:forEach var="productlist" items="${productList}" varStatus="status">
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <h6 class="my-0">양념치킨</h6>
-                                    <small class="text-muted">Brief description</small>
+                                    <h6 class="my-0">${productlist.prdName}</h6>
+                                    <input name="prdName" type="hidden" value="${productlist.prdName}">
+                                    <input name="prdCode" type="hidden" value="${productlist.prdCode }">
                                 </div>
-                                <span class="text-muted">1</span>
-                                <span class="text-muted">18,000원</span>
+                                <span class="text-muted">${productlist.prdPrice}</span>
+                                <input name="prdPrice" type="hidden" value="${productlist.prdPrice}">
+                                <span class="text-muted">${amountList[status.index]}</span>
+                                <input name="prdAmount" type="hidden" value="${amountList[status.index]}">
                             </li>
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">후라이드치킨</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">3</span>
-                                <span class="text-muted">16,000원</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                <div>
-                                    <h6 class="my-0">콜라</h6>
-                                    <small class="text-muted">Brief description</small>
-                                </div>
-                                <span class="text-muted">2</span>
-                                <span class="text-muted">2,500원</span>
-                            </li>
+						</c:forEach>                            
+                            
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>합계</span>
-                                <strong>36,500원</strong>
+                                <strong>${ordertotal }</strong>
                             </li>
                         </ul>
                     </div>
@@ -107,35 +106,32 @@
                               </div>
                             </div>
                         <h4 class="mb-3">배송지 정보</h4>
-                        <form class="needs-validation" novalidate>
                             <div class="mb-3">
                                 <label for="username">받는 사람</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="username" placeholder="Username" required>
-                                    <div class="invalid-feedback" style="width: 100%;">
-                                        이름
-                                    </div>
+                                    <input type="text" class="form-control" id="username" name="" placeholder="Username" required value="${loginMember.memName}">
+                                    <input type="hidden" name="memEmail" value="${loginMember.memEmail}">
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="address">주소</label>
                                 <div class="row">
 	                                <div class="col-md-4 mb-1">
-		                                <input class="form-control" type="text" id="sample4_postcode" placeholder="우편번호">
+		                                <input class="form-control" type="text" id="sample4_postcode" name="ordZipcode" placeholder="우편번호" value="${loginMember.memZipCode}">
 		                            </div><div class="col-md-3 mb-3">    
 										<input class="btn btn-primary btn-md btn-block" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 									</div>	
 								</div>
                                 <div class="row">
                                 	<div class="col-md-6 mb-1">                                
-									<input class="form-control" type="text" id="sample4_roadAddress" placeholder="도로명주소">
+									<input class="form-control" type="text" id="sample4_roadAddress" name="ordAdd1" placeholder="도로명주소" value="${loginMember.memAdd1}">
 									</div>
                                 	<div class="col-md-6 mb-1">
-									<input class="form-control" type="text" id="sample4_jibunAddress" placeholder="지번주소">
+									<input class="form-control" type="text" id="sample4_jibunAddress" placeholder="지번주소" value="">
 									</div>                                	
 									<div class="col-md-4 mb-3">
 									<span id="guide" style="color:#999;display:none"></span>
-									<input class="form-control" type="text" id="sample4_detailAddress" placeholder="상세주소">
+									<input class="form-control" type="text" id="sample4_detailAddress" name="ordAdd2" placeholder="상세주소" value="${loginMember.memAdd2}">
 									</div>                                	
 								</div>
 							</div>
@@ -156,32 +152,32 @@
                                 <label for="mobile">휴대전화</label>
 	                            <div class="row">
 	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+	                                    <input type="text" class="form-control" id="firstName" name="phone1" value="${fn:substring(loginMember.phone, 0, 2)}" required>
 	                                </div>
 	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+	                                    <input type="text" class="form-control" id="lastName" name="phone2" value="${fn:substring(loginMember.phone, 4, 8)}" required>
 	                                </div>
 	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+	                                    <input type="text" class="form-control" id="lastName" name="phone3" value="${fn:substring(loginMember.phone, 10, 13)}" required>
 	                                </div>
 	                            </div>
 							</div>	
-
+							<!--  
                             <div class="mb-3">
                                 <label for="email">이메일
                                     <span class="text-muted">(Optional)</span>
                                 </label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com" value="${loginMember.memAdd2}">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
                             </div>
-
+							-->
 
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="country">요청사항</label>
-                                    <select class="w-100" id="country" required>
+                                    <select class="w-100" id="country" required name="ordRequest">
                                         <option value="">Choose...</option>
                                         <option>현관문 앞에 두고 가라</option>
                                         <option>1층 앞에 두고 가라</option>
@@ -195,11 +191,11 @@
                             <div class="col-md-6 mb-3">
                               <div class="row">
                                 <div class="col-4 custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onchange="setDisplay()" required>
+                                    <input id="credit" name="paymentMethod" type="radio" value="0" class="custom-control-input" onchange="setDisplay()" required>
                                     <label class="custom-control-label" for="credit">신용카드</label>
                                 </div>
                                 <div class="col-4 custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="setDisplay()" required>
+                                    <input id="paypal" name="paymentMethod" type="radio" value="1" class="custom-control-input" onchange="setDisplay()" required>
                                     <label class="custom-control-label" for="paypal">무통장입금</label>
                                 </div>
                               </div>
@@ -239,9 +235,9 @@
 	                                <label class="custom-control-label" for="same-address">모든 약관 동의</label>
 	                            </div>
                             </div>
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">결제하기</button>
-                        </form>
                     </div>
+                            </form>
+                            <button type="button" onclick="orderinsert();" class="btn btn-primary btn-lg btn-block">결제하기</button>
                 </div>
             </div>
             
@@ -251,9 +247,6 @@
         </section>
     </main>
     <!-- Blog Section End -->
-
-
-   
 
     <!-- Js Plugins -->
     <script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
@@ -326,13 +319,25 @@
     }
 </script>
     <script type="text/javascript">
+    var cmNum = ${param.cmNum};
+    var stoNum = ${param.stoNum};
+    //var ordprdamount = ${amountList};
+    //var ordprdprice = ${ordprdprice};
+   // console.log=ordprdamount;
+    
     function setDisplay() {
         if($('input:radio[id=paypal]').is(':checked')){
             $('#account_view').show();
-        }else{
+        } else{
             $('#account_view').hide();
         }
     };	
+    
+    function orderinsert() {
+    	orderlist.method="post";
+    	orderlist.action="${pageContext.request.contextPath}/payment?cmNum=${cmNum}";
+    	orderlist.submit();
+	}
     </script>
 </body>
 

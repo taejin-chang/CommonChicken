@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chicken.mapper.MemberMapper">
+<mapper namespace="com.commonchicken.mapper.ProductMapper">
+	<resultMap type="SearchProductVO" id="SearchProductResultMap">
+		<id column="prd_code" property="prdCode"/>
+		<result column="prd_name" property="prdName"/>
+		<result column="prd_price" property="prdPrice"/>
+		<collection property="prdCodelist" ofType="String"/>
+	</resultMap>
+
+
 	<insert id="insertProduct">
 		insert into product_tb values(#{prd_code}, #{prd_name}, #{prd_price}, #{prd_category}, #{prd_status}, #{sto_num}, #{mem_email}
 	</insert> 
 									
 	<select id="selectProductList" resultType="ProductDTO">
 		select * from product_tb order by prd_code
+	</select>
+
+	<select id="selectProduct" parameterType="map" resultMap="SearchProductResultMap">
+		select * from product_tb
+		<if test="prdCodelist!=null">
+		where
+			<foreach collection="prdCodelist" item="item" index="index" open="(" close=")" separator="or">
+			prd_code = #{item}
+			</foreach>
+		</if>
 	</select>
 </mapper>

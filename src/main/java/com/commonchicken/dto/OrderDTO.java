@@ -1,7 +1,7 @@
 package com.commonchicken.dto;
 
 public class OrderDTO {
-	private String ordDetailNum;
+	private int ordDetailNum;
 	private String memEmail;
 	private int cmNum;
 	private String ordBundleNum;
@@ -18,12 +18,12 @@ public class OrderDTO {
 	public OrderDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
-	public String getOrdDetailNum() {
+	
+	public int getOrdDetailNum() {
 		return ordDetailNum;
 	}
 
-	public void setOrdDetailNum(String ordDetailNum) {
+	public void setOrdDetailNum(int ordDetailNum) {
 		this.ordDetailNum = ordDetailNum;
 	}
 
