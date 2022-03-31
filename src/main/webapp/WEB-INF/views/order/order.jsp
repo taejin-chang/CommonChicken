@@ -25,17 +25,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/flaticon.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/barfiller.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/magnific-popup.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css" type="text/css">
     
 </head>
 
@@ -58,8 +47,8 @@
                     <i class="fa fa-credit-card fa-3x text-primary"></i>
                     <h2 class="my-3">주&nbsp;&nbsp;문</h2>
                 </div>
-                <div class="row py-5">
         <form name="orderlist">
+                <div class="row py-5">
                     <div class="col-md-4 order-md-2 mb-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-muted">상품 정보</span>
@@ -235,10 +224,10 @@
 	                                <label class="custom-control-label" for="same-address">모든 약관 동의</label>
 	                            </div>
                             </div>
-                    </div>
-                            </form>
                             <button type="button" onclick="orderinsert();" class="btn btn-primary btn-lg btn-block">결제하기</button>
+                    </div>
                 </div>
+                            </form>
             </div>
             
             <!--  <a href="#" class="btn btn-primary scrollUp">
@@ -249,16 +238,8 @@
     <!-- Blog Section End -->
 
     <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath }/js/jquery.nice-select.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery-ui.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery.nicescroll.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery.barfiller.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery.magnific-popup.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath }/js/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath }/js/main.js"></script>
     <script src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -319,8 +300,8 @@
     }
 </script>
     <script type="text/javascript">
-    var cmNum = ${cmNum};
-    var stoNum = ${stoNum};
+    //var cmNum = ${cmNum};
+   // var stoNum = ${stoNum};
     //var ordprdamount = ${amountList};
     //var ordprdprice = ${ordprdprice};
    // console.log=ordprdamount;

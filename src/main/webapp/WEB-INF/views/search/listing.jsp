@@ -208,6 +208,7 @@
 
     <!-- Listing Section Begin -->
     <section class="listing nice-scroll" style="padding-top: 20px;">
+    <!--  
         <div class="listing__text__top">
             <div class="listing__text__top__left">
                 <h5>점포</h5>
@@ -219,7 +220,7 @@
 	            <i class="fa fa-sort-amount-asc"></i>
             </div>
         </div>
-        
+        -->
         
 
         

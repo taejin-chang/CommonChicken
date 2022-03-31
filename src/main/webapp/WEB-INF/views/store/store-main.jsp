@@ -519,13 +519,13 @@
 		          	"<div class='menu-name ng-binding' name='ordprdname'>"+t+"</div>"+
 		          	"<div class='row'>"+
 			            "<div class='col-xs-6 pull-left'>"+
-			              "<button class='btn btn-del-menu'>삭제</button>"+
+			              "<button type='button' class='btn btn-del-menu'>삭제</button>"+
 			              "<span class='order-price ng-binding'><input type='hidden' id='orderprice' value='"+orderprice+"' style='border:0 solid black' name='ordprdprice'>"+orderprice+"</span>"+
 			           	"</div>"+
 			           	"<div class='col-xs-6 text-right'>"+
-			              "<button class='btn btn-min'></button>"+
+			              "<button type='button' class='btn btn-min'></button>"+
 			              "<input name='ordprdamount' class='order-num ng-binding' value='1' style='width:20px; border:0px' type='text' readonly='readonly'/>"+
-			              "<button class='btn btn-pl'></button>"+
+			              "<button type='button' class='btn btn-pl'></button>"+
 			            "</div>"+
 			        "</div>"+
 			      "</li>"
