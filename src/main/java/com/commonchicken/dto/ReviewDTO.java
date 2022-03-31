@@ -14,16 +14,16 @@ REV_VIEWS               NUMBER
 import org.springframework.web.multipart.MultipartFile;
 
 public class ReviewDTO {
-	private int revNum;
-	private String ordDetailNum;
-	private String memEmail;
-	private int cmNum;
+	private int revNum;//
+	private String ordDetailNum;//
+	private String memEmail;//
+	private int cmNum;//
 	private String revContent;
 	private int revRated;
-	private String revDate;
+	private String revDate;//
 	private int revViews;
-	private String revOrigin;
-	private String revUpload;
+	private String revOrigin;//
+	private String revUpload;//
 	private MultipartFile file;
 	
 	public MultipartFile getFile() {

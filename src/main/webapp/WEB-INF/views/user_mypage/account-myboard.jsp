@@ -137,78 +137,6 @@
 
 					<div class="col-sm-9 page-content">
 						<div class="inner-box">
-							<h2 class="title-2">
-								<i class="icon-docs"></i> 공동주문 모집
-							</h2>
-							
-							<div class="table-responsive">
-								<div class="table-action">
-									<!-- 검색버튼 -->
-									<!--  
-									<div class="table-search pull-right col-xs-7">
-										<div class="form-group">
-											<label class="col-xs-5 control-label text-right">검색
-											</label>
-											<div class="col-xs-7 searchpan">
-												<input type="text" class="form-control" id="filter">
-											</div>
-										</div>
-									</div>
-									-->
-								</div>
-								<table id="addManageTable"
-									class="table table-striped table-bordered add-manage-table table demo"
-									data-filter="#filter" data-filter-text-only="true">
-									<thead>
-										<tr>
-											<th style="width: 20%">글번호</th>
-											<th style="width: 20%">제목</th>
-											<th style="width: 20%">조회수</th>
-											<th style="width: 20%">결제금액</th>
-											<th style="width: 20%">요청사항</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td  class="add-img-selector"><div
-													class="checkbox">
-													<label> <input type="checkbox">
-													</label>
-												</div></td>
-											<td  class="add-img-td"></td>
-											<td  class="ads-details-td"><div>
-													<p>
-														<strong> <a href="ads-details.html"
-															title="Brend New Nexus 4">Brend New Nexus 4</a>
-														</strong>
-													</p>
-													
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="action-td"><div>
-													<p>
-														<a class="btn btn-primary btn-xs"> <i
-															class="fa fa-edit"></i> Edit
-														</a>
-													</p>
-													<p>
-														<a class="btn btn-info btn-xs"> <i
-															class="fa fa-mail-forward"></i> Share
-														</a>
-													</p>
-													<p>
-														<a class="btn btn-danger btn-xs"> <i
-															class=" fa fa-trash"></i> Delete
-														</a>
-													</p>
-												</div></td>
-										</tr>
-										
-										
-									</tbody>
-								</table>
 								<h2 class="title-2">
 									<i class="icon-heart"></i> 내 리뷰
 								</h2>
@@ -217,54 +145,35 @@
 									data-filter="#filter" data-filter-text-only="true">
 									<thead>
 										<tr>
-											<th style="width: 20%">글번호</th>
-											<th style="width: 20%">제목</th>
-											<th style="width: 20%">조회수</th>
-											<th style="width: 20%">결제금액</th>
-											<th style="width: 20%">요청사항</th>
+											<th style="width: 10%">번호</th>
+											<th >사진</th>
+											<th style="width: 15%">상품명</th>
+											<th style="width: 20%">내용</th>
+											<th style="width: 10%">별점</th>
+											<th style="width: 10%">작성일</th>
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="reviewPagerList" items="${reviewPagerList}">
 										<tr>
-											<td  class="add-img-selector"><div
-													class="checkbox">
-													<label> <input type="checkbox">
-													</label>
-												</div></td>
-											<td  class="add-img-td"></td>
-											<td  class="ads-details-td"><div>
-													<p>
-														<strong> <a href="ads-details.html"
-															title="Brend New Nexus 4">Brend New Nexus 4</a>
-														</strong>
-													</p>
-													
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="action-td"><div>
-													<p>
-														<a class="btn btn-primary btn-xs"> <i
-															class="fa fa-edit"></i> Edit
-														</a>
-													</p>
-													<p>
-														<a class="btn btn-info btn-xs"> <i
-															class="fa fa-mail-forward"></i> Share
-														</a>
-													</p>
-													<p>
-														<a class="btn btn-danger btn-xs"> <i
-															class=" fa fa-trash"></i> Delete
-														</a>
-													</p>
-												</div></td>
+											<td  class="add-img-selector">${reviewPagerList.revNum}</td>
+											<td  class="add-img-td">${reviewPagerList.revUpload}</td>
+											<td  class="add-img-td">${reviewPagerList.prdName}</td>
+											<td  class="ads-details-td">${reviewPagerList.revContent}</td>
+											<td  class="price-td">${reviewPagerList.revRated}</td>
+											<td  class="action-td">${fn:substring(reviewPagerList.revDate,5,10)}</td>
 										</tr>
 										
-										
+										</c:forEach>
 									</tbody>
 								</table>
+								<c:choose>
+									<c:when test="${pager.startPage }>${pager.blockSize }">
+										<a href="<c:url value='user/myBoard'/>">[처음]</a>
+										<a href="<c:url value='user/myBoard'/>">[이전]</a>
+									</c:when>
+								</c:choose>
+								
 								
 							</div>
 							<!--/.row-box End-->
@@ -307,7 +216,10 @@
 	<script src="${pageContext.request.contextPath }/assets/js/footable.js?v=2-0-1" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/footable.filter.js?v=2-0-1"
 		type="text/javascript"></script>
+	
 	<script type="text/javascript">
+	
+	
 		$(function() {
 			$('#addManageTable').footable().bind(
 					'footable_filtering',

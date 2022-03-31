@@ -1,12 +1,14 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.commonchicken.dto.ReviewDTO;
+import com.commonchicken.dto.ReviewVO;
 import com.commonchicken.mapper.ReviewMapper;
 @Repository
 public class ReviewDAOImpl implements ReviewDAO{
@@ -30,8 +32,18 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 
 	@Override
-	public List<ReviewDTO> selectAllReview() {
+	public List<ReviewVO> selectPagerReview(Map<String, Object> map) {
+		return sqlSession.getMapper(ReviewMapper.class).selectPagerReview(map);
+	}
+
+	@Override
+	public List<ReviewVO> selectAllReview() {
 		return sqlSession.getMapper(ReviewMapper.class).selectAllReview();
+	}
+
+	@Override
+	public int getReviewCount() {
+		return sqlSession.getMapper(ReviewMapper.class).getReviewCount();
 	}
 
 }

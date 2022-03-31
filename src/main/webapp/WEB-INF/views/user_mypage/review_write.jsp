@@ -70,45 +70,56 @@
 		</div>
 	</div>
 	<!-- Filter End -->
+	<!--
+	private int revNum;//자동추가
+	private String ordDetailNum;//
+	private String memEmail;//
+	private int cmNum;//
+	private String revContent;
+	private int revRated;
+	private String revDate;//자동추가
+	private int revViews;
+	private String revOrigin;//
+	private String revUpload;//
+	private MultipartFile file; -->
 	<div class="row" style="margin: 150px 1% 1% 1%;">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<h2 class="text-center">리뷰 작성</h2>
-			<form action="BoardWriterProc.jsp"name="myform" id="myform" method="post">
-				<table class="table table-striped">
+			<form name="reviewWriteForm" id="myform">
+					<!-- hidden으로 넘겨지는 값들 -->
+					<input type="hidden" name="ordDetailNum" value=""/>
+					<input type="hidden" name="memEmail" value="${loginMember.memEmail }"/>
+					<input type="hidden" name="cmNum" value=""/>
 					
+					<table class="table table-striped">
 					<tr>
 						<td>이미지</td>
-						<td><input type="file" name="email"></td>
+						<td><input type="file" name="file"></td>
 					</tr>
 
 					<tr>
 						<td>별점</td>
 						<td>
 							<fieldset>
-								<input type="radio" name="rating" value="5" id="rate1"><label
-									for="rate1">⭐</label> <input type="radio" name="rating"
-									value="4" id="rate2"><label for="rate2">⭐</label> <input
-									type="radio" name="rating" value="3" id="rate3"><label
-									for="rate3">⭐</label> <input type="radio" name="rating"
-									value="2" id="rate4"><label for="rate4">⭐</label> <input
-									type="radio" name="rating" value="1" id="rate5"><label
-									for="rate5">⭐</label>
+								<input type="radio" name="revRated" value="1" id="rate1"><label for="rate1">⭐</label> 
+								<input type="radio" name="revRated" value="2" id="rate2"><label for="rate2">⭐</label> 
+								<input type="radio" name="revRated" value="3" id="rate3"><label for="rate3">⭐</label> 
+								<input type="radio" name="revRated" value="4" id="rate4"><label for="rate4">⭐</label> 
+								<input type="radio" name="revRated" value="5" id="rate5"><label for="rate5">⭐</label>
 							</fieldset>
-
-
 						</td>
 					</tr>
 
 					<tr>
 						<td>내용</td>
-						<td><textarea rows="10" cols="50" name="content"
+						<td><textarea rows="10" cols="50" name="revContent"
 								class="form-control"></textarea></td>
 					</tr>
 					<tr>
 
 						<td colspan="2" class="text-center"><input type="submit"
-							value="글쓰기" class="btn btn-success"> <input type="reset"
+							onclick="submitCheck();"value="글쓰기" class="btn btn-success"> <input type="reset"
 							value="다시작성" class="btn btn-warning">
 							<button type="button" class="btn btn-primary">전체 게시글보기</button></td>
 					</tr>
@@ -119,7 +130,36 @@
 	</div>
 
 	<!-- Listing Section End -->
+<script type="text/javascript">
+reviewWriteForm.stoNum.focus();
 
+	function submitCheck() {
+		if(reviewWriteForm.stoNum.value=="") {
+			alert("사업자번호를 입력해 주세요.");
+			reviewWriteForm.stoNum.focus();
+			return;
+		}
+		if(reviewWriteForm.stoCeo.value=="") {
+			alert("대표명을 입력해 주세요.");
+			reviewWriteForm.stoCeo.focus();
+			return;
+		}
+		if(reviewWriteForm.stoPhone.value=="") {
+			alert("전화번호를 입력해 주세요.");
+			reviewWriteForm.stoPhone.focus();
+			return;
+		}
+		if(reviewWriteForm.stoName.value=="") {
+			alert("상호명을 입력해 주세요.");
+			reviewWriteForm.stoName.focus();
+			return;
+		}
+		
+		reviewWriteForm.method="post";
+		reviewWriteForm.action="${pageContext.request.contextPath}/review_insert";
+		reviewWriteForm.submit();
+	} 
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="${pageContext.request.contextPath }/js/jquery-3.3.1.min.js"></script>
