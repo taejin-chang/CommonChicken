@@ -9,5 +9,7 @@ import com.commonchicken.dto.SearchProductVO;
 public interface ProductMapper {
 	int insertProduct(ProductDTO product);
 	List<ProductDTO> selectProductList();
+	List<ProductDTO> selectProductListAdmin(String stoNum);
 	List<SearchProductVO> selectProduct(Map<String, Object> map);
+	int deletePoduct(String prdCode);
 }

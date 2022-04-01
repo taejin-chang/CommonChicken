@@ -8,5 +8,9 @@ import com.commonchicken.dto.SearchProductVO;
 
 public interface ProductService {
 	List<ProductDTO> getProductList();
+	List<ProductDTO> selectProductListAdmin(String stoNum);
 	List<SearchProductVO> getProduct(Map<String, Object> map);
+	void insertProduct(ProductDTO product);
+	void deletePoduct(String prdCode);
+
 }

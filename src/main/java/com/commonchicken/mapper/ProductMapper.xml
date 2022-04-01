@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- PRD_CODE     NOT NULL VARCHAR2(50)  
+PRD_NAME     NOT NULL VARCHAR2(50)  
+PRD_PRICE    NOT NULL VARCHAR2(20)  
+PRD_CATEGORY NOT NULL NUMBER(1)     
+PRD_STATUS   NOT NULL NUMBER(1)     
+STO_NUM      NOT NULL VARCHAR2(50)  
+MEM_EMAIL    NOT NULL VARCHAR2(50)  
+PRD_ORIGIN            VARCHAR2(100) 
+PRD_UPLOAD            VARCHAR2(100)  -->
+
+
+
+
 <mapper namespace="com.commonchicken.mapper.ProductMapper">
 	<resultMap type="SearchProductVO" id="SearchProductResultMap">
 		<id column="prd_code" property="prdCode"/>
@@ -10,12 +24,19 @@
 
 
 	<insert id="insertProduct">
-		insert into product_tb values(#{prd_code}, #{prd_name}, #{prd_price}, #{prd_category}, #{prd_status}, #{sto_num}, #{mem_email}
+		insert into product_tb (PRD_CODE, PRD_NAME, PRD_PRICE, PRD_CATEGORY, STO_NUM, MEM_EMAIL, PRD_UPLOAD)
+		values(#{prdCode}, #{prdName}, #{prdPrice}, #{prdCategory}, #{stoNum}, #{memEmail}, #{prdUpload})
 	</insert> 
 									
 	<select id="selectProductList" resultType="ProductDTO">
 		select * from product_tb order by prd_code
 	</select>
+	
+	
+	<select id="selectProductListAdmin" resultType="ProductDTO">
+		select * from product_tb where sto_num = #{stoNum} and prd_status!=9 order by prd_code
+	</select>
+	
 
 	<select id="selectProduct" parameterType="map" resultMap="SearchProductResultMap">
 		select * from product_tb
@@ -26,4 +47,19 @@
 			</foreach>
 		</if>
 	</select>
+	
+	<update id="deletePoduct">
+		update product_tb set prd_status = 9 where prd_code = #{prdCode}
+	</update>
+	
+	
 </mapper>
+
+
+
+
+
+
+
+
+

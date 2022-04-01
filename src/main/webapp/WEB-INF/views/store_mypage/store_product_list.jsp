@@ -84,7 +84,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a  href="${pageContext.request.contextPath}/store/productlist">
+												<li><a class="active" href="${pageContext.request.contextPath}/store/productlist">
 												<i class="icon-docs"></i> 상품리스트 </a></li>
 											</ul>
 										</div>
@@ -109,7 +109,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a  class="active" href="${pageContext.request.contextPath}/store/commonlist"><i class="icon-heart"></i>커먼 리스트</a></li>
+												<li><a href="${pageContext.request.contextPath}/store/commonlist"><i class="icon-heart"></i>커먼 리스트</a></li>
 												
 											</ul>
 										</div>
@@ -135,10 +135,12 @@
 
 	        </div>
 	        <!--/.page-sidebar-->
-	        
+			<div class="hdata">
+				<button type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
+			</div>
 	        <div class="col-sm-9 page-content">
 	          <div class="inner-box">
-	            <h2 class="title-2"><i class="icon-hourglass"></i>커먼 리스트 </h2>
+	            <h2 class="title-2"><i class="icon-hourglass"></i>상품 리스트 </h2>
 	            <div class="table-responsive">
 	              <div class="table-action">
 <!-- 	                <label for="checkAll">
@@ -158,59 +160,70 @@
 	                <thead style="font-size: 15px; font-weight: bold;">
 	                  <tr>
 <!-- 	                    <th data-type="numeric" data-sort-initial="true"> </th>
- -->	                    <th>번호 </th>
-	                    <th data-sort-ignore="true"> 커먼 정보 </th>
-	                    <th data-type="numeric" > 매출액 </th>
-	                    <th data-type="numeric" > 등록날짜 </th>
-	                    <th data-type="numeric" > 커먼 상태 </th>
+-->	              
+	                    <th data-sort-ignore="true">상품코드</th>
+	                    <th data-type="numeric" >상품이미지</th>
+	                    <th data-type="numeric" >상품이름</th>
+	                    <th data-type="numeric" >상품가격</th>
+	                    <th data-type="numeric" >상태</th>
 	                    <th> 관리 </th>
 	                  </tr>
 	                </thead>
 	                <tbody>
-	                <c:forEach var="commonList" items="${commonList }">
-	                
-	                  <tr>
-<!-- 	                    <td style="width:2%" class="add-img-selector">
-	                    	<div class="checkbox">
-	                        	<label>
-	                         	 	<input type="checkbox">
-	                        	</label>
-                    	  	</div>
-                      	</td> -->
-	                    	<td style="width:10%" class="add-img-td">
-                                ${commonList.cmNum }
-                   			</td>
-	                    <td style="width:40%" class="price-td">
-                    		<div>
-<!-- 	                    	   	 <p><strong> <a href="ads-details.html" title="Brend New Nexus 4">22/03/09</a> </strong></p>-->	  
-	                       		<div> <strong>배달시간 </strong>: ${commonList.cmClose }</div>
-	                          	<div> <strong>마감시간 </strong>: ${commonList.cmDeliveryTime }</div>
-								<div> <strong>모집인원 </strong>: ${commonList.cmGoalPeople }</div>
-	                          	
-	                    	  </div>
-                      	</td>
-	                    <td style="width:16%" class="price-td">
-	                    	<div><strong>${commonList.cmSales }</strong></div>
-	                    </td>
-	                    <td style="width:16%" class="price-td">
-	                    	<div><strong>${commonList.cmRegdate} </strong></div>
-	                    </td>
-	                    <td style="width:20%" class="price-td">
-							<c:if test="${commonList.cmStatus==0 }"><div><strong> 진행중 </strong></div></c:if>
-							<c:if test="${commonList.cmStatus==1 }"><div><strong> 만료 </strong></div></c:if>
-							<c:if test="${commonList.cmStatus==2 }"><div><strong> 커먼성립 </strong></div></c:if>
-                    </td>
-	                    <td style="width:10%" class="action-td">
-	                    	<div>
-<!-- 	                       		 <p> <a class="btn btn-primary btn-xs" style="color: white;"> <i class="fa fa-edit"></i> Edit </a></p>
- -->	                       	 	<p> <a href="<c:url value='/store/deleteCommon/'/>+${commonList.cmNum }" onclick="return confirm('정말로 삭제하시겠습니까?');"
- 											class="btn btn-danger btn-xs" style="color: white;"> 
- 										<i class=" fa fa-trash"></i> 
- 										Delete </a>
-	                      	</div>
-              			</td>
-	                  </tr>
-	                </c:forEach>
+	                <c:forEach var="productList" items="${productList }">
+						<tr>
+							<td class="add-img-td">
+								${productList.prdCode }</td>
+							<td class="price-td">
+								<c:if test="${empty productList.prdUpload }">
+									<div>
+										<img style="width:100px; height:100px;" src="${pageContext.request.contextPath }/images/junbi.png" alt="사진 준비 중입니다.!">
+									</div>
+								</c:if>
+								<c:if test="${!empty productList.prdUpload }">
+									<div>
+										<img style="width:100px; height:100px;" src="${pageContext.request.contextPath }/images/${productList.prdUpload }" alt="${productList.prdUpload }">
+									</div>
+								</c:if>
+							</td>
+							<td style="width: 25%;" class="price-td">
+								<div>
+									<strong>${productList.prdName }</strong>
+								</div>
+							</td>
+							<td class="price-td">
+								<div>
+									<strong>${productList.prdPrice }</strong>
+								</div>
+							</td>
+							<td class="price-td">
+							
+								<c:if test="${productList.prdStatus==0 }">
+									<div>
+										<strong>품절</strong>
+									</div>
+								</c:if> 
+								<c:if test="${productList.prdStatus==1 }">
+									<div>
+										<strong>판매중</strong>
+									</div>
+								</c:if> 
+								</td>
+							<td style="width: 10%" class="action-td">
+								<div>
+									<p>
+										<a
+											href="<c:url value='/store/deleteProduct/'/>${productList.prdCode}"
+											onclick="return confirm('정말로 삭제하시겠습니까?');"
+											class="btn btn-danger btn-xs" style="color: white;">
+											<i class=" fa fa-trash"></i> Delete
+										</a>
+									</p>
+									
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
 	                </tbody>
 	              </table>
 	            </div>

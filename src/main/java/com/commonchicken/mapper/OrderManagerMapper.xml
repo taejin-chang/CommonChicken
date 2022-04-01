@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  
+	private int cmNum;
+	private String cmDeliveryTime;
+	private String cmClose;
+	private int cmGoalPeople;
+	private String cmRegdate;
+	private int cmStatus;
+	private int cmSales;
+	private String stoNum;
+	private String memEmail;
+	private MemberDTO memberDTO;
+	private OrderDTO orderDTO;
+	private ProductDTO productDTO;
+	-->
+	
+
+
+<mapper	namespace="com.commonchicken.mapper.OrderManagerMapper">
+	
+	<resultMap type="OrderManagerVO" id="OrderManagerResultMap">
+		<id column="cm_num" property="cmNum"/>
+		<result column="cm_delivery_time" property="cmDeliveryTime"/>
+		<result column="cm_close" property="cmClose"/>
+		<result column="cm_goal_people" property="cmGoalPeople"/>
+		<result column="cm_regdate" property="cmRegdate"/>
+		<result column="cm_status" property="cmStatus"/>
+		<result column="cm_sales" property="cmSales"/>
+		<association property="storeDTO" javaType="storeDTO" >
+			<id column="sto_name" property="stoName"/>
+		</association>
+		<collection property="orderList" ofType="OrderAdminVO">
+			<id column="ord_detail_num" property="ordDetailNum"/>
+			<result column="mem_email" property="memEmail"/>
+			<result column="ord_bundle_num" property="ordBundleNum"/>
+			<result column="ord_quantity" property="ordQuantity"/>
+			<result column="ord_status" property="ordStatus"/>
+			<result column="ord_add1" property="ordAdd1"/>
+			<result column="ord_add2" property="ordAdd2"/>
+			<result column="ord_phone" property="ordPhone"/>
+			<result column="ord_request" property="ordRequest"/>
+			<result column="ord_pay_method" property="ordPayMethod"/>	
+			<collection property="productList" ofType="ProductDTO">
+				<id column="prd_code" property="prdCode"/>
+				<result column="prd_name" property="prdName"/>
+				<result column="prd_price" property="prdPrice"/>
+				<result column="prd_category" property="prdCategory"/>
+				<result column="prd_upload" property="prdUpload"/>
+			</collection>
+		</collection>
+	</resultMap>
+	
+
+	<select id="selectOrderMgtList" resultMap="OrderManagerResultMap">
+		select a.cm_num, b.sto_name, cm_delivery_time, cm_close, cm_regdate, cm_goal_people, cm_sales, cm_status
+		,ord_detail_num, a.mem_email, ord_bundle_num, ord_quantity, ord_status,
+		ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method, c.prd_code
+		,prd_name, prd_price, prd_category, prd_upload
+		from common_tb a left join store_tb b on a.sto_num = b.sto_num left join order_tb c on a.cm_num = c.cm_num
+		left join product_tb d on c.prd_code = d.prd_code where cm_status!=9 order by a.cm_num, ord_bundle_num
+	</select>
+
+
+</mapper>

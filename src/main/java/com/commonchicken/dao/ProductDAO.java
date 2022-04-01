@@ -8,6 +8,9 @@ import com.commonchicken.dto.SearchProductVO;
 
 public interface ProductDAO {
 	List<SearchProductVO> selectProduct(Map<String, Object> map);
+	List<ProductDTO> selectProductListAdmin(String stoNum);
 	int insertProduct(ProductDTO product);
 	List<ProductDTO> selectProductList();
+	int deletePoduct(String prdCode);
+
 }

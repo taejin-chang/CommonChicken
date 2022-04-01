@@ -26,8 +26,8 @@
 기능을 제공하는 자바스크립트 템플릿 라이브러리 --%>
 <%-- => https://cdnjs.com 사이트에서 handlebars 라이브러리를 검색하여 JSP 문서에 포함 --%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -55,29 +55,28 @@
     </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      
        <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px;" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">DashBoard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="member.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">회원관리</span>
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="store.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/store">
               <i class="icon-mail menu-icon"></i>
               <span class="menu-title">점포관리</span>
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="order.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/order">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">주문관리</span>
             </a>
@@ -90,9 +89,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="notice.html">공지사항</a></li>
-                <li class="nav-item"> <a class="nav-link" href="common.html">커먼게시판 관리</a></li>
-                <li class="nav-item"> <a class="nav-link" href="review.html">리뷰관리</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/notice">공지사항</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/common">커먼게시판 관리</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/review">리뷰관리</a></li>
 <!--                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">이벤트관리</a></li>
  -->              </ul>
             </div>
@@ -132,92 +131,119 @@
               <div class="card">
                 <div class="card-body">
                   <h1 class="card-title">공지사항 관리</h1>
-				<div id="restResult"></div>                  
                   <div class="table-responsive">
 					<table class="table table-expandable">
-							<thead style="background: #4747A1; color: white;">
+							<thead style="background: #4747A1; color: white; text-align: center;" >
 
 								<tr>
 									<th>커먼번호</th>
+									<th>매점명</thz>
 									<th>배달출발시간</th>
-									<th>마감시간</th>
+ 									<th>마감시간</th>
 									<th>모집입원</th>
 									<th>매출액</th>
 									<th>상태</th>
 								</tr>
 							</thead>
-							<c:forEach var="commonList" items="${commonList }">
-							<tbody>
-								<tr style="background-color: #f0f0f0;">
-									<td>${commonList.cmNum}</td>
-									<td>${commonList.cmDeliveryTime}</td>
-									<td>${commonList.cmClose}</td>
-									<td>${commonList.cmGoalPeople}</td>
-									<td>${commonList.cmSales}</td>
-									<td>${commonList.cmStatus}</td>
-								</tr>
-								<tr>
-									<td colspan="8">
-										<table class="table table-expandable">
-											<thead style="background: #7978E9; color: white;">
+							<c:choose>
+								<c:when test="${empty(orderManager) }">
+									<tbody style="text-align: center;">
+										<tr>
+											<td style="text-align: center;" colspan="7">등록된 커먼이 없습니다.</td>
+										</tr>
+									</tbody>
+								</c:when>
+								<c:otherwise>
+								<c:forEach var="commonList" items="${orderManager }">
+								<tbody style="text-align: center;">
+									<tr style="background-color: #e1e1fa;">
+										<td>${commonList.cmNum}</td>
+										<td>${commonList.storeDTO.stoName}</td>
+										<td>${commonList.cmDeliveryTime}</td>
+										<td>${commonList.cmClose}</td>
+										<td>${commonList.cmGoalPeople}</td>
+										<td>${commonList.cmSales}</td>
+										<td>
+											<c:if test="${commonList.cmStatus==0}">진행중</c:if> 
+											<c:if test="${commonList.cmStatus==1}">만료</c:if> 
+											<c:if test="${commonList.cmStatus==2}">성립</c:if> 
+										</td>
+									</tr>
+									<tr>
+										<td colspan="8">
+											<table class="table table-expandable">
+												<thead style="background: #7978E9; color: white;">
+	
+													<tr>
+														<th>주문묶음 번호</th>
+														<th>구매자</th>
+														<th>주소</th>
+														<th>전화번호</th>
+														<th>요청사항</th>
+														<th>결제종류</th>
+														<th>상태</th>
+													</tr>
+												</thead>
+												<c:forEach var="orderList" items="${commonList.orderList}">
+												<tbody style="text-align: center;">
+													<tr style="background-color: #ffffff;">
+														<td>${orderList.ordBundleNum}</td>
+														<td>${orderList.memEmail}</td>
+														<td>${orderList.ordAdd1} ${orderList.ordAdd2}</td>
+														<td>${orderList.ordPhone}</td>
+														<td>${orderList.ordRequest}</td>
+														<td>${orderList.ordPayMethod}</td>
+														<td><!-- 0:입금대기,1:주문접수, 2:커먼완료, 3:배달중,4:배달완료,5 :커먼실패,  6: 주문취소 -->
+														<c:if test="${orderList.ordStatus==0}">입금대기</c:if> 
+														<c:if test="${orderList.ordStatus==1}">주문접수</c:if> 
+														<c:if test="${orderList.ordStatus==2}">커먼완료</c:if> 
+														<c:if test="${orderList.ordStatus==3}">배달완료</c:if> 
+														<c:if test="${orderList.ordStatus==4}">커먼실패</c:if> 
+														<c:if test="${orderList.ordStatus==5}">주문취소 </c:if> 
 
-												<tr>
-													<th>번호</th>
-													<th>구매일시</th>
-													<th>주문번호</th>
-													<th>결제금액</th>
-													<th>주문자</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>1</td>
-													<td>2022년 10월 20일</td>
-													<td>16754541</td>
-													<td>500000원</td>
-													<td>홍길동</td>
-												</tr>
-<!-- 												<tr>
-													<td colspan="8">
-														<table class="table table-striped">
-														<thead style="background: #7DA0FA; color: white;">
-																<tr>
-																	<th>번호</th>
-																	<th>상품명</th>
-																	<th>수량</th>
-																	<th>가격</th>
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td>양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-																<tr>
-																	<td>1</td>
-																	<td
-양념 치킨</td>
-																	<td>2개</td>
-																	<td>460000원</td>
-																</tr>
-															</tbody>
-														</table>
-													</td>
-												</tr> -->
-											</tbody>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-							</c:forEach>
+														</td>
+													</tr>
+													<tr>
+														<td colspan="8">
+															<table class="table table-striped">
+															<thead style="background: #7DA0FA; color: white;">
+																	<tr>
+																		<th>상품 번호</th>
+																		<th>이미지</th>
+																		<th>상품명</th>
+																		<th>가격</th>
+																		<th>수량</th>
+																		<th>상품 종류</th>
+																	</tr>
+																</thead>
+																<c:forEach var="productList" items="${orderList.productList}">
+																<tbody style="text-align: center;">
+																	<tr>
+																		<td>${productList.prdCode}</td>
+																		<td>${productList.prdUpload}</td>
+																		<td>${productList.prdName}</td>
+																		<td>${productList.prdPrice}</td>
+																		<td>${orderList.ordQuantity}</td>
+																		<td>
+																		<c:if test="${productList.prdCategory==0}">치킨</c:if> 
+																		<c:if test="${productList.prdCategory==1}">사이드</c:if> 
+																		<c:if test="${productList.prdCategory==2}">음료</c:if> 
+																		</td>
+																	</tr>
+																</tbody>
+																</c:forEach>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+												</c:forEach>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
 						</table>
 					<br>
                     <div style="text-align: center;">
@@ -230,11 +256,13 @@
                       <button type="button" class="btn btn-primary btn-icon">></button>                   
                       </div>     
                   </div>
+                  
                 </div>
               </div>
             </div>
           </div>
         </div>
+           		<div id="restResult"></div>                  
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
@@ -251,6 +279,8 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
+
+  
   <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
@@ -261,6 +291,9 @@
   <script src="${pageContext.request.contextPath }/admin/js/template.js"></script>
   <script src="${pageContext.request.contextPath }/admin/js/settings.js"></script>
   <script src="${pageContext.request.contextPath }/admin/js/todolist.js"></script>
+  
+
+  
   
     <script type="text/javascript">
 /*     var _gaq = _gaq || [];
@@ -275,6 +308,7 @@
   })();
   
    */
+
   (function ($) {
 	    $(function () {
 	        $('.table-expandable').each(function () {
@@ -294,35 +328,13 @@
 	    });
 	})(jQuery); 
 
-   
-  	function boardDisplay(){
-  		$.ajax({
-  			type: "get",
-  			url: "list/common",
-  			dataType: "json",
-  			success: function(json){
-  				if(json.length==0){
-					$("#restResult").html("검색된 컬럼이 없습니다.");
-					return;
-  				}
-  				
-  				var source=$("#template").html();
-  				var template=Handlebars.compile(source);
-  				
-  				$("#restResult").html(template(json));
-  			},
-  			error: function(xhr) {
-  				alert(""")
-  			}
-  			
-  		})
-  	}
-  
   
   </script> 
   
+
   
-  
+
+
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->

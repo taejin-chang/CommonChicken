@@ -88,6 +88,17 @@
 											</ul>
 										</div>
 									</div>
+																		<div class="collapse-box">
+										<h5 class="collapse-title">
+											주문<a href="#MyAds" data-toggle="collapse" class="pull-right"></a>
+										</h5>
+										<div class="panel-collapse collapse in" id="MyAds">
+											<ul class="acc-list">
+												<li><a href="${pageContext.request.contextPath}/store/productlist">
+												<i class="icon-docs"></i> 상품리스트 </a></li>
+											</ul>
+										</div>
+									</div>
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">

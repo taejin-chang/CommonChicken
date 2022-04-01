@@ -22,7 +22,15 @@ public class ProductDAOImpl implements ProductDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(ProductMapper.class).selectProductList();
 	}
+	
 
+	@Override
+	public List<ProductDTO> selectProductListAdmin(String stoNum) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(ProductMapper.class).selectProductListAdmin(stoNum);
+	}
+
+	
 	@Override
 	public List<SearchProductVO> selectProduct(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -31,9 +39,15 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	@Override
 	public int insertProduct(ProductDTO product) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.getMapper(ProductMapper.class).insertProduct(product);
 	}
+
+
+	@Override
+	public int deletePoduct(String prdCode) {
+		return sqlSession.getMapper(ProductMapper.class).deletePoduct(prdCode);
+	}
+
 
 
 }

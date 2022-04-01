@@ -133,12 +133,11 @@
 							<div class="row">
 								<div class="col-md-5 col-xs-4 col-xxs-12">
 									<h3 class="no-padding text-center-480 useradmin">
-										<img alt="프사" src="${pageContext.request.contextPath}/profile/${loginMember.memOrigin}">
-										<a href=""> ${loginMember.memName }님, 환영합니다. </a>
+										<img style="width: 100%; height: 100%;" alt="프사" src="${pageContext.request.contextPath}/profile/${loginMember.memOrigin}">
 									</h3>
 								</div>
 								<div class="col-md-7 col-xs-8 col-xxs-12">
-									
+										<h2 style="margin-top: 15%;"> ${loginMember.memName }님, 환영합니다.</h2>
 								</div>
 							</div>
 						</div>
