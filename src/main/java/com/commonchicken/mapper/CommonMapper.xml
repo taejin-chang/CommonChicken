@@ -7,16 +7,10 @@
 		<selectKey resultType="int" keyProperty="cmNum" order="BEFORE">
 			select common_seq.nextval from dual
 		</selectKey>
-		
 		insert into common_tb (CM_NUM, CM_DELIVERY_TIME, CM_CLOSE, CM_GOAL_PEOPLE, STO_NUM, MEM_EMAIL)
 		values(#{cmNum}, TO_DATE(#{cmDeliveryTime}, 'YYYY-MM-DD HH24-MI-SS'), TO_DATE(#{cmClose}, 'YYYY-MM-DD HH24-MI-SS'),
         #{cmGoalPeople}, #{stoNum}, #{memEmail})
-		 		 		
-	
 	</insert>
-
-
-
 
 	<update id="updateCommon">
 

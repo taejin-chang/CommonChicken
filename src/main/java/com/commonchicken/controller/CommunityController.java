@@ -40,12 +40,8 @@ public class CommunityController {
 		//commonService.searchCommon(cmNum).getCmClose();
 		//int stoNum = Integer.parseInt(commonService.searchCommon(cmNum).getStoNum());
 		//storeService.selectStore1(stoNum).getStoAdd1();
-		System.out.println("cmNum = "+cmNum);
 		String stoNum = commonService.searchCommon(cmNum).getStoNum();
-		System.out.println("cmNum = "+cmNum);
-		System.out.println("stoNum = "+stoNum);
 		String StoName = storeService.selectStore1(stoNum).getStoName();
-		System.out.println("stoNum = "+stoNum);
 		
 		CommonBoardDTO commonboard = new CommonBoardDTO();
 		commonboard.setCmbdTitle(StoName+"으로 오세요~~");
