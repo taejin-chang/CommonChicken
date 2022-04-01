@@ -11,10 +11,12 @@ public interface StoreMapper {
 	int updateStore(StoreDTO store);
 	StoreDTO selectStore(int stoNum);
 	StoreDTO selectStore1(String stoNum);
+	CommonStoreVO selectStoreInfoReivew(Map<String, Object> map);
 	List<StoreDTO> selectStoreList();
 	
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreProductInfo(int stoNum);
 	List<CommonStoreVO> selectCommonStore(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
+	
 }

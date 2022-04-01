@@ -61,4 +61,10 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.selectStore1(stoNum);
 	}
 
+	@Override
+	public CommonStoreVO selectStoreInfoReivew(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return storeDAO.selectStoreInfoReivew(map);
+	}
+
 }
