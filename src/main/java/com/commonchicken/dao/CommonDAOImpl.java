@@ -48,4 +48,9 @@ public class CommonDAOImpl implements CommonDAO {
 		return sqlSession.getMapper(CommonMapper.class).deleteCommon(cmNum);
 	}
 
+	@Override
+	public CommonDTO searchCommon(int cmNum) {
+		return sqlSession.getMapper(CommonMapper.class).searchCommon(cmNum);
+	}
+
 }

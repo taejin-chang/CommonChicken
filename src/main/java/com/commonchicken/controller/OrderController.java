@@ -92,6 +92,14 @@ public class OrderController {
 		
 		String ordBundleNum = System.currentTimeMillis()+"";
 		model.addAttribute("cmNum", cmNum);
+		model.addAttribute("memName", map.get("memName"));
+		model.addAttribute("ordZipcode", map.get("ordZipcode"));
+		model.addAttribute("ordAdd1", map.get("ordAdd1"));
+		model.addAttribute("jibun", map.get("jibun"));
+		model.addAttribute("ordAdd2", map.get("ordAdd2"));
+		model.addAttribute("ordPhone", map.get("ordPhone"));
+		model.addAttribute("ordRequest", map.get("ordRequest"));
+		model.addAttribute("paymentMethod", map.get("paymentMethod"));
 		model.addAttribute("prdCodelist", productList);
 		model.addAttribute("amountList", prdAmountList);
 		model.addAttribute("ordertotal", map.get("ordertotal"));

@@ -10,6 +10,7 @@ public interface StoreDAO {
 	int insertStore(StoreDTO store);
 	int updateStore(StoreDTO store);
 	StoreDTO selectStore(int stoNum);
+	StoreDTO selectStore1(String stoNum);
 	List<StoreDTO> selectStoreList();
 	
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);

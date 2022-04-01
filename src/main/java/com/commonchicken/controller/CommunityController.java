@@ -1,13 +1,58 @@
 package com.commonchicken.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.commonchicken.dto.CommonBoardDTO;
+import com.commonchicken.service.CommonBoardService;
+import com.commonchicken.service.CommonService;
+import com.commonchicken.service.StoreService;
+
 
 @Controller
 public class CommunityController {
 
+	@Autowired
+	CommonService commonService;
+	
+	@Autowired
+	CommonBoardService commonboardService;
+	
+	@Autowired
+	StoreService storeService;
+	
 	@RequestMapping("/community")
 	public String login() {
+		return "community/common-notice";
+	}
+	
+	@GetMapping("/common_board")
+	public String commonBoard(@RequestParam int cmNum, Model model, HttpSession session) {
+		
+		//model.addAttribute("cmGoalPeople", commonService.searchCommon(cmNum).getCmGoalPeople());
+		//commonService.searchCommon(cmNum).getCmDeliveryTime();
+		//commonService.searchCommon(cmNum).getCmClose();
+		//int stoNum = Integer.parseInt(commonService.searchCommon(cmNum).getStoNum());
+		//storeService.selectStore1(stoNum).getStoAdd1();
+		System.out.println("cmNum = "+cmNum);
+		String stoNum = commonService.searchCommon(cmNum).getStoNum();
+		System.out.println("cmNum = "+cmNum);
+		System.out.println("stoNum = "+stoNum);
+		String StoName = storeService.selectStore1(stoNum).getStoName();
+		System.out.println("stoNum = "+stoNum);
+		
+		CommonBoardDTO commonboard = new CommonBoardDTO();
+		commonboard.setCmbdTitle(StoName+"으로 오세요~~");
+		commonboard.setMemEmail((String)session.getAttribute("loginId"));
+		commonboard.setCmNum(cmNum);
+		
+		commonboardService.insertCommonBoard(commonboard);
 		return "community/common-notice";
 	}
 	

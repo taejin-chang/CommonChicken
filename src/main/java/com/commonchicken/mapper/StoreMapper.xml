@@ -144,6 +144,9 @@ STO_UPLOAD                VARCHAR2(100)
 	<select id="selectStore" resultType="StoreDTO">
 		select * from store_tb where sto_num=#{stoNum}
 	</select>
+	<select id="selectStore1" resultType="StoreDTO">
+		select * from store_tb where sto_num=#{stoNum}
+	</select>
 	
 	<select id="selectStoreList" resultType="StoreDTO">
 			select * from store_tb order by sto_num

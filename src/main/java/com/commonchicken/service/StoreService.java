@@ -10,6 +10,7 @@ public interface StoreService {
 	void insertStore(StoreDTO store);
 	void updateStore(StoreDTO store);
 	StoreDTO selectStore(int stoNum);
+	StoreDTO selectStore1(String stoNum);
 	List<StoreDTO> selectStoreList();
 	
 	CommonStoreVO getStoreInfo(Map<String, Object> map);

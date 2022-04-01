@@ -56,4 +56,9 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.selectStoreCommonlist(stoNum);
 	}
 
+	@Override
+	public StoreDTO selectStore1(String stoNum) {
+		return storeDAO.selectStore1(stoNum);
+	}
+
 }

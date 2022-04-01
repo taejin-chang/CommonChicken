@@ -10,4 +10,6 @@ public interface CommonDAO {
 	CommonDTO selectCommon(int cmNum);
 	List<CommonDTO> selectCommonList();
 	int deleteCommon(int cmNum);
+	CommonDTO searchCommon(int cmNum);
+
 }

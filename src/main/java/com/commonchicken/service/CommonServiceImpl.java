@@ -40,6 +40,11 @@ public class CommonServiceImpl implements CommonService {
 	public void deleteCommon(int cmNum) {
 		commonDAO.deleteCommon(cmNum);
 	}
+
+	@Override
+	public CommonDTO searchCommon(int cmNum) {
+		return commonDAO.searchCommon(cmNum);
+	}
 	
 
 }

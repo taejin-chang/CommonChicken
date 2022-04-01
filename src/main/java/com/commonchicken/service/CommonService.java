@@ -10,4 +10,6 @@ public interface CommonService {
 	CommonDTO selectCommon(int cmNum);
 	List<CommonDTO> selectCommonList();
 	void deleteCommon(int cmNum);
+	CommonDTO searchCommon(int cmNum);
+
 }
