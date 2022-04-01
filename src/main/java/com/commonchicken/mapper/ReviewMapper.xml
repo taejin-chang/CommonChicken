@@ -37,8 +37,8 @@ private int revNum;
 		from review_tb a
 		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
 		left join product_tb c on b.PRD_CODE = c.PRD_CODE
-		order by a.REV_DATE) board)
-		where (rn between #{startRow} and #{endRow}) and (MEM_EMAIL =#{memEmail})
+		order by a.REV_DATE where a.MEM_EMAIL =#{memEmail}) board)
+		where (rn between #{startRow} and #{endRow})
 	</select>
 	
 	<select id="selectStoreReviewList" resultType="ReviewVO">
