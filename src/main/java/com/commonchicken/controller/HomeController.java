@@ -518,6 +518,16 @@ public class HomeController {
 			productService.deletePoduct(prdCode);		
 			return "redirect:/store/productlist";
 		}
+		
+		
+//		@RequestMapping(value = "/store/order", method = RequestMethod.GET)
+//		public String storeOrder(Model model){
+//			System.out.println("하이!");
+//			model.addAttribute("commonList", commonService.selectCommonList());
+//			model.addAttribute("orderManager", orderManagerService.selectOrderMgtList());
+//			
+//			return "store_mypage/order_state";
+//		}
 	
 }
 

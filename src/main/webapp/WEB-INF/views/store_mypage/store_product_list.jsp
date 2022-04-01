@@ -135,12 +135,13 @@
 
 	        </div>
 	        <!--/.page-sidebar-->
-			<div class="hdata">
-				<button type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
-			</div>
+	        
 	        <div class="col-sm-9 page-content">
 	          <div class="inner-box">
 	            <h2 class="title-2"><i class="icon-hourglass"></i>상품 리스트 </h2>
+                  <div style="text-align : right;">
+	                  <button  type="button" class="btn btn-primary mr-2" onclick="location.href='<c:url value='/store/product/'/>'">상품 등록</button>
+                  </div>
 	            <div class="table-responsive">
 	              <div class="table-action">
 <!-- 	                <label for="checkAll">
