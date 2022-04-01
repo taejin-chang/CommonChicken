@@ -22,8 +22,25 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
+	public List<ProductDTO> selectProductListAdmin(String stoNum) {
+		return productDAO.selectProductListAdmin(stoNum);
+	}
+
+	@Override
 	public List<SearchProductVO> getProduct(Map<String, Object> map) {
 		return productDAO.selectProduct(map);
 	}
+
+	@Override
+	public void insertProduct(ProductDTO product) {
+		productDAO.insertProduct(product);
+		
+	}
+
+	@Override
+	public void deletePoduct(String prdCode) {
+		productDAO.deletePoduct(prdCode);
+	}
+
 
 }

@@ -295,28 +295,28 @@
       </div>
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px;" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/main">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">DashBoard</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="member.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/member">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">회원관리</span>
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="store.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/store">
               <i class="icon-mail menu-icon"></i>
               <span class="menu-title">점포관리</span>
             </a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="order.html">
+            <a class="nav-link" href="${pageContext.request.contextPath}/admin/order">
               <i class="icon-paper menu-icon"></i>
               <span class="menu-title">주문관리</span>
             </a>
@@ -329,9 +329,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="notice.html">공지사항</a></li>
-                <li class="nav-item"> <a class="nav-link" href="common.html">커먼게시판 관리</a></li>
-                <li class="nav-item"> <a class="nav-link" href="review.html">리뷰관리</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/notice">공지사항</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/common">커먼게시판 관리</a></li>
+                <li class="nav-item"> <a class="nav-link" href="${pageContext.request.contextPath}/admin/review">리뷰관리</a></li>
 <!--                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">이벤트관리</a></li>
  -->              </ul>
             </div>

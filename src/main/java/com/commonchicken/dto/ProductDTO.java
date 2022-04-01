@@ -1,5 +1,7 @@
 package com.commonchicken.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductDTO {
 	private String prdCode;
 	private String prdName;
@@ -10,6 +12,7 @@ public class ProductDTO {
 	private String memEmail;
 	private String prdOrigin;
 	private String prdUpload;
+	private MultipartFile file;
 	
 	public ProductDTO() {
 		// TODO Auto-generated constructor stub
@@ -85,6 +88,14 @@ public class ProductDTO {
 
 	public void setPrdUpload(String prdUpload) {
 		this.prdUpload = prdUpload;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	
 	

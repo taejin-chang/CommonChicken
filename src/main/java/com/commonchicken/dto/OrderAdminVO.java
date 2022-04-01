@@ -1,0 +1,141 @@
+package com.commonchicken.dto;
+
+import java.util.List;
+
+public class OrderAdminVO {
+	private int ordDetailNum;
+	private String memEmail;
+	private int cmNum;
+	private String ordBundleNum;
+	private String ordQuantity;
+	private int ordStatus;
+	private String ordZipcode;
+	private String ordAdd1;
+	private String ordAdd2;
+	private String ordPhone;
+	private String ordRequest;
+	private int ordPayMethod;
+	private String prdCode;
+	private List<ProductDTO> productList;
+
+	
+	public OrderAdminVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public int getOrdDetailNum() {
+		return ordDetailNum;
+	}
+
+	public void setOrdDetailNum(int ordDetailNum) {
+		this.ordDetailNum = ordDetailNum;
+	}
+
+	public String getMemEmail() {
+		return memEmail;
+	}
+
+	public void setMemEmail(String memEmail) {
+		this.memEmail = memEmail;
+	}
+
+	public int getCmNum() {
+		return cmNum;
+	}
+
+	public void setCmNum(int cmNum) {
+		this.cmNum = cmNum;
+	}
+
+	public String getOrdBundleNum() {
+		return ordBundleNum;
+	}
+
+	public void setOrdBundleNum(String ordBundleNum) {
+		this.ordBundleNum = ordBundleNum;
+	}
+
+	public String getOrdQuantity() {
+		return ordQuantity;
+	}
+
+	public void setOrdQuantity(String ordQuantity) {
+		this.ordQuantity = ordQuantity;
+	}
+
+	public int getOrdStatus() {
+		return ordStatus;
+	}
+
+	public void setOrdStatus(int ordStatus) {
+		this.ordStatus = ordStatus;
+	}
+
+	public String getOrdZipcode() {
+		return ordZipcode;
+	}
+
+	public void setOrdZipcode(String ordZipcode) {
+		this.ordZipcode = ordZipcode;
+	}
+
+	public String getOrdAdd1() {
+		return ordAdd1;
+	}
+
+	public void setOrdAdd1(String ordAdd1) {
+		this.ordAdd1 = ordAdd1;
+	}
+
+	public String getOrdAdd2() {
+		return ordAdd2;
+	}
+
+	public void setOrdAdd2(String ordAdd2) {
+		this.ordAdd2 = ordAdd2;
+	}
+
+	public String getOrdPhone() {
+		return ordPhone;
+	}
+
+	public void setOrdPhone(String ordPhone) {
+		this.ordPhone = ordPhone;
+	}
+
+	public String getOrdRequest() {
+		return ordRequest;
+	}
+
+	public void setOrdRequest(String ordRequest) {
+		this.ordRequest = ordRequest;
+	}
+
+	public int getOrdPayMethod() {
+		return ordPayMethod;
+	}
+
+	public void setOrdPayMethod(int ordPayMethod) {
+		this.ordPayMethod = ordPayMethod;
+	}
+
+	public String getPrdCode() {
+		return prdCode;
+	}
+
+	public void setPrdCode(String prdCode) {
+		this.prdCode = prdCode;
+	}
+
+	public List<ProductDTO> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(List<ProductDTO> productList) {
+		this.productList = productList;
+	}
+
+	
+	
+
+}

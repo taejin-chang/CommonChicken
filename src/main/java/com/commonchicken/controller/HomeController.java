@@ -30,12 +30,16 @@ import com.commonchicken.dto.BoardDTO;
 import com.commonchicken.dto.CommonDTO;
 import com.commonchicken.dto.MemberDTO;
 import com.commonchicken.dto.OrderDTO;
+import com.commonchicken.dto.ProductDTO;
 import com.commonchicken.dto.StoreDTO;
 import com.commonchicken.service.BoardService;
 import com.commonchicken.service.CommonService;
 import com.commonchicken.service.MemberService;
+import com.commonchicken.service.OrderManagerService;
 import com.commonchicken.service.OrderService;
+import com.commonchicken.service.ProductService;
 import com.commonchicken.service.StoreService;
+
 
 /**
  * Handles requests for the application home page.
@@ -62,6 +66,13 @@ public class HomeController {
 	
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	private OrderManagerService orderManagerService;
+	
+	@Autowired
+	private ProductService productService;
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -416,22 +427,97 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/adminMng/order", method = RequestMethod.GET)
+//	@RequestMapping(value = "/adminMng/order", method = RequestMethod.GET)
+//	public String adminOrder(Model model){
+//		System.out.println("하이!");
+//		model.addAttribute("commonList", commonService.selectCommonList());
+//
+//		return "admin/admin_order";
+//	}
+//	
+//	//------------------------------------------------------------------------------
+//	@RequestMapping(value = "/orderManager", method= RequestMethod.GET)
+//	@ResponseBody
+//	public List<OrderDTO> restOrderMngList() {
+//		
+//		return  orderService.selectOrderManager(1);
+//	}	
+	
+	
+	@RequestMapping(value = "/admin/order", method = RequestMethod.GET)
 	public String adminOrder(Model model){
 		System.out.println("하이!");
 		model.addAttribute("commonList", commonService.selectCommonList());
-
+		model.addAttribute("orderManager", orderManagerService.selectOrderMgtList());
+		
 		return "admin/admin_order";
 	}
 	
-	//------------------------------------------------------------------------------
-	@RequestMapping(value = "/adminMng/orderManager", method= RequestMethod.GET)
-	@ResponseBody
-	public List<OrderDTO> restOrderMngList() {	
-		
-		return orderService.selectOrderManager(1);
+	
+	
+	//--------------------------------------------------------------------------------------
+	//상품관리 
+	
+	@RequestMapping(value = "store/product", method = RequestMethod.GET)
+	public String storeSelect(){
+		return "store_mypage/store_product";
 	}
+	
+	
+	
+	@RequestMapping(value = "store/product", method = RequestMethod.POST)
+	public String productInsert(@ModelAttribute ProductDTO product) throws IllegalStateException, IOException{	
+		
+		if(!(product.getFile().isEmpty())){
+		
+			String uploadDirectory = context.getServletContext().getRealPath("/resources/images");
+			
+			String originalFileName=product.getFile().getOriginalFilename();
+			
+			System.out.println(originalFileName);
+			
+			File file=new File(uploadDirectory, originalFileName);
+			
+			String uploadFilename=originalFileName;
+			
+			int i=0;
+			while(file.exists()) {
+				i++;
+				int index=originalFileName.lastIndexOf(".");
+				uploadFilename=originalFileName.substring(0, index)+"_"+i+originalFileName.substring(index);
+				file=new File(uploadDirectory, uploadFilename);
+			}
+			
+			product.getFile().transferTo(file);
+			
+			product.setPrdUpload(uploadFilename);
+		}else {
+			product.setPrdUpload(product.getPrdUpload());	
+		}
+		
+		productService.insertProduct(product);
+		
+		return "redirect:/store/productlist";
+	}
+		
 
+	
+		@RequestMapping(value = "store/productlist", method = RequestMethod.GET)
+		public String ProductList(Model model) {
+			model.addAttribute("productList", productService.selectProductListAdmin("6656"));
+			
+			return "store_mypage/store_product_list";
+		}
+	
+		//커먼 삭제
+		@RequestMapping(value="/store/deleteProduct/{prdNum}", method = RequestMethod.GET)
+		public String deleteProduct(@PathVariable String prdCode) {
+			System.out.println("헤이 !!! ");
+			System.out.println(prdCode);
+			
+			productService.deletePoduct(prdCode);		
+			return "redirect:/store/productlist";
+		}
 	
 }
 
