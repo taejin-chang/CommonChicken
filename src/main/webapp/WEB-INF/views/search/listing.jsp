@@ -327,7 +327,7 @@
 		                </div>
 		                <div class="listing__item__text">
 		                    <div class="listing__item__text__inside">
-		                        <h5><a href='{{baseUrl}}/cctest/store?stoNum={{stoNum}}&cmNum={{cmNum}}'>{{stoName }}</a></h5>
+		                        <h5><a href='{{baseUrl}}${pageContext.request.contextPath}/store?stoNum={{stoNum}}&cmNum={{cmNum}}'>{{stoName }}</a></h5>
 		                        {{!--<h5>{{stoName }}</h5>--}}
 		            			            <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">

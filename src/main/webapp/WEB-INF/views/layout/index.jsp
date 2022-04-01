@@ -24,7 +24,7 @@
                             <form name="searchForm">
                                 <input type="text" name="juso" id="myLocation" placeholder="Search...">
                                 <div class="select__option">
-                                    <select name="deliveryTime">
+                                    <select class="nice-select" name="deliveryTime">
                                         <option value="">배달출발시간</option>
 										  <option value="2022-03-09 13:00:00">13시</option>
 										  <option value="2022-03-09 14:00:00">14시</option>
@@ -361,6 +361,7 @@
 
 
 
+        <script src="js/jquery.nice-select.min.js"></script>
     
     	<script>
 		var loc = document.getElementById("myLocation");
