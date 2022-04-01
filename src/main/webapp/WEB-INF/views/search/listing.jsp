@@ -60,7 +60,7 @@
                              		<input type="text" name="juso" id="myLocation" placeholder="Search..."><input name="returnjuso" type="hidden" value="${juso}">
                                 <div class="select__option">
                                    	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
-                                    <select name="deliveryTime">
+                                    <select class="nice-select" name="deliveryTime">
                                         <option>배달출발시간</option>
 										  <option value="2022-03-09 13:00:00">13시</option>
 										  <option value="2022-03-09 14:00:00">14시</option>
@@ -317,8 +317,8 @@
 		            <div class="listing__item">
 		            	<input name="stoNum" type="hidden" value="{{stoNum}}">
 		            	<input name="cmNum" type="hidden" value="{{cmNum}}">
-		                <div class="listing__item__pic set-bg" data-setbg="{{baseUrl}}${pageContext.request.contextPath}/img/listing/list-1.jpg">
-		                    <img src="{{baseUrl}}${pageContext.request.contextPath}/img/listing/list_icon-1.png">
+		                <div class="listing__item__pic set-bg" data-setbg="../img/listing/list-1.jpg">
+		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
 		                        <a href="#"><span class="icon_zoom-in_alt"></span></a>
