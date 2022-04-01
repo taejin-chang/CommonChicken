@@ -94,7 +94,11 @@ public class UserMypageController {
 	}
 	
 	
-	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	
 	
 	
@@ -107,7 +111,6 @@ public class UserMypageController {
 	
 	@RequestMapping("user/myClose")
 	public String myClose(HttpSession session) {
-		session.invalidate();
 		return "user_mypage/account-close";
 	}
 	
