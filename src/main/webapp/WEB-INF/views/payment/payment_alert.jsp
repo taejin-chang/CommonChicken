@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,72 +14,15 @@
     <meta name="robots" content="index, follow">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <meta name="description" content="">    
-
-    
 </head>
 
 <body>
-    <!-- Page Preloder -->
+    <!-- Page Preloder 
     <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div>-->
     <!-- Header Section Begin -->
-	<!-- 
-    <header class="header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="./listing.html">Listing</a></li>
-                                <li><a href="#">Categories</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./about.html">About</a></li>
-                                        <li><a href="./listing-details.html">Listing Details</a></li>
-                                        <li><a href="./blog-details.html">Blog Details</a></li>
-                                        <li><a href="./contact.html">Contact</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active"><a href="./blog.html">Blog</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </nav>
-                        <div class="header__menu__right">
-                            <a href="#" class="primary-btn"><i class="fa fa-plus"></i>Add Listing</a>
-                            <a href="#" class="login-btn"><i class="fa fa-user"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
-        </div>
-    </header>
-    <div class="breadcrumb-area set-bg" data-setbg="img/breadcrumb/breadcrumb-blog.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Our Blog</h2>
-                        <div class="breadcrumb__option">
-                            <a href="#"><i class="fa fa-home"></i> Home</a>
-                            <span>Our Blog</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-     -->
-    <!-- Breadcrumb End -->
-
+	
     <!-- Blog Section Begin -->
     <main id="main" role="main">
         <section id="checkout-container">
@@ -94,58 +39,50 @@
                                 <label for="username">주문내역</label>
 			                      <div class="col-md-4 order-md-2 mb-4">
 			                        <ul class="list-group mb-3">
-			                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+											<li class="list-group-item d-flex justify-content-between lh-condensed">
+				                                <div>
+				                                	<h6 class="my-0">상품명</h6>
+				                                </div>
+				                                <span class="text-muted">&nbsp;상품가격</span>
+				                                <span class="text-muted">수량</span>
+				                            </li>
+                       					 <c:forEach var="productlist" items="${productList}" varStatus="status">
+				                            <li class="list-group-item d-flex justify-content-between lh-condensed">
 			                                <div>
-			                                    <h6 class="my-0">양념치킨</h6>
-			                                    <small class="text-muted">Brief description</small>
+			                                    <h6 class="my-0">${productlist.prdName}</h6>
 			                                </div>
-			                                <span class="text-muted">1</span>
-			                                <span class="text-muted">18,000원</span>
+			                                <span class="text-muted">${amountList[status.index]}</span>
+			                                <span class="text-muted">${productlist.prdPrice }</span>
 			                            </li>
-			                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-			                                <div>
-			                                    <h6 class="my-0">후라이드치킨</h6>
-			                                    <small class="text-muted">Brief description</small>
-			                                </div>
-			                                <span class="text-muted">3</span>
-			                                <span class="text-muted">16,000원</span>
-			                            </li>
-			                            <li class="list-group-item d-flex justify-content-between lh-condensed">
-			                                <div>
-			                                    <h6 class="my-0">콜라</h6>
-			                                    <small class="text-muted">Brief description</small>
-			                                </div>
-			                                <span class="text-muted">2</span>
-			                                <span class="text-muted">2,500원</span>
-			                            </li>
+			                            </c:forEach>
 			                            <li class="list-group-item d-flex justify-content-between">
 			                                <span>합계</span>
-			                                <strong>36,500원</strong>
+			                                <strong>${ordertotal }</strong>
 			                            </li>
 			                        </ul>
 			                    </div>
                                 <label for="username">이름</label>
                                 <div class="form-group mx-sm-3 mb-2">
-                                    <input type="text" class="form-control-plaintext" id="username" placeholder="이름" required readonly>
+                                    <input type="text" class="form-control-plaintext" id="username" placeholder="이름" required readonly>${memName }
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="address">주소</label>
                                 <div class="row">
 	                                <div class="col-md-4 mb-1">
-		                                <input class="form-control-plaintext" type="text" id="sample4_postcode" placeholder="우편번호"readonly>
+		                                <input class="form-control-plaintext" type="text" id="sample4_postcode" placeholder="우편번호"readonly>${ordZipcode }
 		                            </div>
 								</div>
                                 <div class="row">
                                 	<div class="col-md-6 mb-1">                                
-									<input class="form-control-plaintext" type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly>
+									<input class="form-control-plaintext" type="text" id="sample4_roadAddress" placeholder="도로명주소" readonly>${ordAdd1 }
 									</div>
                                 	<div class="col-md-6 mb-1">
-									<input class="form-control-plaintext" type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly>
+									<input class="form-control-plaintext" type="text" id="sample4_jibunAddress" placeholder="지번주소" readonly>${jibun }
 									</div>                                	
 									<div class="col-md-4 mb-3">
 									<span id="guide" style="color:#999;display:none"></span>
-									<input class="form-control-plaintext" type="text" id="sample4_detailAddress" placeholder="상세주소" readonly>
+									<input class="form-control-plaintext" type="text" id="sample4_detailAddress" placeholder="상세주소" readonly>${ordAdd2 }
 									</div>                                	
 								</div>
 							</div>
@@ -166,13 +103,7 @@
                                 <label for="mobile">휴대전화</label>
 	                            <div class="row">
 	                                <div class="col-md-1 mb-3">
-	                                    <input type="text" class="form-control-plaintext" id="firstName" placeholder="" value="" required readonly>
-	                                </div>-
-	                                <div class="col-md-1 mb-3">
-	                                    <input type="text" class="form-control-plaintext" id="lastName" placeholder="" value="" required readonly>
-	                                </div>-
-	                                <div class="col-md-1 mb-3">
-	                                    <input type="text" class="form-control-plaintext" id="lastName" placeholder="" value="" required readonly>
+	                                    <input type="text" class="form-control-plaintext" id="firstName" placeholder="" value="" required readonly>${ordPhone}
 	                                </div>
 	                            </div>
 							</div>	
@@ -191,7 +122,7 @@
                             <div class="row">
                                 <div class="col-md-5 mb-3">
                                     <label for="country">요청사항</label>
-                                    <input type="email" class="form-control-plaintext" id="requestMessage" placeholder="현관문 앞에 두고 가라" readonly>
+                                    <input type="email" class="form-control-plaintext" id="requestMessage" placeholder="현관문 앞에 두고 가라" readonly>${ordRequest }
                                 </div>
                             </div>
                             <hr class="mb-4">
@@ -200,7 +131,7 @@
                             <div class="col-md-6 mb-3">
                               <div class="row">
                                 <div class="col-6 custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onchange="setDisplay()" required>
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" onchange="setDisplay()" required>${paymentMethod }
                                     <label class="custom-control-label" for="credit">신용카드</label>
                                 </div>
                                 <div class="col-6 custom-control custom-radio">

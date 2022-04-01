@@ -44,30 +44,23 @@ public class OrderController {
 		System.out.println(productList);
 		returnMap.put("prdCodelist", productList);
 		
-		/*
-		String prdAmountList[] = request.getParameterValues("ordprdamount");
-		List<String> amountList = new ArrayList<String>();
-		for(String ordprdamount : prdAmountList) {
-			amountList.add(ordprdamount);
-		}
-		*/
 		List<String> amountList = new ArrayList<String>();
 		
 		String prdAmount[] = request.getParameterValues("ordprdamount");
 		for(String prdAm : prdAmount) {
 			amountList.add(prdAm);
 		}
+		/*
+		List<String> prdNameList = new ArrayList<String>();
 		
-		//int[] prdAmountList = new int[prdAmount.length];
-		
-		//for(int i=0; i<prdAmount.length; i++) {
-		//	prdAmountList[i] = Integer.parseInt(prdAmount[i]);
-		//}
-		
-		//amountList.toArray(prdAmountList);
-		
+		String prdName[] = request.getParameterValues("prdName");
+		for(String prdN : prdName) {
+			prdNameList.add(prdN);
+		}
+		*/
 		model.addAttribute("productList", productService.getProduct(returnMap));
 		model.addAttribute("amountList", amountList);
+		//model.addAttribute("prdnameList", prdNameList);
 		model.addAttribute("ordertotal", map.get("ordertotal"));
 		model.addAttribute("cmNum", cmNum);
 
@@ -78,44 +71,32 @@ public class OrderController {
 	}
 	
 	@PostMapping("/payment")
-	public String orderSuccess(Model model, HttpServletRequest request, @RequestParam String cmNum, @ModelAttribute OrderDTO order) {
+	public String orderSuccess(@RequestParam Map<String, Object> map, Model model, HttpServletRequest request, @RequestParam String cmNum, @ModelAttribute OrderDTO order) {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
+
+		
 		
 		String prdCodeList[] = request.getParameterValues("prdCode");
 		List<String> productList = new ArrayList<String>();
 		for(String prdCode : prdCodeList) {
 			productList.add(prdCode);
 		}
-		/*
-		String prdAmount[] = request.getParameterValues("prdAmount");
-		List<String> prdAmountList = new ArrayList<String>();
-		for(String prdAM : prdAmount) {
-			prdAmountList.add(prdAM);
-		}
-		*/
+		
+		returnMap.put("prdCodelist", productList);
 		
 		String prdAmount[] = request.getParameterValues("prdAmount");
 		List<String> prdAmountList = new ArrayList<String>();
 		for(String prdAM : prdAmount) {
 			prdAmountList.add(prdAM);
 		}
-		 
-		
-		/*
-		String prdAmount[] = request.getParameterValues("prdAmount");
-		List<String> prdAmountList1 = new ArrayList<String>();
-
-		int[] prdAmountList = new int[prdAmountList1.size()];
-		
-		for(int i=0; i<prdAmount.length; i++) {
-			prdAmountList[i] = Integer.parseInt(prdAmount[i]);
-		}*/
 		
 		String ordBundleNum = System.currentTimeMillis()+"";
-		//String ordBundleNum = "들어가라";
 		model.addAttribute("cmNum", cmNum);
 		model.addAttribute("prdCodelist", productList);
 		model.addAttribute("amountList", prdAmountList);
+		model.addAttribute("ordertotal", map.get("ordertotal"));
+		model.addAttribute("productList", productService.getProduct(returnMap));
+
 		/*
 		model.addAttribute("ordZipcode", map.get("ordZipcode"));
 		model.addAttribute("ordAdd1", map.get("ordAdd1"));
@@ -130,13 +111,15 @@ public class OrderController {
 		System.out.println(ordBundleNum);
 		
 		for(int i=0;i<prdAmount.length;i++) {
-			OrderDTO orderNew = new OrderDTO();
-			orderNew.setPrdCode(productList.get(i));
+			//OrderDTO orderNew = new OrderDTO();
+			//orderNew.setPrdCode(productList.get(i));
+			order.setPrdCode(productList.get(i));
 			System.out.println(productList.get(i));
-			orderNew.setOrdQuantity("0");
+			//orderNew.setOrdQuantity(prdAmountList.get(i));
+			order.setOrdQuantity(prdAmountList.get(i));
 			System.out.println(prdAmountList.get(i));
 			
-			orderNew.setOrdBundleNum(ordBundleNum);
+			order.setOrdBundleNum(ordBundleNum);
 			orderService.insertOrder(order);
 		}
 		

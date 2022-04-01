@@ -7,7 +7,8 @@
 		</selectKey>
 		 <![CDATA[insert into order_tb 
 		(ord_detail_num,mem_email,cm_num,ord_bundle_num,ord_quantity,ord_status,ord_zipcode,ord_add1,ord_add2,ord_phone,ord_request,ord_pay_method,prd_code)
-		values(#{ordDetailNum}, #{memEmail}, #{cmNum}, #{ordBundleNum, jdbcType=VARCHAR}, #{ordQuantity, javaType=String, jdbcType=VARCHAR}, 0, #{ordZipcode}, #{ordAdd1}, #{ordAdd2}, #{ordPhone}, 
+		values(#{ordDetailNum}, #{memEmail}, #{cmNum}, #{ordBundleNum}, #{ordQuantity}, 
+		0, #{ordZipcode}, #{ordAdd1}, #{ordAdd2}, #{ordPhone}, 
 		#{ordRequest}, #{ordPayMethod}, #{prdCode})]]>
 	</insert>
 	

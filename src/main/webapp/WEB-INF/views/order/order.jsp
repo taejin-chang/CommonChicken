@@ -77,7 +77,7 @@
                             
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>합계</span>
-                                <strong>${ordertotal }</strong>
+                                <strong><input type="hidden" name="ordertotal"value="${ordertotal }">${ordertotal }</strong>
                             </li>
                         </ul>
                     </div>
@@ -98,7 +98,7 @@
                             <div class="mb-3">
                                 <label for="username">받는 사람</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="username" name="" placeholder="Username" required value="${loginMember.memName}">
+                                    <input type="text" class="form-control" id="username" name="memName" placeholder="Username" required value="${loginMember.memName}">
                                     <input type="hidden" name="memEmail" value="${loginMember.memEmail}">
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
 									<input class="form-control" type="text" id="sample4_roadAddress" name="ordAdd1" placeholder="도로명주소" value="${loginMember.memAdd1}">
 									</div>
                                 	<div class="col-md-6 mb-1">
-									<input class="form-control" type="text" id="sample4_jibunAddress" placeholder="지번주소" value="">
+									<input class="form-control" type="text" id="sample4_jibunAddress" name="jibun" placeholder="지번주소" value="">
 									</div>                                	
 									<div class="col-md-4 mb-3">
 									<span id="guide" style="color:#999;display:none"></span>
