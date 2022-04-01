@@ -18,7 +18,7 @@
 				<nav class="header__menu mobile-menu">
 				<ul>
 					<li class="active"><a href="${pageContext.request.contextPath}/">홈</a></li>
-					<li><a href="${pageContext.request.contextPath}/listing">제품리스트</a></li>
+					<li><a href="${pageContext.request.contextPath}/user/myClose">제품리스트</a></li>
 					<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
 					<li><a href="#">공지</a>
 						<ul class="dropdown">

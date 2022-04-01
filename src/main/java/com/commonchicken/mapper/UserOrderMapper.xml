@@ -8,8 +8,9 @@
 		from order_tb a
 		left join product_tb b on a.prd_code=b.prd_code
 		left join store_tb c on b.sto_num = c.sto_num
+		where a.MEM_EMAIL=#{memEmail}
 		order by ORD_BUNDLE_NUM) board)
-		where (rn between #{startRow} and #{endRow}) and (MEM_EMAIL =#{memEmail})
+		where rn between #{startRow} and #{endRow}
 
 	</select>
 

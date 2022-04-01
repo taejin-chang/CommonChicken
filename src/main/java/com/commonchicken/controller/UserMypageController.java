@@ -106,7 +106,8 @@ public class UserMypageController {
 	}
 	
 	@RequestMapping("user/myClose")
-	public String myClose() {
+	public String myClose(HttpSession session) {
+		session.invalidate();
 		return "user_mypage/account-close";
 	}
 	
