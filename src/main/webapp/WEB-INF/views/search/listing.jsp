@@ -55,7 +55,7 @@
                             <h2>함께하는 즐거움 "커먼치킨"</h2>
                             <p>동네 친구들과 즐거움을 나누세요~! common comeon~</p>
                         </div> -->
-                        <div class="hero__search__form">
+                        <div style="margin-top: 10px;" class="hero__search__form">
                             <form name="searchForm">
                              		<input type="text" name="juso" id="myLocation" placeholder="Search..."><input name="returnjuso" type="hidden" value="${juso}">
                                 <div class="select__option">

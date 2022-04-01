@@ -510,7 +510,7 @@ public class HomeController {
 		}
 	
 		//커먼 삭제
-		@RequestMapping(value="/store/deleteProduct/{prdNum}", method = RequestMethod.GET)
+		@RequestMapping(value="/store/deleteProduct/{prdCode}", method = RequestMethod.GET)
 		public String deleteProduct(@PathVariable String prdCode) {
 			System.out.println("헤이 !!! ");
 			System.out.println(prdCode);
