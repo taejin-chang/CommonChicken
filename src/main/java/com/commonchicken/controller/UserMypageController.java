@@ -95,7 +95,7 @@ public class UserMypageController {
 	
 	
 	@RequestMapping("logout")
-	public String logout(HttpSession session) {
+	public String logOut(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
 	}
