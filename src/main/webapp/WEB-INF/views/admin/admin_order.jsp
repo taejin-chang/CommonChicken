@@ -192,10 +192,39 @@
 														<c:if test="${orderList.ordStatus==0}">입금대기</c:if> 
 														<c:if test="${orderList.ordStatus==1}">주문접수</c:if> 
 														<c:if test="${orderList.ordStatus==2}">커먼완료</c:if> 
-														<c:if test="${orderList.ordStatus==3}">배달완료</c:if> 
-														<c:if test="${orderList.ordStatus==4}">커먼실패</c:if> 
-														<c:if test="${orderList.ordStatus==5}">주문취소 </c:if> 
-
+														<c:if test="${orderList.ordStatus==3}">배달중</c:if>
+														<c:if test="${orderList.ordStatus==4}">배달완료</c:if> 
+														<c:if test="${orderList.ordStatus==5}">커먼실패</c:if> 
+														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
+														<c:if test="${orderList.ordStatus==0}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배달시작 
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														<c:if test="${orderList.ordStatus==3}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배송완료
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														 
 														</td>
 													</tr>
 													<tr>

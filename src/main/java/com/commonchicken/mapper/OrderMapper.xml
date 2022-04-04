@@ -21,4 +21,10 @@
 	<select id="selectOrderList" resultType="OrderDTO">
 		select * from order_tb order by ord_detail_num
 	</select>
+	
+	
+	<update id="updateOrderStatus" parameterType="map">
+		update order_tb set ord_status = #{ordStatus} where ord_bundle_num = #{ordBundleNum}
+	</update>
+	
 </mapper>

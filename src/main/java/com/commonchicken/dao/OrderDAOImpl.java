@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -36,6 +37,11 @@ public class OrderDAOImpl implements OrderDAO {
 	public List<OrderDTO> selectOrderList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int updateOrderStatus(Map<String, Object> map) {
+		return sqlSession.getMapper(OrderMapper.class).updateOrderStatus(map);
 	}
 
 }

@@ -464,6 +464,19 @@ public class HomeController {
 		return "admin/admin_order";
 	}
 	
+	@RequestMapping(value="/order/changeOrder/{ordStatus}/{ordBundleNum}", method = RequestMethod.GET)
+	public String changeOrder(@PathVariable int ordStatus, @PathVariable String ordBundleNum, Map<String,Object> map ) {
+		System.out.println("배달 시작입니다람1");
+		System.out.println("배달 시작입니다람2");
+		map.put("ordStatus", ordStatus);
+		map.put("ordBundleNum", ordBundleNum);
+		
+		orderService.updateOrderStatus(map);
+		System.out.println("배달 시작입니다람3");
+		
+		return "redirect:/admin/order";
+	}
+	
 	
 	
 	
