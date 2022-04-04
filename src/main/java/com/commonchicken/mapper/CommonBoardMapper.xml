@@ -8,6 +8,19 @@
 			select common_board_seq.nextval from dual
 		</selectKey>
 		insert into common_board_tb (CMBD_NUM, MEM_EMAIL, CM_NUM, CMBD_TITLE, CMBD_STATUS)
-		values(#{cmbdNum}, #{memEmail}, #{cmNum}, #{cmbdTitle}, 0)
+		values(#{cmbdNum}, #{memEmail}, #{cmNum}, #{cmbdTitle}, 1)
 	</insert>
+	
+	<select id="selectCommonBoardList" resultType="CommonBoardListVO">
+		select cb.cmbd_num, cb.cmbd_title, c.cm_num, s.sto_num, s.sto_add1, cb.cmbd_date, c.cm_goal_people, s.sto_name,c.cm_delivery_time, c.cm_close,cb.cmbd_status  
+		from common_board_tb cb left join common_tb c on cb.cm_num = c.cm_num join store_tb s on c.sto_num = s.sto_num 
+		join member_tb m on cb.mem_email = m.mem_email order by cmbd_num desc
+	</select>
+	
+	<select id="selectCommonBoard" resultType="CommonBoardListVO">
+		select cb.cmbd_num, cb.cmbd_title, c.cm_num, s.sto_num, s.sto_add1, cb.cmbd_date, c.cm_goal_people, s.sto_name,c.cm_delivery_time, c.cm_close,cb.cmbd_status 
+		from common_board_tb cb left join common_tb c on cb.cm_num = c.cm_num join store_tb s on c.sto_num = s.sto_num 
+		join member_tb m on cb.mem_email = m.mem_email where cb.cmbd_num = #{cmbdNum};
+	</select>
+	
 </mapper>

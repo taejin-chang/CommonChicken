@@ -39,7 +39,7 @@ public class CommunityController {
 		//commonService.searchCommon(cmNum).getCmDeliveryTime();
 		//commonService.searchCommon(cmNum).getCmClose();
 		//int stoNum = Integer.parseInt(commonService.searchCommon(cmNum).getStoNum());
-		//storeService.selectStore1(stoNum).getStoAdd1();
+		//model.addAttribute("storeaddress",storeService.selectStore1(stoNum).getStoAdd1());
 		String stoNum = commonService.searchCommon(cmNum).getStoNum();
 		String StoName = storeService.selectStore1(stoNum).getStoName();
 		
@@ -49,7 +49,16 @@ public class CommunityController {
 		commonboard.setCmNum(cmNum);
 		
 		commonboardService.insertCommonBoard(commonboard);
+		
+		model.addAttribute("commonboardList", commonboardService.selectCommonBoardList());
+		//return "redirect:/";
 		return "community/common-notice";
 	}
 	
+	@GetMapping("/common_boardlist")
+	public String commonBoardlist(/*int cmbdNum,*/ Model model) {
+		model.addAttribute("commonboardList", commonboardService.selectCommonBoardList());
+		//model.addAttribute("findcommonboard", commonboardService.selectCommonBoard(cmbdNum));
+		return "community/common-notice";
+	}
 }
