@@ -19,9 +19,14 @@ public class OrderMangerTest {
 	@Autowired
 	private OrderManagerService orderMangaerService;
 	
+//	@Test
+//	public void updateViews() {		
+//		orderMangaerService.selectOrderTestList();
+//	}
+//	
 	@Test
 	public void updateViews() {		
-		orderMangaerService.selectOrderMgtList();
+		orderMangaerService.selectOrderTest2List();
 	}
 }
 

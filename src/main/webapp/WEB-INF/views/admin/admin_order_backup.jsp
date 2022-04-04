@@ -120,6 +120,11 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper" style="margin-top: 60px;">
+        <div style="text-align: right;">
+        	<button type="button" class="btn btn-primary" onclick="location.href='<c:url value='/admin/notice_writing'/>'">
+        		<strong>글쓰기</strong>
+       		</button>	
+        </div>
         <br>
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -211,23 +216,21 @@
 																		<th>상품 종류</th>
 																	</tr>
 																</thead>
-																<c:forEach var="productOrderList" items="${productManager}">
-																<c:if test="${orderList.ordBundleNum==productOrderList.ordBundleNum }">
+																<c:forEach var="productList" items="${orderList.productList}">
 																<tbody style="text-align: center;">
 																	<tr>
-																		<td>${productOrderList.productList.prdCode}</td>
-																		<td>${productOrderList.productList.prdUpload}</td>
-																		<td>${productOrderList.productList.prdName}</td>
-																		<td>${productOrderList.productList.prdPrice}</td>
-																		<td>${productOrderList.ordQuantity}</td>
+																		<td>${productList.prdCode}</td>
+																		<td>${productList.prdUpload}</td>
+																		<td>${productList.prdName}</td>
+																		<td>${productList.prdPrice}</td>
+																		<td>${orderList.ordQuantity}</td>
 																		<td>
-																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
-																		<c:if test="${productOrderList.productList.prdCategory==1}">사이드</c:if> 
-																		<c:if test="${productOrderList.productList.prdCategory==2}">음료</c:if> 
+																		<c:if test="${productList.prdCategory==0}">치킨</c:if> 
+																		<c:if test="${productList.prdCategory==1}">사이드</c:if> 
+																		<c:if test="${productList.prdCategory==2}">음료</c:if> 
 																		</td>
 																	</tr>
 																</tbody>
-																</c:if>
 																</c:forEach>
 															</table>
 														</td>
