@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,26 @@ public class CommonBoardDAOImpl implements CommonBoardDAO {
 		return sqlSession.getMapper(CommonBoardMapper.class).insertCommonBoard(commonboard);
 	}
 
-	@Override
-	public List<CommonBoardListVO> selectCommonBoardList() {
-		return sqlSession.getMapper(CommonBoardMapper.class).selectCommonBoardList();
-	}
 
 	@Override
 	public CommonBoardListVO selectCommonBoard(int cmbdNum) {
 		return sqlSession.getMapper(CommonBoardMapper.class).selectCommonBoard(cmbdNum);
 	}
+
+	@Override
+	public int getCommonBoardCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CommonBoardMapper.class).getCommonBoardCount();
+	}
+
+
+	@Override
+	public List<CommonBoardListVO> selectCommonBoardList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CommonBoardMapper.class).selectCommonBoardList(map);
+	}
+
+
 
 	
 	

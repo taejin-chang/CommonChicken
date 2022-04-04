@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +21,22 @@ public class CommonBoardServiceImpl implements CommonBoardService{
 		return commonBoardDAO.insertCommonBoard(commonboard);
 	}
 
-	@Override
-	public List<CommonBoardListVO> selectCommonBoardList() {
-		return commonBoardDAO.selectCommonBoardList();
-	}
 
 	@Override
 	public CommonBoardListVO selectCommonBoard(int cmbdNum) {
 		return commonBoardDAO.selectCommonBoard(cmbdNum);
+	}
+
+	@Override
+	public int getCommonBoardCount() {
+		return commonBoardDAO.getCommonBoardCount();
+	}
+
+
+	@Override
+	public List<CommonBoardListVO> selectCommonBoardList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return commonBoardDAO.selectCommonBoardList(map);
 	}
 
 	

@@ -12,15 +12,19 @@
 	</insert>
 	
 	<select id="selectCommonBoardList" resultType="CommonBoardListVO">
-		select cb.cmbd_num, cb.cmbd_title, c.cm_num, s.sto_num, s.sto_add1, cb.cmbd_date, c.cm_goal_people, s.sto_name,c.cm_delivery_time, c.cm_close,cb.cmbd_status  
+		select * from (select rownum rn, board.* from (select cb.cmbd_num, cb.cmbd_title, c.cm_num, s.sto_num, s.sto_add1, cb.cmbd_date, c.cm_goal_people, s.sto_name,c.cm_delivery_time, c.cm_close,cb.cmbd_status  
 		from common_board_tb cb left join common_tb c on cb.cm_num = c.cm_num join store_tb s on c.sto_num = s.sto_num 
-		join member_tb m on cb.mem_email = m.mem_email order by cmbd_num desc
+		join member_tb m on cb.mem_email = m.mem_email order by cmbd_num desc) board) where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<select id="selectCommonBoard" resultType="CommonBoardListVO">
 		select cb.cmbd_num, cb.cmbd_title, c.cm_num, s.sto_num, s.sto_add1, cb.cmbd_date, c.cm_goal_people, s.sto_name,c.cm_delivery_time, c.cm_close,cb.cmbd_status 
 		from common_board_tb cb left join common_tb c on cb.cm_num = c.cm_num join store_tb s on c.sto_num = s.sto_num 
 		join member_tb m on cb.mem_email = m.mem_email where cb.cmbd_num = #{cmbdNum};
+	</select>
+	
+	<select id="getCommonBoardCount" resultType="int">
+		select count(*) from common_board_tb
 	</select>
 	
 </mapper>
