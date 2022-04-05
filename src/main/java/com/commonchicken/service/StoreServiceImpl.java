@@ -27,7 +27,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public StoreDTO selectStore(int stoNum) {
+	public StoreDTO selectStore(String stoNum) {
 		return storeDAO.selectStore(stoNum);
 	}
 
@@ -65,6 +65,11 @@ public class StoreServiceImpl implements StoreService {
 	public CommonStoreVO selectStoreInfoReivew(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return storeDAO.selectStoreInfoReivew(map);
+	}
+
+	@Override
+	public String selectStoreEmail(String memEmail) {
+		return storeDAO.selectStoreEmail(memEmail);
 	}
 
 }

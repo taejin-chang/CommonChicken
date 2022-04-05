@@ -157,5 +157,9 @@ STO_UPLOAD                VARCHAR2(100)
 	<select id="selectStoreList" resultType="StoreDTO">
 			select * from store_tb order by sto_num
 	</select>
+	
+	<select id="selectStoreEmail" resultType="String">
+		select sto_num from store_tb where mem_email=#{memEmail}
+	</select>
 
 </mapper>

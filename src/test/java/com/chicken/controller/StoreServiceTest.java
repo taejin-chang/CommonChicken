@@ -40,36 +40,36 @@ public class StoreServiceTest {
 //	STO_BONE_ORG              VARCHAR2(50)   
 //	STO_BONELESS_ORG          VARCHAR2(50)   
 //	STO_MESSAGE               VARCHAR2(1000) 
-	@Test 
-	public void testUpdateStoreUserInfo() {
-		StoreDTO store = new StoreDTO();
-		store.setStoNum("6656");
-		store.setMemEmail("nolang@naver.com");
-		store.setStoCode(123);
-		store.setStoName("교촌치킨 일산점");
-		store.setStoCeo("정현우님");
-		store.setStoCondition("1");
-		store.setStoSector("1");
-		store.setStoZipCode("1");
-		store.setStoAdd1("서울시 테헤란로 98");
-		store.setStoAdd2("현우빌딩 34호");
-		store.setStoPhone("010-1111-111");
-		store.setStoStatus(1);
-		store.setStoOpenning("1");
-		store.setStoMinorder("10000");
-		store.setStoPayment("현금");
-		store.setStoBoneOrg("국내산");
-		store.setStoBonelessOrg("국내산");
-		store.setStoMessage("많이 오세요");
-		store.setStoOrigin("12");
-		store.setStoUpload("12");
-		
-		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
-
-	
-		storeService.updateStore(store);
-		
-	}
+//	@Test 
+//	public void testUpdateStoreUserInfo() {
+//		StoreDTO store = new StoreDTO();
+//		store.setStoNum("6656");
+//		store.setMemEmail("nolang@naver.com");
+//		store.setStoCode(123);
+//		store.setStoName("교촌치킨 일산점");
+//		store.setStoCeo("정현우님");
+//		store.setStoCondition("1");
+//		store.setStoSector("1");
+//		store.setStoZipCode("1");
+//		store.setStoAdd1("서울시 테헤란로 98");
+//		store.setStoAdd2("현우빌딩 34호");
+//		store.setStoPhone("010-1111-111");
+//		store.setStoStatus(1);
+//		store.setStoOpenning("1");
+//		store.setStoMinorder("10000");
+//		store.setStoPayment("현금");
+//		store.setStoBoneOrg("국내산");
+//		store.setStoBonelessOrg("국내산");
+//		store.setStoMessage("많이 오세요");
+//		store.setStoOrigin("12");
+//		store.setStoUpload("12");
+//		
+//		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
+//
+//	
+//		storeService.updateStore(store);
+//		
+//	}
 	
 //	@Test
 //	public void testSelectStoreUserInfo() {
@@ -77,6 +77,11 @@ public class StoreServiceTest {
 //		
 //		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
 //	}
+	
+	@Test
+	public void testSelectEamil() {
+		storeService.selectStoreEmail("nolang@naver.com");
+	}
 
 }
 

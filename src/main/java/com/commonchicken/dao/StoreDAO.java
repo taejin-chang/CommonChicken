@@ -9,7 +9,7 @@ import com.commonchicken.dto.StoreDTO;
 public interface StoreDAO {
 	int insertStore(StoreDTO store);
 	int updateStore(StoreDTO store);
-	StoreDTO selectStore(int stoNum);
+	StoreDTO selectStore(String stoNum);
 	StoreDTO selectStore1(String stoNum);
 	CommonStoreVO selectStoreInfoReivew(Map<String, Object> map);
 	List<StoreDTO> selectStoreList();
@@ -18,6 +18,8 @@ public interface StoreDAO {
 	List<CommonStoreVO> selectStoreProductInfo(int stoNum);
 	List<CommonStoreVO> selectCommonStore(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
+	String selectStoreEmail(String memEmail);
+
 
 
 }

@@ -9,7 +9,7 @@ import com.commonchicken.dto.StoreDTO;
 public interface StoreService {
 	void insertStore(StoreDTO store);
 	void updateStore(StoreDTO store);
-	StoreDTO selectStore(int stoNum);
+	StoreDTO selectStore(String stoNum);
 	StoreDTO selectStore1(String stoNum);
 	CommonStoreVO selectStoreInfoReivew(Map<String, Object> map);
 
@@ -19,4 +19,6 @@ public interface StoreService {
 	List<CommonStoreVO> getStoreProductInfo(int stoNum);
 	List<CommonStoreVO> getCommonStore(Map<String, Object> map);
 	List<CommonStoreVO> getStoreCommonlist(int stoNum);
+	String selectStoreEmail(String memEmail);
+
 }

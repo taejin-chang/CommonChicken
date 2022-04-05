@@ -32,7 +32,7 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public StoreDTO selectStore(int stoNum) {
+	public StoreDTO selectStore(String stoNum) {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(StoreMapper.class).selectStore(stoNum);
 	}
@@ -76,6 +76,11 @@ public class StoreDAOImpl implements StoreDAO {
 	public CommonStoreVO selectStoreInfoReivew(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String selectStoreEmail(String memEmail) {
+		return sqlSession.getMapper(StoreMapper.class).selectStoreEmail(memEmail);
 	}
 
 

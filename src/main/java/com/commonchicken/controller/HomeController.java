@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,8 +108,8 @@ public class HomeController {
 	
 	//관리자 정보 페이지
 	@RequestMapping(value = "store/owner", method = RequestMethod.GET)
-	public String storeSelect(@RequestParam(defaultValue = "nolang@naver.com") String memEmail, Model model){
-		model.addAttribute("storeOwner", memberSerivce.selectMember(memEmail));
+	public String storeSelect(HttpSession session, Model model){
+		model.addAttribute("storeOwner", memberSerivce.selectMember((String)session.getAttribute("loginId")));
 		return "store_mypage/store_owner_info";
 	}
 	
@@ -161,8 +163,13 @@ public class HomeController {
 	
 	//점포 관리 페이지 
 	@RequestMapping(value = "store/info", method = RequestMethod.GET)
-	public String storeSelect(@RequestParam(defaultValue = "6656")int StoName, Model model){
-		model.addAttribute("storeInfo", storeService.selectStore(StoName));
+	public String storeSelect1(HttpSession session, Model model){
+		
+
+		String stoNum = storeService.selectStoreEmail((String)session.getAttribute("loginId"));
+
+		
+		model.addAttribute("storeInfo", storeService.selectStore(stoNum));
 		return "store_mypage/store_info";
 	}
 	
