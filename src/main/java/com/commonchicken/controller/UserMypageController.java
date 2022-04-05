@@ -53,7 +53,7 @@ public class UserMypageController {
 		return "user_mypage/account-home";
 	}
 	
-	//주문게시판
+	//주문게시판 
 	@RequestMapping("user/myCommon")
 	public String myCommonpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
 		System.out.println("메소드작동전");
