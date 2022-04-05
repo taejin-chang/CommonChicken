@@ -26,18 +26,18 @@
                                 <div class="select__option">
                                     <select class="nice-select" name="deliveryTime">
                                         <option value="">배달출발시간</option>
-										  <option value="2022-03-09 13:00:00">13시</option>
-										  <option value="2022-03-09 14:00:00">14시</option>
-										  <option value="2022-03-09 15:00:00">15시</option>
-										  <option value="2022-03-09 16:00:00">16시</option>
-										  <option value="2022-03-09 17:00:00">17시</option>
-										  <option value="2022-03-09 18:00:00">18시</option>
-										  <option value="2022-03-09 19:00:00">19시</option>
-										  <option value="2022-03-09 20:00:00">20시</option>
-										  <option value="2022-03-09 21:00:00">21시</option>
-										  <option value="2022-03-09 22:00:00">22시</option>
-										  <option value="2022-03-09 23:00:00">23시</option>
-										  <option value="2022-03-09 24:00:00">24시</option>
+										  <option value="2022-01-01 13:00:00">13시</option>
+										  <option value="2022-01-01 14:00:00">14시</option>
+										  <option value="2022-01-01 15:00:00">15시</option>
+										  <option value="2022-01-01 16:00:00">16시</option>
+										  <option value="2022-01-01 17:00:00">17시</option>
+										  <option value="2022-01-01 18:00:00">18시</option>
+										  <option value="2022-01-01 19:00:00">19시</option>
+										  <option value="2022-01-01 20:00:00">20시</option>
+										  <option value="2022-01-01 21:00:00">21시</option>
+										  <option value="2022-01-01 22:00:00">22시</option>
+										  <option value="2022-01-01 23:00:00">23시</option>
+										  <option value="2022-01-01 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">

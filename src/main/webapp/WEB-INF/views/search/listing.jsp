@@ -62,18 +62,18 @@
                                    	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
                                     <select class="nice-select" name="deliveryTime">
                                         <option>배달출발시간</option>
-										  <option value="2022-03-09 13:00:00">13시</option>
-										  <option value="2022-03-09 14:00:00">14시</option>
-										  <option value="2022-03-09 15:00:00">15시</option>
-										  <option value="2022-03-09 16:00:00">16시</option>
-										  <option value="2022-03-09 17:00:00">17시</option>
-										  <option value="2022-03-09 18:00:00">18시</option>
-										  <option value="2022-03-09 19:00:00">19시</option>
-										  <option value="2022-03-09 20:00:00">20시</option>
-										  <option value="2022-03-09 21:00:00">21시</option>
-										  <option value="2022-03-09 22:00:00">22시</option>
-										  <option value="2022-03-09 23:00:00">23시</option>
-										  <option value="2022-03-09 24:00:00">24시</option>
+										  <option value="2022-01-01 13:00:00">13시</option>
+										  <option value="2022-01-01 14:00:00">14시</option>
+										  <option value="2022-01-01 15:00:00">15시</option>
+										  <option value="2022-01-01 16:00:00">16시</option>
+										  <option value="2022-01-01 17:00:00">17시</option>
+										  <option value="2022-01-01 18:00:00">18시</option>
+										  <option value="2022-01-01 19:00:00">19시</option>
+										  <option value="2022-01-01 20:00:00">20시</option>
+										  <option value="2022-01-01 21:00:00">21시</option>
+										  <option value="2022-01-01 22:00:00">22시</option>
+										  <option value="2022-01-01 23:00:00">23시</option>
+										  <option value="2022-01-01 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
@@ -154,18 +154,18 @@
            		 <p style="display: inline;">커먼 마감시간 :</p>
 				<select name='cmClose' id="cmClose">
 				  <option value=''>마감시간</option>
-				  <option value="2022-03-09 13:00:00">13시</option>
-				  <option value="2022-03-09 14:00:00">14시</option>
-				  <option value="2022-03-09 15:00:00">15시</option>
-				  <option value="2022-03-09 16:00:00">16시</option>
-				  <option value="2022-03-09 17:00:00">17시</option>
-				  <option value="2022-03-09 18:00:00">18시</option>
-				  <option value="2022-03-09 19:00:00">19시</option>
-				  <option value="2022-03-09 20:00:00">20시</option>
-				  <option value="2022-03-09 21:00:00">21시</option>
-				  <option value="2022-03-09 22:00:00">22시</option>
-				  <option value="2022-03-09 23:00:00">23시</option>
-				  <option value="2022-03-09 24:00:00">24시</option>
+				  <option value="2022-01-01 13:00:00">13시</option>
+				  <option value="2022-01-01 14:00:00">14시</option>
+				  <option value="2022-01-01 15:00:00">15시</option>
+				  <option value="2022-01-01 16:00:00">16시</option>
+				  <option value="2022-01-01 17:00:00">17시</option>
+				  <option value="2022-01-01 18:00:00">18시</option>
+				  <option value="2022-01-01 19:00:00">19시</option>
+				  <option value="2022-01-01 20:00:00">20시</option>
+				  <option value="2022-01-01 21:00:00">21시</option>
+				  <option value="2022-01-01 22:00:00">22시</option>
+				  <option value="2022-01-01 23:00:00">23시</option>
+				  <option value="2022-01-01 24:00:00">24시</option>
 				</select>
             </div>
             <br>            
@@ -173,18 +173,18 @@
            		 <p style="display: inline;">배달시간 :</p>           		 
 				<select name='deliveryTime2' id="deliveryTime2">
 				  <option value=''>배달시간</option>
-				  <option value="2022-03-09 13:00:00">13시</option>
-				  <option value="2022-03-09 14:00:00">14시</option>
-				  <option value="2022-03-09 15:00:00">15시</option>
-				  <option value="2022-03-09 16:00:00">16시</option>
-				  <option value="2022-03-09 17:00:00">17시</option>
-				  <option value="2022-03-09 18:00:00">18시</option>
-				  <option value="2022-03-09 19:00:00">19시</option>
-				  <option value="2022-03-09 20:00:00">20시</option>
-				  <option value="2022-03-09 21:00:00">21시</option>
-				  <option value="2022-03-09 22:00:00">22시</option>
-				  <option value="2022-03-09 23:00:00">23시</option>
-				  <option value="2022-03-09 24:00:00">24시</option>
+				  <option value="2022-01-01 13:00:00">13시</option>
+				  <option value="2022-01-01 14:00:00">14시</option>
+				  <option value="2022-01-01 15:00:00">15시</option>
+				  <option value="2022-01-01 16:00:00">16시</option>
+				  <option value="2022-01-01 17:00:00">17시</option>
+				  <option value="2022-01-01 18:00:00">18시</option>
+				  <option value="2022-01-01 19:00:00">19시</option>
+				  <option value="2022-01-01 20:00:00">20시</option>
+				  <option value="2022-01-01 21:00:00">21시</option>
+				  <option value="2022-01-01 22:00:00">22시</option>
+				  <option value="2022-01-01 23:00:00">23시</option>
+				  <option value="2022-01-01 24:00:00">24시</option>
 				</select>
             </div>
             <br>
@@ -257,24 +257,26 @@
 		                        <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
 		                            	<c:choose>
-		                            		<c:when test="${searchStore.revRated1==1 }">
-		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==1.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==2 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==2.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==3 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==3.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==4 }">
+		                            		<c:when test="${searchStore.revRated>=4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated1==4.5 }">
+		                            		<c:when test="${searchStore.revRated>=4.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:otherwise>
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                            		<c:when test="${searchStore.revRated>=3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=3.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=2.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=1.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>=0.5 }">
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${searchStore.revRated>0.0 }">
+		                            		<span class="icon_star-half_alt"></span></c:when>
 		                                </c:choose>
 		                            </div>
 		                            <!--  <h6>$40 - $70</h6>-->

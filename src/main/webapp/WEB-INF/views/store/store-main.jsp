@@ -70,34 +70,34 @@
                         <div class="blog__item__text">
                             <ul class="blog__item__tags">
 		                            	<c:choose>
-		                            		<c:when test="${commons.revRatedAvg==0 }">
-		                            		<span>☆</span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==0.5 }">
-		                            		<span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==1 }">
-		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==1.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==2 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==2.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==3 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==3.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==4 }">
+		                            		<c:when test="${selectStoreReviewAvg>=4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${commons.revRatedAvg==4.5 }">
+		                            		<c:when test="${selectStoreReviewAvg>=4.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:otherwise>
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                            		<c:when test="${selectStoreReviewAvg>=3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=3.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=2.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
+		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
+		                            		<span class="icon_star-half_alt"></span></c:when>
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>0 }">
+		                            		<span>☆</span></c:when>
 		                                </c:choose>
                             </ul>
                             <h3><a href="#">${commons.storeDTO.stoAdd1}&nbsp;${commons.storeDTO.stoAdd2}</a></h3>
                             <ul class="blog__item__widget">
                                 <li><i class="fa fa-phone"></i> ${commons.storeDTO.stoPhone}</li>
-                                <li><i class="fa fa-user"></i> 후기 ${selectStoreInfo.revRatedCount}개</li>
+                                <li><i class="fa fa-user"></i> 후기 ${selectStoreReviewCount}개</li>
                             </ul>
                             <div class="">
                             <ul class="blog__item__widget">
@@ -218,34 +218,34 @@
                                 <div class="listing__details__rating">
                             <h4>Rate</h4>
                             <div class="listing__details__rating__overall">
-                                <h2>${selectStoreInfo.revRatedAvg}</h2>
+                                <h2>${selectStoreReviewAvg}</h2>
                                 <div class="listing__details__rating__star">
-                                	<c:choose>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==0 }">
-		                            		<span>☆</span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==0.5 }">
-		                            		<span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==1 }">
-		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==1.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==2 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==2.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==3 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==3.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==4 }">
+		                            	<c:choose>
+		                            		<c:when test="${selectStoreReviewAvg>=4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreInfo.revRatedAvg==4.5 }">
+		                            		<c:when test="${selectStoreReviewAvg>=4.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:otherwise>
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:otherwise>
+		                            		<c:when test="${selectStoreReviewAvg>=3.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=3.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=2.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=2.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=1.5 }">
+		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
+		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
+		                            		<span class="icon_star-half_alt"></span></c:when>
+		                            		<span class="icon_star"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>0 }">
+		                            		<span>☆</span></c:when>
 		                                </c:choose>
                                 </div>
-                                <span>(${selectStoreInfo.revRatedCount} Rating)</span>
+                                <span>(${selectStoreReviewCount} Rating)</span>
                             </div>
                             <!--  
                             <div class="listing__details__rating__bar">

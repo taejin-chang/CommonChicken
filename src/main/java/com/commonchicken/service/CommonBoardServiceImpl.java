@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.commonchicken.dao.CommonBoardDAO;
 import com.commonchicken.dto.CommonBoardDTO;
@@ -16,6 +17,7 @@ public class CommonBoardServiceImpl implements CommonBoardService{
 	@Autowired
 	CommonBoardDAO commonBoardDAO;
 
+	@Transactional
 	@Override
 	public int insertCommonBoard(CommonBoardDTO commonboard) {
 		return commonBoardDAO.insertCommonBoard(commonboard);

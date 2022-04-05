@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.commonchicken.service.SearchStoreService;
+import com.commonchicken.service.StoreService;
 
 @Controller
 public class SearchStoreController {
 	
 	@Autowired
 	private SearchStoreService searchStoreService;
+	
+	@Autowired
+	private StoreService storeService;
 	
 	//메인페이지에서 헤더메뉴를 통해 들어온 상세페이지
 	@GetMapping("/listing")
@@ -32,6 +36,9 @@ public class SearchStoreController {
 	//메인페이지에서 검색을 통해 들어온 상세페이지
 	@PostMapping("/listing_search")
 	public String searchMain(@RequestParam Map<String, Object> map, Model model) throws ParseException {
+
+		//model.addAttribute("storecommonlist", storeService.getStoreCommonlist(stoNum));
+		
 		model.addAttribute("mainSearchList", searchStoreService.getMainSearch(map));
 		model.addAttribute("deliveryTime", map.get("deliveryTime"));
 		model.addAttribute("juso", map.get("juso"));

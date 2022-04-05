@@ -73,14 +73,18 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public CommonStoreVO selectStoreInfoReivew(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+	public String selectStoreEmail(String memEmail) {
+		return sqlSession.getMapper(StoreMapper.class).selectStoreEmail(memEmail);
 	}
 
 	@Override
-	public String selectStoreEmail(String memEmail) {
-		return sqlSession.getMapper(StoreMapper.class).selectStoreEmail(memEmail);
+	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map) {
+		return sqlSession.getMapper(StoreMapper.class).selectStoreInfoReivewAvg(map);
+	}
+
+	@Override
+	public CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map) {
+		return sqlSession.getMapper(StoreMapper.class).selectStoreInfoReivewCount(map);
 	}
 
 

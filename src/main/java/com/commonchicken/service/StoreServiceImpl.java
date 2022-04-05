@@ -62,14 +62,18 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public CommonStoreVO selectStoreInfoReivew(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return storeDAO.selectStoreInfoReivew(map);
+	public String selectStoreEmail(String memEmail) {
+		return storeDAO.selectStoreEmail(memEmail);
 	}
 
 	@Override
-	public String selectStoreEmail(String memEmail) {
-		return storeDAO.selectStoreEmail(memEmail);
+	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map) {
+		return storeDAO.selectStoreInfoReivewAvg(map);
+	}
+
+	@Override
+	public CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map) {
+		return storeDAO.selectStoreInfoReivewCount(map);
 	}
 
 }

@@ -8,7 +8,7 @@ public class SearchStoreVO {
 	private String stoAdd1;
 	private String stoAdd2;	
 	private String stoPhone;
-	private double revRated1;
+	private double revRated;
 	//private List<CommonDTO> commonlist;
 	private int cmNum;
 	private int cmGoalPeople;
@@ -50,11 +50,11 @@ public class SearchStoreVO {
 	public void setStoPhone(String stoPhone) {
 		this.stoPhone = stoPhone;
 	}
-	public double getRevRated1() {
-		return revRated1;
+	public double getRevRated() {
+		return revRated;
 	}
-	public void setRevRated1(double revRated1) {
-		this.revRated1 = revRated1;
+	public void setRevRated(double revRated) {
+		this.revRated = revRated;
 	}
 	public int getCmNum() {
 		return cmNum;

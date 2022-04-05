@@ -11,7 +11,8 @@ public interface StoreMapper {
 	int updateStore(StoreDTO store);
 	StoreDTO selectStore(String stoNum);
 	StoreDTO selectStore1(String stoNum);
-	CommonStoreVO selectStoreInfoReivew(Map<String, Object> map);
+	CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map);
+	CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map);
 	List<StoreDTO> selectStoreList();
 	
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);

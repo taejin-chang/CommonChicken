@@ -117,11 +117,20 @@ STO_UPLOAD                VARCHAR2(100)
 	join (select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num = r.cm_num 
 	where s.sto_num = #{stoNum} and c.cm_num = #{cmNum}
 	</select>
-	<select id="selectStoreInfoReivew" parameterType="map" resultMap="CommonStoreResultMap">
-	select s.sto_num, c.cm_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated_avg, r.rev_rated_count, c.cm_delivery_time, c.cm_close from
-	store_tb s join common_tb c on s.sto_num = c.sto_num
-	join (select cm_num,round(avg(rev_rated),1) rev_rated_avg, count(rev_rated) rev_rated_count from review_tb group by cm_num) r on c.cm_num = r.cm_num 
-	where s.sto_num = #{stoNum}
+	
+	<select id="selectStoreInfoReivewAvg" parameterType="map" resultMap="CommonStoreResultMap">
+	select r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, rev_rated from
+	store_tb s join common_tb c on s.sto_num = c.sto_num join (select cc.sto_num, round(avg(rev_rated),1) rev_rated 
+	from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) r 
+	on c.sto_num = r.sto_num 
+	where s.sto_num = #{stoNum} group by r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated
+	</select>
+	<select id="selectStoreInfoReivewCount" parameterType="map" resultMap="CommonStoreResultMap">
+	select r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, rev_rated from
+	store_tb s join common_tb c on s.sto_num = c.sto_num join (select cc.sto_num, count(rev_rated) rev_rated 
+	from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) r 
+	on c.sto_num = r.sto_num 
+	where s.sto_num = #{stoNum} group by r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated
 	</select>
 	
 	<select id="selectStoreProductInfo" resultMap="CommonStoreResultMap">

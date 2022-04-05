@@ -32,10 +32,10 @@ public class StoreController {
 		model.addAttribute("commonStore", storeService.getCommonStore(returnMap));
 		model.addAttribute("storecommonlist", storeService.getStoreCommonlist(stoNum));
 		model.addAttribute("storereviewlist", reviewService.selectStoreReviewList(stoNumm));
-		model.addAttribute("selectStoreInfo", storeService.selectStoreInfoReivew(returnMap));
+		model.addAttribute("selectStoreReviewAvg", storeService.selectStoreInfoReivewAvg(returnMap).getReviewDTO().getRevRated());
+		model.addAttribute("selectStoreReviewCount", storeService.selectStoreInfoReivewCount(returnMap).getReviewDTO().getRevRated());
 		model.addAttribute("cmNum", cmNum);
 		model.addAttribute("stoNum", stoNum);
-		
 		
 		return "store/store-main";
 	}
