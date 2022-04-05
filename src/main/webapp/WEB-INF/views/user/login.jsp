@@ -94,11 +94,11 @@
 														</button>
 														
 													</div>
-													<p style="color:red;">${loginmessage }</p>
+													
 													<div class="space-4"></div>
 												</fieldset>
 											</form>
-
+											<p style="color:red;">${loginmessage }</p>
 											<div class="social-or-login center">
 												<span class="bigger-110">소셜 로그인</span>
 											</div>

@@ -78,7 +78,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute MemberDTO member, Model model,HttpSession session) throws LoginAuthFailException{
 		//아이디 잘못입력했을때
-		if(memberService.selectMember(member.getMemEmail()).getMemEmail()==null) {
+		if(memberService.selectMember(member.getMemEmail())==null) {
 			throw new LoginAuthFailException();
 		}
 		//비번 틀렸을때

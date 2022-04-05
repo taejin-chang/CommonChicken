@@ -153,7 +153,7 @@
 											
 												<form name="StoreApplyForm" class="form-horizontal" role="form"enctype="multipart/form-data">
 												<!-- 회원이메일 -->
-												<input type="hidden" name="memEmail" value="${loginMember.memName }">
+												<input type="hidden" name="memEmail" value="${loginMember.memEmail }">
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업자번호</label>
 														<div class="col-sm-9">

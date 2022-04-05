@@ -53,6 +53,7 @@ public class UserMypageController {
 		return "user_mypage/account-home";
 	}
 	
+	//주문게시판
 	@RequestMapping("user/myCommon")
 	public String myCommonpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
 		System.out.println("메소드작동전");
@@ -74,6 +75,7 @@ public class UserMypageController {
 		
 	}
 	
+	//내가쓴 리뷰 게시판
 	@RequestMapping("user/myBoard")
 	public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
 		int totalBoard=reviewService.getReviewCount((String)session.getAttribute("loginId"));
@@ -167,7 +169,7 @@ public class UserMypageController {
 	
 	
 	
-	
+	//점포등록 페이지
 	@RequestMapping(value = "/store_apply", method = RequestMethod.POST)
 	public String storeApply(@ModelAttribute StoreDTO store) throws IllegalStateException, IOException {
 		
@@ -206,6 +208,7 @@ public class UserMypageController {
 		return "user_mypage/account-home";
 	}
 	
+	//리뷰등록되는 메소드
 	@RequestMapping(value = "/review_insert", method = RequestMethod.POST)
 	public String reviewInsert(@ModelAttribute ReviewDTO review) throws IllegalStateException, IOException {
 		
