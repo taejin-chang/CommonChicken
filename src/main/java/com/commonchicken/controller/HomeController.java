@@ -444,14 +444,42 @@ public class HomeController {
 //	}	
 	
 	
+//	@RequestMapping(value = "/admin/order", method = RequestMethod.GET)
+//	public String adminOrder(Model model){
+//		System.out.println("하이!");
+//		model.addAttribute("commonList", commonService.selectCommonList());
+//		model.addAttribute("orderManager", orderManagerService.selectOrderMgtList());
+//		
+//		return "admin/admin_order";
+//	}
+	
+	
 	@RequestMapping(value = "/admin/order", method = RequestMethod.GET)
 	public String adminOrder(Model model){
 		System.out.println("하이!");
-		model.addAttribute("commonList", commonService.selectCommonList());
-		model.addAttribute("orderManager", orderManagerService.selectOrderMgtList());
+		//model.addAttribute("commonList", commonService.selectCommonList());
+		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
+		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
 		
 		return "admin/admin_order";
 	}
+	
+	@RequestMapping(value="/order/changeOrder/{ordStatus}/{ordBundleNum}", method = RequestMethod.GET)
+	public String changeOrder(@PathVariable int ordStatus, @PathVariable String ordBundleNum, Map<String,Object> map ) {
+		System.out.println("배달 시작입니다람1");
+		System.out.println("배달 시작입니다람2");
+		map.put("ordStatus", ordStatus);
+		map.put("ordBundleNum", ordBundleNum);
+		
+		orderService.updateOrderStatus(map);
+		System.out.println("배달 시작입니다람3");
+		
+		return "redirect:/admin/order";
+	}
+	
+	
+	
+	
 	
 	
 	

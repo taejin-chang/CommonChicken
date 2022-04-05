@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.commonchicken.dao.OrderManagerDAO;
-import com.commonchicken.dto.OrderManagerVO;
+//import com.commonchicken.dto.OrderManagerVO;
+import com.commonchicken.dto.OrderManagerVO1;
+import com.commonchicken.dto.OrderManagerVO2;
 
 @Service
 public class OrderManagerServiceImpl implements OrderManagerService {
@@ -14,8 +16,20 @@ public class OrderManagerServiceImpl implements OrderManagerService {
 	@Autowired
 	OrderManagerDAO orderManagerDAO;
 
+//	@Override
+//	public List<OrderManagerVO> selectOrderMgtList() {
+//		return orderManagerDAO.selectOrderMgtList();
+//	}
+	
 	@Override
-	public List<OrderManagerVO> selectOrderMgtList() {
-		return orderManagerDAO.selectOrderMgtList();
+	public List<OrderManagerVO1> selectOrderTestList() {
+		return orderManagerDAO.selectOrderTestList();
+
+	}
+	
+	@Override
+	public List<OrderManagerVO2> selectOrderTest2List() {
+		return orderManagerDAO.selectOrderTest2List();
+		
 	}
 }

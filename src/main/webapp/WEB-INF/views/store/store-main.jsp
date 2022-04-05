@@ -424,8 +424,6 @@
     </section>
     <!-- Blog Section End -->
 
-    <!-- Footer Section End -->
-
     <!-- Js Plugins -->
     <!-- <script src="js/jquery.nice-select.min.js"></script> -->
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
@@ -459,33 +457,7 @@
 	        document.getElementById('store_review').className = 'nav-link'
 	        document.getElementById('store_information').className = 'nav-link active'
 	    };	
-	   	   
-	    /*
-	    function prdmenu() {
-	    	
-		    $(".list-group").append(
-		    		"<li class='list-group-item clearfix ng-scope'>"+
-		          	"<div class='menu-name ng-binding' value='$(this).val()'></div>"+
-		          	"<div class='row'>"+
-			            "<div class='col-xs-6 pull-left'>"+
-			              "<button class='btn btn-del-menu'>삭제</button>"+
-			              "<span class='order-price ng-binding'><input type='hidden' id='order-price' value='74000' style='border:0 solid black'>74,000원</span>"+
-			           	"</div>"+
-			           	"<div class='col-xs-6 text-right'>"+
-			              "<button class='btn btn-minus'></button>"+
-			              "<input class='order-num ng-binding' value='1' style='width:20px; border:0px' type='text' name='ct_qty' id='ct_qty' readonly='readonly'/>"+
-			              "<button class='btn btn-plus'></button>"+
-			            "</div>"+
-			        "</div>"+
-			      "</li>"
-		    )
-	    	var sum = 0;
-	    	$("input#order-price").each(function(){
-	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
-	    	});
-	    	$('input[id=order-total]').val(sum+'원');
-	    };
-	    */
+
 	    function prdmenu() {
 			
 		    $(".list-group").append(
@@ -515,8 +487,6 @@
 	    $(document).on('click','.btn-pl', function(){
 	    	var quantity = $(this).parent('div').find('input').val();
 	    	$(this).parent("div").find("input").val(++quantity);
-    		console.log(quantity);
-
 	    	
 	    	var sum = 0;
 	    	$("input#orderprice").each(function(){
@@ -529,7 +499,6 @@
 	    	var quantity = $(this).parent('div').find('input').val();
 	    	if(quantity > 1){
 	    		$(this).parent('div').find('input').val(--quantity);
-	    		console.log(prdCode||quantity);
 	    	}
 	    	var sum = 0;
 	    	$("input#orderprice").each(function(){
@@ -561,7 +530,7 @@
     			
     	});
 	    /*
-	    $(document).ready(function() {
+	    $(document).ready(function() 
     		$("#menudiv a").click(function() {
     			var t = $(this).text();
     			var t_price = $(this).parent().find("li").text();

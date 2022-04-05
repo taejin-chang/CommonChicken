@@ -120,6 +120,11 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper" style="margin-top: 60px;">
+        <div style="text-align: right;">
+        	<button type="button" class="btn btn-primary" onclick="location.href='<c:url value='/admin/notice_writing'/>'">
+        		<strong>글쓰기</strong>
+       		</button>	
+        </div>
         <br>
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
@@ -192,39 +197,10 @@
 														<c:if test="${orderList.ordStatus==0}">입금대기</c:if> 
 														<c:if test="${orderList.ordStatus==1}">주문접수</c:if> 
 														<c:if test="${orderList.ordStatus==2}">커먼완료</c:if> 
-														<c:if test="${orderList.ordStatus==3}">배달중</c:if>
-														<c:if test="${orderList.ordStatus==4}">배달완료</c:if> 
-														<c:if test="${orderList.ordStatus==5}">커먼실패</c:if> 
-														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
-														<c:if test="${orderList.ordStatus==0}">
-							                       	 	<p> 
-							                       	 		<a href="<c:url value='/order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
- 																class="btn btn-primary btn-xs" style="color: white;"> 
- 																배달시작 
-															</a>
-														</p>
-														<p>
-							                       	 		<a href="<c:url value='/order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
- 																class="btn btn-danger btn-xs" style="color: white;"> 
- 																주문 취소 
-															</a>
-														</p>
-														</c:if> 
-														<c:if test="${orderList.ordStatus==3}">
-							                       	 	<p> 
-							                       	 		<a href="<c:url value='/order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');"
- 																class="btn btn-primary btn-xs" style="color: white;"> 
- 																배송완료
-															</a>
-														</p>
-														<p>
-							                       	 		<a href="<c:url value='/order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
- 																class="btn btn-danger btn-xs" style="color: white;"> 
- 																주문 취소 
-															</a>
-														</p>
-														</c:if> 
-														 
+														<c:if test="${orderList.ordStatus==3}">배달완료</c:if> 
+														<c:if test="${orderList.ordStatus==4}">커먼실패</c:if> 
+														<c:if test="${orderList.ordStatus==5}">주문취소 </c:if> 
+
 														</td>
 													</tr>
 													<tr>
@@ -240,23 +216,21 @@
 																		<th>상품 종류</th>
 																	</tr>
 																</thead>
-																<c:forEach var="productOrderList" items="${productManager}">
-																<c:if test="${orderList.ordBundleNum==productOrderList.ordBundleNum }">
+																<c:forEach var="productList" items="${orderList.productList}">
 																<tbody style="text-align: center;">
 																	<tr>
-																		<td>${productOrderList.productList.prdCode}</td>
-																		<td>${productOrderList.productList.prdUpload}</td>
-																		<td>${productOrderList.productList.prdName}</td>
-																		<td>${productOrderList.productList.prdPrice}</td>
-																		<td>${productOrderList.ordQuantity}</td>
+																		<td>${productList.prdCode}</td>
+																		<td>${productList.prdUpload}</td>
+																		<td>${productList.prdName}</td>
+																		<td>${productList.prdPrice}</td>
+																		<td>${orderList.ordQuantity}</td>
 																		<td>
-																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
-																		<c:if test="${productOrderList.productList.prdCategory==1}">사이드</c:if> 
-																		<c:if test="${productOrderList.productList.prdCategory==2}">음료</c:if> 
+																		<c:if test="${productList.prdCategory==0}">치킨</c:if> 
+																		<c:if test="${productList.prdCategory==1}">사이드</c:if> 
+																		<c:if test="${productList.prdCategory==2}">음료</c:if> 
 																		</td>
 																	</tr>
 																</tbody>
-																</c:if>
 																</c:forEach>
 															</table>
 														</td>
