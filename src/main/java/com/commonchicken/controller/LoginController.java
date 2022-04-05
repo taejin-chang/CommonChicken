@@ -17,6 +17,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.commonchicken.dto.MemberDTO;
 import com.commonchicken.exception.LoginAuthFailException;
 import com.commonchicken.service.MemberService;
+import com.commonchicken.service.StoreService;
 
 
 @Controller
@@ -27,6 +28,9 @@ public class LoginController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private StoreService storeService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -89,6 +93,10 @@ public class LoginController {
 		MemberDTO loginMember =memberService.selectMember(member.getMemEmail());
 		session.setAttribute("loginMember", loginMember);
 		session.setAttribute("loginId", loginMember.getMemEmail());
+		
+		if(memberService.selectMember((String)session.getAttribute("loginId")).getMemStatus()==2 ){			
+			session.setAttribute("storeSession", storeService.selectStoreEmail((String)session.getAttribute("loginId")));
+		}
 		
 		
 		System.out.println("로그인성공");

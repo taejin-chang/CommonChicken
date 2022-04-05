@@ -160,21 +160,21 @@
 											<div class="panel-body">
 												<form class="form-horizontal" role="form" method="post" >
 													<div class="form-group">
-														<label class="col-sm-3 control-label">배달 출발 시간</label>
-														<div class="col-sm-5">
-															<input type="datetime-local" id="cmStart" class="form-control" name="cmDeliveryTime">
-														</div>
-													</div>
-													<div class="form-group">
 														<label class="col-sm-3 control-label">커먼 마감 시간</label>
 														<div class="col-sm-5">
 															<input type="datetime-local" id="cmClose" class="form-control" name="cmClose">
 														</div>
 													</div>
 													<div class="form-group">
+														<label class="col-sm-3 control-label">배달 출발 시간</label>
+														<div class="col-sm-5">
+															<input type="datetime-local" id="cmStart" class="form-control" name="cmDeliveryTime">
+														</div>
+													</div>
+													<div class="form-group">
 														<label class="col-sm-3 control-label">모집인원 (명)</label>
 														<div class="col-sm-3">
-															<input style="text-align: center;" type="text" class="form-control" value="${storeOwner.stoNum }">
+															<input style="text-align: center;" type="text" class="form-control" name="cmGoalPeople">
 														</div>
 													</div>
 													<div class="form-group">

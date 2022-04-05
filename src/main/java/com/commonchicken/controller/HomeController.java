@@ -166,7 +166,7 @@ public class HomeController {
 	public String storeSelect1(HttpSession session, Model model){
 		
 
-		String stoNum = storeService.selectStoreEmail((String)session.getAttribute("loginId"));
+		String stoNum = (String)session.getAttribute("storeSession");
 
 		
 		model.addAttribute("storeInfo", storeService.selectStore(stoNum));
@@ -223,19 +223,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "store/common", method = RequestMethod.POST)
-	public String CommonAdd(@ModelAttribute CommonDTO common) throws ParseException{
+	public String CommonAdd(@ModelAttribute CommonDTO common, HttpSession session) throws ParseException{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date Delivery = sdf.parse(common.getCmDeliveryTime());
 		String cmDeliveryTime = output.format(Delivery);
 		
-		Date close = sdf.parse(common.getCmDeliveryTime());
+		Date close = sdf.parse(common.getCmClose());
 		String cmClose = output.format(close);
+		String stoNum = (String)session.getAttribute("storeSession");
 
 		
-		common.setStoNum("6656");
-		common.setMemEmail("nolang@naver.com");
+		common.setStoNum(stoNum);
+		common.setMemEmail((String)session.getAttribute("loginId"));
 		common.setCmDeliveryTime(cmDeliveryTime);
 		common.setCmClose(cmClose);
 		
