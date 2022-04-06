@@ -154,45 +154,6 @@
 										<img class="userImg" src="${pageContext.request.contextPath }/images/${storeInfo.stoUpload }" alt="사진">
 									</h3>
 								</div>
-								<div class="col-md-7 col-xs-8 col-xxs-12">
-									<div class="header-data text-center-xs">
-
-										<!-- Traffic data -->
-		<!-- 								<div class="hdata">
-											<div class="mcol-left">
-												Icon with red background
-												<i class="fa fa-eye ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												Number of visitors
-												<p>
-													<a href="#">7000</a> <em>visits</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										revenue data
-										<div class="hdata">
-											<div class="mcol-left">
-												Icon with green background
-												<i class="icon-th-thumb ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												Number of visitors
-												<p>
-													<a href="#">12</a><em>Ads</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div> -->
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<button type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 						<div class="inner-box">

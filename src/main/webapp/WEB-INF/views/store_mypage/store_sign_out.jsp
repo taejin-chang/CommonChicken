@@ -69,6 +69,11 @@
 														class="icon-home"></i> 점포 정보</a></li>
 
 											</ul>
+											<ul class="acc-list">
+												<li><a class="active" href="${pageContext.request.contextPath}/store/deletePage"><i
+														class="icon-home"></i> 점포 해지</a></li>
+
+											</ul>
 										</div>
 									</div>
 									<!-- /.collapse-box  -->
@@ -126,7 +131,7 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="TerminateAccount">
 											<ul class="acc-list">
-												<li><a class="active" href="${pageContext.request.contextPath}/store/out"><i
+												<li><a href="${pageContext.request.contextPath}/store/out"><i
 														class="icon-cancel-circled "></i> 탈퇴하기 </a></li>
 											</ul>
 										</div>

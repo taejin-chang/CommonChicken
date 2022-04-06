@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,7 @@
 <!-- styles needed for carousel slider -->
 <link href="${pageContext.request.contextPath }/assets/css/owl.carousel.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/owl.theme.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -152,94 +154,151 @@
 							<h2 class="title-2">
 								<i class="icon-docs"></i> 주문 현황
 							</h2>
-							<div>
-								<!-- #section:plugins/fuelux.wizard.steps -->
-								<ul class="steps">
-									<li data-step="1" class="active"><span class="step">1</span>
-										<span class="title">Validation states</span></li>
 
-									<li data-step="2"><span class="step">2</span> <span
-										class="title">Alerts</span></li>
+					<table class="table table-expandable">
+							<thead style="background: #4747A1; color: white; text-align: center;" >
 
-									<li data-step="3"><span class="step">3</span> <span
-										class="title">Payment Info</span></li>
-
-									<li data-step="4"><span class="step">4</span> <span
-										class="title">Other Info</span></li>
-								</ul>
-
-								<!-- /section:plugins/fuelux.wizard.steps -->
-							</div>
-							<div class="table-responsive">
-								<div class="table-action">
-									
-									<hr>
-									<!--  
-									<div class="table-search pull-right col-xs-7">
-										<div class="form-group">
-											<label class="col-xs-5 control-label text-right">검색
-											</label>
-											<div class="col-xs-7 searchpan">
-												<input type="text" class="form-control" id="filter">
-											</div>
-										</div>
-									</div>
-									-->
-								</div>
-								<table id="addManageTable"
-									class="table table-striped table-bordered add-manage-table table demo"
-									data-filter="#filter" data-filter-text-only="true">
-									<thead>
+								<tr>
+									<th style="text-align: center;">커먼번호</th>
+									<th style="text-align: center;">매점명</th>
+									<th style="text-align: center;">배달출발시간</th>
+ 									<th style="text-align: center;">마감시간</th>
+									<th style="text-align: center;">모집입원</th>
+									<th style="text-align: center;">매출액</th>
+									<th style="text-align: center;">상태</th>
+								</tr>
+							</thead>
+							<c:choose>
+								<c:when test="${empty(orderManager) }">
+									<tbody style="text-align: center;">
 										<tr>
-											<th style="width: 10%">번호</th>
-											<th style="width: 20%">주문번호</th>
-											<th style="width: 20%">상품명</th>
-											<th style="width: 10%">고객명</th>
-											<th style="width: 10%">전화번호</th>
-											<th style="width: 20%">배달위치</th>
-											<th style="width: 10%">주문상태</th>
+											<td style="text-align: center;" colspan="7">등록된 커먼이 없습니다.</td>
 										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td  class="add-img-selector"><div
-													class="checkbox">
-													<label> <input type="checkbox">
-													</label>
-												</div></td>
-											<td  class="add-img-td"></td>
-											<td  class="ads-details-td"><div>
-													<p>
-														<strong> <a href="ads-details.html"
-															title="Brend New Nexus 4">Brend New Nexus 4</a>
-														</strong>
-													</p>
-													
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											
-											<td  class="action-td"><div>
-													
-													<p>
-														<a class="btn btn-info btn-xs"> <i
-															class="fa fa-mail-forward"></i> Share
-														</a>
-													</p>
-													
-												</div></td>
-										</tr>
-										
-										
 									</tbody>
-								</table>
+								</c:when>
+								<c:otherwise>
+								<c:forEach var="commonList" items="${orderManager }">
+								<tbody style="text-align: center;">
+									<tr style="background-color: #e1e1fa;">
+										<td>${commonList.cmNum}</td>
+										<td>${commonList.storeDTO.stoName}</td>
+										<td>${commonList.cmDeliveryTime}</td>
+										<td>${commonList.cmClose}</td>
+										<td>${commonList.cmGoalPeople}</td>
+										<td>${commonList.cmSales}</td>
+										<td>
+											<c:if test="${commonList.cmStatus==0}">진행중</c:if> 
+											<c:if test="${commonList.cmStatus==1}">만료</c:if> 
+											<c:if test="${commonList.cmStatus==2}">성립</c:if> 
+										</td>
+									</tr>
+									<tr>
+										<td colspan="8">
+											<table class="table table-expandable">
+												<thead style="background: #7978E9; color: white; text-align: center;">
+	
+													<tr>
+														<th  style="text-align: center;">주문묶음 번호</th>
+														<th style="text-align: center;">구매자</th>
+														<th style="text-align: center;">주소</th>
+														<th style="text-align: center;">전화번호</th>
+														<th style="text-align: center;">요청사항</th>
+														<th style="text-align: center;">결제종류</th>
+														<th style="text-align: center;">상태</th>
+													</tr>
+												</thead>
+												<c:forEach var="orderList" items="${commonList.orderList}">
+												<tbody style="text-align: center;">
+													<tr style="background-color: #ffffff;">
+														<td>${orderList.ordBundleNum}</td>
+														<td>${orderList.memEmail}</td>
+														<td>${orderList.ordAdd1} ${orderList.ordAdd2}</td>
+														<td>${orderList.ordPhone}</td>
+														<td>${orderList.ordRequest}</td>
+														<td>${orderList.ordPayMethod}</td>
+														<td><!-- 0:입금대기,1:주문접수, 2:커먼완료, 3:배달중,4:배달완료,5 :커먼실패,  6: 주문취소 -->
+														<c:if test="${orderList.ordStatus==0}">입금대기</c:if> 
+														<c:if test="${orderList.ordStatus==1}">주문접수</c:if> 
+														<c:if test="${orderList.ordStatus==2}">커먼완료</c:if> 
+														<c:if test="${orderList.ordStatus==3}">배달중</c:if>
+														<c:if test="${orderList.ordStatus==4}">배달완료</c:if> 
+														<c:if test="${orderList.ordStatus==5}">커먼실패</c:if> 
+														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
+														<c:if test="${orderList.ordStatus==0}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/store_order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배달시작 
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/store_order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														<c:if test="${orderList.ordStatus==3}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/store_order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배송완료
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/store_order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														 
+														</td>
+													</tr>
+													<tr>
+														<td colspan="8">
+															<table class="table table-striped">
+															<thead style="background: #7DA0FA; color: white; text-align: center;">
+																	<tr>
+																		<th style="text-align: center;">상품 번호</th>
+																		<th style="text-align: center;">이미지</th>
+																		<th style="text-align: center;">상품명</th>
+																		<th style="text-align: center;">가격</th>
+																		<th style="text-align: center;">수량</th>
+																		<th style="text-align: center;">상품 종류</th>
+																	</tr>
+																</thead>
+																<c:forEach var="productOrderList" items="${productManager}">
+																<c:if test="${orderList.ordBundleNum==productOrderList.ordBundleNum }">
+																<tbody style="text-align: center;">
+																	<tr>
+																		<td>${productOrderList.productList.prdCode}</td>
+																		<td>${productOrderList.productList.prdUpload}</td>
+																		<td>${productOrderList.productList.prdName}</td>
+																		<td>${productOrderList.productList.prdPrice}</td>
+																		<td>${productOrderList.ordQuantity}</td>
+																		<td>
+																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
+																		<c:if test="${productOrderList.productList.prdCategory==1}">사이드</c:if> 
+																		<c:if test="${productOrderList.productList.prdCategory==2}">음료</c:if> 
+																		</td>
+																	</tr>
+																</tbody>
+																</c:if>
+																</c:forEach>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+												</c:forEach>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						</table>
 							</div>
 							<!--/.row-box End-->
 
@@ -323,5 +382,46 @@
 	<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 	<!-- include custom script for site  -->
 	<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
+	
+	  <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
+	
+	
+	    <script type="text/javascript">
+/*     var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+   */
+
+  (function ($) {
+	    $(function () {
+	        $('.table-expandable').each(function () {
+	            var table = $(this);
+	            table.children('thead').children('tr').append('<th></th>');
+	            table.children('tbody').children('tr').filter(':odd').hide();
+	            table.children('tbody').children('tr').filter(':even').click(function () {
+	                var element = $(this);
+	                element.next('tr').toggle('fast');
+	                element.find(".table-expandable-arrow").toggleClass("up");
+	            });
+	            table.children('tbody').children('tr').filter(':even').each(function () {
+	                var element = $(this);
+	                element.append('<td><div class="table-expandable-arrow"></div></td>');
+	            });
+	        });
+	    });
+	})(jQuery); 
+
+  
+  </script> 
+  
+	
 </body>
 </html>

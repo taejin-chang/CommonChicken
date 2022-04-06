@@ -622,7 +622,51 @@ public class HomeController {
 			
 			return "main";
 		}
+		
+		
+		@RequestMapping(value = "store/out", method = RequestMethod.GET)
+		public String deleteMemberPage(){
+			return "store_mypage/store_member_sign_out";
+		}
+		
+		
+		
+		@RequestMapping(value="store/deleteMember", method = RequestMethod.GET)
+		public String deleteMember(HttpSession session) {
+			
+			String stoNum = (String)session.getAttribute("storeSession");
+			String member = (String)session.getAttribute("loginId");
+			
+			storeService.deleteStore(stoNum);	
+			memberService.deleteMember(member);	
+			
+			return "redirect:/";
+		}
+		
+		
+		
+		@RequestMapping(value = "/store/order", method = RequestMethod.GET)
+		public String storeOrder(Model model){
+			System.out.println("하이!");
+			//model.addAttribute("commonList", commonService.selectCommonList());
+			model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
+			model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+			
+			return "store_mypage/store_order";
+		}
 	
+		@RequestMapping(value="/store_order/changeOrder/{ordStatus}/{ordBundleNum}", method = RequestMethod.GET)
+		public String changeStoreOrder(@PathVariable int ordStatus, @PathVariable String ordBundleNum, Map<String,Object> map ) {
+			System.out.println("배달 시작입니다람1");
+			System.out.println("배달 시작입니다람2");
+			map.put("ordStatus", ordStatus);
+			map.put("ordBundleNum", ordBundleNum);
+			
+			orderService.updateOrderStatus(map);
+			System.out.println("배달 시작입니다람3");
+			
+			return "redirect:/store/order";
+		}
 }
 
 

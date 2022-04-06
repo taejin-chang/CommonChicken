@@ -18,7 +18,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderDAO orderDAO;
 
-	@Transactional
+//	@Transactional
 	@Override
 	public void insertOrder(OrderDTO order) {
 		logger.info("################Service Logger#####################################");
