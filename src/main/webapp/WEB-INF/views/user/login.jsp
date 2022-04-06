@@ -252,7 +252,9 @@
 												<!-- 아이디 -->
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input name="memEmail" type="email" class="form-control" placeholder="이메일" />
+															<input name="memEmail" id="memEmail"type="text" width="400px" class="form-control" check_result="fail" placeholder="이메일" required/>
+														<button type="button" class="id_overlap_button" onclick="id_overlap_check()">중복검사</button>
+														<img src="${pageContext.request.contextPath }/img/checkcheck.png" width="50px"id="id_check_sucess" style="display: none;">
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
@@ -387,6 +389,48 @@
 </script>
 <![endif]-->
 <script type="text/javascript">
+$('.form-control').change(function () {
+    $('#id_check_sucess').hide();
+    $('.id_overlap_button').show();
+    $('.username_input').attr("check_result", "fail");
+  })
+
+
+function id_overlap_check() {
+	
+	var memEmail = document.getElementById('memEmail').value;  
+	 if (document.getElementById('memEmail').value == '') {
+	      alert('이메일을 입력해주세요.')
+	      return;
+	    }
+	
+	$.ajax({
+		type: "get",
+		url: "idExist/"+memEmail,
+		dataType: "text",
+		success: function(text) {
+			if(text=="success") {
+				//사용가능아이디
+				alert("사용가능한 아이디 입니다.");
+		          $('.form-control').attr("check_result", "success");
+		          $('#id_check_sucess').show();
+		          $('.id_overlap_button').hide();
+		          return;
+			}else{
+				alert("이미 존재하는 아이디 입니다.");
+				signinForm.memEmail.focus();
+		          return;
+			}
+		}, 
+		error: function(xhr) {
+			alert("에러코드 = "+xhr.status);
+		}
+	});		
+}
+
+</script>
+
+<script type="text/javascript">
 	signinForm.memEmail.focus();
 
 	function submitCheck() {
@@ -414,7 +458,11 @@
 			signinForm.memBirthday.focus();
 			return;
 		}
-		
+		if ($('.form-control').attr("check_result") == "fail"){
+		    alert("아이디 중복체크를 해주시기 바랍니다.");
+		    $('.form-control').focus();
+		    return false;
+		  }
 		
 		
 		signinForm.method="post";

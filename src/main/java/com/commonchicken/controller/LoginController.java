@@ -10,14 +10,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.commonchicken.dto.MemberDTO;
 import com.commonchicken.exception.LoginAuthFailException;
 import com.commonchicken.service.MemberService;
 import com.commonchicken.service.StoreService;
+
 
 
 @Controller
@@ -109,6 +112,17 @@ public class LoginController {
 		model.addAttribute("loginmessage", "아이디 또는 비밀번호가 잘못 입력되었습니다");
 		//model.addAttribute("userid", exception.getUserid());
 		return "redirect:/login";
+	}
+	
+	@RequestMapping(value = "/idExist/{memEmail}", method = RequestMethod.GET)
+	@ResponseBody
+	public String restBoardView(@PathVariable String memEmail) {
+		if(memberService.selectMember(memEmail)==null) {
+			return "success";
+			
+		}else {
+			return "fail";
+		}
 	}
 	
 	
