@@ -356,7 +356,7 @@
 									</div>
 									<br><br><br>
 									<div style="text-align: center;">
-										<button type="button" class="btn btn-danger" onClick="location.href='<c:url value="/store/common"/>';">점포 해지하기</button>
+										<button type="button" class="btn btn-danger" onClick="location.href='<c:url value="/store/deletePage"/>';">점포 해지하기</button>
 									</div>
 								</div>
 								

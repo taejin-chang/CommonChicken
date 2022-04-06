@@ -84,5 +84,9 @@
 		update member_tb set mem_status=0 where mem_email = #{mem_email}
 	</update>
 	
+	<update id="updateDeleteMember">
+		update member_tb set mem_status=1 where mem_email = #{mem_email}
+	</update>
+	
 	
 </mapper>

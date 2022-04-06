@@ -20,5 +20,6 @@ public interface StoreMapper {
 	List<CommonStoreVO> selectCommonStore(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
 	String selectStoreEmail(String memEmail);
-	
+	int deleteStore(String stoNum);
+
 }

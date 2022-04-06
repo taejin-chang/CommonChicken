@@ -75,5 +75,10 @@ public class StoreServiceImpl implements StoreService {
 	public CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map) {
 		return storeDAO.selectStoreInfoReivewCount(map);
 	}
+	
+	@Override
+	public int deleteStore(String stoNum) {
+		return storeDAO.deleteStore(stoNum);
+	}	
 
 }

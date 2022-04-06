@@ -170,5 +170,9 @@ STO_UPLOAD                VARCHAR2(100)
 	<select id="selectStoreEmail" resultType="String">
 		select sto_num from store_tb where mem_email=#{memEmail}
 	</select>
+	
+	<update id="deleteStore">
+		update store_tb set sto_status=9 where sto_num = #{stoNum}
+	</update>
 
 </mapper>

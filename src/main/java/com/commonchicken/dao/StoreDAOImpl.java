@@ -86,7 +86,11 @@ public class StoreDAOImpl implements StoreDAO {
 	public CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map) {
 		return sqlSession.getMapper(StoreMapper.class).selectStoreInfoReivewCount(map);
 	}
-
+	
+	@Override
+	public int deleteStore(String stoNum) {
+		return sqlSession.getMapper(StoreMapper.class).deleteStore(stoNum);
+	}
 
 
 

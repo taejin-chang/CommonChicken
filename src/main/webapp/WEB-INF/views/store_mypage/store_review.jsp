@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +27,8 @@
 <!-- styles needed for carousel slider -->
 <link href="${pageContext.request.contextPath }/assets/css/owl.carousel.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/owl.theme.css" rel="stylesheet">
+
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -144,106 +148,119 @@
 						</aside>
 					</div>
 					<!--/.page-sidebar-->
-
 					<div class="col-sm-9 page-content">
 						<div class="inner-box">
-							<h2 class="title-2">
-								<i class="icon-docs"></i> ì£¼ë¬¸ íí©
-							</h2>
-							<div>
-								<!-- #section:plugins/fuelux.wizard.steps -->
-								<ul class="steps">
-									<li data-step="1" class="active"><span class="step">1</span>
-										<span class="title">Validation states</span></li>
-
-									<li data-step="2"><span class="step">2</span> <span
-										class="title">Alerts</span></li>
-
-									<li data-step="3"><span class="step">3</span> <span
-										class="title">Payment Info</span></li>
-
-									<li data-step="4"><span class="step">4</span> <span
-										class="title">Other Info</span></li>
-								</ul>
-
-								<!-- /section:plugins/fuelux.wizard.steps -->
-							</div>
-							<div class="table-responsive">
-								<div class="table-action">
-									
+								<h2 class="title-2">
+									<i class="icon-heart"></i> 리뷰
+								</h2>
+                    		<table class="table table-hover table-expandable table-striped">
+						<thead>
+							<tr>
+								<th style="text-align: center;" width="10%">번호</th>
+								<th style="text-align: center;" width="10%">이미지</th>
+								<th style="text-align: center;" width="15%">상품명</th>
+								<th style="text-align: center;">리뷰</th>
+								<th style="text-align: center;" width="15%">별점</th>
+								<th style="text-align: center;" width="15%">작성일</th>
+<!-- 								<th style="text-align: center;"width="15%">게시글상태</th>
+ -->							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="reviewPagerList" items="${reviewPagerList}">
+<!-- 							<tr>
+								<td class="py-1" style="text-align: center;">1</td>
+								<td style="text-align: center;">맛있어요</td>
+								<td style="text-align: center;">★★★★★</td>
+								<td style="text-align: center;">5</td>
+								<td style="text-align: center;">2022년 10월 20일</td>
+								<td style="text-align: center;">게시중</td>
+							</tr> -->
+							<tr>
+								<td style="text-align: center;">${reviewPagerList.revNum}</td>
+								<td style="text-align: center;"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
+								<td style="text-align: center;">${reviewPagerList.prdName}</td>
+								<td style="text-align: center; width:40%">${reviewPagerList.revContent}</td>
+								<td style="text-align: center;">
+									<c:if test="${reviewPagerList.revRated==1}">★☆☆☆☆</c:if>
+									<c:if test="${reviewPagerList.revRated==2}">★★☆☆☆</c:if>
+									<c:if test="${reviewPagerList.revRated==3}">★★★☆☆</c:if>
+									<c:if test="${reviewPagerList.revRated==4}">★★★★☆</c:if>
+									<c:if test="${reviewPagerList.revRated==5}">★★★★★</c:if>
+								</td>
+								<td style="text-align: center;">${fn:substring(reviewPagerList.revDate,5,10)}</td>
+<!-- 								<td style="text-align: center;">배송중</td>
+ -->							</tr>
+							<tr>
+								<td colspan="7"><h4>답글</h4>
+									<p>안녕하세요 반갑습니다 <br> 하이하이요 ~~~ㅎㅎ </p>
+									<button type="button" id="btn" class="btn btn-primary btn-sm">답글</button>	
 									<hr>
-									<!--  
-									<div class="table-search pull-right col-xs-7">
-										<div class="form-group">
-											<label class="col-xs-5 control-label text-right">ê²ì
-											</label>
-											<div class="col-xs-7 searchpan">
-												<input type="text" class="form-control" id="filter">
-											</div>
-										</div>
+									<div id="replay" style="display:none">
+										<input type="text" style="width:80%" >							
+										<textarea rows="5" cols="" style="width:80%"></textarea>
+										<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
 									</div>
-									-->
-								</div>
-								<table id="addManageTable"
+								</td>								
+							</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+								
+	<%-- 							<table id="addManageTable"
 									class="table table-striped table-bordered add-manage-table table demo"
 									data-filter="#filter" data-filter-text-only="true">
 									<thead>
 										<tr>
-											<th style="width: 10%">ë²í¸</th>
-											<th style="width: 20%">ì£¼ë¬¸ë²í¸</th>
-											<th style="width: 20%">ìíëª</th>
-											<th style="width: 10%">ê³ ê°ëª</th>
-											<th style="width: 10%">ì íë²í¸</th>
-											<th style="width: 20%">ë°°ë¬ìì¹</th>
-											<th style="width: 10%">ì£¼ë¬¸ìí</th>
+											<th style="width: 10%">번호</th>
+											<th >사진</th>
+											<th style="width: 15%">상품명</th>
+											<th style="width: 20%">내용</th>
+											<th style="width: 10%">별점</th>
+											<th style="width: 10%">작성일</th>
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="reviewPagerList" items="${reviewPagerList}">
 										<tr>
-											<td  class="add-img-selector"><div
-													class="checkbox">
-													<label> <input type="checkbox">
-													</label>
-												</div></td>
-											<td  class="add-img-td"></td>
-											<td  class="ads-details-td"><div>
-													<p>
-														<strong> <a href="ads-details.html"
-															title="Brend New Nexus 4">Brend New Nexus 4</a>
-														</strong>
-													</p>
-													
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											<td  class="price-td"><div>
-													<strong> $199</strong>
-												</div></td>
-											
-											<td  class="action-td"><div>
-													
-													<p>
-														<a class="btn btn-info btn-xs"> <i
-															class="fa fa-mail-forward"></i> Share
-														</a>
-													</p>
-													
-												</div></td>
+											<td  class="add-img-selector">${reviewPagerList.revNum}</td>
+											<td  class="add-img-td"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
+											<td  class="add-img-td">${reviewPagerList.prdName}</td>
+											<td  class="ads-details-td">${reviewPagerList.revContent}</td>
+											<td  class="price-td">${reviewPagerList.revRated}</td>
+											<td  class="action-td">${fn:substring(reviewPagerList.revDate,5,10)}</td>
 										</tr>
 										
-										
+										</c:forEach>
 									</tbody>
-								</table>
+								</table> --%>
+								<c:choose>
+									<c:when test="${pager.startPage } gt ${pager.blockSize }">
+										<a href="<c:url value='/user/myBoard'/>">[처음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+									</c:when>
+									<c:otherwise>
+										[처음] [이전]
+									</c:otherwise>
+								</c:choose>
+								
+								<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }">
+									<a href="<c:url value='/user/myBoard'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+								</c:forEach>
+								
+								<c:choose>
+									<c:when test="${pager.startPage }>${pager.blockSize }">
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${pager.endPage}">[마지막]</a>
+									</c:when>
+									<c:otherwise>
+										[다음] [마지막]
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<!--/.row-box End-->
 
 						</div>
 					</div>
-					<!--/.page-content-->
 				</div>
 				<!--/.row-->
 			</div>
@@ -320,5 +337,37 @@
 	<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.selecter/jquery.fs.selecter.js"></script>
 	<!-- include custom script for site  -->
 	<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
+	
+	
+	<script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
+  
+<script type="text/javascript">
+  (function ($) {
+	    $(function () {
+	        $('.table-expandable').each(function () {
+	            var table = $(this);
+	            table.children('thead').children('tr').append('<th></th>');
+	            table.children('tbody').children('tr').filter(':odd').hide();
+	            table.children('tbody').children('tr').filter(':even').click(function () {
+	                var element = $(this);
+	                element.next('tr').toggle('fast');
+	                element.find(".table-expandable-arrow").toggleClass("up");
+	            });
+	            table.children('tbody').children('tr').filter(':even').each(function () {
+	                var element = $(this);
+	                element.append('<td><div class="table-expandable-arrow"></div></td>');
+	            });
+	        });
+	    });
+	})(jQuery); 
+ 
+  $(document).ready(function () {
+      $("#btn").click(function () {
+          $("#replay").toggle();
+          $("#btn").hide();
+      });
+
+  });
+  </script>
 </body>
 </html>

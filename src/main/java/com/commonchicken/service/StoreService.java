@@ -20,5 +20,6 @@ public interface StoreService {
 	List<CommonStoreVO> getCommonStore(Map<String, Object> map);
 	List<CommonStoreVO> getStoreCommonlist(int stoNum);
 	String selectStoreEmail(String memEmail);
+	int deleteStore(String stoNum);
 
 }

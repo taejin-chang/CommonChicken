@@ -40,7 +40,9 @@ import com.commonchicken.service.MemberService;
 import com.commonchicken.service.OrderManagerService;
 import com.commonchicken.service.OrderService;
 import com.commonchicken.service.ProductService;
+import com.commonchicken.service.ReviewService;
 import com.commonchicken.service.StoreService;
+import com.commonchicken.util.Pager;
 
 
 /**
@@ -61,7 +63,7 @@ public class HomeController {
 	private CommonService commonService;
 	
 	@Autowired
-	private MemberService memberSerivce;
+	private MemberService memberService;
 	
 	@Autowired
 	private BoardService boardService;
@@ -74,6 +76,9 @@ public class HomeController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	
 	/**
@@ -109,7 +114,7 @@ public class HomeController {
 	//관리자 정보 페이지
 	@RequestMapping(value = "store/owner", method = RequestMethod.GET)
 	public String storeSelect(HttpSession session, Model model){
-		model.addAttribute("storeOwner", memberSerivce.selectMember((String)session.getAttribute("loginId")));
+		model.addAttribute("storeOwner", memberService.selectMember((String)session.getAttribute("loginId")));
 		return "store_mypage/store_owner_info";
 	}
 	
@@ -149,7 +154,7 @@ public class HomeController {
 		
 		logger.info(member.getMemAdd1()+member.getMemAdd2()+ member.getMemEmail() + member.getMemBirthday());
 
-		memberSerivce.updateMember(member);
+		memberService.updateMember(member);
 		return "redirect:/store/owner";
 	}
 	
@@ -564,6 +569,59 @@ public class HomeController {
 //			
 //			return "store_mypage/order_state";
 //		}
+		
+		
+//------------------------------------------------------------------------
+		//리뷰 페이지
+//		@RequestMapping("/store/review")
+//		public String storeReivew(Model model) {
+//			return "store_mypage/store_review";
+//		}
+		
+		@RequestMapping("/store/review")
+		public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
+			int totalBoard=reviewService.getReviewCount((String)session.getAttribute("loginId"));
+			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
+			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+			
+			String stoNum = (String)session.getAttribute("storeSession");
+
+			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+			
+			Map<String, Object> pagerMap=new HashMap<String, Object>();
+			pagerMap.put("startRow", pager.getStartRow());
+			pagerMap.put("endRow", pager.getEndRow());
+			pagerMap.put("memEmail", (String)session.getAttribute("loginId"));
+			
+			model.addAttribute("reviewPagerList",reviewService.selectStoreReviewList("6656"));
+			model.addAttribute("pager",pager);
+			
+			return "store_mypage/store_review";
+		}
+
+		
+		//------------------------------------------------------------------------
+		@RequestMapping(value = "store/deletePage", method = RequestMethod.GET)
+		public String deleteStorePage(){
+			return "store_mypage/store_sign_out";
+		}
+		
+		
+		
+		@RequestMapping(value="store/delete", method = RequestMethod.GET)
+		public String deleteStore(HttpSession session) {
+
+		String stoNum = (String)session.getAttribute("storeSession");
+		String member = (String)session.getAttribute("loginId");
+			
+			System.out.println("============================dkdkdkddk==============");
+			System.out.println(stoNum);
+		
+			storeService.deleteStore(stoNum);	
+			memberService.updateDeleteMember(member);	
+			
+			return "main";
+		}
 	
 }
 

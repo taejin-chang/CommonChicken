@@ -10,4 +10,5 @@ public interface MemberService {
 	MemberDTO selectMember(String memEmail);//ȸ������ �ҷ�����
 	List<MemberDTO> selectAllMemberList();//��ü ȸ������ �ҷ�����
 	void deleteMember(String memEmail);//ȸ��Ż��
+	void updateDeleteMember(String memEmail);
 }

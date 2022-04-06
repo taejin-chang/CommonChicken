@@ -78,9 +78,13 @@ public class StoreServiceTest {
 //		logger.info("점포명 = "+ store.getStoName()+", 주소"+store.getStoZipCode()+store.getStoAdd1()+store.getStoAdd2());
 //	}
 	
+//	@Test
+//	public void testSelectEamil() {
+//		storeService.selectStoreEmail("nolang@naver.com");
+//	}
 	@Test
-	public void testSelectEamil() {
-		storeService.selectStoreEmail("nolang@naver.com");
+	public void testDelete() {
+		storeService.deleteStore("999");
 	}
 
 }

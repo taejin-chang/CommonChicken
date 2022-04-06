@@ -5,9 +5,10 @@ import java.util.List;
 import com.commonchicken.dto.MemberDTO;
 
 public interface MemberMapper {
-	int insertMember(MemberDTO member);//È¸¿ø°¡ÀÔ
-	int updateMember(MemberDTO member);//È¸¿øÁ¤º¸ ¼öÁ¤
-	MemberDTO selectMember(String memEmail);//È¸¿øÁ¤º¸ ºÒ·¯¿À±â
-	List<MemberDTO> selectAllMemberList();//ÀüÃ¼ È¸¿øÁ¤º¸ ºÒ·¯¿À±â
-	int deleteMember(String memEmail);//È¸¿øÅ»Åð
+	int insertMember(MemberDTO member);//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int updateMember(MemberDTO member);//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	MemberDTO selectMember(String memEmail);//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+	List<MemberDTO> selectAllMemberList();//ï¿½ï¿½Ã¼ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
+	int deleteMember(String memEmail);//È¸ï¿½ï¿½Å»ï¿½ï¿½
+	int updateDeleteMember(String memEmail);
 }

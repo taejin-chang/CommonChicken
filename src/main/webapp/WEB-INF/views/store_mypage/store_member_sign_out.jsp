@@ -141,35 +141,37 @@
 					<!--/.page-sidebar-->
 
 					<div class="col-sm-9 page-content">
+
 						<div class="inner-box">
 							<h2 class="title-2">
 								<i class="icon-cancel-circled "></i> Close account
 							</h2>
 							<textarea rows="10" cols="45" readonly="readonly">회원탈퇴 시 개인정보 및 컴온치킨에서 만들어진 모든 데이터는 삭제됩니다.(단, 아래 항목은 표기된 법률에 따라 특정 기간 동안 보관됩니다.)
-								1.계약 또는 청약 철회등에 관한 기록보존
-								2.대금결제 및 재화 등의 공급에 관한 기록 보존 이유
-								3.전자금융 거래에 관한 기록 보존 이유
-								4.소비자의 불만 또는 분쟁처리에 관한 기록 보존 이유
-								5.신용정보의 수집/처리 및 이용등에 관한 기록 보존 이유
-								6.전자계산서 시스템구축 운영하는 사업자가 지켜야할 사항
-								7.전자계산서 시스템 구축 운영하는 사업자가 지켜야 할 사항
-				          </textarea>
+1.계약 또는 청약 철회등에 관한 기록보존
+2.대금결제 및 재화 등의 공급에 관한 기록 보존 이유
+3.전자금융 거래에 관한 기록 보존 이유
+4.소비자의 불만 또는 분쟁처리에 관한 기록 보존 이유
+5.신용정보의 수집/처리 및 이용등에 관한 기록 보존 이유
+6.전자계산서 시스템구축 운영하는 사업자가 지켜야할 사항
+7.전자계산서 시스템 구축 운영하는 사업자가 지켜야 할 사항
+          
+          </textarea>
 							<p>정말 탈퇴 하시겠습니까?</p>
 
 							<div>
-								<label class="radio-inline"> 
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Yes
-								</label> 
-								<label class="radio-inline"> 
-									<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> No
+								<label class="radio-inline"> <input type="radio"
+									name="inlineRadioOptions" id="inlineRadio1" value="option1">
+									Yes
+								</label> <label class="radio-inline"> <input type="radio"
+									name="inlineRadioOptions" id="inlineRadio2" value="option2">
+									No
 								</label>
 							</div>
 							<br>
-							<a class="btn btn-danger" href="${pageContext.request.contextPath}/store/delete">점포 해지하기</a>
-							
-<%-- 							<button type="button" class="btn btn-danger" onClick="location.href='<c:url value="/store/deletePage"/>';">점포 해지하기</button>
- --%><!-- 							<button type="submit" class="btn btn-primary">탈퇴신청</button>
- -->						</div>
+							<button type="submit" class="btn btn-primary">탈퇴신청</button>
+
+
+						</div>
 						<!--/.inner-box-->
 					</div>
 					<!--/.page-content-->
