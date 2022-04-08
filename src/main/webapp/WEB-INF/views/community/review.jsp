@@ -10,7 +10,24 @@
             height: 800px;
             overflow-y: hidden;
 </style>
-
+<style type="text/css">
+	a:link{
+	color:black;
+	text-decoration:none;
+	}
+	a:visited{
+	color:black;
+	text-decoration:none;
+	}
+	a:hover{
+	color:black;
+	text-decoration:none;
+	}
+	a:active{
+	color:black;
+	text-decoration:none;
+	}
+</style>
 </head>
 <body class="ov-hid">
     <!-- Page Preloder -->
@@ -22,23 +39,29 @@
     <!-- Filter Begin -->
     <div class="filter nice-scroll">
         <div class="filter__title">
-            <h5><i class="fa fa-filter"></i> 커먼모집</h5>
+            <h5>
+            	<a href="<c:url value='/community'/>">
+            		<i class="fa fa-filter"></i> 커먼모집
+            	</a>
+            </h5>
         </div>
         <br>
         <div class="filter__title">
-            <h5><i class="fa fa-filter"></i> 리뷰</h5>
+            <h5>
+            	<a href="<c:url value='/review'/>">
+            		<i class="fa fa-filter"></i> 리뷰
+            	</a>
+            </h5>
         </div>
         <br>
         <div class="filter__title">
-            <h5><i class="fa fa-filter"></i> 공지사항</h5>
+            <h5>
+            	<a href="<c:url value='/notice'/>">
+            		<i class="fa fa-filter"></i> 공지사항
+            	</a>
+            </h5>
         </div>
-        <br>
-        <div class="filter__title">
-            <h5><i class="fa fa-filter"></i> 이벤트</h5>
-        </div>
-        <div class="filter__search">
-            <input type="text">
-        </div>
+        
     </div>
     <!-- Filter End -->
 
