@@ -54,11 +54,21 @@
 </head>
 
 <body class="ov-hid">
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
+	<div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
 
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+          </li>
+        </ul>
+    </div>
+    </div>
 
 
 	<!-- Filter Begin -->
@@ -110,7 +120,11 @@
 							<c:forEach var="noticePagerList" items="${noticePagerList}">
 								<tr>
 									<td>${noticePagerList.brdNum}</td>
-									<td>${noticePagerList.brdTitle}</td>
+									<td>
+										<a href="<c:url value='/community/noticeDetail/'/>${noticePagerList.brdNum }">
+										${noticePagerList.brdTitle}
+										</a>
+									</td>
 									<td>${fn:substring(noticePagerList.brdDate,5,10)}</td>
 									<td>운영자</td>
 								</tr>
