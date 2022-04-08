@@ -77,7 +77,7 @@
 	</select>
 	
 	<select id="selectAllMemberList" resultType="MemberDTO">
-		select * from member_tb order by mem_email
+		select * from member_tb where mem_status!=0 order by mem_email
 	</select>
 	
 	<update id="deleteMember">
@@ -86,6 +86,10 @@
 	
 	<update id="updateDeleteMember">
 		update member_tb set mem_status=1 where mem_email = #{mem_email}
+	</update>
+	
+	<update id="updateChangeMember" parameterType="map">
+		update member_tb set mem_status=#{memStatus} where mem_email = #{memEmail}
 	</update>
 	
 	

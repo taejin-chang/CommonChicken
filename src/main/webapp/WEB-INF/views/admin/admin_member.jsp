@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<!--     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.svg" class="mr-2" alt="logo"/></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
@@ -123,10 +123,10 @@
         </button>
       </div>
     </nav>
-    <!-- partial -->
+ -->    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
+<!--       <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
@@ -144,7 +144,7 @@
           </div>
         </div>
       </div>
-      <div id="right-sidebar" class="settings-panel">
+ --><!--       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
           <li class="nav-item">
@@ -231,7 +231,7 @@
               <p class="text-gray mb-0 ">Call Sarah Graves</p>
             </div>
           </div>
-          <!-- To do section tab ends -->
+          To do section tab ends
           <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
             <div class="d-flex align-items-center justify-content-between border-bottom">
               <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
@@ -291,10 +291,10 @@
               </li>
             </ul>
           </div>
-          <!-- chat tab ends -->
+          chat tab ends
         </div>
       </div>
-      <!-- partial -->
+ -->      <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
        <nav class="sidebar sidebar-offcanvas" style="margin-top: 80px;" id="sidebar">
         <ul class="nav">
@@ -360,89 +360,50 @@
       </nav>
       <!-- partial -->
       <div class="main-panel">
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="margin-top: 60px;">
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h1 class="card-title" style="font-size: 30px;">회원관리</h1>
-                  <div class="table-responsive">
+	                <div class="table-responsive">
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>번호</th>
-								<th>이름</th>
-								<th>이메일</th>
-								<th>전화번호</th>
-								<th>가입일</th>
-								<th>회원상태</th>
+<!-- 								<th>번호</th>
+ -->							<th style="text-align: center;">이름</th>
+								<th style="text-align: center;">이메일</th>
+								<th style="text-align: center;">전화번호</th>
+								<th style="text-align: center;">가입일</th>
+								<th style="text-align: center;">회원상태</th>
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="memberList" items="${memberList }">
+						<form method="post" >
+							<input type="hidden" name="memEmail" value="${memberList.memName }">
 							<tr>
-								<td class="py-1">1</td>
-								<td><img src="images/faces/face1.jpg" alt="image" />   Herman Beck</td>
-								<td>jijon1020@gmail.com</td>
-								<td>010-1111-1111</td>
-								<td>2022년 10월 20일</td>
-								<td>
-								<select name="member">
+<%-- 								<td class="py-1">${memberList. }</td>
+ --%>							<td><img src="images/faces/face1.jpg" alt="image" />${memberList.memName }</td>
+								<td style="text-align: center;">${memberList.memEmail }</td>
+								<td style="text-align: center;">${memberList.memPhone}</td>
+								<td style="text-align: center;">${memberList.memJoinDate}</td>
+								<td style="text-align: center;">
+								<select name="memStatus">
 									<option value="">상태 선택</option>
-									<option value="general" selected="selected">일반회원</option>
-									<option value="storemanager">점포관리자</option>
-									<option value="out">탈퇴 회원</option>
+<%-- 									<option value=0 <c:if test="${memberList.memStatus==0 }"> selected="selected"</c:if>>탈퇴회원</option>
+ --%>								<option value=1 <c:if test="${memberList.memStatus==1 }"> selected="selected"</c:if>>일반회원</option>
+									<option value=2 <c:if test="${memberList.memStatus==2 }"> selected="selected"</c:if>>점포관리자</option>
+									<option value=8 <c:if test="${memberList.memStatus==8 }"> selected="selected"</c:if>>휴먼회원</option>
+									<option value=9 <c:if test="${memberList.memStatus==9 }"> selected="selected"</c:if>>페이지 관리자</option>
 								</select>
-								<button type="button" class="btn btn-primary btn-sm">수정</button>								
+<!--  								<button type="submit" class="btn btn-primary btn-sm">수정</button>
+ --> 								<a href="<c:url value='/admin/modifymember/'/>+${memberList.memEmail }+${memStatus}" onclick="return confirm('정말로 삭제하시겠습니까?');"
+ 											class="btn btn-primary btn-sm" style="color: white;">수정</a>
 								</td>
 							</tr>
-							<tr>
-								<td class="py-1">1</td>
-								<td><img src="images/faces/face1.jpg" alt="image" />   Herman Beck</td>
-								<td>jijon1020@gmail.com</td>
-								<td>010-1111-1111</td>
-								<td>2022년 10월 20일</td>
-								<td>
-								<select name="member">
-									<option value="">상태 선택</option>
-									<option value="general" selected="selected">일반회원</option>
-									<option value="storemanager">점포관리자</option>
-									<option value="out">탈퇴 회원</option>
-								</select>
-								<button type="button" class="btn btn-primary btn-sm">수정</button>								
-								</td>
-							</tr>
-							<tr>
-								<td class="py-1">1</td>
-								<td><img src="images/faces/face1.jpg" alt="image" />   Herman Beck</td>
-								<td>jijon1020@gmail.com</td>
-								<td>010-1111-1111</td>
-								<td>2022년 10월 20일</td>
-								<td>
-								<select name="member">
-									<option value="">상태 선택</option>
-									<option value="general" selected="selected">일반회원</option>
-									<option value="storemanager">점포관리자</option>
-									<option value="out">탈퇴 회원</option>
-								</select>
-								<button type="button" class="btn btn-primary btn-sm">수정</button>								
-								</td>
-							</tr>
-							<tr>
-								<td class="py-1">1</td>
-								<td><img src="images/faces/face1.jpg" alt="image" />   Herman Beck</td>
-								<td>jijon1020@gmail.com</td>
-								<td>010-1111-1111</td>
-								<td>2022년 10월 20일</td>
-								<td>
-								<select name="member">
-									<option value="">상태 선택</option>
-									<option value="general" selected="selected">일반회원</option>
-									<option value="storemanager">점포관리자</option>
-									<option value="out">탈퇴 회원</option>
-								</select>
-								<button type="button" class="btn btn-primary btn-sm">수정</button>								
-								</td>
-							</tr>
+							</form>
+							</c:forEach>
 						</tbody>
 					</table>
 					<br>
@@ -478,6 +439,13 @@
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="js/vendor.bundle.base.js"></script>
+  <script type="text/javascript">
+	  $("select[name=memStatus]").change(function(){
+		  console.log($(this).val()); //value값 가져오기
+		  console.log($("select[name=location] option:selected").text()); //text값 가져오기
+		});
+  
+  </script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->

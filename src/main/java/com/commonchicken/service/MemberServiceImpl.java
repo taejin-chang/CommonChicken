@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,11 @@ public class MemberServiceImpl implements MemberService{
 	
 	public void updateDeleteMember(String memEmail) {
 		memberDAO.updateDeleteMember(memEmail);
+	}
+
+	@Override
+	public void updateChangeMember(Map<String, Object> map) {
+		memberDAO.updateChangeMember(map);
 	}
 
 }

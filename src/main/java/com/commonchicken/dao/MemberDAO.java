@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.commonchicken.dto.MemberDTO;
 
@@ -11,4 +12,6 @@ public interface MemberDAO {
 	List<MemberDTO> selectAllMemberList();//��ü ȸ������ �ҷ�����
 	int deleteMember(String memEmail);//ȸ��Ż��
 	int updateDeleteMember(String memEmail);
+	int updateChangeMember(Map<String,Object>map);
+
 }

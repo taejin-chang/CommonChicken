@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.commonchicken.dto.MemberDTO;
 
@@ -11,4 +12,5 @@ public interface MemberService {
 	List<MemberDTO> selectAllMemberList();//��ü ȸ������ �ҷ�����
 	void deleteMember(String memEmail);//ȸ��Ż��
 	void updateDeleteMember(String memEmail);
+	void updateChangeMember(Map<String,Object>map);
 }

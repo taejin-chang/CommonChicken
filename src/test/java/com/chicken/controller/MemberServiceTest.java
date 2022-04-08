@@ -1,5 +1,7 @@
 package com.chicken.controller;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -22,10 +24,16 @@ public class MemberServiceTest {
 	private MemberService memberService;
 	
 	
+//	@Test
+//	public void testDeleteMemberInfo() {
+//		
+//		memberService.deleteMember("2");
+//		
+//	}
 	@Test
-	public void testDeleteMemberInfo() {
+	public void testSelectmemberList() {
 	
-		memberService.deleteMember("2");
+		memberService.selectAllMemberList();
 			
 	}
 //	
