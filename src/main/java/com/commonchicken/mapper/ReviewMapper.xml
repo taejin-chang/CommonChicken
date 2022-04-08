@@ -23,7 +23,7 @@ private int revNum;
 	</insert>
 	
 	<!-- 리뷰게시판용 -->
-	<select id="selectReviewList" resultType="ReviewVO">
+	<select id="selectAllReview" resultType="ReviewVO">
 		select a.REV_NUM REV_NUM,a.MEM_EMAIL MEM_EMAIL,a.REV_CONTENT REV_CONTEN,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME
 		from review_tb a
 		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM

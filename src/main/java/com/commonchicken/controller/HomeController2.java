@@ -43,10 +43,6 @@ public class HomeController2 {
 	public String paymentAlert() {
 		return "payment/payment_alert";
 	}
-	@RequestMapping("/review")
-	public String review() {
-		return "community/review";
-	}
 
 	
 	
