@@ -164,7 +164,7 @@
 											<td  class="action-td">${fn:substring(reviewPagerList.revDate,5,10)}</td>
 										</tr>
 										
-										</c:forEach>
+									</c:forEach>
 									</tbody>
 								</table>
 								<c:choose>

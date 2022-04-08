@@ -12,4 +12,6 @@ public interface BoardDAO {
 	BoardDTO selectBoard(int brdNum);
 	List<BoardDTO> selectBoardList(int brdCategory);
 	int deleteBoard(int brdNum);
+	int getBoardCount(int brdCategory);
+	List<BoardDTO> selectPagerBoardList(Map<String,Object> map);
 }

@@ -44,6 +44,14 @@ BRD_STATUS   NOT NULL NUMBER(1)
 		select * from board_tb where brd_status != 9 and brd_category = #{brdCategory} order by brd_num desc
 	</select>
 	
+	<select id="getBoardCount" resultType="int">
+		select count(*) from board_tb where (brd_status != 9) and (brd_category = #{brdCategory})
+	</select>
+	
+	<select id="selectPagerBoardList" resultType="BoardDTO">
+		select * from (select rownum rn, board.* from (select * from board_tb where (brd_status != 9) and (brd_category = 1) order by brd_num desc) board)
+		where rn between #{startRow} and #{endRow}
+	</select>
 	
 	
 	<update id="deleteBoard">
