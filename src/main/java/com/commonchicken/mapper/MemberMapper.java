@@ -2,6 +2,8 @@ package com.commonchicken.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.commonchicken.dto.MemberDTO;
 
 public interface MemberMapper {
@@ -11,4 +13,6 @@ public interface MemberMapper {
 	List<MemberDTO> selectAllMemberList();//��ü ȸ������ �ҷ�����
 	int deleteMember(String memEmail);//ȸ��Ż��
 	int updateDeleteMember(String memEmail);
+	MemberDTO findId(@Param("memName") String memName,@Param("memPhone") String memPhone);
+	MemberDTO findPw(String memName,String memPhone,String memEmail);
 }

@@ -11,4 +11,6 @@ public interface MemberService {
 	List<MemberDTO> selectAllMemberList();//��ü ȸ������ �ҷ�����
 	void deleteMember(String memEmail);//ȸ��Ż��
 	void updateDeleteMember(String memEmail);
+	MemberDTO findId(String memName,String memPhone);
+	MemberDTO findPw(String memName,String memPhone,String memEmail);
 }

@@ -44,5 +44,15 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.getMapper(MemberMapper.class).updateDeleteMember(memEmail);
 	}
 
+	@Override
+	public MemberDTO findId(String memName, String memPhone) {
+		return sqlSession.getMapper(MemberMapper.class).findId(memName, memPhone);
+	}
+
+	@Override
+	public MemberDTO findPw(String memName, String memPhone, String memEmail) {
+		return sqlSession.getMapper(MemberMapper.class).findPw(memName, memPhone, memEmail);
+	}
+
 
 }

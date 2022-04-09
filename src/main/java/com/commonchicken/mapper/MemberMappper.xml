@@ -88,5 +88,12 @@
 		update member_tb set mem_status=1 where mem_email = #{mem_email}
 	</update>
 	
+	<select id="findId" resultType="MemberDTO">
+		select * from MEMBER_TB WHERE MEM_NAME=#{memName} and MEM_PHONE=#{memPhone}
+	</select>
+	
+	<select id="findPw" resultType="MemberDTO">
+		select * from MEMBER_TB WHERE MEM_NAME=#{memName} and MEM_PHONE=#{memPhone} and MEM_EMAIL=#{memEmail}
+	</select>
 	
 </mapper>

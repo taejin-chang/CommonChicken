@@ -37,10 +37,20 @@ public class MemberServiceImpl implements MemberService{
 	public void deleteMember(String memEmail) {
 		memberDAO.deleteMember(memEmail);
 	}
-	@Override
 	
+	@Override
 	public void updateDeleteMember(String memEmail) {
 		memberDAO.updateDeleteMember(memEmail);
+	}
+
+	@Override
+	public MemberDTO findId(String memName, String memPhone) {
+		return memberDAO.findId(memName, memPhone);
+	}
+
+	@Override
+	public MemberDTO findPw(String memName, String memPhone, String memEmail) {
+		return memberDAO.findPw(memName, memPhone, memEmail);
 	}
 
 }
