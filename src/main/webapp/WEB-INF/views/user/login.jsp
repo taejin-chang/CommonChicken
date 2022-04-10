@@ -201,7 +201,6 @@
 									<div class="widget-main">
 
 										<div class="space-6"></div>
-										<p>회원님의 정보가 일치하면 메일로 임시 비밀번호를 보내드립니다.</p>
 
 										<form>
 											<fieldset>
@@ -439,10 +438,10 @@
 			data : sendData,
 			dataType : "text",
 			success : function(text) {
-				if (text != null) {
-					$("#result_id").html("아이디 = "+text);
-				} else {
+				if (text == null ||text=="") {
 					$("#result_id").html("해당정보가 없습니다.");
+				} else {
+					$("#result_id").html("아이디 = "+text);
 				}
 			},
 			error : function(xhr) {

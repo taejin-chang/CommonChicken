@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public MemberDTO findId(String memName, String memPhone) {
 		return memberDAO.findId(memName, memPhone);
 	}
@@ -51,6 +53,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public MemberDTO findPw(String memName, String memPhone, String memEmail) {
 		return memberDAO.findPw(memName, memPhone, memEmail);
+=======
+	public void updateChangeMember(Map<String, Object> map) {
+		memberDAO.updateChangeMember(map);
+>>>>>>> branch 'develop' of https://github.com/supersett/CommonChicken.git
 	}
 
 }

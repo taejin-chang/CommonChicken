@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.chicken.mapper.ReplyMapper">
-	<!-- parameterType 속성 생략 가능 -->
+<mapper namespace="com.commonchicken.mapper.ReplyMapper">
 	<insert id="insertReply">
 		<selectKey resultType="int" keyProperty="rplNum" order="BEFORE">
 			select reply_tb_seq.nextval from dual
@@ -10,6 +9,6 @@
 	</insert>
 	
 	<select id="selectReplyList" resultType="ReplyDTO">
-		select * from reply_tb order by rplnum
+		select * from reply_tb where sto_num = #{stoNum}
 	</select>
 </mapper>

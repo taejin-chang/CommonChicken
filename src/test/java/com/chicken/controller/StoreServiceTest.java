@@ -82,9 +82,15 @@ public class StoreServiceTest {
 //	public void testSelectEamil() {
 //		storeService.selectStoreEmail("nolang@naver.com");
 //	}
+//	@Test
+//	public void testDelete() {
+//		storeService.deleteStore("999");
+//	}
+//	]
+	
 	@Test
-	public void testDelete() {
-		storeService.deleteStore("999");
+	public void testSelectStore() {
+		storeService.selectStoreList();
 	}
 
 }

@@ -106,12 +106,12 @@
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											리뷰 관리<a href="${pageContext.request.contextPath}/store/review" data-toggle="collapse"
+											리뷰 관리<a href="#Review" data-toggle="collapse"
 											class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a class="active" href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
+												<li><a href="${pageContext.request.contextPath}/store/review"><i class="icon-heart"></i> 리뷰 </a></li>
 												
 											</ul>
 										</div>
@@ -190,19 +190,40 @@
 								<td style="text-align: center;">${fn:substring(reviewPagerList.revDate,5,10)}</td>
 <!-- 								<td style="text-align: center;">배송중</td>
  -->							</tr>
-							<tr>
-								<td colspan="7"><h4>답글</h4>
-									<p>안녕하세요 반갑습니다 <br> 하이하이요 ~~~ㅎㅎ </p>
-									<button type="button" id="btn" class="btn btn-primary btn-sm">답글</button>	
-									<hr>
+ 								
+								<tr>
+								<c:forEach var="reply" items="${reply}">
+									<c:if test="${reviewPagerList.revNum == reply.revNum}">
+									<td colspan="7"><h4 style="display: inline; margin-left: 3%;">
+										<img src="${pageContext.request.contextPath }/images/icon-reply.png">
+										<span style="background: olive; color: white;">답글</span></h4> 
+										<span style="margin-left: 2%;">${storeInfo.stoName }</span>
+										<span style="margin-left: 2%;">${reply.rplDate }</span>
+										<div style="margin:2% 3%;"><p>${reply.rplContent }</p></div>
+<!-- 										<button type="button" id="btn" class="btn btn-primary btn-sm">답글</button>	
+										<hr>
+										<div id="replay" style="display:none">
+											<input type="text" style="width:80%" >							
+											<textarea rows="5" cols="" style="width:80%"></textarea>
+											<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
+										</div> -->
+									</td>	
+									</c:if>
+									<c:if test="${reviewPagerList.revNum != reply.revNum}">
+									<td colspan="7"><div id="noneReply" style="text-align: center;">등록된 댓글이 없습니다.!
+									&nbsp<button type="button" id="btn" class="btn btn-primary btn-xs">댓글달기</button>	
+									&nbsp<button type="button" id="btn" class="btn btn-primary btn-xs" onClick="$(this).MessageBox('msg');">댓글달기</button>	
+									</div>
 									<div id="replay" style="display:none">
 										<input type="text" style="width:80%" >							
 										<textarea rows="5" cols="" style="width:80%"></textarea>
 										<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
-									</div>
-								</td>								
-							</tr>
-							</c:forEach>
+									</div> 
+									</td>
+									</c:if>
+									</c:forEach>
+								</tr>
+								</c:forEach>
 						</tbody>
 					</table>
 								
@@ -361,13 +382,24 @@
 	    });
 	})(jQuery); 
  
-  $(document).ready(function () {
-      $("#btn").click(function () {
+   $(document).ready(function () {
+/*       $("#btn").click(function () {
           $("#replay").toggle();
           $("#btn").hide();
-      });
+          $("#noneReply").hide();
+          alert(this);
+      }); */
+      
+      $.fn.MessageBox = function(msg) {
+          $("#replay").toggle();
+          $("#btn").hide();
+          $("#noneReply").hide();
+          alert(msg);
+      };
 
-  });
+  }); 
+  
+
   </script>
 </body>
 </html>

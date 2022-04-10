@@ -1,10 +1,10 @@
-package com.commonchicken.mapper;
+package com.commonchicken.service;
 
 import java.util.List;
 
 import com.commonchicken.dto.ReplyDTO;
 
-public interface ReplyMapper {
-	int insertReply(ReplyDTO reply);
+public interface ReplyService {
+	void insertReply(ReplyDTO reply);
 	List<ReplyDTO> selectReplyList(String stoNum);
 }
