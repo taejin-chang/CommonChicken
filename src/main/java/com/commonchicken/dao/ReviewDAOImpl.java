@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.commonchicken.dto.ReplyVO;
 import com.commonchicken.dto.ReviewDTO;
 import com.commonchicken.dto.ReviewVO;
 import com.commonchicken.mapper.ReviewMapper;
@@ -35,6 +36,10 @@ public class ReviewDAOImpl implements ReviewDAO{
 	public List<ReviewVO> selectPagerReview(Map<String, Object> map) {
 		return sqlSession.getMapper(ReviewMapper.class).selectPagerReview(map);
 	}
+	@Override
+	public List<ReplyVO> selectReviewReply(Map<String, Object> map) {
+		return sqlSession.getMapper(ReviewMapper.class).selectReviewReply(map);
+	}
 
 	@Override
 	public List<ReviewVO> selectAllReview() {
@@ -44,6 +49,11 @@ public class ReviewDAOImpl implements ReviewDAO{
 	@Override
 	public int getReviewCount(String memEmail) {
 		return sqlSession.getMapper(ReviewMapper.class).getReviewCount(memEmail);
+	}
+
+	@Override
+	public int selectStoreReviewMng(String stoNum) {
+		return sqlSession.getMapper(ReviewMapper.class).selectStoreReviewMng(stoNum);
 	}
 
 	@Override

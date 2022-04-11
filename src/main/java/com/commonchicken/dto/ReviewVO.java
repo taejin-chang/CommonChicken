@@ -3,6 +3,8 @@ package com.commonchicken.dto;
 public class ReviewVO {
 	private int revNum;
 	private String memEmail;
+	private String ordDetailNum;
+	private int cmNum;
 	private String revContent;
 	private int revRated;
 	private String revDate;
@@ -14,27 +16,15 @@ public class ReviewVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-
-
 
 	public String getStoNum() {
 		return stoNum;
 	}
 
 
-
-
-
-
 	public void setStoNum(String stoNum) {
 		this.stoNum = stoNum;
 	}
-
-
-
-
 
 
 	public ReviewVO(int revNum, String memEmail, String revContent, int revRated, String revDate, String revUpload,
@@ -109,6 +99,22 @@ public class ReviewVO {
 
 	public void setPrdName(String prdName) {
 		this.prdName = prdName;
+	}
+
+	public String getOrdDetailNum() {
+		return ordDetailNum;
+	}
+
+	public void setOrdDetailNum(String ordDetailNum) {
+		this.ordDetailNum = ordDetailNum;
+	}
+
+	public int getCmNum() {
+		return cmNum;
+	}
+
+	public void setCmNum(int cmNum) {
+		this.cmNum = cmNum;
 	}
 	
 	

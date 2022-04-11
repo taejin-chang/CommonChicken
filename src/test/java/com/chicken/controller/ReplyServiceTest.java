@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.commonchicken.dto.ReplyDTO;
 import com.commonchicken.service.ReplyService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,12 +21,25 @@ public class ReplyServiceTest {
 	@Autowired
 	private ReplyService replyService;
 	
-	@Test 
-	public void testReply() {
-		replyService.selectReplyList("6656");
-		System.out.println("하이");
-	}
+//	@Test 
+//	public void testReply() {
+//		replyService.selectReplyList("6656");
+//		System.out.println("하이");
+//	}
+	//#{rplNum}, #{revNum}, #{ordDetailNum}, #{memEmail2}, #{cmNum}, #{stoNum}, #{memEmail}, #{rplContent}
 	
-
+	@Test 
+	public void testInsertReply() {
+		ReplyDTO reply = new ReplyDTO();
+		reply.setRevNum(5);
+		reply.setOrdDetailNum("141");
+		reply.setMemEmail2("dd");
+		reply.setCmNum(17);
+		reply.setStoNum("6656");
+		reply.setMemEmail("dd");
+		reply.setRplContent("hihi");
+		
+		replyService.insertReply(reply);
+	}
 }
 

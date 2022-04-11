@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.commonchicken.dao.ReviewDAO;
+import com.commonchicken.dto.ReplyVO;
 import com.commonchicken.dto.ReviewDTO;
 import com.commonchicken.dto.ReviewVO;
 @Service
@@ -34,6 +35,11 @@ public class ReviewServiceImpl implements ReviewService{
 	public int getReviewCount(String memEmail) {
 		return reviewDAO.getReviewCount(memEmail);
 	}
+	
+	@Override
+	public int selectStoreReviewMng(String stoNum) {
+		return reviewDAO.selectStoreReviewMng(stoNum);
+	}
 
 	@Override
 	public List<ReviewVO> selectAllReview() {
@@ -43,6 +49,11 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public List<ReviewVO> selectPagerReview(Map<String, Object> map) {
 		return reviewDAO.selectPagerReview(map);
+	}
+	
+	@Override
+	public List<ReplyVO> selectReviewReply(Map<String, Object> map) {
+		return reviewDAO.selectReviewReply(map);
 	}
 
 	@Override

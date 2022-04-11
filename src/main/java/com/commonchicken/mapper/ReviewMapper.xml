@@ -18,7 +18,7 @@ private int revNum;
 		<selectKey resultType="int" keyProperty="revNum" order="BEFORE">
 			select review_seq.nextval from dual
 		</selectKey>
-		insert into review_tb (REV_NUM,ORD_DETAIL_NUM,MEM_EMAIL,CM_NUM,REV_CONTENT,REV_RATED,REV_DATE,REV_VIEWS,REV_ORIGIN,REV_UPLOAD)
+		insert into review_tb (REV_NUM, ORD_DETAIL_NUM, MEM_EMAIL, CM_NUM,REV_CONTENT, REV_RATED, REV_DATE, REV_VIEWS, REV_ORIGIN,REV_UPLOAD)
 		values(#{revNum}, #{ordDetailNum}, #{memEmail}, #{cmNum}, #{revContent}, #{revRated}, sysdate, 0, #{revOrigin}, #{revUpload})
 	</insert>
 	
@@ -33,12 +33,14 @@ private int revNum;
 	
 	<!-- 마이페이지 리뷰용 -->
 	<select id="selectPagerReview" resultType="ReviewVO">
-		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM,a.MEM_EMAIL MEM_EMAIL,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
+		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM, a.ORD_DETAIL_NUM ORD_DETAIL_NUM, a.CM_NUM CM_NUM, a.MEM_EMAIL MEM_EMAIL,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
 		from review_tb a
 		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
 		left join product_tb c on b.PRD_CODE = c.PRD_CODE
-		where a.MEM_EMAIL =#{memEmail}
-		order by a.REV_DATE ) board)
+		<if test="memEmail!=null and memEmail!=''"> 
+			where a.MEM_EMAIL =#{memEmail}
+		</if>	
+		order by a.REV_DATE desc) board)
 		where rn between #{startRow} and #{endRow}
 	</select>
 	
@@ -51,13 +53,37 @@ private int revNum;
 		where STO_NUM = #{stoNum}
 	</select>
 	
+	<select id="selectReviewReply" resultType="ReplyVO">
+		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM, a.ORD_DETAIL_NUM ORD_DETAIL_NUM, a.CM_NUM CM_NUM, a.MEM_EMAIL MEM_EMAIL2,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
+		, d.RPL_NUM, d.MEM_EMAIL, RPL_CONTENT, e.STO_NAME
+		from review_tb a
+		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
+		left join product_tb c on b.PRD_CODE = c.PRD_CODE
+		left join reply_tb d on a.REV_NUM = d.REV_NUM
+		left join store_tb e on c.STO_NUM = e.STO_NUM
+		where c.STO_NUM =#{stoNum}
+		order by a.REV_DATE ) board)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
 	<select id="getReviewCount" resultType="int">
-		select count(*) from review_tb where MEM_EMAIL =#{memEmail}
+		select count(*) from review_tb
+		<if test="memEmail!=null and memEmail!=''"> 
+		 where MEM_EMAIL = #{memEmail}
+		 </if>
 	</select>
 	
 	
 	<select id="selectReview" resultType="ReviewDTO">
 		select * from review_tb where REV_NUM=#{revNum}
+	</select>
+	
+	<select id="selectStoreReviewMng" resultType="int">
+		select count(*) from member_tb a
+		join store_tb b on a.mem_email = b.mem_email
+		join common_tb c on b.sto_num = c.sto_num
+		join review_tb d on c.cm_num = d.cm_num 
+		where b.sto_num =#{stoNum}
 	</select>
 	
 	

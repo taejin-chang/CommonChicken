@@ -3,12 +3,16 @@
 <mapper namespace="com.commonchicken.mapper.ReplyMapper">
 	<insert id="insertReply">
 		<selectKey resultType="int" keyProperty="rplNum" order="BEFORE">
-			select reply_tb_seq.nextval from dual
+			select reply_seq.nextval from dual
 		</selectKey>
-		insert into reply_tb values(#{rplNum}, #{revNum}, #{ordDetailNum}, #{memEmail2}, #{cmNum}, #{stoNum}, #{memEmail}, #{rplContent}, #{rplDate})
+		insert into reply_tb (RPL_NUM, REV_NUM, ORD_DETAIL_NUM, MEM_EMAIL2, CM_NUM, STO_NUM, MEM_EMAIL, RPL_CONTENT)
+		values(#{rplNum}, #{revNum}, #{ordDetailNum}, #{memEmail2}, #{cmNum}, #{stoNum}, #{memEmail}, #{rplContent})
 	</insert>
 	
 	<select id="selectReplyList" resultType="ReplyDTO">
-		select * from reply_tb where sto_num = #{stoNum}
+		select * from reply_tb 
+		<if test="stoNum!=null and stoNum!=''"> 
+			where sto_num = #{stoNum}
+		</if>
 	</select>
 </mapper>

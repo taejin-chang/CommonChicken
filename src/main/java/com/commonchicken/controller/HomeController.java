@@ -34,6 +34,7 @@ import com.commonchicken.dto.CommonDTO;
 import com.commonchicken.dto.MemberDTO;
 import com.commonchicken.dto.OrderDTO;
 import com.commonchicken.dto.ProductDTO;
+import com.commonchicken.dto.ReplyDTO;
 import com.commonchicken.dto.StoreDTO;
 import com.commonchicken.service.BoardService;
 import com.commonchicken.service.CommonBoardService;
@@ -290,16 +291,24 @@ public class HomeController {
 	
 	//공지사항리스트
 	@RequestMapping(value = "admin/notice", method = RequestMethod.GET)
-	public String selectNoticeList(@RequestParam(defaultValue = "1")int brdCategory, Model model){
+	public String selectNoticeList(@RequestParam(defaultValue="1") int pageNum,@RequestParam(defaultValue = "1")int brdCategory,Model model){
 		System.out.println("공지사항 리스트");
-		model.addAttribute("noticeList", boardService.selectBoardList(brdCategory));
-			
+		int totalBoard=boardService.getBoardCount(brdCategory);
+		int pageSize=10;
+		int blockSize=5;
+		
+		Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+		
+		Map<String, Object> pagerMap=new HashMap<String, Object>();
+		pagerMap.put("startRow", pager.getStartRow());
+		pagerMap.put("endRow", pager.getEndRow());
+		
+		model.addAttribute("noticeList",boardService.selectPagerBoardList(pagerMap));
+		model.addAttribute("pager",pager);
+
 		return "admin/admin_notice";
 	}
-	
-	
-	
-	
+		
 	//-------------------------------------------------------------------------------------------------------------------------------
 	
 	//공지 사항 글쓰,기 페이지 
@@ -553,8 +562,10 @@ public class HomeController {
 
 	
 		@RequestMapping(value = "store/productlist", method = RequestMethod.GET)
-		public String ProductList(Model model) {
-			model.addAttribute("productList", productService.selectProductListAdmin("6656"));
+		public String ProductList(Model model, HttpSession session) {
+			String stoNum = (String)session.getAttribute("storeSession");
+
+			model.addAttribute("productList", productService.selectProductListAdmin(stoNum));
 			
 			return "store_mypage/store_product_list";
 		}
@@ -589,27 +600,39 @@ public class HomeController {
 		
 		@RequestMapping(value = "/store/review", method = RequestMethod.GET)
 		public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
-			int totalBoard=reviewService.getReviewCount((String)session.getAttribute("loginId"));
-			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
-			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
 			
 			String stoNum = (String)session.getAttribute("storeSession");
-
-			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
 			
+			int totalBoard=reviewService.selectStoreReviewMng(stoNum);
+
+			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
+			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
 			Map<String, Object> pagerMap=new HashMap<String, Object>();
 			pagerMap.put("startRow", pager.getStartRow());
 			pagerMap.put("endRow", pager.getEndRow());
-			pagerMap.put("memEmail", (String)session.getAttribute("loginId"));
+			pagerMap.put("stoNum", "6656");
 			
-			model.addAttribute("reviewPagerList",reviewService.selectStoreReviewList(stoNum));
-			model.addAttribute("reply",  replyService.selectReplyList(stoNum));
-			model.addAttribute("storeInfo", storeService.selectStore(stoNum));
-			model.addAttribute("pager",pager);
-			
+			model.addAttribute("pager", pager);
+			model.addAttribute("reviewList", reviewService.selectReviewReply(pagerMap));
+				
 			return "store_mypage/store_review";
 		}
 
+		@RequestMapping(value="/store/review", method = RequestMethod.POST)
+		public String insertReply(@ModelAttribute ReplyDTO reply, Model model, HttpSession session) {
+			System.out.println("수정페이지 입니다.");
+			String stoNum = (String)session.getAttribute("storeSession");
+			String memEmail = (String)session.getAttribute("loginId");
+
+			reply.setStoNum("6656");
+			reply.setMemEmail("nolang@naver.com");
+			
+			replyService.insertReply(reply);
+
+			
+			return "redirect:/store/review";
+		}
 		
 		//------------------------------------------------------------------------
 		@RequestMapping(value = "store/deletePage", method = RequestMethod.GET)
@@ -739,6 +762,32 @@ public class HomeController {
 			//model.addAttribute("findcommonboard", commonboardService.selectCommonBoard(cmbdNum));
 			return "admin/admin_common";
 		}
+		
+		
+//		@GetMapping("admin/review")
+//		public String reviewList(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
+//			String stoNum = (String)session.getAttribute("storeSession");
+//
+//			
+//			int totalBoard=reviewService.getReviewCount("");
+//			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
+//			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+//			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+//			Map<String, Object> pagerMap=new HashMap<String, Object>();
+//			pagerMap.put("startRow", pager.getStartRow());
+//			pagerMap.put("endRow", pager.getEndRow());
+//			pagerMap.put("stoNum", stoNum);
+//			
+//			
+//			
+//			
+//			model.addAttribute("pager", pager);
+//			model.addAttribute("reviewList", reviewService.selectReviewReply(pagerMap));
+//			
+//			return "admin/admin_review";
+//		}
+		
+
 }
 
 

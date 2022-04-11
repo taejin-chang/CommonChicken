@@ -13,11 +13,11 @@ RPL_DATE       NOT NULL DATE
 
 
 public class ReplyDTO {
-	private String rplNum;
-	private String revNum;
+	private int rplNum;
+	private int revNum;
 	private String ordDetailNum;
 	private String memEmail2;
-	private String cmNum;
+	private int cmNum;
 	private String stoNum;
 	private String memEmail;
 	private String rplContent;
@@ -27,19 +27,19 @@ public class ReplyDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getRplNum() {
+	public int getRplNum() {
 		return rplNum;
 	}
 
-	public void setRplNum(String rplNum) {
+	public void setRplNum(int rplNum) {
 		this.rplNum = rplNum;
 	}
 
-	public String getRevNum() {
+	public int getRevNum() {
 		return revNum;
 	}
 
-	public void setRevNum(String revNum) {
+	public void setRevNum(int revNum) {
 		this.revNum = revNum;
 	}
 
@@ -59,11 +59,11 @@ public class ReplyDTO {
 		this.memEmail2 = memEmail2;
 	}
 
-	public String getCmNum() {
+	public int getCmNum() {
 		return cmNum;
 	}
 
-	public void setCmNum(String cmNum) {
+	public void setCmNum(int cmNum) {
 		this.cmNum = cmNum;
 	}
 
@@ -98,6 +98,6 @@ public class ReplyDTO {
 	public void setRplDate(String rplDate) {
 		this.rplDate = rplDate;
 	}
-	
-	
+
+
 }
