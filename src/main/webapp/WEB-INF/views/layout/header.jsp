@@ -4,7 +4,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- Header Section Begin -->
-<header class="header">
+<header class="header" style="border-bottom: 3px solid orange">
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-3 col-md-3">
@@ -18,7 +18,7 @@
 				<nav class="header__menu mobile-menu">
 				<ul>
 					<li class="active"><a href="${pageContext.request.contextPath}/">홈</a></li>
-					<li><a href="${pageContext.request.contextPath}/listing">제품리스트</a></li>
+					<li><a href="${pageContext.request.contextPath}/listing">점포리스트</a></li>
 					<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
 					<li><a href="#">공지</a>
 						<ul class="dropdown">
