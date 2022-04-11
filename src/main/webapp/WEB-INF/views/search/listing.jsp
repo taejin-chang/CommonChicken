@@ -194,7 +194,7 @@
             	<label><input type="checkbox" class="rate" name="rate" value="4">⭐️⭐️⭐️⭐️</label><br>
             	<label><input type="checkbox" class="rate" name="rate" value="3">⭐️⭐️⭐️</label><br>
             	<label><input type="checkbox" class="rate" name="rate" value="2">⭐️⭐️</label><br>
-            	<label><input type="checkbox" class="rate" name="rate" value="1">️⭐️</label><br>
+            	<label><input type="checkbox" class="rate" name="rate" value="1">⭐️</label><br>
             	<label><input type="checkbox" class="rate" name="rate" value="0">☆</label>
             </div>
 
@@ -257,23 +257,23 @@
 		                        <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
 		                            	<c:choose>
-		                            		<c:when test="${searchStore.revRated>=4.5 }">
+		                            		<c:when test="${searchStore.revRated>4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=4.0 }">
+		                            		<c:when test="${searchStore.revRated>4.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=3.5 }">
+		                            		<c:when test="${searchStore.revRated>3.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=3.0 }">
+		                            		<c:when test="${searchStore.revRated>3.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=2.5 }">
+		                            		<c:when test="${searchStore.revRated>2.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=2.0 }">
+		                            		<c:when test="${searchStore.revRated>2.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=1.5 }">
+		                            		<c:when test="${searchStore.revRated>1.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=1.0 }">
+		                            		<c:when test="${searchStore.revRated>1.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${searchStore.revRated>=0.5 }">
+		                            		<c:when test="${searchStore.revRated>0.5 }">
 		                            		<span class="icon_star"></span></c:when>
 		                            		<c:when test="${searchStore.revRated>0.0 }">
 		                            		<span class="icon_star-half_alt"></span></c:when>
@@ -319,7 +319,7 @@
 		            <div class="listing__item">
 		            	<input name="stoNum" type="hidden" value="{{stoNum}}">
 		            	<input name="cmNum" type="hidden" value="{{cmNum}}">
-		                <div class="listing__item__pic set-bg" data-setbg="../img/listing/list-1.jpg">
+		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">
 		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
@@ -333,8 +333,9 @@
 		                        {{!--<h5>{{stoName }}</h5>--}}
 		            			            <div class="listing__item__text__rating">
 		                            <div class="listing__item__rating__star">
+		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span>
 										{{!--<input type="hidden" value="{{revRated}}"--}}
-											{{#ifratestar revRated "1"}}
+											{{#ifratestar ratelist "1"}}
 		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span>{{/ifratestar}}
 											{{#ifratestar revRated 1.5}}
 		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
@@ -383,7 +384,7 @@
         		return options.fn(this);
         	} 
         		return options.inverse(this);
-        })
+        });
     	
     	$("#storeListDiv").hide();
     	var cmClose=$("select[name=cmClose]").val();

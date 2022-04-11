@@ -34,7 +34,8 @@
 		  <![CDATA[
 		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close 
 		from store_tb a left join common_tb b on a.sto_num = b.sto_num left join (select cc.sto_num, round(avg(rv.rev_rated),1) 
-		rev_rated from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) c on b.sto_num = c.sto_num order by sto_name
+		rev_rated from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) c on b.sto_num = c.sto_num 
+		order by sto_name
 		]]>
 	</select>
 	
@@ -106,22 +107,22 @@
 		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD HH24-MI-SS')
 		and sto_add1||sto_add2 like '%'||#{juso}||'%'
 		]]>
-        	<if test="ratelist=0">
+        	<!--  <if test="ratelist=0">
         	and
 	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
-              		 <![CDATA[nvl(rev_rated,0) is null]]>
+              		 <![CDATA[rev_rated is null]]>
            		</foreach>
         	</if>
         	<if test="ratelist=null">
         	and
 	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
-              		 <![CDATA[nvl(rev_rated,0) is null]]>
+              		 <![CDATA[rev_rated is null]]>
            		</foreach>
-        	</if>
+        	</if>-->
         	<if test="ratelist!=null">
         	and
-	            <foreach collection="ratelist" item="item" index="index" open="(" close=")" separator="or">
-              		 <![CDATA[nvl(rev_rated,0) between #{item} and ${item}]]>+1
+	            <foreach collection="ratelist" item="revRated" index="index" open="(" close=")" separator="or">
+              		 <![CDATA[rev_rated between #{revRated} and ${revRated}]]>+1
            		</foreach>
         	</if>
         <if test="deliveryTime2!=null">

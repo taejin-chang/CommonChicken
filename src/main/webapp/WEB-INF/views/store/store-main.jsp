@@ -87,9 +87,9 @@
 		                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
+		                            		<span class="icon_star"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
 		                            		<span class="icon_star-half_alt"></span></c:when>
-		                            		<span class="icon_star"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>0 }">
 		                            		<span>☆</span></c:when>
 		                                </c:choose>
@@ -238,8 +238,8 @@
 		                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
 		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
-		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
 		                            		<span class="icon_star-half_alt"></span></c:when>
+		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
 		                            		<span class="icon_star"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>0 }">
 		                            		<span>☆</span></c:when>

@@ -125,6 +125,7 @@ STO_UPLOAD                VARCHAR2(100)
 	on c.sto_num = r.sto_num 
 	where s.sto_num = #{stoNum} group by r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, r.rev_rated
 	</select>
+	
 	<select id="selectStoreInfoReivewCount" parameterType="map" resultMap="CommonStoreResultMap">
 	select r.sto_num, sto_name,sto_add1,sto_add2,sto_phone, sto_openning, sto_minorder, rev_rated from
 	store_tb s join common_tb c on s.sto_num = c.sto_num join (select cc.sto_num, count(rev_rated) rev_rated 
