@@ -51,7 +51,7 @@
 </style>
 </head>
 
-<body class="login-layout">
+<body class="login-layout light-login">
 	<div class="main-container">
 		<div class="main-content">
 			<div class="row">
@@ -130,15 +130,15 @@
 										<div>
 											<a href="#" data-target="#forgot-box1"
 												class="forgot-password-link"> <i
-												class="ace-icon fa fa-arrow-left"></i> 아이디 찾기
+												class="ace-icon fa fa-arrow-left"></i><font style="color:white">아이디 찾기</font>
 											</a> <a href="#" data-target="#forgot-box"
 												class="forgot-password-link"> &nbsp;&nbsp;&nbsp;<i
-												class="ace-icon fa fa-arrow-left"></i> 비밀번호 찾기
+												class="ace-icon fa fa-arrow-left"></i> <font style="color:white">비밀번호 찾기</font>
 											</a>
 										</div>
 										<div>
 											<a href="#" data-target="#signup-box"
-												class="user-signup-link"> 회원가입 <i
+												class="user-signup-link"> <font style="color:white">회원가입</font> <i
 												class="ace-icon fa fa-arrow-right"></i>
 											</a>
 										</div>

@@ -21,6 +21,6 @@ body {
 	<hr>
 	<p class="message">프로그램 실행에 예기치 못한 오류가 발생 되었거나 비정상적인 방법으로 
 	프로그램을 요청하여 오류가 발생 되었습니다.</p>
-	<button type="button" onclick="location.href='${pageContext.request.contextPath}/layout/index'">메인 페이지 이동</button> 
+	<button type="button" onclick="location.href='${pageContext.request.contextPath}/main'">메인 페이지 이동</button> 
 </body>
 </html>

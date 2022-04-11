@@ -93,16 +93,16 @@
 	<div class="filter nice-scroll">
         <div class="filter__title">
             <h5>
-            	<a href="<c:url value='common_boardlist'/>">
-            		<i class="fa fa-filter"></i> 커먼모집
+            	<a href="<c:url value='/review'/>">
+            		<i class="fa fa-filter"></i> 리뷰
             	</a>
             </h5>
         </div>
         <br>
         <div class="filter__title">
             <h5>
-            	<a href="<c:url value='/review'/>">
-            		<i class="fa fa-filter"></i> 리뷰
+            	<a href="<c:url value='common_boardlist'/>">
+            		<i class="fa fa-filter"></i> 커먼모집
             	</a>
             </h5>
         </div>
@@ -117,7 +117,7 @@
         
     </div>
 	<!-- Filter End -->
-	<div class=" grid-margin stretch-card" style="margin: 150px 1% 1% 1%;">
+	<div class=" grid-margin stretch-card" style="margin: 100px 1% 1% 1%;">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">공지사항</h4>

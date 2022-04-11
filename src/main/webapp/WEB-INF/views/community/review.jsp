@@ -7,7 +7,7 @@
 <head>
 <style type="text/css">
 .nice-scroll {
-            height: 800px;
+            height: 1000px;
             overflow-y: hidden;
 </style>
 <style type="text/css">
@@ -30,26 +30,21 @@
 </style>
 </head>
 <body class="ov-hid">
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
    
     <!-- Filter Begin -->
     <div class="filter nice-scroll">
         <div class="filter__title">
             <h5>
-            	<a href="<c:url value='/common_boardlist'/>">
-            		<i class="fa fa-filter"></i> 커먼모집
+            	<a href="<c:url value='/review'/>">
+            		<i class="fa fa-filter"></i> 리뷰
             	</a>
             </h5>
         </div>
         <br>
         <div class="filter__title">
             <h5>
-            	<a href="<c:url value='/review'/>">
-            		<i class="fa fa-filter"></i> 리뷰
+            	<a href="<c:url value='/common_boardlist'/>">
+            		<i class="fa fa-filter"></i> 커먼모집
             	</a>
             </h5>
         </div>

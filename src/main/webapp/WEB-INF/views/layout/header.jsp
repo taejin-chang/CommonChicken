@@ -20,10 +20,10 @@
 					<li><a href="${pageContext.request.contextPath}/">홈</a></li>
 					<li><a href="${pageContext.request.contextPath}/listing">점포리스트</a></li>
 					<li><a href="${pageContext.request.contextPath}/review">커뮤니티</a>
-						<ul class="dropdown">
-							<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
-							<li><a href="${pageContext.request.contextPath}/common_boardlist">커먼모집</a></li>
-							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
+						<ul class="dropdown" style="left:-10px; width:102px; background-color:#FFFFFF; border:2px solid orange; text-align: center">
+							<li><a href="${pageContext.request.contextPath}/review"><font style="color: #000000; font-size:17px; font-weight: bold;">리뷰</font></a></li>
+							<li><a href="${pageContext.request.contextPath}/common_boardlist"><font style="color: #000000; font-size:17px; font-weight: bold;">커먼모집</font></a></li>
+							<li><a href="${pageContext.request.contextPath}/notice"><font style="color: #000000; font-size:17px; font-weight: bold;">공지사항</font></a></li>
 						</ul></li>
 					<c:if test="${not empty(loginMember) }">
 					<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
