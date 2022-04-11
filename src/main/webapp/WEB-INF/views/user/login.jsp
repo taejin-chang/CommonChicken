@@ -578,7 +578,7 @@
 		loginForm.memEmail.focus();
 
 		function loginsubmitCheck() {
-			if (findIdForm.memEmail.value == "") {
+			if (loginForm.memEmail.value == "") {
 				alert("이메일을 입력해 주세요.");
 				loginForm.memEmail.focus();
 				return;
@@ -590,7 +590,7 @@
 			}
 
 			loginForm.method = "post";
-			loginForm.action = "${pageContext.request.contextPath}/findId";
+			loginForm.action = "${pageContext.request.contextPath}/login";
 			loginForm.submit();
 		}
 	</script>
