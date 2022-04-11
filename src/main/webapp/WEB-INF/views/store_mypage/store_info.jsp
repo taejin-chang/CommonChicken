@@ -103,12 +103,12 @@
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											리뷰 관리<a href="${pageContext.request.contextPath}/store/review" data-toggle="collapse"
+											리뷰 관리<a href="#Review" data-toggle="collapse"
 											class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
+												<li><a href="${pageContext.request.contextPath}/store/review"><i class="icon-heart"></i> 리뷰 </a></li>
 												
 											</ul>
 										</div>
@@ -153,45 +153,6 @@
 									<h3 style="padding-top: 13px;" class="text-center-480 useradmin">
 										<img class="userImg" src="${pageContext.request.contextPath }/images/${storeInfo.stoUpload }" alt="사진">
 									</h3>
-								</div>
-								<div class="col-md-7 col-xs-8 col-xxs-12">
-									<div class="header-data text-center-xs">
-
-										<!-- Traffic data -->
-		<!-- 								<div class="hdata">
-											<div class="mcol-left">
-												Icon with red background
-												<i class="fa fa-eye ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												Number of visitors
-												<p>
-													<a href="#">7000</a> <em>visits</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-
-										revenue data
-										<div class="hdata">
-											<div class="mcol-left">
-												Icon with green background
-												<i class="icon-th-thumb ln-shadow"></i>
-											</div>
-											<div class="mcol-right">
-												Number of visitors
-												<p>
-													<a href="#">12</a><em>Ads</em>
-												</p>
-											</div>
-											<div class="clearfix"></div>
-										</div> -->
-
-										<!-- revenue data -->
-										<div class="hdata">
-											<button type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
-										</div>
-									</div>
 								</div>
 							</div>
 						</div>

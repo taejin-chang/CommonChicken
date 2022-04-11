@@ -92,12 +92,12 @@
 									<!-- /.collapse-box  -->
 									<div class="collapse-box">
 										<h5 class="collapse-title">
-											리뷰 관리<a href="${pageContext.request.contextPath}/store/review" data-toggle="collapse"
+											리뷰 관리<a href="#Review" data-toggle="collapse"
 											class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="store-account-review.html"><i class="icon-heart"></i> 리뷰 </a></li>
+												<li><a href="${pageContext.request.contextPath}/store/review"><i class="icon-heart"></i> 리뷰 </a></li>
 												
 											</ul>
 										</div>
@@ -138,9 +138,12 @@
 	        
 	        <div class="col-sm-9 page-content">
 	          <div class="inner-box">
-	            <h2 class="title-2"><i class="icon-hourglass"></i>커먼 리스트 </h2>
+	            <h2 class="title-2"><i class="icon-hourglass"></i>커먼 리스트 
+	            	<button style="margin-left: 70%;" type="button" class="btn btn-primary" onClick="location.href='<c:url value="/store/common"/>';">커먼 등록</button>
+	            </h2>
 	            <div class="table-responsive">
 	              <div class="table-action">
+
 <!-- 	                <label for="checkAll">
 	                  <input type="checkbox" onclick="checkAll(this)" id="checkAll">
 	                  Select: All | <a href="#" class="btn btn-xs btn-danger">Delete <i class="glyphicon glyphicon-remove "></i></a> </label> -->

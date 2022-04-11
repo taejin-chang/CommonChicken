@@ -22,8 +22,7 @@
 					<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
 					<li><a href="#">공지</a>
 						<ul class="dropdown">
-							<li><a href="./about.html">공지사항</a></li>
-							<li><a href="./listing-details.html">이벤트</a></li>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 						</ul></li>
 					<c:if test="${not empty(loginMember) }">
 					<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>

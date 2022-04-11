@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +26,7 @@
 <!-- styles needed for carousel slider -->
 <link href="${pageContext.request.contextPath }/assets/css/owl.carousel.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/assets/css/owl.theme.css" rel="stylesheet">
-
- <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
 
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -48,13 +46,14 @@
 </head>
 <body>
 	<div id="wrapper">
+		
+		<!-- /.header -->
 		<br>
 		<br>
 		<br>
 		<br>
 		<br>
 		<br>
-
 		<div class="main-container">
 			<div class="container">
 				<div class="row">
@@ -87,18 +86,18 @@
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a  href="${pageContext.request.contextPath}/store/order">
+												<li><a class="active"  href="${pageContext.request.contextPath}/store/order">
 												<i class="icon-docs"></i> 주문 현황 </a></li>
 											</ul>
 										</div>
 									</div>
-																		<div class="collapse-box">
+									<div class="collapse-box">
 										<h5 class="collapse-title">
 											주문<a href="#MyAds" data-toggle="collapse" class="pull-right"></a>
 										</h5>
 										<div class="panel-collapse collapse in" id="MyAds">
 											<ul class="acc-list">
-												<li><a href="${pageContext.request.contextPath}/store/productlist">
+												<li><a  href="${pageContext.request.contextPath}/store/productlist">
 												<i class="icon-docs"></i> 상품리스트 </a></li>
 											</ul>
 										</div>
@@ -146,148 +145,173 @@
 							<!-- /.inner-box  -->
 
 						</aside>
+
 					</div>
 					<!--/.page-sidebar-->
+
 					<div class="col-sm-9 page-content">
 						<div class="inner-box">
-								<h2 class="title-2">
-									<i class="icon-heart"></i> 리뷰
-								</h2>
-                    		<table class="table table-hover table-expandable table-striped">
-						<thead>
-							<tr>
-								<th style="text-align: center;" width="10%">번호</th>
-								<th style="text-align: center;" width="10%">이미지</th>
-								<th style="text-align: center;" width="15%">상품명</th>
-								<th style="text-align: center;">리뷰</th>
-								<th style="text-align: center;" width="15%">별점</th>
-								<th style="text-align: center;" width="15%">작성일</th>
-<!-- 								<th style="text-align: center;"width="15%">게시글상태</th>
- -->							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="reviewPagerList" items="${reviewPagerList}">
-<!-- 							<tr>
-								<td class="py-1" style="text-align: center;">1</td>
-								<td style="text-align: center;">맛있어요</td>
-								<td style="text-align: center;">★★★★★</td>
-								<td style="text-align: center;">5</td>
-								<td style="text-align: center;">2022년 10월 20일</td>
-								<td style="text-align: center;">게시중</td>
-							</tr> -->
-							<tr>
-								<td style="text-align: center;">${reviewPagerList.revNum}</td>
-								<td style="text-align: center;"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
-								<td style="text-align: center;">${reviewPagerList.prdName}</td>
-								<td style="text-align: center; width:40%">${reviewPagerList.revContent}</td>
-								<td style="text-align: center;">
-									<c:if test="${reviewPagerList.revRated==1}">★☆☆☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==2}">★★☆☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==3}">★★★☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==4}">★★★★☆</c:if>
-									<c:if test="${reviewPagerList.revRated==5}">★★★★★</c:if>
-								</td>
-								<td style="text-align: center;">${fn:substring(reviewPagerList.revDate,5,10)}</td>
-<!-- 								<td style="text-align: center;">배송중</td>
- -->							</tr>
- 								
+							<h2 class="title-2">
+								<i class="icon-docs"></i> 주문 현황
+							</h2>
+
+					<table class="table table-expandable">
+							<thead style="background: #4747A1; color: white; text-align: center;" >
+
 								<tr>
-								<c:forEach var="reply" items="${reply}">
-									<c:if test="${reviewPagerList.revNum == reply.revNum}">
-									<td colspan="7"><h4 style="display: inline; margin-left: 3%;">
-										<img src="${pageContext.request.contextPath }/images/icon-reply.png">
-										<span style="background: olive; color: white;">답글</span></h4> 
-										<span style="margin-left: 2%;">${storeInfo.stoName }</span>
-										<span style="margin-left: 2%;">${reply.rplDate }</span>
-										<div style="margin:2% 3%;"><p>${reply.rplContent }</p></div>
-<!-- 										<button type="button" id="btn" class="btn btn-primary btn-sm">답글</button>	
-										<hr>
-										<div id="replay" style="display:none">
-											<input type="text" style="width:80%" >							
-											<textarea rows="5" cols="" style="width:80%"></textarea>
-											<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
-										</div> -->
-									</td>	
-									</c:if>
-									<c:if test="${reviewPagerList.revNum != reply.revNum}">
-									<td colspan="7"><div id="noneReply" style="text-align: center;">등록된 댓글이 없습니다.!
-									&nbsp<button type="button" id="btn" class="btn btn-primary btn-xs">댓글달기</button>	
-									&nbsp<button type="button" id="btn" class="btn btn-primary btn-xs" onClick="$(this).MessageBox('msg');">댓글달기</button>	
-									</div>
-									<div id="replay" style="display:none">
-										<input type="text" style="width:80%" >							
-										<textarea rows="5" cols="" style="width:80%"></textarea>
-										<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
-									</div> 
-									</td>
-									</c:if>
-									</c:forEach>
+									<th style="text-align: center;">커먼번호</th>
+									<th style="text-align: center;">매점명</th>
+									<th style="text-align: center;">배달출발시간</th>
+ 									<th style="text-align: center;">마감시간</th>
+									<th style="text-align: center;">모집입원</th>
+									<th style="text-align: center;">매출액</th>
+									<th style="text-align: center;">상태</th>
 								</tr>
-								</c:forEach>
-						</tbody>
-					</table>
-								
-	<%-- 							<table id="addManageTable"
-									class="table table-striped table-bordered add-manage-table table demo"
-									data-filter="#filter" data-filter-text-only="true">
-									<thead>
+							</thead>
+							<c:choose>
+								<c:when test="${empty(orderManager) }">
+									<tbody style="text-align: center;">
 										<tr>
-											<th style="width: 10%">번호</th>
-											<th >사진</th>
-											<th style="width: 15%">상품명</th>
-											<th style="width: 20%">내용</th>
-											<th style="width: 10%">별점</th>
-											<th style="width: 10%">작성일</th>
+											<td style="text-align: center;" colspan="7">등록된 커먼이 없습니다.</td>
 										</tr>
-									</thead>
-									<tbody>
-									<c:forEach var="reviewPagerList" items="${reviewPagerList}">
-										<tr>
-											<td  class="add-img-selector">${reviewPagerList.revNum}</td>
-											<td  class="add-img-td"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
-											<td  class="add-img-td">${reviewPagerList.prdName}</td>
-											<td  class="ads-details-td">${reviewPagerList.revContent}</td>
-											<td  class="price-td">${reviewPagerList.revRated}</td>
-											<td  class="action-td">${fn:substring(reviewPagerList.revDate,5,10)}</td>
-										</tr>
-										
-										</c:forEach>
 									</tbody>
-								</table> --%>
-								<c:choose>
-									<c:when test="${pager.startPage } gt ${pager.blockSize }">
-										<a href="<c:url value='/user/myBoard'/>">[처음]</a>
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
-									</c:when>
-									<c:otherwise>
-										[처음] [이전]
-									</c:otherwise>
-								</c:choose>
-								
-								<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }">
-									<a href="<c:url value='/user/myBoard'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+								</c:when>
+								<c:otherwise>
+								<c:forEach var="commonList" items="${orderManager }">
+								<tbody style="text-align: center;">
+									<tr style="background-color: #e1e1fa;">
+										<td>${commonList.cmNum}</td>
+										<td>${commonList.storeDTO.stoName}</td>
+										<td>${commonList.cmDeliveryTime}</td>
+										<td>${commonList.cmClose}</td>
+										<td>${commonList.cmGoalPeople}</td>
+										<td>${commonList.cmSales}</td>
+										<td>
+											<c:if test="${commonList.cmStatus==0}">진행중</c:if> 
+											<c:if test="${commonList.cmStatus==1}">만료</c:if> 
+											<c:if test="${commonList.cmStatus==2}">성립</c:if> 
+										</td>
+									</tr>
+									<tr>
+										<td colspan="8">
+											<table class="table table-expandable">
+												<thead style="background: #7978E9; color: white; text-align: center;">
+	
+													<tr>
+														<th  style="text-align: center;">주문묶음 번호</th>
+														<th style="text-align: center;">구매자</th>
+														<th style="text-align: center;">주소</th>
+														<th style="text-align: center;">전화번호</th>
+														<th style="text-align: center;">요청사항</th>
+														<th style="text-align: center;">결제종류</th>
+														<th style="text-align: center;">상태</th>
+													</tr>
+												</thead>
+												<c:forEach var="orderList" items="${commonList.orderList}">
+												<tbody style="text-align: center;">
+													<tr style="background-color: #ffffff;">
+														<td>${orderList.ordBundleNum}</td>
+														<td>${orderList.memEmail}</td>
+														<td>${orderList.ordAdd1} ${orderList.ordAdd2}</td>
+														<td>${orderList.ordPhone}</td>
+														<td>${orderList.ordRequest}</td>
+														<td>${orderList.ordPayMethod}</td>
+														<td><!-- 0:입금대기,1:주문접수, 2:커먼완료, 3:배달중,4:배달완료,5 :커먼실패,  6: 주문취소 -->
+														<c:if test="${orderList.ordStatus==0}">입금대기</c:if> 
+														<c:if test="${orderList.ordStatus==1}">주문접수</c:if> 
+														<c:if test="${orderList.ordStatus==2}">커먼완료</c:if> 
+														<c:if test="${orderList.ordStatus==3}">배달중</c:if>
+														<c:if test="${orderList.ordStatus==4}">배달완료</c:if> 
+														<c:if test="${orderList.ordStatus==5}">커먼실패</c:if> 
+														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
+														<c:if test="${orderList.ordStatus==0}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/store_order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배달시작 
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/store_order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														<c:if test="${orderList.ordStatus==3}">
+							                       	 	<p> 
+							                       	 		<a href="<c:url value='/store_order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');"
+ 																class="btn btn-primary btn-xs" style="color: white;"> 
+ 																배송완료
+															</a>
+														</p>
+														<p>
+							                       	 		<a href="<c:url value='/store_order/changeOrder/6/'/>${orderList.ordBundleNum}" onclick="return confirm('정말 주문을 취소하시겠습니까?');"
+ 																class="btn btn-danger btn-xs" style="color: white;"> 
+ 																주문 취소 
+															</a>
+														</p>
+														</c:if> 
+														 
+														</td>
+													</tr>
+													<tr>
+														<td colspan="8">
+															<table class="table table-striped">
+															<thead style="background: #7DA0FA; color: white; text-align: center;">
+																	<tr>
+																		<th style="text-align: center;">상품 번호</th>
+																		<th style="text-align: center;">이미지</th>
+																		<th style="text-align: center;">상품명</th>
+																		<th style="text-align: center;">가격</th>
+																		<th style="text-align: center;">수량</th>
+																		<th style="text-align: center;">상품 종류</th>
+																	</tr>
+																</thead>
+																<c:forEach var="productOrderList" items="${productManager}">
+																<c:if test="${orderList.ordBundleNum==productOrderList.ordBundleNum }">
+																<tbody style="text-align: center;">
+																	<tr>
+																		<td>${productOrderList.productList.prdCode}</td>
+																		<td>${productOrderList.productList.prdUpload}</td>
+																		<td>${productOrderList.productList.prdName}</td>
+																		<td>${productOrderList.productList.prdPrice}</td>
+																		<td>${productOrderList.ordQuantity}</td>
+																		<td>
+																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
+																		<c:if test="${productOrderList.productList.prdCategory==1}">사이드</c:if> 
+																		<c:if test="${productOrderList.productList.prdCategory==2}">음료</c:if> 
+																		</td>
+																	</tr>
+																</tbody>
+																</c:if>
+																</c:forEach>
+															</table>
+														</td>
+													</tr>
+												</tbody>
+												</c:forEach>
+											</table>
+										</td>
+									</tr>
+								</tbody>
 								</c:forEach>
-								
-								<c:choose>
-									<c:when test="${pager.startPage }>${pager.blockSize }">
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${pager.endPage}">[마지막]</a>
-									</c:when>
-									<c:otherwise>
-										[다음] [마지막]
-									</c:otherwise>
-								</c:choose>
+							</c:otherwise>
+						</c:choose>
+						</table>
 							</div>
 							<!--/.row-box End-->
 
 						</div>
 					</div>
+					<!--/.page-content-->
 				</div>
 				<!--/.row-->
 			</div>
 			<!--/.container-->
 		</div>
-		
+		<!-- /.main-container -->
+
 	</div>
 	<!-- /.wrapper -->
 
@@ -359,10 +383,23 @@
 	<!-- include custom script for site  -->
 	<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
 	
+	  <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
 	
-	<script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
+	
+	    <script type="text/javascript">
+/*     var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
   
-<script type="text/javascript">
+   */
+
   (function ($) {
 	    $(function () {
 	        $('.table-expandable').each(function () {
@@ -381,25 +418,10 @@
 	        });
 	    });
 	})(jQuery); 
- 
-   $(document).ready(function () {
-/*       $("#btn").click(function () {
-          $("#replay").toggle();
-          $("#btn").hide();
-          $("#noneReply").hide();
-          alert(this);
-      }); */
-      
-      $.fn.MessageBox = function(msg) {
-          $("#replay").toggle();
-          $("#btn").hide();
-          $("#noneReply").hide();
-          alert(msg);
-      };
 
-  }); 
   
-
-  </script>
+  </script> 
+  
+	
 </body>
 </html>

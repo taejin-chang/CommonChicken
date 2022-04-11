@@ -45,4 +45,14 @@ public class BoardServiceImpl implements BoardService {
 		commonDAO.updateViews(brdNum);
 	}
 
+	@Override
+	public int getBoardCount(int brdCategory) {
+		return commonDAO.getBoardCount(brdCategory);
+	}
+
+	@Override
+	public List<BoardDTO> selectPagerBoardList(Map<String, Object> map) {
+		return commonDAO.selectPagerBoardList(map);
+	}
+
 }

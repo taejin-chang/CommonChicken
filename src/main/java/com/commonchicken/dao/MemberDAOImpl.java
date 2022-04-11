@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,20 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int updateDeleteMember(String memEmail) {
 		return sqlSession.getMapper(MemberMapper.class).updateDeleteMember(memEmail);
+	}
+
+	@Override
+	public MemberDTO findId(String memName, String memPhone) {
+		return sqlSession.getMapper(MemberMapper.class).findId(memName, memPhone);
+	}
+
+	@Override
+	public MemberDTO findPw(String memName, String memPhone, String memEmail) {
+		return sqlSession.getMapper(MemberMapper.class).findPw(memName, memPhone, memEmail);
+	}
+	@Override
+	public int updateChangeMember(Map<String, Object> map) {
+		return sqlSession.getMapper(MemberMapper.class).updateChangeMember(map);
 	}
 
 

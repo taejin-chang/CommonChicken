@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -86,6 +88,7 @@ public class LoginController {
 	public String login(@ModelAttribute MemberDTO member, Model model,HttpSession session) throws LoginAuthFailException{
 		//아이디 잘못입력했을때
 		if(memberService.selectMember(member.getMemEmail())==null) {
+			
 			throw new LoginAuthFailException();
 		}
 		//비번 틀렸을때
@@ -124,6 +127,37 @@ public class LoginController {
 			return "fail";
 		}
 	}
+	
+	//아이디 찾기
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
+	@ResponseBody
+	public String findId(@RequestParam("memName") String memName,@RequestParam("memPhone") String memPhone) {
+		System.out.println("member의 이름="+memName);
+		System.out.println("member의 번호="+memPhone);
+		if(memberService.findId(memName, memPhone)==null) {
+			return null; 
+		}else {
+			return memberService.findId(memName, memPhone).getMemEmail();
+		}
+		
+	}
+	
+	//비밀번호 찾기
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	@ResponseBody
+	public String findPw(@RequestParam("memName") String memName,@RequestParam("memPhone") String memPhone,@RequestParam("memEmail") String memEmail) {
+		System.out.println("member의 이름="+memName);
+		System.out.println("member의 번호="+memPhone);
+		if(memberService.findPw(memName, memPhone,memEmail)==null) {
+			return null; 
+		}else {
+			return memberService.findPw(memName, memPhone,memEmail).getMemPw();
+		}
+		
+	}
+	
+	
+	
 	
 	
 }

@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,11 +36,13 @@ import com.commonchicken.dto.OrderDTO;
 import com.commonchicken.dto.ProductDTO;
 import com.commonchicken.dto.StoreDTO;
 import com.commonchicken.service.BoardService;
+import com.commonchicken.service.CommonBoardService;
 import com.commonchicken.service.CommonService;
 import com.commonchicken.service.MemberService;
 import com.commonchicken.service.OrderManagerService;
 import com.commonchicken.service.OrderService;
 import com.commonchicken.service.ProductService;
+import com.commonchicken.service.ReplyService;
 import com.commonchicken.service.ReviewService;
 import com.commonchicken.service.StoreService;
 import com.commonchicken.util.Pager;
@@ -79,6 +82,12 @@ public class HomeController {
 	
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private ReplyService replyService;
+
+	@Autowired
+	private CommonBoardService commonboardService;
 	
 	
 	/**
@@ -578,7 +587,7 @@ public class HomeController {
 //			return "store_mypage/store_review";
 //		}
 		
-		@RequestMapping("/store/review")
+		@RequestMapping(value = "/store/review", method = RequestMethod.GET)
 		public String myBoardpage(@RequestParam(defaultValue="1") int pageNum,Model model,HttpSession session) {
 			int totalBoard=reviewService.getReviewCount((String)session.getAttribute("loginId"));
 			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
@@ -593,7 +602,9 @@ public class HomeController {
 			pagerMap.put("endRow", pager.getEndRow());
 			pagerMap.put("memEmail", (String)session.getAttribute("loginId"));
 			
-			model.addAttribute("reviewPagerList",reviewService.selectStoreReviewList("6656"));
+			model.addAttribute("reviewPagerList",reviewService.selectStoreReviewList(stoNum));
+			model.addAttribute("reply",  replyService.selectReplyList(stoNum));
+			model.addAttribute("storeInfo", storeService.selectStore(stoNum));
 			model.addAttribute("pager",pager);
 			
 			return "store_mypage/store_review";
@@ -622,7 +633,112 @@ public class HomeController {
 			
 			return "main";
 		}
+		
+		
+		@RequestMapping(value = "store/out", method = RequestMethod.GET)
+		public String deleteMemberPage(){
+			return "store_mypage/store_member_sign_out";
+		}
+		
+		
+		
+		@RequestMapping(value="store/deleteMember", method = RequestMethod.GET)
+		public String deleteMember(HttpSession session) {
+			
+			String stoNum = (String)session.getAttribute("storeSession");
+			String member = (String)session.getAttribute("loginId");
+			
+			storeService.deleteStore(stoNum);	
+			memberService.deleteMember(member);	
+			
+			return "redirect:/";
+		}
+		
+		
+		
+		@RequestMapping(value = "/store/order", method = RequestMethod.GET)
+		public String storeOrder(Model model){
+			System.out.println("하이!");
+			//model.addAttribute("commonList", commonService.selectCommonList());
+			model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
+			model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+			
+			return "store_mypage/store_order";
+		}
 	
+		@RequestMapping(value="/store_order/changeOrder/{ordStatus}/{ordBundleNum}", method = RequestMethod.GET)
+		public String changeStoreOrder(@PathVariable int ordStatus, @PathVariable String ordBundleNum, Map<String,Object> map ) {
+			System.out.println("배달 시작입니다람1");
+			System.out.println("배달 시작입니다람2");
+			map.put("ordStatus", ordStatus);
+			map.put("ordBundleNum", ordBundleNum);
+			
+			orderService.updateOrderStatus(map);
+			System.out.println("배달 시작입니다람3");
+			
+			return "redirect:/store/order";
+		}
+		
+// 페이지 회원관리===================================================================================				
+		@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
+		public String adminMember(Model model){
+			System.out.println("하이!");
+			model.addAttribute("memberList", memberService.selectAllMemberList());
+			
+			return "admin/admin_member";
+		}
+		
+//		@RequestMapping(value = "/admin/member", method = RequestMethod.POST)
+//		public String changeMemberStatus(@ModelAttribute MemberDTO member, Map<String,Object>map){	
+//			System.out.println(member.getMemStatus());
+//			System.out.println(member.getMemEmail());
+//			map.put("memStatus", member.getMemStatus());
+//			map.put("memEmail", member.getMemEmail());
+//			
+//			memberService.updateChangeMember(map);
+//			
+//			return "redirect:/store/order";
+//		}
+//		
+		
+		@RequestMapping(value = "/admin/member", method = RequestMethod.POST)
+		public String changeMemberStatus(@ModelAttribute MemberDTO member, Map<String,Object>map){	
+			System.out.println(member.getMemStatus());
+			System.out.println(member.getMemEmail());
+			map.put("memStatus", member.getMemStatus());
+			map.put("memEmail", member.getMemEmail());
+			
+			memberService.updateChangeMember(map);
+			
+			return "redirect:/store/order";
+		}
+		
+// 페이지 점포 관리===================================================================================				
+		@RequestMapping(value = "/admin/store", method = RequestMethod.GET)
+		public String adminStore(Model model){
+//			System.out.println("하이!");
+			model.addAttribute("storeList", storeService.selectStoreList());
+			
+			return "admin/admin_store";
+		}	
+		
+		
+		@GetMapping("admin/common")
+		public String commonBoardlist(@RequestParam(defaultValue="1") int pageNum,  Model model) {
+			
+			int totalBoard=commonboardService.getCommonBoardCount();
+			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
+			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+			Map<String, Object> pagerMap=new HashMap<String, Object>();
+			pagerMap.put("startRow", pager.getStartRow());
+			pagerMap.put("endRow", pager.getEndRow());
+			
+			model.addAttribute("pager",pager);
+			model.addAttribute("commonboardList", commonboardService.selectCommonBoardList(pagerMap));
+			//model.addAttribute("findcommonboard", commonboardService.selectCommonBoard(cmbdNum));
+			return "admin/admin_common";
+		}
 }
 
 
