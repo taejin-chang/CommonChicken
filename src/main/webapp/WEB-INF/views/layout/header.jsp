@@ -17,11 +17,12 @@
 			<div class="header__nav">
 				<nav class="header__menu mobile-menu">
 				<ul>
-					<li class="active"><a href="${pageContext.request.contextPath}/">홈</a></li>
+					<li><a href="${pageContext.request.contextPath}/">홈</a></li>
 					<li><a href="${pageContext.request.contextPath}/listing">점포리스트</a></li>
-					<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
-					<li><a href="#">공지</a>
+					<li><a href="${pageContext.request.contextPath}/review">커뮤니티</a>
 						<ul class="dropdown">
+							<li><a href="${pageContext.request.contextPath}/review">리뷰</a></li>
+							<li><a href="${pageContext.request.contextPath}/common_boardlist">커먼모집</a></li>
 							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 						</ul></li>
 					<c:if test="${not empty(loginMember) }">

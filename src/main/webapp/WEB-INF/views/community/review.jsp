@@ -40,7 +40,7 @@
     <div class="filter nice-scroll">
         <div class="filter__title">
             <h5>
-            	<a href="<c:url value='/community'/>">
+            	<a href="<c:url value='/common_boardlist'/>">
             		<i class="fa fa-filter"></i> 커먼모집
             	</a>
             </h5>
