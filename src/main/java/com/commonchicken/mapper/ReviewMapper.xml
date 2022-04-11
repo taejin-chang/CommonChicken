@@ -55,13 +55,15 @@ private int revNum;
 	
 	<select id="selectReviewReply" resultType="ReplyVO">
 		select * from (select rownum rn, board.* from (select a.REV_NUM REV_NUM, a.ORD_DETAIL_NUM ORD_DETAIL_NUM, a.CM_NUM CM_NUM, a.MEM_EMAIL MEM_EMAIL2,a.REV_CONTENT REV_CONTENT,a.REV_RATED REV_RATED,a.REV_DATE REV_DATE,a.REV_UPLOAD REV_UPLOAD,c.PRD_NAME PRD_NAME,c.STO_NUM STO_NUM
-		, d.RPL_NUM, d.MEM_EMAIL, RPL_CONTENT, e.STO_NAME
+		, d.RPL_NUM, d.MEM_EMAIL, RPL_CONTENT, RPL_DATE, e.STO_NAME
 		from review_tb a
 		left join order_tb b on a.ORD_DETAIL_NUM= b.ORD_DETAIL_NUM
 		left join product_tb c on b.PRD_CODE = c.PRD_CODE
 		left join reply_tb d on a.REV_NUM = d.REV_NUM
 		left join store_tb e on c.STO_NUM = e.STO_NUM
-		where c.STO_NUM =#{stoNum}
+		<if test="stoNum!=null and stoNum!=''"> 
+			where c.STO_NUM =#{stoNum}
+		</if>	
 		order by a.REV_DATE ) board)
 		where rn between #{startRow} and #{endRow}
 	</select>

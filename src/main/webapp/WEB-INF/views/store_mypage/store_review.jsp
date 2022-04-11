@@ -183,8 +183,8 @@
 							<tr>
 								<td style="text-align: center;">${reviewList.revNum}</td>
 								<td style="text-align: center;"><img src="${pageContext.request.contextPath }/review/${reviewList.revUpload}"></td>
-								<td style="text-align: center;">${reviewPagerList.prdName}</td>
-								<td style="text-align: center; width:40%">${reviewList.revContent}</td>
+								<td style="text-align: center;">${reviewList.prdName}</td>
+								<td style="text-align: center; width:40%"><a id="popupmodal">${reviewList.revContent}</a></td>
 								<td style="text-align: center;">
 									<c:if test="${reviewList.revRated==1}">★☆☆☆☆</c:if>
 									<c:if test="${reviewList.revRated==2}">★★☆☆☆</c:if>
@@ -192,7 +192,7 @@
 									<c:if test="${reviewList.revRated==4}">★★★★☆</c:if>
 									<c:if test="${reviewList.revRated==5}">★★★★★</c:if>
 								</td>
-								<td style="text-align: center;">${fn:substring(reviewPagerList.revDate,5,10)}</td>
+								<td style="text-align: center;">${fn:substring(reviewList.revDate,5,10)}</td>
 <!-- 								<td style="text-align: center;">배송중</td>
  -->							</tr>
  								
@@ -288,7 +288,7 @@
 	<script src="${pageContext.request.contextPath }/assets/js/footable.js?v=2-0-1" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/footable.filter.js?v=2-0-1"
 		type="text/javascript"></script>
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		$(function() {
 			$('#addManageTable').footable().bind(
 					'footable_filtering',
@@ -310,7 +310,7 @@
 
 		});
 	</script>
-	<!-- include custom script for ads table [select all checkbox]  -->
+	include custom script for ads table [select all checkbox] 
 	<script>
 		function checkAll(bx) {
 			var chkinput = document.getElementsByTagName('input');
@@ -320,7 +320,7 @@
 				}
 			}
 		}
-	</script>
+	</script> -->
 
 	<!-- include jquery.fs plugin for custom scroller and selecter  -->
 	<script src="${pageContext.request.contextPath }/assets/plugins/jquery.fs.scroller/jquery.fs.scroller.js"></script>
@@ -331,6 +331,57 @@
 	
 	<script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
   
+
+
+
+  	<script type="text/javascript">
+
+	
+ 	var revNum;
+	var ordDetailNum;
+	var memEmail2;
+	var cmNum;
+
+    $(document).on('click','#popupmodal', function() {
+    	revNum = $(this).parent().parent().parent().find('input[name=revNum]').val();
+    	ordDetailNum = $(this).parent().parent().parent().find('input[name=ordDetailNum]').val();
+    	memEmail2 = $(this).parent().parent().parent().find('input[name=memEmail2]').val();
+    	cmNum = $(this).parent().parent().parent().find('input[name=cmNum]').val();
+
+  		  console.log(revNum);
+  		  console.log(ordDetailNum);
+  		  console.log(memEmail2);
+  		  console.log(cmNum);
+  		  console.log('하이'); 
+		  
+/*   		  
+		  $('#popupgoalpeople').text(goalPeople);
+		  $('#popupstoname').text(stoName);
+		  $('#popupcmclose').text(cmClose);
+		  $('#popupdeliverytime').text(cmDeliveryTime);
+		  $('#popupcmbdtitle').text(cmbdTitle);
+		  $('#popupstonum').text(cmNum);
+		  $('#popupcmnum').text(stoNum); */
+
+		  });
+		  
+/* 	  function applyCommon() {
+	    	$('#exampleModal').on('show.bs.modal', function (event) {
+	  		  
+	  		  cmNum = $(this).parent().parent().parent().find('input[id=popupcmnum]').val();
+	  		  stoNum = $(this).parent().parent().parent().find('input[id=popupstonum]').val();
+			  
+	    	});
+	    	
+			location.href="${pageContext.request.contextPath}/store?stoNum="+stoNum+"&cmNum="+cmNum;
+	    	
+	    }; */
+	
+	</script>
+
+
+
+
 <script type="text/javascript">
   (function ($) {
 	    $(function () {
@@ -351,24 +402,27 @@
 	    });
 	})(jQuery); 
  
-   $(document).ready(function () {
-/*       $("#btn").click(function () {
+  // $(document).ready(function () {
+/*      $("#btn").click(function () {
           $("#replay").toggle();
           $("#btn").hide();
           $("#noneReply").hide();
           alert(this);
-      }); */
-      
-      $.fn.MessageBox = function(msg) {
+      }); 
+       */
+/*        $.fn.MessageBox = function(msg) {
           $("#reply"+msg).toggle();
           $("#btn"+msg).hide();
           $("#noneReply"+msg).hide();
           alert(msg);
-      }; 
+      };  */
 
-  }); 
+ // });  
   
 
   </script>
+  
+  
+
 </body>
 </html>

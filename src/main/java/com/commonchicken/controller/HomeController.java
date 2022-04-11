@@ -240,8 +240,10 @@ public class HomeController {
 	@RequestMapping(value = "store/common", method = RequestMethod.POST)
 	public String CommonAdd(@ModelAttribute CommonDTO common, HttpSession session) throws ParseException{
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat output = new SimpleDateFormat("HH:mm:ss");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date Delivery = sdf.parse(common.getCmDeliveryTime());
 		String cmDeliveryTime = output.format(Delivery);
 		
@@ -611,7 +613,7 @@ public class HomeController {
 			Map<String, Object> pagerMap=new HashMap<String, Object>();
 			pagerMap.put("startRow", pager.getStartRow());
 			pagerMap.put("endRow", pager.getEndRow());
-			pagerMap.put("stoNum", "6656");
+			pagerMap.put("stoNum", stoNum);
 			
 			model.addAttribute("pager", pager);
 			model.addAttribute("reviewList", reviewService.selectReviewReply(pagerMap));
@@ -625,8 +627,8 @@ public class HomeController {
 			String stoNum = (String)session.getAttribute("storeSession");
 			String memEmail = (String)session.getAttribute("loginId");
 
-			reply.setStoNum("6656");
-			reply.setMemEmail("nolang@naver.com");
+			reply.setStoNum(stoNum);
+			reply.setMemEmail(memEmail);
 			
 			replyService.insertReply(reply);
 
@@ -764,28 +766,25 @@ public class HomeController {
 		}
 		
 		
-//		@GetMapping("admin/review")
-//		public String reviewList(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
-//			String stoNum = (String)session.getAttribute("storeSession");
-//
+		@GetMapping("admin/review")
+		public String reviewList(@RequestParam(defaultValue = "1") int pageNum, Model model, HttpSession session) {
+			String stoNum = (String)session.getAttribute("storeSession");
 //			
-//			int totalBoard=reviewService.getReviewCount("");
-//			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
-//			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
-//			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
-//			Map<String, Object> pagerMap=new HashMap<String, Object>();
-//			pagerMap.put("startRow", pager.getStartRow());
-//			pagerMap.put("endRow", pager.getEndRow());
-//			pagerMap.put("stoNum", stoNum);
-//			
-//			
-//			
-//			
-//			model.addAttribute("pager", pager);
-//			model.addAttribute("reviewList", reviewService.selectReviewReply(pagerMap));
-//			
-//			return "admin/admin_review";
-//		}
+			int totalBoard=reviewService.selectStoreReviewMng("");
+
+			int pageSize=10;//하나의 페이지에 출력될 게시글의 갯수 저장
+			int blockSize=5;//하나의 페이지 블럭에 출력될 페이지 번호의 갯수 저장
+			Pager pager=new Pager(pageNum, totalBoard, pageSize, blockSize);
+			Map<String, Object> pagerMap=new HashMap<String, Object>();
+			pagerMap.put("startRow", pager.getStartRow());
+			pagerMap.put("endRow", pager.getEndRow());
+			pagerMap.put("stoNum", stoNum);
+			
+			model.addAttribute("pager", pager);
+			model.addAttribute("reviewList", reviewService.selectReviewReply(pagerMap));
+				
+			return "admin/admin_review";
+		}
 		
 
 }

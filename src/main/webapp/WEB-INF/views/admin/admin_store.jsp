@@ -145,14 +145,14 @@
 								<td colspan="1">
 									<ul>
 										<li>운영상태<br>
-											<select>
-												<option <c:if test="${storeList.stoStatus==0 }">selected="selected"</c:if>>승인전</option>
-												<option <c:if test="${storeList.stoStatus==1 }">selected="selected"</c:if>>운영중</option>
-												<option <c:if test="${storeList.stoStatus==2 }">selected="selected"</c:if>>휴업</option>
-												<option <c:if test="${storeList.stoStatus==9 }">selected="selected"</c:if>>서비스 탈퇴</option>
+											<select name="stoStatus">
+												<option value="0" <c:if test="${storeList.stoStatus==0 }">selected="selected"</c:if>>승인전</option>
+												<option value="1" <c:if test="${storeList.stoStatus==1 }">selected="selected"</c:if>>운영중</option>
+												<option value="2" <c:if test="${storeList.stoStatus==2 }">selected="selected"</c:if>>휴업</option>
+												<option value="9" <c:if test="${storeList.stoStatus==9 }">selected="selected"</c:if>>서비스 탈퇴</option>
 											</select>
-											<button type="button" class="btn btn-primary btn-sm">확인</button>
-										</li>
+											<button type="button" class="btn btn-primary btn-sm" onclick="check_ok();">확인</button>
+										</li> 
 
 									</ul>
 								</td>
@@ -202,6 +202,23 @@
   <script src="js/template.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
+  
+  <script type="text/javascript">
+  
+  	function check_ok() {
+
+	    var stoStatus = $("select[name=stoStatus]").val();
+	    alert(stoStatus);
+	    
+	    location.href = "<c:url value='/admin/store/'/>"+stoStatus;
+  	}
+  </script>
+  
+  
+  
+  
+  
+  
   <script type="text/javascript">
 /*     var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);

@@ -22,8 +22,11 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="${pageContext.request.contextPath }/admin/images/favicon.png" />
-   <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
-  
+ <link rel="stylesheet" href="${pageContext.request.contextPath }/admin/css/table_extend.css">
+  	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+		
+	</script>
 </head>
 
 <body>
@@ -85,7 +88,7 @@
                 <div class="card-body">
                   <h1 class="card-title">리뷰 관리</h1>
                   <div class="table-responsive">
-					<table class="table table-hover table-expandable table-striped">
+                    		<table class="table table-hover table-expandable table-striped">
 						<thead>
 							<tr>
 								<th style="text-align: center;" width="10%">번호</th>
@@ -98,7 +101,11 @@
  -->							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="reviewPagerList" items="${reviewList}">
+							<c:forEach var="reviewList" items="${reviewList}" varStatus="vs">
+								<input type="hidden" name="revNum" value="${reviewList.revNum}">
+								<input type="hidden" name="ordDetailNum" value="${reviewList.ordDetailNum}">
+								<input type="hidden" name="memEmail2" value="${reviewList.memEmail}">
+								<input type="hidden" name="cmNum" value="${reviewList.cmNum}">
 <!-- 							<tr>
 								<td class="py-1" style="text-align: center;">1</td>
 								<td style="text-align: center;">맛있어요</td>
@@ -108,52 +115,44 @@
 								<td style="text-align: center;">게시중</td>
 							</tr> -->
 							<tr>
-								<td style="text-align: center;">${reviewPagerList.revNum}</td>
-								<td style="text-align: center;"><img src="${pageContext.request.contextPath }/review/${reviewPagerList.revUpload}"></td>
-								<td style="text-align: center;">${reviewPagerList.prdName}</td>
-								<td style="text-align: center; width:40%">${reviewPagerList.revContent}</td>
+								<td style="text-align: center;">${reviewList.revNum}</td>
+								<td style="text-align: center;"><img src="${pageContext.request.contextPath }/review/${reviewList.revUpload}"></td>
+								<td style="text-align: center;">${reviewList.prdName}</td>
+								<td style="text-align: center; width:40%"><a id="popupmodal">${reviewList.revContent}</a></td>
 								<td style="text-align: center;">
-									<c:if test="${reviewPagerList.revRated==1}">★☆☆☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==2}">★★☆☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==3}">★★★☆☆</c:if>
-									<c:if test="${reviewPagerList.revRated==4}">★★★★☆</c:if>
-									<c:if test="${reviewPagerList.revRated==5}">★★★★★</c:if>
+									<c:if test="${reviewList.revRated==1}">★☆☆☆☆</c:if>
+									<c:if test="${reviewList.revRated==2}">★★☆☆☆</c:if>
+									<c:if test="${reviewList.revRated==3}">★★★☆☆</c:if>
+									<c:if test="${reviewList.revRated==4}">★★★★☆</c:if>
+									<c:if test="${reviewList.revRated==5}">★★★★★</c:if>
 								</td>
-								<td style="text-align: center;">${fn:substring(reviewPagerList.revDate,5,10)}</td>
+								<td style="text-align: center;">${fn:substring(reviewList.revDate,5,10)}</td>
 <!-- 								<td style="text-align: center;">배송중</td>
  -->							</tr>
+ 								
 								<tr>
-								<c:forEach var="reply" items="${reply}">
-									<c:if test="${reviewPagerList.revNum == reply.revNum}">
+									<c:if test="${!empty reviewList.rplContent}">
 									<td colspan="7"><h4 style="display: inline; margin-left: 3%;">
 										<img src="${pageContext.request.contextPath }/images/icon-reply.png">
 										<span style="background: olive; color: white;">답글</span></h4> 
-										<span style="margin-left: 2%;">${storeInfo.stoName }</span>
-										<span style="margin-left: 2%;">${reply.rplDate }</span>
-										<div style="margin:2% 3%;"><p>${reply.rplContent }</p></div>
-<!-- 										<button type="button" id="btn" class="btn btn-primary btn-sm">답글</button>	
-										<hr>
-										<div id="replay" style="display:none">
-											<input type="text" style="width:80%" >							
-											<textarea rows="5" cols="" style="width:80%"></textarea>
-											<button type="button" id="saveReply" class="btn btn-primary btn-sm">답글 저장</button>	
-										</div> -->
+										<span style="margin-left: 2%;">${reviewList.stoName }</span>
+										<span style="margin-left: 2%;">${reviewList.rplDate }</span>
+										<div style="margin:2% 3%;"><p>${reviewList.rplContent }</p></div>
 									</td>	
 									</c:if>
-									<c:if test="${reviewPagerList.revNum != reply.revNum}">
-									<td colspan="7"><div id="noneReply" style="text-align: center;">등록된 댓글이 없습니다.!</div>
+									<c:if test="${empty reviewList.rplContent}">
+									<td colspan="7"><div id="noneReply${vs.index}" style="text-align: center;">등록된 댓글이 없습니다.!</div>
 									</td>
 									</c:if>
-									</c:forEach>
 								</tr>
-								</c:forEach>
+							</c:forEach>
 						</tbody>
 					</table>
-							<div style="text-align: center;">
+								
 								<c:choose>
 									<c:when test="${pager.startPage } gt ${pager.blockSize }">
-										<a href="<c:url value='/admin/review'/>">[처음]</a>
-										<a href="<c:url value='/admin/review'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+										<a href="<c:url value='/user/myBoard'/>">[처음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
 									</c:when>
 									<c:otherwise>
 										[처음] [이전]
@@ -161,19 +160,18 @@
 								</c:choose>
 								
 								<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }">
-									<a href="<c:url value='/admin/review'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+									<a href="<c:url value='/user/myBoard'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
 								</c:forEach>
 								
 								<c:choose>
 									<c:when test="${pager.startPage }>${pager.blockSize }">
-										<a href="<c:url value='/admin/review'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
-										<a href="<c:url value='/admin/review'/>?pagenum=${pager.endPage}">[마지막]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+										<a href="<c:url value='/user/myBoard'/>?pagenum=${pager.endPage}">[마지막]</a>
 									</c:when>
 									<c:otherwise>
 										[다음] [마지막]
 									</c:otherwise>
 								</c:choose>
-								</div>	
                 </div>
               </div>
             </div>
@@ -201,43 +199,38 @@
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-<!--   <script src="js/off-canvas.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/todolist.js"></script> -->
+<%--   <script src="${pageContext.request.contextPath }/admin/js/off-canvas.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/hoverable-collapse.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/template.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/settings.js"></script>
+  <script src="${pageContext.request.contextPath }/admin/js/todolist.js"></script> --%>
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
   
-    <script type="text/javascript">
 
-  (function ($) {
-	    $(function () {
-	        $('.table-expandable').each(function () {
-	            var table = $(this);
-	            table.children('thead').children('tr').append('<th></th>');
-	            table.children('tbody').children('tr').filter(':odd').hide();
-	            table.children('tbody').children('tr').filter(':even').click(function () {
-	                var element = $(this);
-	                element.next('tr').toggle('fast');
-	                element.find(".table-expandable-arrow").toggleClass("up");
-	            });
-	            table.children('tbody').children('tr').filter(':even').each(function () {
-	                var element = $(this);
-	                element.append('<td><div class="table-expandable-arrow"></div></td>');
-	            });
-	        });
-	    });
-	})(jQuery); 
- 
-  $(document).ready(function () {
-      $("#btn").click(function () {
-          $("#replay").toggle();
-          $("#btn").hide();
-      });
-  });
-  </script>
+    <script type="text/javascript">
+    (function ($) {
+  	    $(function () {
+  	        $('.table-expandable').each(function () {
+  	            var table = $(this);
+  	            table.children('thead').children('tr').append('<th></th>');
+  	            table.children('tbody').children('tr').filter(':odd').hide();
+  	            table.children('tbody').children('tr').filter(':even').click(function () {
+  	                var element = $(this);
+  	                element.next('tr').toggle('fast');
+  	                element.find(".table-expandable-arrow").toggleClass("up");
+  	            });
+  	            table.children('tbody').children('tr').filter(':even').each(function () {
+  	                var element = $(this);
+  	                element.append('<td><div class="table-expandable-arrow"></div></td>');
+  	            });
+  	        });
+  	    });
+  	})(jQuery); 
+   
+
+    </script>
 </body>
 
 </html>

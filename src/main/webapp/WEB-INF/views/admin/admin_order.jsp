@@ -196,7 +196,7 @@
 														<c:if test="${orderList.ordStatus==4}">배달완료</c:if> 
 														<c:if test="${orderList.ordStatus==5}">커먼실패</c:if> 
 														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
-														<c:if test="${orderList.ordStatus==0}">
+<%-- 														<c:if test="${orderList.ordStatus==0}">
 							                       	 	<p> 
 							                       	 		<a href="<c:url value='/order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
  																class="btn btn-primary btn-xs" style="color: white;"> 
@@ -223,7 +223,7 @@
  																주문 취소 
 															</a>
 														</p>
-														</c:if> 
+														</c:if>  --%>
 														 
 														</td>
 													</tr>
