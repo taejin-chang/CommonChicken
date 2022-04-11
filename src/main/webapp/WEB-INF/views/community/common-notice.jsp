@@ -97,7 +97,7 @@
 						<thead>
 							<tr>
 								<th style="width: 10%;">글번호</th>
-								<th>제목</th>
+								<th style="width: 30%;">제목</th>
 								<th style="width: 20%;">지역</th>
 								<th style="width: 10%;">날짜</th>
 								<th style="width: 10%;">상태</th>
