@@ -46,7 +46,6 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public MemberDTO findId(String memName, String memPhone) {
 		return sqlSession.getMapper(MemberMapper.class).findId(memName, memPhone);
 	}
@@ -54,10 +53,10 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public MemberDTO findPw(String memName, String memPhone, String memEmail) {
 		return sqlSession.getMapper(MemberMapper.class).findPw(memName, memPhone, memEmail);
-=======
+	}
+	@Override
 	public int updateChangeMember(Map<String, Object> map) {
 		return sqlSession.getMapper(MemberMapper.class).updateChangeMember(map);
->>>>>>> branch 'develop' of https://github.com/supersett/CommonChicken.git
 	}
 
 
