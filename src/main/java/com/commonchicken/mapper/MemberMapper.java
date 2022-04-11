@@ -15,6 +15,6 @@ public interface MemberMapper {
 	int deleteMember(String memEmail);//ȸ��Ż��
 	int updateDeleteMember(String memEmail);
 	MemberDTO findId(@Param("memName") String memName,@Param("memPhone") String memPhone);
-	MemberDTO findPw(String memName,String memPhone,String memEmail);
+	MemberDTO findPw(@Param("memName") String memName,@Param("memPhone") String memPhone,@Param("memEmail") String memEmail);
 	int updateChangeMember(Map<String,Object>map);
 }

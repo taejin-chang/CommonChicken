@@ -202,30 +202,29 @@
 
 										<div class="space-6"></div>
 
-										<form>
+										<form name="findPwForm">
 											<fieldset>
 												<label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input
+													class="block input-icon input-icon-right"> <input name="memEmail" id="findPwmemEmail"
 														type="email" class="form-control" placeholder="이메일" /> <i
 														class="ace-icon fa fa-envelope"></i>
 												</span>
 												</label> <label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input
+													class="block input-icon input-icon-right"> <input name="memName" id="findPwmemName"
 														type="email" class="form-control" placeholder="이름" />
 
 												</span>
 												</label> <label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input
+													class="block input-icon input-icon-right"> <input name="memPhone" id="findPwmemPhone"
 														type="email" class="form-control" placeholder="전화번호" />
 												</span>
 												</label>
-												<div class="clearfix">
-													<button type="button"
-														class="width-35 pull-right btn btn-sm btn-danger">
-
+												<p style="width: 200px;"><span id="result_pw"></span></p>
+												<button type="button" onclick="findPw();"
+														class="width-35 pull-right btn btn-sm btn-primary">
 														<span class="bigger-110">비밀번호 찾기</span>
 													</button>
-												</div>
+												
 											</fieldset>
 										</form>
 									</div>
@@ -414,6 +413,7 @@
 </script>
 <![endif]-->
 	<script type="text/javascript">
+	//아이디찾기 ajax
 	function findId() {
 		if (findIdForm.memName.value == "") {
 			alert("이름을 입력해 주세요.");
@@ -450,9 +450,50 @@
 		});
 	}
 	
+	//비번찾기 ajax
+	function findPw() {
+		if (findPwForm.memName.value == "") {
+			alert("이름을 입력해 주세요.");
+			findPwForm.memName.focus();
+			return;
+		}
+		if (findPwForm.memPhone.value == "") {
+			alert("핸드폰번호를 입력해 주세요.");
+			findPwForm.memPhone.focus();
+			return;
+		}
+		if (findPwForm.memEmail.value == "") {
+			alert("이메일을 입력해 주세요.");
+			findPwForm.memEmail.focus();
+			return;
+		}
+		
+		var memName =$("#findPwmemName").val();
+		var memPhone =$("#findPwmemPhone").val();
+		var memEmail =$("#findPwmemEmail").val();
+		
+		var sendData="memName="+memName+'&memPhone='+memPhone+"&memEmail="+memEmail;
+		
+		
+		$.ajax({
+			url : "findPw",
+			method : "post",
+			data : sendData,
+			dataType : "text",
+			success : function(text) {
+				if (text == null ||text=="") {
+					$("#result_pw").html("해당정보가 없습니다.");
+				} else {
+					$("#result_pw").html("비밀번호 = "+text);
+				}
+			},
+			error : function(xhr) {
+				alert("에러코드 = " + xhr.status);
+			}
+		});
+	}
 	
-	
-	
+		//아이디 중복체크 ajax
 		$('.form-control').change(function() {
 			$('#id_check_sucess').hide();
 			$('.id_overlap_button').show();

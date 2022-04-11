@@ -142,8 +142,19 @@ public class LoginController {
 		
 	}
 	
-	
-	
+	//비밀번호 찾기
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	@ResponseBody
+	public String findPw(@RequestParam("memName") String memName,@RequestParam("memPhone") String memPhone,@RequestParam("memEmail") String memEmail) {
+		System.out.println("member의 이름="+memName);
+		System.out.println("member의 번호="+memPhone);
+		if(memberService.findPw(memName, memPhone,memEmail)==null) {
+			return null; 
+		}else {
+			return memberService.findPw(memName, memPhone,memEmail).getMemPw();
+		}
+		
+	}
 	
 	
 	
