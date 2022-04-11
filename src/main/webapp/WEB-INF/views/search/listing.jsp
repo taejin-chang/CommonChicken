@@ -46,7 +46,7 @@
     </div>
 
     <!-- Header Section End -->
-    <section class="hero set-bg" style="padding: 100px 0; padding-bottom: 0px;"  data-setbg="img/logo11.png">
+    <section class="hero set-bg" style="padding: 100px 0; padding-bottom: 0px;  border-bottom: 1px solid #EFEEEE">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -55,7 +55,7 @@
                             <h2>함께하는 즐거움 "커먼치킨"</h2>
                             <p>동네 친구들과 즐거움을 나누세요~! common comeon~</p>
                         </div> -->
-                        <div style="margin-top: 10px;" class="hero__search__form">
+                        <div style="margin-top: 10px;" class="hero__search__form" >
                             <form name="searchForm">
                              		<input type="text" name="juso" id="myLocation" placeholder="Search..."><input name="returnjuso" type="hidden" value="${juso}">
                                 <div class="select__option">
@@ -81,8 +81,8 @@
                                         <option value="">위치 API</option>
                                     </select>
                                 </div> -->
-                                <button onclick="findLocation()" type="button" style="width: 20%; background-color: #327258;">현재 위치</button>
-                                <button type="button" onclick="search();">Explore Now</button>
+                                <button type="button" style="width: 20%; background-color: #665D50;" onclick="alert('개발예정입니다.')"><!-- onclick="findLocation()"  -->현재 위치</button>
+                                <button type="button" onclick="search();"style="background-color:#E89321;"><font style="color: #FFFFFF">점포 검색</font></button>
                             </form>
                         </div>
                         <!-- <ul class="hero__categories__tags">
@@ -120,6 +120,7 @@
             <input type="text" placeholder="위치">
             <i class="fa fa-map-marker"></i>
         </div> -->
+        <!--  
         <div class="filter__radius">
             <p>거리 :</p>
             <div class="price-range-wrap">
@@ -135,6 +136,7 @@
                 </div>
             </div>
         </div>
+        -->
 <!--         <div class="filter__price">
             <p>별점 :</p>
             <div class="price-range-wrap">
@@ -201,8 +203,8 @@
         <br><br>
         
         <div >
-            <button type="button" id="filterBtn" onclick="filtersearch();">필터 검색</button>
-            <button type="button" id="resetBtn">초기화</button>
+            <button type="button" id="filterBtn" onclick="filtersearch();" style="border:none;background-color:#E89321; "><font style="color: #FFFFFF">필터 검색</font></button>
+            <button type="button" id="resetBtn" style="border:none;background-color:#665D50; "><font style="color: #FFFFFF">초기화</font></button>
         </div>
     </div>
     <!-- Filter End -->
