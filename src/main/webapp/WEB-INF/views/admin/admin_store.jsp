@@ -101,6 +101,9 @@
                 <div class="card-body">
                   <h1 class="card-title">점포 관리</h1>
                   <div class="table-responsive">
+            		<form method="post" id="data">
+            		<input type="hidden" id="stoNum" name="stoNum" value=""/>
+            		<input type="hidden" id="stoStatus" name="stoStatus" value=""/>
             		<table class="table table-hover table-expandable table-striped">
 						<thead>
 							<tr>
@@ -111,10 +114,10 @@
 								<th style="width: 15%">운영상태</th>
 							</tr>
 						</thead>
-						<tbody>
 						<c:forEach var="storeList" items="${storeList }">
+						<tbody>
 							<tr>
-								<td>${storeList.stoNum }</td>
+								<td id="storeNum">${storeList.stoNum }</td>
 								<td>${storeList.stoName }</td>
 								<td>${storeList.stoPhone}</td>
 								<td>${storeList.stoCeo }</td>
@@ -151,39 +154,53 @@
 												<option value="2" <c:if test="${storeList.stoStatus==2 }">selected="selected"</c:if>>휴업</option>
 												<option value="9" <c:if test="${storeList.stoStatus==9 }">selected="selected"</c:if>>서비스 탈퇴</option>
 											</select>
-											<button type="button" class="btn btn-primary btn-sm" onclick="check_ok();">확인</button>
+											<button type="button" id="update" class="btn btn-primary btn-sm" onclick=storeUpdate(this)>변경</button>
 										</li> 
 
 									</ul>
 								</td>
 							</tr>
-							</c:forEach>
 						</tbody>
+							</c:forEach>
 					</table>
+					</form>
 					<br>
-                    <div style="text-align: center;">
-                      <button type="button" class="btn btn-primary btn-icon"><</button>                        
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-primary">1</button>
-                          <button type="button" class="btn btn-primary">2</button>
-                          <button type="button" class="btn btn-primary">3</button>
-                        </div>
-                      <button type="button" class="btn btn-primary btn-icon">></button>                   
-                      </div>     
+						<div style="text-align: center;">
+							<c:choose>
+								<c:when test="${pager.startPage } gt ${pager.blockSize }">
+									<a href="<c:url value='/admin/store'/>">[처음]</a>
+									<a
+										href="<c:url value='/admin/store'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+								</c:when>
+								<c:otherwise>
+										[처음] [이전]
+									</c:otherwise>
+							</c:choose>
+
+							<c:forEach var="i" begin="${pager.startPage }"
+								end="${pager.endPage }">
+								<a
+									href="<c:url value='/admin/store'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${pager.startPage }>${pager.blockSize }">
+									<a
+										href="<c:url value='/admin/store'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+									<a
+										href="<c:url value='/admin/store'/>?pagenum=${pager.endPage}">[마지막]</a>
+								</c:when>
+								<c:otherwise>
+										[다음] [마지막]
+									</c:otherwise>
+							</c:choose>
+							<div> 
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -254,6 +271,23 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  	<script type="text/javascript">
+	  function storeUpdate(ths){
+ 
+ 		var $storeNum =$(ths).parent().parent().parent().parent().siblings().find("td[id='storeNum']");
+ 		var storeNum = $storeNum.text();
+ 
+		status = $(ths).parent().find("select[name=stoStatus]").val(); //value값 가져오기
+
+  		$("#stoNum").val(storeNum);
+ 		$("#stoStatus").val(status);
+ 
+ 		if(storeNum!=""){
+	 		$("#data").submit();
+ 		} 
+ 		
+	  }
+  </script>
 </body>
 
 </html>

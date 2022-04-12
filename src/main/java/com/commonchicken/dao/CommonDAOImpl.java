@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -39,8 +40,8 @@ public class CommonDAOImpl implements CommonDAO {
 	}
 
 	@Override
-	public List<CommonDTO> selectCommonList() {
-		return sqlSession.getMapper(CommonMapper.class).selectCommonList();
+	public List<CommonDTO> selectCommonList(Map<String, Object>map) {
+		return sqlSession.getMapper(CommonMapper.class).selectCommonList(map);
 	}
 
 	@Override
@@ -51,6 +52,11 @@ public class CommonDAOImpl implements CommonDAO {
 	@Override
 	public CommonDTO searchCommon(int cmNum) {
 		return sqlSession.getMapper(CommonMapper.class).searchCommon(cmNum);
+	}
+
+	@Override
+	public int getCommonCount(String stoNum) {
+		return sqlSession.getMapper(CommonMapper.class).getCommonCount(stoNum);
 	}
 
 }

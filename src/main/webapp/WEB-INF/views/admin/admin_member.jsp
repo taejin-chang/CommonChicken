@@ -99,6 +99,9 @@
                 <div class="card-body">
                   <h1 class="card-title" style="font-size: 30px;">회원관리</h1>
 	                <div class="table-responsive">
+					<form method="post" id="data" class="data">
+					<input type="hidden" id="memEmail" name="memEmail" value="">
+					<input type="hidden" id="memStatus" name="memStatus" value="">
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -110,44 +113,71 @@
 								<th style="text-align: center;">회원상태</th>
 							</tr>
 						</thead>
+						<c:forEach var="memberList" items="${memberList }">
 						<tbody>
-							<c:forEach var="memberList" items="${memberList }">
-						<form method="post" >
-							<input type="hidden" name="memEmail" value="${memberList.memName }">
 							<tr>
 <%-- 								<td class="py-1">${memberList. }</td>
- --%>							<td><img src="images/faces/face1.jpg" alt="image" />${memberList.memName }</td>
-								<td style="text-align: center;">${memberList.memEmail }</td>
+ --%>							<td>
+ 									<c:if test="${memberList.memUpload !=null}">
+ 										<img src="${pageContext.request.contextPath}/profile/${memberList.memUpload}" alt="${memberList.memUpload}" />
+ 									</c:if>									
+ 									<c:if test="${memberList.memUpload ==null}">
+ 										<img src="${pageContext.request.contextPath}/profile/person.png" alt="person" />
+ 									</c:if>${memberList.memName }
+								</td>
+								<td style="text-align: center;" id="email">${memberList.memEmail }</td>
 								<td style="text-align: center;">${memberList.memPhone}</td>
 								<td style="text-align: center;">${memberList.memJoinDate}</td>
-								<td style="text-align: center;">
-								<select name="memStatus">
-									<option value="">상태 선택</option>
-<%-- 									<option value=0 <c:if test="${memberList.memStatus==0 }"> selected="selected"</c:if>>탈퇴회원</option>
- --%>								<option value=1 <c:if test="${memberList.memStatus==1 }"> selected="selected"</c:if>>일반회원</option>
-									<option value=2 <c:if test="${memberList.memStatus==2 }"> selected="selected"</c:if>>점포관리자</option>
-									<option value=8 <c:if test="${memberList.memStatus==8 }"> selected="selected"</c:if>>휴먼회원</option>
-									<option value=9 <c:if test="${memberList.memStatus==9 }"> selected="selected"</c:if>>페이지 관리자</option>
-								</select>
-<!--  								<button type="submit" class="btn btn-primary btn-sm">수정</button>
- --> 								<a href="<c:url value='/admin/modifymember/'/>+${memberList.memEmail }+${memStatus}" onclick="return confirm('정말로 삭제하시겠습니까?');"
- 											class="btn btn-primary btn-sm" style="color: white;">수정</a>
+								<td style="text-align: center;" id="status">
+									<select name="memStatus">
+										<option value="">상태 선택</option>
+	<%-- 									<option value=0 <c:if test="${memberList.memStatus==0 }"> selected="selected"</c:if>>탈퇴회원</option>
+	 --%>								<option value=1 <c:if test="${memberList.memStatus==1 }"> selected="selected"</c:if>>일반회원</option>
+										<option value=2 <c:if test="${memberList.memStatus==2 }"> selected="selected"</c:if>>점포관리자</option>
+										<option value=8 <c:if test="${memberList.memStatus==8 }"> selected="selected"</c:if>>휴먼회원</option>
+										<option value=9 <c:if test="${memberList.memStatus==9 }"> selected="selected"</c:if>>페이지 관리자</option>
+									</select>
+									<button type="button" id="update" class="btn btn-primary btn-sm" onclick=memberUpdate(this)>변경</button>
+			
+ 				<%-- 	<a href="<c:url value='/admin/modifymember/'/>+${memberList.memEmail }+${memStatus}" onclick="return confirm('정말로 삭제하시겠습니까?');"
+ 											class="btn btn-primary btn-sm" style="color: white;">수정</a> --%>
 								</td>
 							</tr>
-							</form>
-							</c:forEach>
 						</tbody>
+						</c:forEach>
 					</table>
+					</form>
 					<br>
-                    <div style="text-align: center;">
-                      <button type="button" class="btn btn-primary btn-icon"><</button>                        
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" class="btn btn-primary">1</button>
-                          <button type="button" class="btn btn-primary">2</button>
-                          <button type="button" class="btn btn-primary">3</button>
-                        </div>
-                      <button type="button" class="btn btn-primary btn-icon">></button>                   
-                      </div>     
+					<div style="text-align: center;">
+					<c:choose>
+						<c:when test="${pager.startPage } gt ${pager.blockSize }">
+							<a href="<c:url value='/admin/member'/>">[처음]</a>
+							<a
+								href="<c:url value='/admin/member'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+						</c:when>
+						<c:otherwise>
+								[처음] [이전]
+							</c:otherwise>
+					</c:choose>
+
+					<c:forEach var="i" begin="${pager.startPage }"
+						end="${pager.endPage }">
+						<a
+							href="<c:url value='/admin/member'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${pager.startPage }>${pager.blockSize }">
+							<a
+								href="<c:url value='/admin/member'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+							<a
+								href="<c:url value='/admin/member'/>?pagenum=${pager.endPage}">[마지막]</a>
+						</c:when>
+						<c:otherwise>
+								[다음] [마지막]
+							</c:otherwise>
+					</c:choose>  
+					</div>
                   </div>
                 </div>
               </div>
@@ -156,12 +186,6 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
@@ -173,8 +197,8 @@
   <script src="js/vendor.bundle.base.js"></script>
   <script type="text/javascript">
 	  $("select[name=memStatus]").change(function(){
-		  console.log($(this).val()); //value값 가져오기
-		  console.log($("select[name=location] option:selected").text()); //text값 가져오기
+		  console.log($("select[name=memStatus]").val()); //value값 가져오기
+		  console.log($("select[name=memStatus] option:selected").text()); //text값 가져오기
 		});
   
   </script>
@@ -190,6 +214,32 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+	<script type="text/javascript">
+	  function memberUpdate(ths){
+/* 		  var $memStatus = $(ths).closest('tr').find("td[id='status']");
+ */	    	
+
+/* 		  var memStatus =  $memStatus.text();
+ */
+ 
+ 		var $email =$(ths).closest('tr').find("td[id='email']");
+ 		var email = $email.text();
+ 
+/*  		memEmail = $(ths).parent().parent().parent().find('input[name=memEmail]').val();
+ */		status = $(ths).parent().find("select[name=memStatus]").val(); //value값 가져오기
+		
+
+ 		$("#memEmail").val(email);
+ 		$("#memStatus").val(status);
+ 
+ 		if(email!=""){
+ 	 		alert(email);
+ 		}
+ 		
+	  }
+  </script>
+  
+  
 </body>
 
 </html>

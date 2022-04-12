@@ -1,6 +1,7 @@
 package com.commonchicken.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,8 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public int insertReply(ReplyDTO reply) {
-		return sqlSession.getMapper(ReplyMapper.class).insertReply(reply);
+	public int insertReply(Map<String, Object>map) {
+		return sqlSession.getMapper(ReplyMapper.class).insertReply(map);
 	}
 
 	@Override

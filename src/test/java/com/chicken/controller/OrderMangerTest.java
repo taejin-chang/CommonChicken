@@ -1,5 +1,8 @@
 package com.chicken.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,13 +23,23 @@ public class OrderMangerTest {
 	private OrderManagerService orderMangaerService;
 	
 //	@Test
-//	public void updateViews() {		
-//		orderMangaerService.selectOrderTestList();
+//	public void updateViews() {	
+//		Map<String,Object>map =new HashMap<String,Object>();
+//		map.put("startRow", 1);
+//		map.put("endRow", 100);
+//		map.put("stoNum", "6656");
+//		orderMangaerService.selectOrderTestList(map);
 //	}
-//	
-	@Test
-	public void updateViews() {		
-		orderMangaerService.selectOrderTest2List();
-	}
+	
+//	@Test
+//	public void count() {	
+//		orderMangaerService.getOrderCount("6656");
+//	}
+	
+//	@Test
+//	public void updateViews() {		
+//		
+//		orderMangaerService.selectOrderTest2List();
+//	}
 }
 

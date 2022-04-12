@@ -165,8 +165,9 @@ STO_UPLOAD                VARCHAR2(100)
 	</select>
 	
 	<select id="selectStoreList" resultType="StoreDTO">
-			select * from store_tb order by sto_num
-	</select>
+        select * from(select rownum rn, store.* from(select * from store_tb 
+		where sto_status!=9 order by sto_num)store) where rn between #{startRow} and #{endRow}	
+		</select>
 	
 	<select id="selectStoreEmail" resultType="String">
 		select sto_num from store_tb where mem_email=#{memEmail}
@@ -174,6 +175,14 @@ STO_UPLOAD                VARCHAR2(100)
 	
 	<update id="deleteStore">
 		update store_tb set sto_status=9 where sto_num = #{stoNum}
+	</update>
+	
+	<select id="getStoreCount" resultType="int">
+		select count(*) from store_tb where sto_status !=9
+	</select>
+	
+	<update id="updateStoStatus" parameterType="map">
+		update store_tb set sto_status = #{stoStatus} where sto_num = #{stoNum}
 	</update>
 
 </mapper>

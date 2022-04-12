@@ -148,30 +148,36 @@
 							</c:forEach>
 						</tbody>
 					</table>
-								
-								<c:choose>
-									<c:when test="${pager.startPage } gt ${pager.blockSize }">
-										<a href="<c:url value='/user/myBoard'/>">[처음]</a>
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
-									</c:when>
-									<c:otherwise>
+						<div style="text-align: center;">
+							<c:choose>
+								<c:when test="${pager.startPage } gt ${pager.blockSize }">
+									<a href="<c:url value='/admin/review'/>">[처음]</a>
+									<a
+										href="<c:url value='/admin/review'/>?pagenum=${ pager.startPage - pager.blockSize}">[이전]</a>
+								</c:when>
+								<c:otherwise>
 										[처음] [이전]
 									</c:otherwise>
-								</c:choose>
-								
-								<c:forEach var="i" begin="${pager.startPage }" end="${pager.endPage }">
-									<a href="<c:url value='/user/myBoard'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
-								</c:forEach>
-								
-								<c:choose>
-									<c:when test="${pager.startPage }>${pager.blockSize }">
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
-										<a href="<c:url value='/user/myBoard'/>?pagenum=${pager.endPage}">[마지막]</a>
-									</c:when>
-									<c:otherwise>
+							</c:choose>
+
+							<c:forEach var="i" begin="${pager.startPage }"
+								end="${pager.endPage }">
+								<a
+									href="<c:url value='/admin/review'/>?pageNum=${ pager.startPage -1+i}">[${pager.startPage -1+i}]</a>
+							</c:forEach>
+
+							<c:choose>
+								<c:when test="${pager.startPage }>${pager.blockSize }">
+									<a
+										href="<c:url value='/admin/review'/>?pagenum=${ pager.startPage + pager.blockSize}">[다음]</a>
+									<a
+										href="<c:url value='/admin/review'/>?pagenum=${pager.endPage}">[마지막]</a>
+								</c:when>
+								<c:otherwise>
 										[다음] [마지막]
 									</c:otherwise>
-								</c:choose>
+							</c:choose>
+							<div>
                 </div>
               </div>
             </div>

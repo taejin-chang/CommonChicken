@@ -9,7 +9,8 @@ import com.commonchicken.dto.SearchProductVO;
 public interface ProductMapper {
 	int insertProduct(ProductDTO product);
 	List<ProductDTO> selectProductList();
-	List<ProductDTO> selectProductListAdmin(String stoNum);
+	List<ProductDTO> selectProductListAdmin(Map<String, Object> map);
 	List<SearchProductVO> selectProduct(Map<String, Object> map);
 	int deletePoduct(String prdCode);
+	int getStoreProductCount(String stoNum);
 }

@@ -30,8 +30,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<MemberDTO> selectAllMemberList() {
-		return memberDAO.selectAllMemberList();
+	public List<MemberDTO> selectAllMemberList(Map<String,Object>map) {
+		return memberDAO.selectAllMemberList(map);
 	}
 
 	@Override
@@ -57,6 +57,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void updateChangeMember(Map<String, Object> map) {
 		memberDAO.updateChangeMember(map);
+	}
+
+	@Override
+	public int getMemberCount() {
+		return memberDAO.getMemberCount();
 	}
 
 }

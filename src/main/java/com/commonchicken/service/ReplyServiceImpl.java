@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ public class ReplyServiceImpl implements ReplyService{
 	ReplyDAO replyDAO;
 
 	@Override
-	public void insertReply(ReplyDTO reply) {
-		replyDAO.insertReply(reply);
+	public void insertReply(Map<String, Object>map) {
+		replyDAO.insertReply(map);
 	}
 
 	@Override

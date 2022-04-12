@@ -38,9 +38,9 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public List<StoreDTO> selectStoreList() {
+	public List<StoreDTO> selectStoreList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.getMapper(StoreMapper.class).selectStoreList();
+		return sqlSession.getMapper(StoreMapper.class).selectStoreList(map);
 	}
 
 	@Override
@@ -90,6 +90,16 @@ public class StoreDAOImpl implements StoreDAO {
 	@Override
 	public int deleteStore(String stoNum) {
 		return sqlSession.getMapper(StoreMapper.class).deleteStore(stoNum);
+	}
+
+	@Override
+	public int getStoreCount() {
+		return sqlSession.getMapper(StoreMapper.class).getStoreCount();
+	}
+
+	@Override
+	public int updateStoStatus(Map<String, Object> map) {
+		return sqlSession.getMapper(StoreMapper.class).updateStoStatus(map);
 	}
 
 
