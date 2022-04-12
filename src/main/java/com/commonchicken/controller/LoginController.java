@@ -109,7 +109,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	
+	//로그인 유효성 실패시 throw하는 예외 메소드
 	@ExceptionHandler(value = LoginAuthFailException.class)
 	public String exceptionHandler(LoginAuthFailException exception, Model model) {
 		model.addAttribute("loginmessage", "아이디 또는 비밀번호가 잘못 입력되었습니다");
