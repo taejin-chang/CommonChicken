@@ -130,16 +130,18 @@
 										<div>
 											<a href="#" data-target="#forgot-box1"
 												class="forgot-password-link"> <i
-												class="ace-icon fa fa-arrow-left"></i><font style="color:white">아이디 찾기</font>
+												class="ace-icon fa fa-arrow-left"></i><font
+												style="color: white">아이디 찾기</font>
 											</a> <a href="#" data-target="#forgot-box"
 												class="forgot-password-link"> &nbsp;&nbsp;&nbsp;<i
-												class="ace-icon fa fa-arrow-left"></i> <font style="color:white">비밀번호 찾기</font>
+												class="ace-icon fa fa-arrow-left"></i> <font
+												style="color: white">비밀번호 찾기</font>
 											</a>
 										</div>
 										<div>
 											<a href="#" data-target="#signup-box"
-												class="user-signup-link"> <font style="color:white">회원가입</font> <i
-												class="ace-icon fa fa-arrow-right"></i>
+												class="user-signup-link"> <font style="color: white">회원가입</font>
+												<i class="ace-icon fa fa-arrow-right"></i>
 											</a>
 										</div>
 
@@ -163,21 +165,25 @@
 
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="text" name="memName" id="findmemName" class="form-control" placeholder="이름" />
+														type="text" name="memName" id="findmemName"
+														class="form-control" placeholder="이름" />
 
 												</span>
 												</label> <label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="text" name="memPhone" id="findmemPhone" class="form-control" placeholder="전화번호" />
+														type="text" name="memPhone" id="findmemPhone"
+														class="form-control" placeholder="전화번호" />
 												</span>
 												</label>
-												<p style="width: 200px;"><span id="result_id"></span></p>
+												<p style="width: 200px;">
+													<span id="result_id"></span>
+												</p>
 												<button type="button" onclick="findId();"
-														class="width-35 pull-right btn btn-sm btn-primary">
-														<span class="bigger-110">아이디 찾기</span>
-													</button>
-												
-												
+													class="width-35 pull-right btn btn-sm btn-primary">
+													<span class="bigger-110">아이디 찾기</span>
+												</button>
+
+
 											</fieldset>
 										</form>
 									</div>
@@ -205,26 +211,31 @@
 										<form name="findPwForm">
 											<fieldset>
 												<label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input name="memEmail" id="findPwmemEmail"
-														type="email" class="form-control" placeholder="이메일" /> <i
+													class="block input-icon input-icon-right"> <input
+														name="memEmail" id="findPwmemEmail" type="email"
+														class="form-control" placeholder="이메일" /> <i
 														class="ace-icon fa fa-envelope"></i>
 												</span>
 												</label> <label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input name="memName" id="findPwmemName"
-														type="email" class="form-control" placeholder="이름" />
+													class="block input-icon input-icon-right"> <input
+														name="memName" id="findPwmemName" type="email"
+														class="form-control" placeholder="이름" />
 
 												</span>
 												</label> <label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input name="memPhone" id="findPwmemPhone"
-														type="email" class="form-control" placeholder="전화번호" />
+													class="block input-icon input-icon-right"> <input
+														name="memPhone" id="findPwmemPhone" type="email"
+														class="form-control" placeholder="전화번호" />
 												</span>
 												</label>
-												<p style="width: 200px;"><span id="result_pw"></span></p>
+												<p style="width: 200px;">
+													<span id="result_pw"></span>
+												</p>
 												<button type="button" onclick="findPw();"
-														class="width-35 pull-right btn btn-sm btn-primary">
-														<span class="bigger-110">비밀번호 찾기</span>
-													</button>
-												
+													class="width-35 pull-right btn btn-sm btn-primary">
+													<span class="bigger-110">비밀번호 찾기</span>
+												</button>
+
 											</fieldset>
 										</form>
 									</div>
@@ -272,36 +283,40 @@
 												<!-- 닉네임 -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														name="memNickname" type="email" class="form-control"
-														placeholder="닉네임" />
+														name="memNickname" id="memNickName" type="email"
+														class="form-control" placeholder="닉네임" />
 												</span>
 												</label>
 												<!-- 비밀번호 -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														name="memPw" type="password" class="form-control"
-														placeholder="비밀번호" /> <i class="ace-icon fa fa-lock"></i>
+														name="memPw" id="memPw" type="password"
+														class="form-control"
+														placeholder="비밀번호(영문자+숫자+특수문자 8~25자리)" /> <i
+														class="ace-icon fa fa-lock"></i>
 												</span>
 												</label>
 												<!-- 비밀번호확인 -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														type="password" class="form-control" placeholder="비밀번호 확인" />
-														<i class="ace-icon fa fa-retweet"></i>
+														type="password" id="memPw2" class="form-control"
+														placeholder="비밀번호 확인" /> <i
+														class="ace-icon fa fa-retweet"></i>
 												</span>
 												</label>
 												<!--이름  -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														name="memName" type="text" class="form-control"
-														placeholder="이름" /> <i class="ace-icon fa fa-user"></i>
+														name="memName" type="text" id="memName"
+														class="form-control" placeholder="이름" /> <i
+														class="ace-icon fa fa-user"></i>
 												</span>
 												</label>
 												<!-- 핸드폰번호 -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														name="memPhone" type="text" class="form-control"
-														placeholder="핸드폰번호" />
+														name="memPhone" id="memPhone" type="text"
+														class="form-control" placeholder="핸드폰번호" />
 												</span>
 												</label>
 												<!-- 주소 api -->
@@ -338,8 +353,8 @@
 												<!-- 생년월일 -->
 												<label class="block clearfix"> <span
 													class="block input-icon input-icon-right"> <input
-														name="memBirthday" type="text" class="form-control"
-														placeholder="생년월일6자리" />
+														name="memBirthday" id="memBirthday" type="text"
+														class="form-control" placeholder="생년월일6자리" />
 												</span>
 												</label> <label class="block"> <input type="checkbox"
 													class="ace" /> <span class="lbl"> <a href="#">약관</a>에
@@ -413,86 +428,85 @@
 </script>
 <![endif]-->
 	<script type="text/javascript">
-	//아이디찾기 ajax
-	function findId() {
-		if (findIdForm.memName.value == "") {
-			alert("이름을 입력해 주세요.");
-			findIdForm.memName.focus();
-			return;
-		}
-		if (findIdForm.memPhone.value == "") {
-			alert("핸드폰번호를 입력해 주세요.");
-			findIdForm.memPhone.focus();
-			return;
-		}
-		
-		var memName =$("#findmemName").val();
-		var memPhone =$("#findmemPhone").val();
-		
-		var sendData="memName="+memName+'&memPhone='+memPhone;
-		
-		
-		$.ajax({
-			url : "findId",
-			method : "post",
-			data : sendData,
-			dataType : "text",
-			success : function(text) {
-				if (text == null ||text=="") {
-					$("#result_id").html("해당정보가 없습니다.");
-				} else {
-					$("#result_id").html("아이디 = "+text);
-				}
-			},
-			error : function(xhr) {
-				alert("에러코드 = " + xhr.status);
+		//아이디찾기 ajax
+		function findId() {
+			if (findIdForm.memName.value == "") {
+				alert("이름을 입력해 주세요.");
+				findIdForm.memName.focus();
+				return;
 			}
-		});
-	}
-	
-	//비번찾기 ajax
-	function findPw() {
-		if (findPwForm.memName.value == "") {
-			alert("이름을 입력해 주세요.");
-			findPwForm.memName.focus();
-			return;
-		}
-		if (findPwForm.memPhone.value == "") {
-			alert("핸드폰번호를 입력해 주세요.");
-			findPwForm.memPhone.focus();
-			return;
-		}
-		if (findPwForm.memEmail.value == "") {
-			alert("이메일을 입력해 주세요.");
-			findPwForm.memEmail.focus();
-			return;
-		}
-		
-		var memName =$("#findPwmemName").val();
-		var memPhone =$("#findPwmemPhone").val();
-		var memEmail =$("#findPwmemEmail").val();
-		
-		var sendData="memName="+memName+'&memPhone='+memPhone+"&memEmail="+memEmail;
-		
-		
-		$.ajax({
-			url : "findPw",
-			method : "post",
-			data : sendData,
-			dataType : "text",
-			success : function(text) {
-				if (text == null ||text=="") {
-					$("#result_pw").html("해당정보가 없습니다.");
-				} else {
-					$("#result_pw").html("비밀번호 = "+text);
-				}
-			},
-			error : function(xhr) {
-				alert("에러코드 = " + xhr.status);
+			if (findIdForm.memPhone.value == "") {
+				alert("핸드폰번호를 입력해 주세요.");
+				findIdForm.memPhone.focus();
+				return;
 			}
-		});
-	}
-	
+
+			var memName = $("#findmemName").val();
+			var memPhone = $("#findmemPhone").val();
+
+			var sendData = "memName=" + memName + '&memPhone=' + memPhone;
+
+			$.ajax({
+				url : "findId",
+				method : "post",
+				data : sendData,
+				dataType : "text",
+				success : function(text) {
+					if (text == null || text == "") {
+						$("#result_id").html("해당정보가 없습니다.");
+					} else {
+						$("#result_id").html("아이디 = " + text);
+					}
+				},
+				error : function(xhr) {
+					alert("에러코드 = " + xhr.status);
+				}
+			});
+		}
+
+		//비번찾기 ajax
+		function findPw() {
+			if (findPwForm.memName.value == "") {
+				alert("이름을 입력해 주세요.");
+				findPwForm.memName.focus();
+				return;
+			}
+			if (findPwForm.memPhone.value == "") {
+				alert("핸드폰번호를 입력해 주세요.");
+				findPwForm.memPhone.focus();
+				return;
+			}
+			if (findPwForm.memEmail.value == "") {
+				alert("이메일을 입력해 주세요.");
+				findPwForm.memEmail.focus();
+				return;
+			}
+
+			var memName = $("#findPwmemName").val();
+			var memPhone = $("#findPwmemPhone").val();
+			var memEmail = $("#findPwmemEmail").val();
+
+			var sendData = "memName=" + memName + '&memPhone=' + memPhone
+					+ "&memEmail=" + memEmail;
+
+			$.ajax({
+				url : "findPw",
+				method : "post",
+				data : sendData,
+				dataType : "text",
+				success : function(text) {
+					if (text == null || text == "") {
+						$("#result_pw").html("해당정보가 없습니다.");
+					} else {
+						$("#result_pw").html("비밀번호 = " + text);
+					}
+				},
+				error : function(xhr) {
+					alert("에러코드 = " + xhr.status);
+				}
+			});
+		}
+
 		//아이디 중복체크 ajax
 		$('.form-control').change(function() {
 			$('#id_check_sucess').hide();
@@ -534,9 +548,16 @@
 	</script>
 
 	<script type="text/javascript">
-		signinForm.memEmail.focus();
-
+		//회원가입 처리전 유효성검사		
 		function submitCheck() {
+			//값들을 변수에 먼저 담아주기
+			var memEmail = document.getElementById("memEmail");
+			var memPw = document.getElementById("memPw");
+			var memPw2 = document.getElementById("memPw2");
+			var memPhone = document.getElementById("memPhone");
+			var memBirthday = document.getElementById("memBirthday");
+			var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
+
 			if (signinForm.memEmail.value == "") {
 				alert("이메일을 입력해 주세요.");
 				signinForm.memEmail.focus();
@@ -565,13 +586,23 @@
 				$('.form-control').focus();
 				return false;
 			}
+			if (!pwdCheck.test(memPw.value)) {
+				alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+				memPw.focus();
+				return false;
+			}
+			
+			if (memPw2.value !== memPw.value) {
+				alert("비밀번호가 일치하지 않습니다..");
+				memPw2.focus();
+				return false;
+			}
+			
 
 			signinForm.method = "post";
 			signinForm.action = "${pageContext.request.contextPath}/sign_in";
 			signinForm.submit();
 		}
-		
-		
 	</script>
 
 	<script type="text/javascript">
