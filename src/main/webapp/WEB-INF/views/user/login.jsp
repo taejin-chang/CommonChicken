@@ -548,7 +548,7 @@
 	</script>
 
 	<script type="text/javascript">
-		//회원가입 처리전 유효성검사		
+				
 		function submitCheck() {
 			//값들을 변수에 먼저 담아주기
 			var memEmail = document.getElementById("memEmail");
