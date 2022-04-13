@@ -25,9 +25,9 @@ public class ProductDAOImpl implements ProductDAO {
 	
 
 	@Override
-	public List<ProductDTO> selectProductListAdmin(String stoNum) {
+	public List<ProductDTO> selectProductListAdmin(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.getMapper(ProductMapper.class).selectProductListAdmin(stoNum);
+		return sqlSession.getMapper(ProductMapper.class).selectProductListAdmin(map);
 	}
 
 	
@@ -46,6 +46,12 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public int deletePoduct(String prdCode) {
 		return sqlSession.getMapper(ProductMapper.class).deletePoduct(prdCode);
+	}
+
+
+	@Override
+	public int getStoreProductCount(String stoNum) {
+		return sqlSession.getMapper(ProductMapper.class).getStoreProductCount(stoNum);
 	}
 
 

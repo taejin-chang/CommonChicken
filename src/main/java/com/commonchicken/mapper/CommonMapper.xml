@@ -22,8 +22,10 @@
 
 	</select>
 
-	<select id="selectCommonList" resultType="CommonDTO">
-		select * from common_tb where cm_status !=9 order by cm_num desc
+	<select id="selectCommonList" parameterType="map" resultType="CommonDTO">
+		select * from(select rownum rn, common.* from
+		(select * from common_tb where cm_status !=9 and sto_num = #{stoNum} order by cm_num desc)common)
+		where rn between #{startRow} and #{endRow}	
 	</select>
 
 	<select id="searchCommon" resultType="CommonDTO">
@@ -33,5 +35,9 @@
 	<update id="deleteCommon">
 		update common_tb set cm_status=9 where cm_num = #{cmNum}
 	</update>
+	
+	<select id="getCommonCount" resultType="int">
+		select count(*) from common_tb where cm_status !=9 and sto_num = #{stoNum}
+	</select>
 
 </mapper>

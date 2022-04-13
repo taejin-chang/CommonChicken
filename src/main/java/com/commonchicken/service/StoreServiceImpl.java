@@ -32,8 +32,8 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<StoreDTO> selectStoreList() {
-		return storeDAO.selectStoreList();
+	public List<StoreDTO> selectStoreList(Map<String, Object> map) {
+		return storeDAO.selectStoreList(map);
 	}
 
 	@Override
@@ -79,6 +79,16 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public int deleteStore(String stoNum) {
 		return storeDAO.deleteStore(stoNum);
+	}
+
+	@Override
+	public int getStoreCount() {
+		return storeDAO.getStoreCount();
+	}
+
+	@Override
+	public void updateStoStatus(Map<String, Object> map) {
+		storeDAO.updateStoStatus(map);
 	}	
 
 }

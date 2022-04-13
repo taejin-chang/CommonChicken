@@ -50,10 +50,10 @@ public class CommonServiceTest {
 //
 //		commonService.insertCommon(common);		
 //	}
-	
-	@Test 
-	public void testSelectUserInfo() {
-		commonService.selectCommonList();		
-	}
+//	
+//	@Test 
+//	public void testSelectUserInfo() {
+//		commonService.selectCommonList();		
+//	}
 }
 

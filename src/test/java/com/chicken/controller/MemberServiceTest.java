@@ -1,6 +1,8 @@
 package com.chicken.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,10 +34,20 @@ public class MemberServiceTest {
 //	}
 	@Test
 	public void testSelectmemberList() {
+		
+		Map<String,Object>map = new HashMap<String, Object>();
+		map.put("startRow", 1);
+		map.put("endRow", 5);
 	
-		memberService.selectAllMemberList();
+		memberService.selectAllMemberList(map);
 			
 	}
+//	@Test
+//	public void testSelectmemberCount() {
+//	
+//		memberService.getMemberCount();
+//			
+//	}
 //	
 //	@Test 
 //	public void testSelectMemberInfo() {

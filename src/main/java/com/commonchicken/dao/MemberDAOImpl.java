@@ -32,8 +32,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public List<MemberDTO> selectAllMemberList() {
-		return sqlSession.getMapper(MemberMapper.class).selectAllMemberList();
+	public List<MemberDTO> selectAllMemberList(Map<String,Object>map) {
+		return sqlSession.getMapper(MemberMapper.class).selectAllMemberList(map);
 	}
 
 	@Override
@@ -57,6 +57,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public int updateChangeMember(Map<String, Object> map) {
 		return sqlSession.getMapper(MemberMapper.class).updateChangeMember(map);
+	}
+
+	@Override
+	public int getMemberCount() {
+		return sqlSession.getMapper(MemberMapper.class).getMemberCount();
 	}
 
 

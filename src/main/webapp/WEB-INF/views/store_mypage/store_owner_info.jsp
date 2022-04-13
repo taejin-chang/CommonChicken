@@ -153,17 +153,17 @@
 <!-- 										<img class="userImg" src="images/user.jpg" alt="user"/> Jhon Doe 
  -->									</h3>
 								</div>
-								<div class="col-md-7 col-xs-8 col-xxs-12">
+<!-- 								<div class="col-md-7 col-xs-8 col-xxs-12">
 									<div class="header-data text-center-xs">
 
-										<!-- Traffic data -->
+										Traffic data
 										<div class="hdata">
 											<div class="mcol-left">
-												<!-- Icon with red background -->
+												Icon with red background
 												<i class="fa fa-eye ln-shadow"></i>
 											</div>
 											<div class="mcol-right">
-												<!-- Number of visitors -->
+												Number of visitors
 												<p>
 													<a href="#">7000</a> <em>visits</em>
 												</p>
@@ -171,14 +171,14 @@
 											<div class="clearfix"></div>
 										</div>
 
-										<!-- revenue data -->
+										revenue data
 										<div class="hdata">
 											<div class="mcol-left">
-												<!-- Icon with green background -->
+												Icon with green background
 												<i class="icon-th-thumb ln-shadow"></i>
 											</div>
 											<div class="mcol-right">
-												<!-- Number of visitors -->
+												Number of visitors
 												<p>
 													<a href="#">12</a><em>Ads</em>
 												</p>
@@ -186,14 +186,14 @@
 											<div class="clearfix"></div>
 										</div>
 
-										<!-- revenue data -->
+										revenue data
 										<div class="hdata">
 											<div class="mcol-left">
-												<!-- Icon with blue background -->
+												Icon with blue background
 												<i class="fa fa-user ln-shadow"></i>
 											</div>
 											<div class="mcol-right">
-												<!-- Number of visitors -->
+												Number of visitors
 												<p>
 													<a href="#">18</a> <em>Favorites </em>
 												</p>
@@ -201,7 +201,7 @@
 											<div class="clearfix"></div>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 

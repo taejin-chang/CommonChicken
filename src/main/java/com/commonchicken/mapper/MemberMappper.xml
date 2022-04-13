@@ -77,7 +77,8 @@
 	</select>
 	
 	<select id="selectAllMemberList" resultType="MemberDTO">
-		select * from member_tb where mem_status!=0 order by mem_email
+		select * from(select rownum rn, member.* from(select * from member_tb 
+		where mem_status!=0 order by mem_email)member) where rn between #{startRow} and #{endRow}
 	</select>
 	
 	<update id="deleteMember">
@@ -98,6 +99,12 @@
 	<update id="updateChangeMember" parameterType="map">
 		update member_tb set mem_status=#{memStatus} where mem_email = #{memEmail}
 	</update>
+	
+	
+	<select id="getMemberCount" resultType="int">
+		select count(*) from member_tb where mem_status !=0
+	</select>
+	
 	
 	
 </mapper>

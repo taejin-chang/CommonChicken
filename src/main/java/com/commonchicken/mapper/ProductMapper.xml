@@ -33,8 +33,10 @@ PRD_UPLOAD            VARCHAR2(100)  -->
 	</select>
 	
 	
-	<select id="selectProductListAdmin" resultType="ProductDTO">
-		select * from product_tb where sto_num = #{stoNum} and prd_status!=9 order by prd_code
+	<select id="selectProductListAdmin" parameterType="map" resultType="ProductDTO">
+		select * from(select rownum rn, product.* from
+		(select * from product_tb where sto_num = #{stoNum} and prd_status!=9 order by prd_code)product)
+		where rn between #{startRow} and #{endRow}	
 	</select>
 	
 
@@ -52,6 +54,9 @@ PRD_UPLOAD            VARCHAR2(100)  -->
 		update product_tb set prd_status = 9 where prd_code = #{prdCode}
 	</update>
 	
+	<select id="getStoreProductCount" resultType="int">
+		select count(*) from product_tb where prd_status !=9 and sto_num = #{stoNum}
+	</select>
 	
 </mapper>
 

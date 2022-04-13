@@ -28,18 +28,18 @@ public class ReplyServiceTest {
 //	}
 	//#{rplNum}, #{revNum}, #{ordDetailNum}, #{memEmail2}, #{cmNum}, #{stoNum}, #{memEmail}, #{rplContent}
 	
-	@Test 
-	public void testInsertReply() {
-		ReplyDTO reply = new ReplyDTO();
-		reply.setRevNum(5);
-		reply.setOrdDetailNum("141");
-		reply.setMemEmail2("dd");
-		reply.setCmNum(17);
-		reply.setStoNum("6656");
-		reply.setMemEmail("dd");
-		reply.setRplContent("hihi");
-		
-		replyService.insertReply(reply);
-	}
+//	@Test 
+//	public void testInsertReply() {
+//		ReplyDTO reply = new ReplyDTO();
+//		reply.setRevNum(5);
+//		reply.setOrdDetailNum("141");
+//		reply.setMemEmail2("dd");
+//		reply.setCmNum(17);
+//		reply.setStoNum("6656");
+//		reply.setMemEmail("dd");
+//		reply.setRplContent("hihi");
+//		
+//		replyService.insertReply(reply);
+//	}
 }
 

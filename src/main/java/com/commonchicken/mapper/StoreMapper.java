@@ -13,7 +13,7 @@ public interface StoreMapper {
 	StoreDTO selectStore1(String stoNum);
 	CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map);
 	CommonStoreVO selectStoreInfoReivewCount(Map<String, Object> map);
-	List<StoreDTO> selectStoreList();
+	List<StoreDTO> selectStoreList(Map<String, Object> map);
 	
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);
 	List<CommonStoreVO> selectStoreProductInfo(int stoNum);
@@ -21,5 +21,7 @@ public interface StoreMapper {
 	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
 	String selectStoreEmail(String memEmail);
 	int deleteStore(String stoNum);
+	int getStoreCount();
+	int updateStoStatus(Map<String,Object>map);
 
 }

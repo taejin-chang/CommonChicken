@@ -1,6 +1,7 @@
 package com.commonchicken.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,8 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
-	public List<CommonDTO> selectCommonList() {
-		return commonDAO.selectCommonList();
+	public List<CommonDTO> selectCommonList(Map<String,Object>map) {
+		return commonDAO.selectCommonList(map);
 	}
 
 	@Override
@@ -44,6 +45,11 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public CommonDTO searchCommon(int cmNum) {
 		return commonDAO.searchCommon(cmNum);
+	}
+
+	@Override
+	public int getCommonCount(String stoNum) {
+		return commonDAO.getCommonCount(stoNum);
 	}
 	
 
