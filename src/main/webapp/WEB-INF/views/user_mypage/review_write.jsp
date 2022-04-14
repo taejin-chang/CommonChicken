@@ -134,7 +134,11 @@ reviewWriteForm.stoNum.focus();
 
 	function submitCheck() {
 		
-		
+		if (reviewWriteForm.revContent.value == "") {
+			alert("내용을 입력해 주세요.");
+			reviewWriteForm.revContent.focus();
+			return;
+		}
 		
 		reviewWriteForm.method="post";
 		reviewWriteForm.action="${pageContext.request.contextPath}/review/write";
