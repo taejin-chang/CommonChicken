@@ -47,7 +47,7 @@
 							<i class="fa fa-user"></i></a>
 						</c:when>
 						<c:otherwise>
-							<a href="${pageContext.request.contextPath}/admin/order" class="login-btn">
+							<a href="${pageContext.request.contextPath}/admin/main" class="login-btn">
 							<i class="fa fa-user"></i></a>
 						</c:otherwise>
 

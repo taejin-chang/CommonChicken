@@ -55,5 +55,10 @@ public class CommonServiceTest {
 //	public void testSelectUserInfo() {
 //		commonService.selectCommonList();		
 //	}
+	
+	@Test 
+	public void testSelectUserInfo() {
+		commonService.getMonthSales();		
+	}
 }
 

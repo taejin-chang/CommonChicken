@@ -102,6 +102,11 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.getMapper(StoreMapper.class).updateStoStatus(map);
 	}
 
+	@Override
+	public List<Map<String, Object>> getBestStore() {
+		return sqlSession.getMapper(StoreMapper.class).getBestStore();
+	}
+
 
 
 

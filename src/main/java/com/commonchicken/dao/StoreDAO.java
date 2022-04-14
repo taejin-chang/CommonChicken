@@ -23,5 +23,6 @@ public interface StoreDAO {
 	int deleteStore(String stoNum);
 	int getStoreCount();
 	int updateStoStatus(Map<String,Object>map);
+	List<Map<String,Object>> getBestStore();
 
 }

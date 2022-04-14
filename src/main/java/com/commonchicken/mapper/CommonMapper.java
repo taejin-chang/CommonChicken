@@ -13,4 +13,8 @@ public interface CommonMapper {
 	int deleteCommon(int cmNum);
 	CommonDTO searchCommon(int cmNum);
 	int getCommonCount(String stoNum);
+	int successCommon();
+	int totalSales();
+	List<Map<String,Object>> getMonthSales();
+
 }

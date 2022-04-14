@@ -184,5 +184,12 @@ STO_UPLOAD                VARCHAR2(100)
 	<update id="updateStoStatus" parameterType="map">
 		update store_tb set sto_status = #{stoStatus} where sto_num = #{stoNum}
 	</update>
+	
+	<select id="getBestStore" resultType="map">
+		<![CDATA[
+		select sto_name, sum_value from store_tb a join (select sto_num, sum_value from(select sto_num, sum(cm_sales) sum_value 
+		from common_tb group by sto_num order by sum_value desc) where rownum <=3) b on a.sto_num = b.sto_num
+		]]>
+	</select>
 
 </mapper>

@@ -23,5 +23,7 @@ public interface StoreService {
 	int deleteStore(String stoNum);
 	int getStoreCount();
 	void updateStoStatus(Map<String, Object> map);
+	List<Map<String,Object>> getBestStore();
+
 
 }

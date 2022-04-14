@@ -59,4 +59,19 @@ public class CommonDAOImpl implements CommonDAO {
 		return sqlSession.getMapper(CommonMapper.class).getCommonCount(stoNum);
 	}
 
+	@Override
+	public int successCommon() {
+		return sqlSession.getMapper(CommonMapper.class).successCommon();
+	}
+	
+	@Override
+	public int totalSales() {
+		return sqlSession.getMapper(CommonMapper.class).totalSales();
+	}
+
+	@Override
+	public List<Map<String, Object>> getMonthSales() {
+		return sqlSession.getMapper(CommonMapper.class).getMonthSales();
+	}
+
 }

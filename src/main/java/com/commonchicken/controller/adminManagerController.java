@@ -3,6 +3,7 @@ package com.commonchicken.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -19,12 +20,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.commonchicken.dto.BoardDTO;
 import com.commonchicken.service.BoardService;
 import com.commonchicken.service.CommonBoardService;
+import com.commonchicken.service.CommonService;
 import com.commonchicken.service.MemberService;
 import com.commonchicken.service.OrderManagerService;
 import com.commonchicken.service.OrderService;
@@ -64,6 +67,9 @@ public class adminManagerController {
 	
 	@Autowired
 	private ReplyService replyService;
+	
+	@Autowired
+	private CommonService commonService;
 
 	@Autowired
 	private CommonBoardService commonboardService;
@@ -121,11 +127,11 @@ public class adminManagerController {
 	
 	@RequestMapping(value = "/admin/order", method = RequestMethod.GET)
 	public String adminOrder(Model model){
+		
 		System.out.println("하이!");
 		//model.addAttribute("commonList", commonService.selectCommonList());
 		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
 		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
-		
 		return "admin/admin_order";
 	}
 	
@@ -338,4 +344,54 @@ public class adminManagerController {
 			
 		return "admin/admin_review";
 	}
+	
+	@GetMapping("admin/main")
+	public String dashboard(Model model){
+		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
+		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+		model.addAttribute("memberCount", memberService.getMemberCount());
+		model.addAttribute("successCommon", commonService.successCommon());
+		model.addAttribute("totalSales", commonService.totalSales());
+		model.addAttribute("storeCount", storeService.getStoreCount());
+		model.addAttribute("bestStore", storeService.getBestStore());
+		
+		return "admin/admin_dashboard";
+	}
+	
+	@RequestMapping("admin/monthSales")
+	public @ResponseBody List<Map<String,Object>> monthSales(Model model){
+		
+		List<Map<String,Object>> monthSale = commonService.getMonthSales();
+		model.addAttribute("monthSale",monthSale);
+		
+		return monthSale;
+		
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

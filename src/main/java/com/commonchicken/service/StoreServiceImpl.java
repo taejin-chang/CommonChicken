@@ -89,6 +89,11 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void updateStoStatus(Map<String, Object> map) {
 		storeDAO.updateStoStatus(map);
+	}
+
+	@Override
+	public List<Map<String, Object>> getBestStore() {
+		return storeDAO.getBestStore();
 	}	
 
 }

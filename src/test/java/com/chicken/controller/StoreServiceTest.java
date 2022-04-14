@@ -1,6 +1,7 @@
 package com.chicken.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -98,13 +99,23 @@ public class StoreServiceTest {
 //		map.put("endRow", 5);
 //		storeService.selectStoreList(map);
 //	}
+//	@Test
+//	public void testSelectCount() {
+//		
+//		Map<String,Object>map = new HashMap<String, Object>();
+//		map.put("stoNum", "10000");
+//		map.put("stoStatus", 1);
+//		storeService.updateStoStatus(map);
+//	}
 	@Test
-	public void testSelectCount() {
+	public void bestStoreTest() {
+		Map<String, Object> map = new HashMap<String,Object>();
+		List<Map<String, Object>> value = storeService.getBestStore();
 		
-		Map<String,Object>map = new HashMap<String, Object>();
-		map.put("stoNum", "10000");
-		map.put("stoStatus", 1);
-		storeService.updateStoStatus(map);
+		String a = (String)value.get(0).get("STO_NAME");
+		
+		logger.info(a);
+		
 	}
 
 }

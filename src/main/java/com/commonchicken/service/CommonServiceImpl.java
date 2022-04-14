@@ -51,6 +51,22 @@ public class CommonServiceImpl implements CommonService {
 	public int getCommonCount(String stoNum) {
 		return commonDAO.getCommonCount(stoNum);
 	}
+
+	@Override
+	public int successCommon() {
+		return commonDAO.successCommon();
+	}
+	
+	@Override
+	public int totalSales() {
+		return commonDAO.totalSales();
+	}
+
+	@Override
+	public List<Map<String, Object>> getMonthSales() {
+		return commonDAO.getMonthSales();
+
+	}
 	
 
 }

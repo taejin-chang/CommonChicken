@@ -39,5 +39,20 @@
 	<select id="getCommonCount" resultType="int">
 		select count(*) from common_tb where cm_status !=9 and sto_num = #{stoNum}
 	</select>
+	
+	<select id="successCommon" resultType="int">
+		select count(*) from common_tb where cm_status=2
+	</select>
+	
+	<select id="totalSales" resultType="int">
+		select sum(cm_sales) from common_tb
+	</select>
+	
+	<select id="getMonthSales" resultType="map">
+		<![CDATA[
+		select to_char(to_date(cm_regdate), 'YYYY-MM')as monthvalue, sum(cm_sales) as sales from common_tb
+		group by to_char(to_date(cm_regdate), 'YYYY-MM') order by  monthvalue asc
+		]]>
+	</select>
 
 </mapper>
