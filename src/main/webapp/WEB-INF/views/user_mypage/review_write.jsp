@@ -131,7 +131,7 @@
 	<!-- Listing Section End -->
 <script type="text/javascript">
 reviewWriteForm.stoNum.focus();
-
+	//리뷰쓰는 메소드
 	function submitCheck() {
 		
 		if (reviewWriteForm.revContent.value == "") {
