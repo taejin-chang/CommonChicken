@@ -130,8 +130,8 @@ public class adminManagerController {
 		
 		System.out.println("하이!");
 		//model.addAttribute("commonList", commonService.selectCommonList());
-		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
-		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+		model.addAttribute("orderManager", orderManagerService.selectOrderTestList(""));
+		model.addAttribute("productManager", orderManagerService.selectOrderTest2List(""));
 		return "admin/admin_order";
 	}
 	
@@ -347,8 +347,8 @@ public class adminManagerController {
 	
 	@GetMapping("admin/main")
 	public String dashboard(Model model){
-		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
-		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+		model.addAttribute("orderManager", orderManagerService.selectOrderTestList(""));
+		model.addAttribute("productManager", orderManagerService.selectOrderTest2List(""));
 		model.addAttribute("memberCount", memberService.getMemberCount());
 		model.addAttribute("successCommon", commonService.successCommon());
 		model.addAttribute("totalSales", commonService.totalSales());

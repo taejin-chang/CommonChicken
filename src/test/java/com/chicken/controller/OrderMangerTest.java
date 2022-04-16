@@ -36,10 +36,10 @@ public class OrderMangerTest {
 //		orderMangaerService.getOrderCount("6656");
 //	}
 	
-//	@Test
-//	public void updateViews() {		
-//		
-//		orderMangaerService.selectOrderTest2List();
-//	}
+	@Test
+	public void updateViews() {		
+		
+		orderMangaerService.selectOrderTestList("6656");
+	}
 }
 

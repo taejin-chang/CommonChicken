@@ -457,6 +457,12 @@
  		$("#rplContent").val(rplContent);
  
  		if(revNum!=""){
+			if ($("#rplContent").val()=="") {
+				alert("댓글을 입력해 주세요.");
+				$("#rplContent").focus();
+				return;
+			}
+			alert("등록이 완료되었습니다.");
 	 		$("#data").submit();
  		} 
  		

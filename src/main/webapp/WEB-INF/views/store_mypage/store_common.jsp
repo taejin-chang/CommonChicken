@@ -158,7 +158,7 @@
 										</div>
 										<div class="panel-collapse collapse in" id="collapseB1">
 											<div class="panel-body">
-												<form class="form-horizontal" role="form" method="post" >
+												<form class="form-horizontal" role="form" method="post" id="data">
 													<div class="form-group">
 														<label class="col-sm-3 control-label">커먼 마감 시간</label>
 														<div class="col-sm-3">
@@ -168,18 +168,18 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">배달 출발 시간</label>
 														<div class="col-sm-3">
-															<input type="time" id="cmStart" class="form-control" name="cmDeliveryTime">
+															<input type="time" id="cmDeliveryTime" class="form-control" name="cmDeliveryTime">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">모집인원 (명)</label>
 														<div class="col-sm-3">
-															<input style="text-align: center;" type="text" class="form-control" name="cmGoalPeople">
+															<input style="text-align: center;" type="number" class="form-control" name="cmGoalPeople" id="cmGoalPeople">
 														</div>
 													</div>
 													<div class="form-group">
 														<div class="col-sm-offset-3 col-sm-9">
-															<button type="submit" id="btmId" class="btn btn-default">등록</button>
+															<button type="button" id="btmId" class="btn btn-default">등록</button>
 														</div>
 													</div>
 												</form>
@@ -206,6 +206,43 @@
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 			
 		</script>
+		
+			<script type="text/javascript">
+		$(document).ready(function() {
+			var cmGoalPeople = $("#cmGoalPeople").val();
+
+			$('#btmId').click(function() {
+					if ($("#cmClose").val()=="") {
+						alert("커먼마감시간을 입력해 주세요.");
+						$("#cmClose").focus();
+						return;
+					}
+
+					if ($("#cmDeliveryTime").val()=="") {
+						alert("배달출발시간을 입력해 주세요.");
+						$("#cmDeliveryTime").focus();
+						return;
+					}
+
+					if ($("#cmGoalPeople").val()=="") {
+						alert("모집인원을 등록해 주세요.");
+						$("#cmGoalPeople").focus();
+						return;
+					}else if ($.isNumeric(cmGoalPeople)){
+						alert ( "숫자만 입력할 수 있습니다." );
+						$("#cmGoalPeople").val()=="";
+						$("#cmGoalPeople").focus();
+						return;
+					}
+
+					alert("등록이 완료되었습니다.");
+/* 					date.toISOString().replace('T', ' ').substring(0, 19)
+ */			 		$("#data").submit();		
+		 		})
+		});
+		
+		
+	</script>
 		<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- include carousel slider plugin  -->
@@ -225,16 +262,6 @@
 		<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
 		
 
-	<script type="text/javascript">
-		$(document).ready(function() { 
-			$('#btmId').click(function() {
-				date.toISOString().replace('T', ' ').substring(0, 19)
 
-				alert('등록이 완료되었습니다.');
-			})
-		});
-		
-		
-	</script>
 </body>
 </html>

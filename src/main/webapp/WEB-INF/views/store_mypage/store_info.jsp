@@ -177,19 +177,19 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoName" value="${storeInfo.stoName }">
+															<input type="text" class="form-control" id="stoName" name="stoName" value="${storeInfo.stoName }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">대표자 명</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoCeo" value="${storeInfo.stoCeo }">
+															<input type="text" class="form-control" id="stoCeo" name="stoCeo" value="${storeInfo.stoCeo }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">사업장 전화번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoPhone" value="${storeInfo.stoPhone }">
+															<input type="text" class="form-control" id="stoPhone" name="stoPhone" value="${storeInfo.stoPhone }">
 														</div>
 													</div>
 													<div class="form-group">
@@ -210,13 +210,13 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">업태</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoCondition" value="${storeInfo.stoCondition }">
+															<input type="text" class="form-control" id="stoCondition" name="stoCondition" value="${storeInfo.stoCondition }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label" >업종</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" id="Phone" name=stoSector value="${storeInfo.stoSector }">
+															<input type="text" class="form-control" id="stoSector" name="stoSector" value="${storeInfo.stoSector }">
 														</div>
 													</div>
 													<!-- 주소 api -->
@@ -271,37 +271,37 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">영업시간</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoOpenning" value="${storeInfo.stoOpenning }">
+															<input type="text" class="form-control" id="stoOpenning" name="stoOpenning" value="${storeInfo.stoOpenning }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">최소주문금액</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoMinorder" value="${storeInfo.stoMinorder }">
+															<input type="text" class="form-control" id="stoMinorder" name="stoMinorder" value="${storeInfo.stoMinorder }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">결제수단</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoPayment" value="${storeInfo.stoPayment }">
+															<input type="text" class="form-control" id="stoPayment" name="stoPayment" value="${storeInfo.stoPayment }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">치킨</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoBoneOrg" value="${storeInfo.stoBoneOrg}">
+															<input type="text" class="form-control" id="stoBoneOrg" name="stoBoneOrg" value="${storeInfo.stoBoneOrg}">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">순살</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="stoBonelessOrg" value="${storeInfo.stoBonelessOrg }">
+															<input type="text" class="form-control" id="stoBonelessOrg" name="stoBonelessOrg" value="${storeInfo.stoBonelessOrg }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">알림메세지</label>
 														<div class="col-sm-9">
-															<textarea rows="10" cols="45" name="stoMessage" >${storeInfo.stoMessage }</textarea> 
+															<textarea rows="10" cols="45" id="stoMessage" name="stoMessage" >${storeInfo.stoMessage }</textarea> 
 																
 														</div>
 													</div>
@@ -347,6 +347,95 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 		
 	</script>
+	
+		<script type="text/javascript">
+		$(document).ready(function() { 
+			$('#btnModify1').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					if ($("#stoName").val()=="") {
+						alert("점포명을 입력해 주세요.");
+						$("#stoName").focus();
+						return;
+					}
+
+					if ($("#stoCeo").val()=="") {
+						alert("대표자 명을 입력해 주세요.");
+						$("#stoCeo").focus();
+						return;
+					}
+
+					if ($("#stoPhone").val()=="") {
+						alert("사업장 전화번호를 입력해 주세요.");
+						$("#stoPhone").focus();
+						return;
+					}
+					if ($("#stoCondition").val()=="") {
+						alert("업태를 입력해 주세요.");
+						$("#stoCondition").focus();
+						return;
+					}
+					if ($("#stoSector").val()=="") {
+						alert("업종을 입력해 주세요.");
+						$("#stoSector").focus();
+						return;
+					}
+					if ($("#sample3_detailAddress").val()=="") {
+						alert("상세 주소를 입력해 주세요.");
+						$("#sample3_detailAddress").focus();
+						return;
+					}
+					$('#storeModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+			
+			$('#btnModify2').click(function() {
+				var result = confirm('정말 수정하시겠습니까 ?');
+				if(result) { 
+					if ($("#stoOpenning").val()=="") {
+						alert("영업시간을 입력해 주세요.");
+						$("#stoOpenning").focus();
+						return;
+					}
+
+					if ($("#stoMinorder").val()=="") {
+						alert("최소주문금액을 입력해 주세요.");
+						$("#stoMinorder").focus();
+						return;
+					}
+
+					if ($("#stoPayment").val()=="") {
+						alert("결제수단을 입력해 주세요.");
+						$("#stoPayment").focus();
+						return;
+					}
+					if ($("#stoBoneOrg").val()=="") {
+						alert("치킨 원산지를 입력해 주세요.");
+						$("#stoBoneOrg").focus();
+						return;
+					}
+					if ($("#stoBonelessOrg").val()=="") {
+						alert("순살 원산지를 입력해 주세요.");
+						$("#stoBonelessOrg").focus();
+						return;
+					}
+					if ($("#stoMessage").val()=="") {
+						alert("알림메세지를 입력해 주세요.");
+						$("#stoMessage").focus();
+						return;
+					}
+					$('#storeModify').submit();  
+				} else { 
+					alert('에러 입니다.!');
+				} 
+			})
+		});
+		
+		
+	</script>
+	
 	<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- include checkRadio plugin //Custom check & Radio  -->
@@ -492,26 +581,6 @@
 			element_wrap.style.border = 'solid black 1px';
 		}
 	</script>
-	<script type="text/javascript">
-		$(document).ready(function() { 
-			$('#btnModify1').click(function() {
-				var result = confirm('정말 수정하시겠습니까 ?');
-				if(result) { 
-					$('#storeModify').submit();  
-				} else { 
-					alert('하이');
-				} 
-			})
-			
-			$('#btnModify2').click(function() {
-				var result = confirm('정말 수정하시겠습니까 ?');
-				if(result) { 
-					$('#storeModify').submit();  
-				} else { 
-					alert('하이');
-				} 
-			})
-		});
-	</script>
+
 </body>
 </html>

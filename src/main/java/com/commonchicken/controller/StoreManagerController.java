@@ -170,11 +170,12 @@ public class StoreManagerController {
 	//---------------------------------------------------------------
 
 	@RequestMapping(value = "/store/order", method = RequestMethod.GET)
-	public String storeOrder(Model model){
+	public String storeOrder(Model model,HttpSession session){
 		System.out.println("하이!");
 		//model.addAttribute("commonList", commonService.selectCommonList());
-		model.addAttribute("orderManager", orderManagerService.selectOrderTestList());
-		model.addAttribute("productManager", orderManagerService.selectOrderTest2List());
+		String stoNum = (String)session.getAttribute("storeSession");
+		model.addAttribute("orderManager", orderManagerService.selectOrderTestList(stoNum));
+		model.addAttribute("productManager", orderManagerService.selectOrderTest2List(stoNum));
 		
 		return "store_mypage/store_order";
 	}

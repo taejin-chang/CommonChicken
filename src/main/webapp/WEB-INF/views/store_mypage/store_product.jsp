@@ -168,32 +168,32 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">상품코드</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="prdCode">
+															<input type="text" class="form-control" id="prdCode" name="prdCode">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">상품이름</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="prdName">
+															<input type="text" class="form-control" id="prdName" name="prdName">
 														</div>
 													</div>
 													<div class="form-group">
 														<label for="Phone" class="col-sm-3 control-label">상품 사진</label>
 														<div class="col-sm-9">
-															<input type="file" class="form-control" name="file" >
+															<input type="file" class="form-control" id="file" name="file" >
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">상품가격</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="prdPrice">
+															<input type="text" class="form-control" id="prdPrice" name="prdPrice">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">카테고리</label>
 														<div class="col-sm-9">
 															<!-- <input type="text" class="form-control" name="stoPhone" value="${storeInfo.stoPhone }"> -->
-															<select name="prdCategory" style="width: 20%;">
+															<select id="prdCategory"  name="prdCategory" style="width: 20%;">
 																<option value="">카테고리</option>
 																<option value="0">치킨</option>
 																<option value="1">사이드 메뉴</option>
@@ -237,6 +237,33 @@
 			$('#btnInsert').click(function() {
 				var result = confirm('등록하시겠습니까?');
 				if(result) { 
+					if ($("#prdCode").val()=="") {
+						alert("상품코드를 입력해 주세요.");
+						$("#prdCode").focus();
+						return;
+					}
+
+					if ($("#prdName").val()=="") {
+						alert("상품이름을 입력해 주세요.");
+						$("#prdName").focus();
+						return;
+					}
+
+					if ($("#file").val()=="") {
+						alert("상품 사진을 등록해 주세요.");
+						$("#file").focus();
+						return;
+					}
+					if ($("#prdPrice").val()=="") {
+						alert("상품가격을 입력해 주세요.");
+						$("#prdPrice").focus();
+						return;
+					}
+					if ($("#prdCategory").val()=="") {
+						alert("카테고리를 선택해 주세요.");
+						$("#prdCategory").focus();
+						return;
+					}
 					$('#productInsert').submit();  
 				} else { 
 					alert('하이');

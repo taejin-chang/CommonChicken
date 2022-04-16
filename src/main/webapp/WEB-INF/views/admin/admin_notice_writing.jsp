@@ -117,13 +117,13 @@
                   <p class="card-description" style="font-size: 20px">
                     글쓰기 페이지입니다.
                   </p>
-                  <form class="forms-sample" method="post" enctype="multipart/form-data" >
+                  <form class="forms-sample" method="post" id="data" enctype="multipart/form-data" >
                     <input type="hidden" name="memEmail" value="nolang@naver.com">
 <!--                     <input type="hidden" name="brdImg" value=" ">
  -->                    <div class="form-group row" style="margin-bottom: 0;">
                       <label for="exampleInputUsername2" class="col-sm-2 col-form-label">제목</label>
                       <div class="col-sm-10" >
-                        <input type="text" class="form-control" style="width: 50%; display: inline;" name="brdTitle" id="exampleInputUsername2" placeholder="제목을 입력해주세요.">
+                        <input type="text" class="form-control" style="width: 50%; display: inline;" name="brdTitle" id="brdTitle" placeholder="제목을 입력해주세요.">
                       </div>
                     </div>
                     <div class="form-group row" style="margin-bottom: 0;">
@@ -135,17 +135,17 @@
                     <div class="form-group row" style="margin-bottom: 0;">
                       <label for="exampleInputEmail2" class="col-sm-2 col-form-label">파일 업로드</label>
                       <div class="col-sm-10" >
-						<input type="file" name="file" style="padding-top: 10px;">
+						<input type="file" name="file" id="file" style="padding-top: 10px;">
                       </div>
                     </div>
                     <div class="form-group row" >
                       <label for="exampleInputUsername2" class="col-sm-2 col-form-label">내용</label>
                       <div class="col-sm-10" >
-                      <textarea class="form-control" id="exampleTextarea1" rows="25" name="brdContent"></textarea>
+                      <textarea class="form-control" id="brdContent" rows="25" name="brdContent"></textarea>
                       </div>
                     </div>
                    	<div style="text-align: right;">
-                    	<button type="submit" class="btn btn-primary mr-2">저장</button>
+                    	<button type="button" id="btnSave" class="btn btn-primary mr-2">저장</button>
                     	<button type="button" class="btn btn-w" onclick="location.href='<c:url value='/admin/notice'/>'">취소</button>
                   	</div>
                   </form>
@@ -170,6 +170,37 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
+  	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+		
+	</script>
+	
+		<script type="text/javascript">
+		$(document).ready(function() { 
+			$('#btnSave').click(function() {
+				var result = confirm('저장하시겠습니까 ?');
+				if(result) { 
+					if ($("#brdTitle").val()=="") {
+						alert("제목을 입력해 주세요.");
+						$("#brdTitle").focus();
+						return;
+					}
+
+					if ($("#brdContent").val()=="") {
+						alert("내용을 입력해 주세요.");
+						$("#brdContent").focus();
+						return;
+					}
+
+					$('#data').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+		});
+
+			
+	</script>  
   <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->

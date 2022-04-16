@@ -70,7 +70,11 @@
 		from common_tb a left join store_tb b on a.sto_num = b.sto_num
 		left join (select cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method  from order_tb 
 		group by cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method) c on a.cm_num = c.cm_num
-		where a.cm_status!=9 and ord_bundle_num is not null order by a.cm_num desc, ord_bundle_num
+		where a.cm_status!=9 and ord_bundle_num is not null 
+		<if test="stoNum!=null and stoNum!=''"> 
+			and	a.sto_num = #{stoNum}
+		</if>
+		order by a.cm_num desc, ord_bundle_num
 	</select>
 	
 	
@@ -78,6 +82,9 @@
 		select ord_bundle_num, ord_quantity, d.prd_code
 		,prd_name, prd_price, prd_category, prd_upload
 		from order_tb d left join product_tb e on d.prd_code = e.prd_code
+		<if test="stoNum!=null and stoNum!=''"> 
+			where sto_num = #{stoNum}
+		</if>
 		order by ord_bundle_num desc, d.prd_code asc
 	</select>
 	

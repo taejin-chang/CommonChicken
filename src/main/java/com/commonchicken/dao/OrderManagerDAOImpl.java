@@ -26,11 +26,11 @@ public class OrderManagerDAOImpl implements OrderManagerDAO {
 //		return sqlSession.getMapper(OrderManagerMapper.class).selectOrderMgtList();
 //	}
 	@Override
-	public List<OrderManagerVO1> selectOrderTestList() {
-		return sqlSession.getMapper(OrderManagerMapper.class).selectOrderTestList();
+	public List<OrderManagerVO1> selectOrderTestList(String stoNum) {
+		return sqlSession.getMapper(OrderManagerMapper.class).selectOrderTestList(stoNum);
 	}
 	@Override
-	public List<OrderManagerVO2> selectOrderTest2List() {
-		return sqlSession.getMapper(OrderManagerMapper.class).selectOrderTest2List();
+	public List<OrderManagerVO2> selectOrderTest2List(String stoNum) {
+		return sqlSession.getMapper(OrderManagerMapper.class).selectOrderTest2List(stoNum);
 	}
 }

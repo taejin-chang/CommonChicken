@@ -8,6 +8,6 @@ import com.commonchicken.dto.OrderManagerVO2;
 
 public interface OrderManagerMapper {
 	//List<OrderManagerVO>selectOrderMgtList();
-	List<OrderManagerVO1>selectOrderTestList();
-	List<OrderManagerVO2>selectOrderTest2List();
+	List<OrderManagerVO1>selectOrderTestList(String stoNum);
+	List<OrderManagerVO2>selectOrderTest2List(String stoNum);
 }

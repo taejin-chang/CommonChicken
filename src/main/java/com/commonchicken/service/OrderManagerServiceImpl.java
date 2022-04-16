@@ -22,14 +22,14 @@ public class OrderManagerServiceImpl implements OrderManagerService {
 //	}
 	
 	@Override
-	public List<OrderManagerVO1> selectOrderTestList() {
-		return orderManagerDAO.selectOrderTestList();
+	public List<OrderManagerVO1> selectOrderTestList(String stoNum) {
+		return orderManagerDAO.selectOrderTestList(stoNum);
 
 	}
 	
 	@Override
-	public List<OrderManagerVO2> selectOrderTest2List() {
-		return orderManagerDAO.selectOrderTest2List();
+	public List<OrderManagerVO2> selectOrderTest2List(String stoNum) {
+		return orderManagerDAO.selectOrderTest2List(stoNum);
 		
 	}
 }

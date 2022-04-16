@@ -209,7 +209,7 @@
 							<div class="welcome-msg">
 								<h3 class="page-sub-header2 clearfix no-padding"></h3>
 								<div id="accordion" class="panel-group">
-									<form class="form-horizontal" id="memberModify" method="post" enctype="multipart/form-data">
+									<form class="form-horizontal" id="memberModify" name="memberModify" method="post" enctype="multipart/form-data">
 									<input type="hidden" name="memOrigin" value="${storeOwner.memOrigin }">
 									<input type="hidden" name="memUpload" value="${storeOwner.memUpload }">
 									
@@ -224,31 +224,31 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이메일</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="memEmail" value="${storeOwner.memEmail }" readonly="readonly">
+															<input type="text" class="form-control" id="memEmail" name="memEmail" value="${storeOwner.memEmail }" readonly="readonly">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">이름</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="memName" value="${storeOwner.memName }">
+															<input type="text" class="form-control" id="memName" name="memName" value="${storeOwner.memName }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">닉네임</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control"  name="memNickname" value="${storeOwner.memNickname }">
+															<input type="text" class="form-control" id="memNickname"  name="memNickname" value="${storeOwner.memNickname }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">생년월일</label>
 														<div class="col-sm-5">
-															<input type="text" class="form-control"  name="memBirthday" value="${storeOwner.memBirthday }">
+															<input type="text" class="form-control" id="memBirthday"  name="memBirthday" value="${storeOwner.memBirthday }">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">핸드폰 번호</label>
 														<div class="col-sm-9">
-															<input type="text" class="form-control" name="memPhone"  value="${storeOwner.memPhone }">
+															<input type="text" class="form-control" id="memPhone" name="memPhone"  value="${storeOwner.memPhone }">
 														</div>
 													</div>
 													<!-- 주소 api -->
@@ -296,14 +296,14 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">새 비밀번호</label>
 														<div class="col-sm-9">
-															<input type="password" class="form-control"
+															<input type="password" id="memPw" name="memPw" class="form-control"
 																placeholder="">
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-sm-3 control-label">비밀번호 확인</label>
 														<div class="col-sm-9">
-															<input type="password" name="memPw" class="form-control"
+															<input type="password" id="memPw2" name="memPw2" class="form-control"
 																placeholder="">
 														</div>
 													</div>
@@ -337,6 +337,81 @@
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
 			
 		</script>
+	
+	<script type="text/javascript">
+	
+/* 	var memName = document.getElementById("memName");
+	var memNickname = document.getElementById("memNickname");
+	var memBirthday = document.getElementById("memBirthday");
+	var memPhone = document.getElementById("memPhone");
+	var sample3_detailAddress = document.getElementById("sample3_detailAddress"); */
+	var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;	
+	
+		$(document).ready(function() { 
+			$('#btnModify1').click(function() {
+				var result = confirm('정말 수정하시겠습니까?');
+				if(result) { 
+					if ($("#memName").val()=="") {
+						alert("이름을 입력해 주세요.");
+						$("#memName").focus();
+						return;
+					}
+
+					if ($("#memPhone").val()=="") {
+						alert("전화번호를 입력해 주세요.");
+						$("#memPhone").focus();
+						return;
+					}
+
+					if ($("#memBirthday").val()=="") {
+						alert("생년월일을 입력해 주세요.");
+						$("#memBirthday").focus();
+						return;
+					}
+					if ($("#sample3_detailAddress").val()=="") {
+						alert("상세 주소를 입력해 주세요.");
+						$("#sample3_detailAddress").focus();
+						return;
+					}
+					$('#memberModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+			
+			$('#btnModify2').click(function() {
+				var result = confirm('정말 변경하시겠습니까?');
+				if(result) { 
+					if (memberModify.memPw.value == "") {
+						alert("비밀번호를 입력하세요.");
+						signinForm.memName.focus();
+						return;
+					}
+					if (memberModify.memPw2.value == "") {
+						alert("비밀번호를 한번 더 입력하세요.");
+						signinForm.memName.focus();
+						return;
+					}
+					
+					if (!pwdCheck.test(memPw.value)) {
+						alert("비밀번호는 영문자+숫자+특수문자 조합으로 8~25자리 사용해야 합니다.");
+						memPw.focus();
+						return false;
+					}
+					
+					if (memPw2.value !== memPw.value) {
+						alert("비밀번호가 일치하지 않습니다");
+						memPw2.focus();
+						return false;
+					}
+					$('#memberModify').submit();  
+				} else { 
+					alert('하이');
+				} 
+			})
+		});
+	</script>
+		
 		<script src="${pageContext.request.contextPath }/assets/bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- include carousel slider plugin  -->
@@ -355,27 +430,7 @@
 		<!-- include custom script for site  -->
 		<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
 	
-		<script type="text/javascript">
-		$(document).ready(function() { 
-			$('#btnModify1').click(function() {
-				var result = confirm('정말 수정하시겠습니까 ?');
-				if(result) { 
-					$('#memberModify').submit();  
-				} else { 
-					alert('하이');
-				} 
-			})
-			
-			$('#btnModify2').click(function() {
-				var result = confirm('정말 수정하시겠습니까 ?');
-				if(result) { 
-					$('#memberModify').submit();  
-				} else { 
-					alert('하이');
-				} 
-			})
-		});
-	</script>
+
 <!-- 	<script type="text/javascript">
 
 $("#repasswdForm").submit(function() {
