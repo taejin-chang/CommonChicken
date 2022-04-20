@@ -30,9 +30,6 @@
 
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
     <br>
     <br>
     <br>
@@ -85,11 +82,11 @@
                             <div class="col-md-6 mb-3">
                               <div class="row">
                                 <div class="col-6 custom-control custom-radio">
-                                    <input id="orgaddr" name="addrMethod" type="radio" checked class="custom-control-input" onchange="" required>
+                                    <input id="orgaddr" name="addrMethod" type="radio" checked class="custom-control-input" onchange="setAddr()" required value="default">
                                     <label class="custom-control-label" for="orgaddr">회원정보와 동일</label>
                                 </div>
                                 <div class="col-6 custom-control custom-radio">
-                                    <input id="newaddr" name="addrMethod" type="radio" class="custom-control-input" onchange="" required>
+                                    <input id="newaddr" name="addrMethod" type="radio" class="custom-control-input" onchange="setAddr()" required value="new">
                                     <label class="custom-control-label" for="newaddr">새로운 배송지</label>
                                 </div>
                               </div>
@@ -141,7 +138,7 @@
                                 <label for="mobile">휴대전화</label>
 	                            <div class="row">
 	                                <div class="col-md-4 mb-3">
-	                                    <input type="text" class="form-control" id="firstName" name="ordPhone" value="${loginMember.memPhone}" required>
+	                                    <input type="text" class="form-control" id="memPhone" name="ordPhone" value="${loginMember.memPhone}" required>
 	                                </div>
 	                            </div>
 							</div>	
@@ -214,7 +211,7 @@
 </textarea>
                             <div class="col-md-6 mb-3">
 	                            <div class="custom-control custom-checkbox">
-	                                <input type="checkbox" class="custom-control-input" id="same-address">
+	                                <input type="checkbox" class="custom-control-input" id="same-address" name = "mustcheck">
 	                                <label class="custom-control-label" for="same-address">모든 약관 동의</label>
 	                            </div>
                             </div>
@@ -299,6 +296,14 @@
     //var ordprdamount = ${amountList};
     //var ordprdprice = ${ordprdprice};
    // console.log=ordprdamount;
+   	
+   	var memName = document.getElementById("memName");
+   	var ordZipcode = document.getElementById("ordZipcode");
+   	var ordAdd1 = document.getElementById("ordAdd1");
+   	var ordAdd2 = document.getElementById("ordAdd2");
+   	var ordPhone = document.getElementById("ordPhone");
+   	var ordRequest = document.getElementById("ordRequest");
+   	var	mustcheck = document.getElementById("mustcheck");
     
     function setDisplay() {
         if($('input:radio[id=paypal]').is(':checked')){
@@ -308,7 +313,79 @@
         }
     };	
     
+    function setAddr() {
+        //if($('input:radio[id=newaddr]').is(':checked')){
+        	var valueCheck1 = $('input:radio[id=newaddr]:checked').val();
+        	var valueCheck2 = $('input:radio[id=orgaddr]:checked').val();
+        	if ( valueCheck1 == 'new' ) {
+        		console.log(valueCheck1);
+	        	 document.getElementById('username').value = '';
+	        	 document.getElementById('sample4_postcode').value = '';
+	        	 document.getElementById('sample4_roadAddress').value = '';
+	        	 document.getElementById('sample4_detailAddress').value = '';
+	        	 document.getElementById('memPhone').value = '';
+	            orderlist.ordAdd1.value == '';
+	            orderlist.ordAdd2.value == '';
+	            orderlist.ordPhone.value == '';
+        	} 
+        	
+        	if ( valueCheck2 == 'default' ) {
+            	console.log(valueCheck2);
+        		document.getElementById('username').value = '${loginMember.memName}';
+        		document.getElementById('sample4_postcode').value = '${loginMember.memZipCode}';
+        		document.getElementById('sample4_roadAddress').value = '${loginMember.memAdd1}';
+        		document.getElementById('sample4_detailAddress').value = '${loginMember.memAdd2}';
+        		document.getElementById('memPhone').value = '${loginMember.memPhone}';
+        	}
+        
+    };	
+    
     function orderinsert() {
+    		
+		if (orderlist.memName.value == "") {
+			alert("받는사람을 입력해 주세요.");
+			orderlist.memEmail.focus();
+			return;
+		}
+    	
+		if (orderlist.ordZipcode.value == "") {
+			alert("우편번호를 입력해 주세요.");
+			orderlist.ordZipcode.focus();
+			return;
+		}
+		
+		if (orderlist.ordAdd1.value == "") {
+			alert("주소를 입력해 주세요.");
+			orderlist.ordAdd1.focus();
+			return;
+		}
+		if (orderlist.ordAdd2.value == "") {
+			alert("상세주소를 입력해 주세요.");
+			orderlist.ordAdd2.focus();
+			return;
+		}
+		if (orderlist.ordPhone.value == "") {
+			alert("휴대전화를 입력해 주세요.");
+			orderlist.ordPhone.focus();
+			return;
+		}
+		if (orderlist.ordRequest.value == "") {
+			alert("요청사항을 선택해 주세요.");
+			orderlist.ordRequest.focus();
+			return;
+		}
+		
+		if (!$("input:checked[name='paymentMethod']").is(":checked")) {
+			alert("결제수단을 체크해 주세요.");
+			orderlist.paymentMethod.focus();
+			return;
+		}
+		if (!$("input:checked[name='mustcheck']").is(":checked")) {
+			alert("약관동의를 체크해 주세요.");
+			orderlist.mustcheck.focus();
+			return;
+		}
+    	
 	    var ordPay = $("input[name='paymentMethod']:checked").val();
     	var ordPayMethod = $("#ordPayMethod").val(ordPay);
     	 

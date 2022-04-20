@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.commonchicken.dao.StoreDAO;
 import com.commonchicken.dto.CommonStoreVO;
 import com.commonchicken.dto.StoreDTO;
+import com.commonchicken.exception.SearchStoreFailException;
 
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -67,7 +68,11 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map) {
+	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map) throws SearchStoreFailException {
+		if(storeDAO.selectStoreInfoReivewAvg(map)==null) {
+			throw new SearchStoreFailException("등록된 커먼 상품 또는 주문가능한 상품이 없습니다.", map);
+		}
+		
 		return storeDAO.selectStoreInfoReivewAvg(map);
 	}
 

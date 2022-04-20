@@ -396,8 +396,8 @@
 									   <form name="ordersheet">
 									   <c:forEach var="commons" items="${commonStore}">
 									   <input name="stoPayment"type="hidden" value="${commons.storeDTO.stoPayment }">
-									  <div class="cart">
-									    <ul class="list-group">
+									   <div class="cart">
+									    <ul class="list-group" id="cartlist">
 									    </ul>
 										<ul>
 									      <li class="list-group-item d-flex justify-content-between">
@@ -415,7 +415,14 @@
 										 </c:forEach>
 										 </form>
 									    <div class="cart-btn clearfix">
-									      <button type="button" onclick="ordercommon();"class="btn btn-lg btn-ygy1 btn-block">주문하기</button>
+									    <c:choose>
+				    						<c:when test="${empty(loginMember) }">
+												<button type="button" onclick="location.href='${pageContext.request.contextPath}/login'"class="btn btn-lg btn-ygy1 btn-block">주문하기</button>
+											</c:when>
+											<c:otherwise>									      
+												<button type="button" onclick="ordercommon();"class="btn btn-lg btn-ygy1 btn-block">주문하기</button>
+											</c:otherwise>
+										</c:choose>
 									    </div>
 									</div>
 									  </div>
@@ -429,6 +436,21 @@
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
         
     <script type="text/javascript">
+    
+	    function ordercommon() {
+			
+			if (ordersheet.prdCode == null) {
+				alert('상품을 선택해주세요.')
+				return;
+			} else {
+	    	
+	    	ordersheet.method="post";
+	    	ordersheet.action="${pageContext.request.contextPath}/order?stoNum=${stoNum}&cmNum=${cmNum}";
+	    	ordersheet.submit();
+			}
+		};
+    
+    
     	var t;
     	var orderprice;
     	var prdCode;
@@ -548,11 +570,7 @@
 	    };
 	    */
 	    
-	    function ordercommon() {
-	    	ordersheet.method="post";
-	    	ordersheet.action="${pageContext.request.contextPath}/order?stoNum=${stoNum}&cmNum=${cmNum}";
-	    	ordersheet.submit();
-		}
+
 	    
     </script>
 </body>

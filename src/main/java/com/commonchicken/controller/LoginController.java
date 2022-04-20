@@ -3,6 +3,7 @@ package com.commonchicken.controller;
 import java.io.File;
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,16 @@ public class LoginController {
 	private StoreService storeService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(Model model, HttpServletRequest request) {
 		model.addAttribute("login","login_value");
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
 		return "user/login";
 	}
-	
 	
 	//회원가입
 	@RequestMapping(value = "/sign_in", method = RequestMethod.POST)
 	public String singIn(@ModelAttribute MemberDTO member, Model model) throws IllegalStateException, IOException {
-		
 		
 		if(!(member.getFile().isEmpty())){
 			
@@ -104,9 +105,9 @@ public class LoginController {
 			session.setAttribute("storeSession", storeService.selectStoreEmail((String)session.getAttribute("loginId")));
 		}
 		
-		
 		System.out.println("로그인성공");
-		return "redirect:/";
+
+		return "redirect:"+session.getAttribute("redirectURI");
 	}
 	
 	//로그인 유효성 실패시 throw하는 예외 메소드

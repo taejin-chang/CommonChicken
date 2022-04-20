@@ -14,6 +14,7 @@ public class SearchStoreVO {
 	private int cmGoalPeople;
 	private String cmDeliveryTime;
 	private String cmClose;
+	private String stoUpload;
 	private List<Integer> ratelist;
 	
 	public SearchStoreVO() {
@@ -85,6 +86,14 @@ public class SearchStoreVO {
 	}
 	public void setRatelist(List<Integer> ratelist) {
 		this.ratelist = ratelist;
+	}
+
+	public String getStoUpload() {
+		return stoUpload;
+	}
+
+	public void setStoUpload(String stoUpload) {
+		this.stoUpload = stoUpload;
 	}
 	
 	

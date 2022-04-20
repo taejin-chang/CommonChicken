@@ -62,18 +62,18 @@
                                    	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
                                     <select class="nice-select" name="deliveryTime">
                                         <option>배달출발시간</option>
-										  <option value="2022-01-01 13:00:00">13시</option>
-										  <option value="2022-01-01 14:00:00">14시</option>
-										  <option value="2022-01-01 15:00:00">15시</option>
-										  <option value="2022-01-01 16:00:00">16시</option>
-										  <option value="2022-01-01 17:00:00">17시</option>
-										  <option value="2022-01-01 18:00:00">18시</option>
-										  <option value="2022-01-01 19:00:00">19시</option>
-										  <option value="2022-01-01 20:00:00">20시</option>
-										  <option value="2022-01-01 21:00:00">21시</option>
-										  <option value="2022-01-01 22:00:00">22시</option>
-										  <option value="2022-01-01 23:00:00">23시</option>
-										  <option value="2022-01-01 24:00:00">24시</option>
+										  <option value="2022-04-01 13:00:00">13시</option>
+										  <option value="2022-04-01 14:00:00">14시</option>
+										  <option value="2022-04-01 15:00:00">15시</option>
+										  <option value="2022-04-01 16:00:00">16시</option>
+										  <option value="2022-04-01 17:00:00">17시</option>
+										  <option value="2022-04-01 18:00:00">18시</option>
+										  <option value="2022-04-01 19:00:00">19시</option>
+										  <option value="2022-04-01 20:00:00">20시</option>
+										  <option value="2022-04-01 21:00:00">21시</option>
+										  <option value="2022-04-01 22:00:00">22시</option>
+										  <option value="2022-04-01 23:00:00">23시</option>
+										  <option value="2022-04-01 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
@@ -156,18 +156,18 @@
            		 <p style="display: inline;">커먼 마감시간 :</p>
 				<select name='cmClose' id="cmClose">
 				  <option value=''>마감시간</option>
-				  <option value="2022-01-01 13:00:00">13시</option>
-				  <option value="2022-01-01 14:00:00">14시</option>
-				  <option value="2022-01-01 15:00:00">15시</option>
-				  <option value="2022-01-01 16:00:00">16시</option>
-				  <option value="2022-01-01 17:00:00">17시</option>
-				  <option value="2022-01-01 18:00:00">18시</option>
-				  <option value="2022-01-01 19:00:00">19시</option>
-				  <option value="2022-01-01 20:00:00">20시</option>
-				  <option value="2022-01-01 21:00:00">21시</option>
-				  <option value="2022-01-01 22:00:00">22시</option>
-				  <option value="2022-01-01 23:00:00">23시</option>
-				  <option value="2022-01-01 24:00:00">24시</option>
+				  <option value="2022-04-01 13:00:00">13시</option>
+				  <option value="2022-04-01 14:00:00">14시</option>
+				  <option value="2022-04-01 15:00:00">15시</option>
+				  <option value="2022-04-01 16:00:00">16시</option>
+				  <option value="2022-04-01 17:00:00">17시</option>
+				  <option value="2022-04-01 18:00:00">18시</option>
+				  <option value="2022-04-01 19:00:00">19시</option>
+				  <option value="2022-04-01 20:00:00">20시</option>
+				  <option value="2022-04-01 21:00:00">21시</option>
+				  <option value="2022-04-01 22:00:00">22시</option>
+				  <option value="2022-04-01 23:00:00">23시</option>
+				  <option value="2022-04-01 24:00:00">24시</option>
 				</select>
             </div>
             <br>            
@@ -175,18 +175,18 @@
            		 <p style="display: inline;">배달시간 :</p>           		 
 				<select name='deliveryTime2' id="deliveryTime2">
 				  <option value=''>배달시간</option>
-				  <option value="2022-01-01 13:00:00">13시</option>
-				  <option value="2022-01-01 14:00:00">14시</option>
-				  <option value="2022-01-01 15:00:00">15시</option>
-				  <option value="2022-01-01 16:00:00">16시</option>
-				  <option value="2022-01-01 17:00:00">17시</option>
-				  <option value="2022-01-01 18:00:00">18시</option>
-				  <option value="2022-01-01 19:00:00">19시</option>
-				  <option value="2022-01-01 20:00:00">20시</option>
-				  <option value="2022-01-01 21:00:00">21시</option>
-				  <option value="2022-01-01 22:00:00">22시</option>
-				  <option value="2022-01-01 23:00:00">23시</option>
-				  <option value="2022-01-01 24:00:00">24시</option>
+				  <option value="2022-04-01 13:00:00">13시</option>
+				  <option value="2022-04-01 14:00:00">14시</option>
+				  <option value="2022-04-01 15:00:00">15시</option>
+				  <option value="2022-04-01 16:00:00">16시</option>
+				  <option value="2022-04-01 17:00:00">17시</option>
+				  <option value="2022-04-01 18:00:00">18시</option>
+				  <option value="2022-04-01 19:00:00">19시</option>
+				  <option value="2022-04-01 20:00:00">20시</option>
+				  <option value="2022-04-01 21:00:00">21시</option>
+				  <option value="2022-04-01 22:00:00">22시</option>
+				  <option value="2022-04-01 23:00:00">23시</option>
+				  <option value="2022-04-01 24:00:00">24시</option>
 				</select>
             </div>
             <br>
@@ -244,7 +244,8 @@
 		            <div class="listing__item" id="mainSearchStore">
 		            	<input name="stoNum" type="hidden" value="${searchStore.stoNum}">
 		            	<input name="cmNum" type="hidden" value="${searchStore.cmNum}">
-		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">
+		                <!--  <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">-->
+		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/resources/storeImg/${searchStore.stoUpload}">
 		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png" alt="">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
@@ -291,9 +292,9 @@
 		                    <div class="listing__item__text__info">
 		                        <div class="listing__item__text__info__left">
 		                            <img src="${pageContext.request.contextPath}/img/listing/list_small_icon-1.png" alt="">
-		                            <span>배달시간 : ${searchStore.cmDeliveryTime }</span>
+		                            <c:set var="cmDTime" value="${searchStore.cmDeliveryTime }"/><span>배달시간 : ${fn:substring(cmDTime,11,20)}</span>
 		                        </div>
-		                        <div class="listing__item__text__info__right">마감시간 : ${searchStore.cmClose }</div>
+		                        <div class="listing__item__text__info__right"><c:set var="cmCTime" value="${searchStore.cmClose }"/>마감시간 : ${fn:substring(cmCTime,11,20)}</div>
 		                    </div>
 		                </div>
 		            </div>
@@ -365,9 +366,9 @@
 		                    <div class="listing__item__text__info">
 		                        <div class="listing__item__text__info__left">
 		                            <img src="${pageContext.request.contextPath}/img/listing/list_small_icon-1.png" alt="">
-		                            <span>{{cmDeliveryTime }}</span>
+		                            <span>배달시간 : {{trimString cmDeliveryTime 11 20}}</span>
 		                        </div>
-		                        <div class="listing__item__text__info__right">{{cmClose }}</div>
+		                        <div class="listing__item__text__info__right">마감시간 : {{trimString cmClose 11 20}}</div>
 		                    </div>
 		                </div>
 		            </div>
@@ -380,6 +381,11 @@
 
     
     function filtersearch() {
+    	Handlebars.registerHelper('trimString', function(passedString, startstring, endstring) {
+    		   var theString = passedString.substring( startstring, endstring );
+    		   return new Handlebars.SafeString(theString)
+    		});
+    	
     	
     	Handlebars.registerHelper('ifratestar', function(v1, v2, options) {
         	if(v1 === v2){

@@ -12,6 +12,7 @@
 		<result column="cm_goal_people" property="cmGoalPeople"/>
 		<result column="cm_delivery_time" property="cmDeliveryTime"/>
 		<result column="cm_close" property="cmClose"/>
+		<result column="sto_upload" property="stoUpload"/>
 		<!--  <collection property="" ofType="CommonDTO">
 			<id column="cm_num" property="cmNum"/>
 			<result column="cm_goal_people" property="cmGoalPeople"/>
@@ -33,7 +34,7 @@
 	
 	<select id="selectAllSearch" resultMap="SearchStoreResultMap">
 		  <![CDATA[
-		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close 
+		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close,sto_upload  
 		from store_tb a left join common_tb b on a.sto_num = b.sto_num left join (select cc.sto_num, round(avg(rv.rev_rated),1) 
 		rev_rated from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) c on b.sto_num = c.sto_num 
 		order by sto_name
@@ -55,7 +56,7 @@
 	
 	<select id="selectMainSearch" parameterType="map" resultMap="SearchStoreResultMap">
 		  <![CDATA[
-		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close 
+		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close,sto_upload 
 		from store_tb a left join common_tb b on a.sto_num = b.sto_num left join (select cc.sto_num, round(avg(rv.rev_rated),1) 
 		rev_rated from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) c on b.sto_num = c.sto_num 
 		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD hh24:mi:ss')
@@ -103,7 +104,7 @@
     </select> -->
 	<select id="selectDetailSearch" parameterType="map" resultMap="SearchStoreResultMap">
         <![CDATA[
-		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close 
+		select a.sto_num,sto_name,rev_rated,cm_goal_people,b.cm_num,sto_add1,sto_add2, sto_phone,cm_delivery_time,cm_close,sto_upload  
 		from store_tb a left join common_tb b on a.sto_num = b.sto_num left join (select cc.sto_num, round(avg(rv.rev_rated),1) 
 		rev_rated from review_tb rv join common_tb cc on rv.cm_num = cc.cm_num group by cc.sto_num) c on b.sto_num = c.sto_num 
 		where cm_delivery_time >= TO_DATE(#{deliveryTime},'YYYY-MM-DD HH24-MI-SS')
