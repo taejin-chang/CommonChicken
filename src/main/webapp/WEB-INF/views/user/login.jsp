@@ -591,13 +591,12 @@
 				memPw.focus();
 				return false;
 			}
-			
+
 			if (memPw2.value !== memPw.value) {
 				alert("비밀번호가 일치하지 않습니다..");
 				memPw2.focus();
 				return false;
 			}
-			
 
 			signinForm.method = "post";
 			signinForm.action = "${pageContext.request.contextPath}/sign_in";
