@@ -18,21 +18,33 @@
 <br>
 
 ## 프로젝트 소개
-- 프로젝트 이름의 의미
 
 프로젝트 이름 : **컴온치킨**
 
 프로젝트 의미 : 컴온(Come on) 과 커먼(Common)의 중의적 의미를 담은 모두와 함께하는 중개플랫폼을 의미합니다. 
 
-- 목적
+<br>
 
-배달비에 대한 부담을 줄이기 위해 공동 주문 방식의 형태를 도입하여 소비자와 점포가 윈윈하는 중계플랫폼 구축을 위함
+## Target
 
-- 기술스택
+- 배경 : 배달료가 인상됨에 따라 배달료에 대한 소비자와 점포의 부담이 커짐.<br>
+- 목적 : 배달비에 대한 부담을 줄이기 위해 공동 주문 방식의 형태를 도입하여 소비자와 점포가 윈윈하는 중계플랫폼 구축을 위함<br>
+- 기대효과<br> 
+    - 점포 : 주문 건마다 나가는 비용을 한번에 묶어서 처리하여 배달 인건비 절감
+    - 소비자 : 배달주문시 배달료 절감
+
 
 <br>
 
 ## URL: http://itwill.xyz/CommonChicken/
+
+<br>
+
+
+## 기술스택   <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apache%20maven&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=black"/> <img src="https://img.shields.io/badge/BootStrap-7952B3?style=flat&logo=BootStrap&logoColor=white"/> <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white"/>
+
+
+<img src="https://user-images.githubusercontent.com/93498907/165237594-5817d131-3e62-439f-bcba-99fbfab806ce.png" width="550" height="750">
 
 <br>
 
@@ -46,15 +58,44 @@
 
 <br>
 
-## 개발방법론
-
 ## UI
-<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/df498da7-4b46-44bd-9143-ef504e679122/Untitled.png">
+
+<br>
+
+**[Main]**
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/93498907/165244984-251fb9f6-b4b8-4d18-9494-eca2be888632.png" width="745" height="564">
+
+<br>
+
+**[Sub]**
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/93498907/165244992-e0441643-843b-4ad2-b4e1-fc41eda824c5.png" width="745" height="564">
+
+<br>
+
+**[Admin]**
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/93498907/165244974-1a57b7c0-c5c2-4db9-ab6f-2dd27cd5243e.png" width="745" height="564">
+
+<br>
+
+**[Admin Sub]**
+
+<br>
+
+<img src="https://user-images.githubusercontent.com/93498907/165244980-4d2887c0-7e02-47e0-833d-c655b2cb9665.png" width="745" height="564">
 
 
 
 ## 팀원소개
-[공통업무]
+**[공통업무]**
 
 - 기존프로젝트 분석(프로젝트 및 PPT)및 문서화
 - 부트스트랩 프론트 페이지 구현
@@ -63,35 +104,60 @@
 - 부트스트랩 UI 기획 및 구현
 - 화면설계서
 
+<br>
+
 **[정현우]**
 
-담당페이지 
+담당페이지 : 
 
-로그인 페이지, 회원가입 페이지, 아이디 찾기 페이지, 비밀번호 찾기 페이지
+- 회원 
+    - 로그인 페이지, 회원가입 페이지, 아이디 찾기 페이지, 비밀번호 찾기 페이지
+- 마이페이지 
+    - 회원정보 페이지, 주문 현황 페이지, 마이 리뷰 페이지, 점포등록 신청 페이지, 탈퇴하기 페이지, 
+- 커뮤니티 
+    - 리뷰 페이지, 공지사항 페이지
 
-회원정보 페이지, 주문 현황 페이지, 마이 리뷰 페이지, 점포등록 신청 페이지, 탈퇴하기 페이지 
+https://github.com/supersett
 
-리뷰 페이지, 공지사항 페이지
+https://supersett-diary.tistory.com/
 
-[https://github.com/supersett](https://github.com/supersett) 
-
-[https://supersett-diary.tistory.com](https://supersett-diary.tistory.com/)
+<br>
+<img src="https://user-images.githubusercontent.com/93498907/165246556-8c8e3f05-7653-4847-ad34-996e3d7a68f7.png" width="117" height="143">
 
 **[장태진]**
 
+<br>
+
+담당페이지 : 
+
+- 메인 & 검색
+    - 메인 검색 페이지, 상세 필터 검색 페이지, 전체 점포리스트 페이지
+- 주문
+    - 점포 상세 페이지, 주문페이지
+- 커뮤니티 
+    - 커먼모집 게시판 페이지
+
+사용 기술: Spring, Spring restAPI, oracle, jQuery, Ajax, Handlebars, mybais  - dynamic query, JavaScript, Html5/Css3, Bootstrap, 
+
+https://github.com/taejin-chang
+
+https://suonini.tistory.com/
+
+<br>
+
 **[임영진]** 
 
-[https://github.com/jmaster1004](https://github.com/jmaster1004) 
-
-[https://jmaster1020.tistory.com/](https://jmaster1020.tistory.com/)
 
 담당 페이지:
 
-- 점포 관리자 페이지,
+- 점포 관리자
     - 점포 관리자 정보 페이지, 점포 정보 관리 페이지, 주문현황 페이지, 상품리스트 페이지, 리뷰 페이지, 커먼리스트 페이지, 탈퇴하기 페이지,
-- 사이트 관리자 페이지
+- 사이트 관리자
     - dashBoard, 회원관리 페이지, 점포관리 페이지, 주문관리 페이지, 공지사항 페이지(CRUD), 커먼게시판 관리 페이지, 리뷰 관리 페이지
 
-사용 기술: spring, oracle, jquery, Ajax, chart.js, 
+사용 기술: spring, oracle, jquery, Ajax, chart.js, mybais  - dynamic query
 
-mybais  - dynamic query
+
+https://github.com/jmaster1004
+
+https://jmaster1020.tistory.com/](https://jmaster1020.tistory.com/
