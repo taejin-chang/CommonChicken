@@ -155,7 +155,7 @@ https://suonini.tistory.com/
 - 사이트 관리자
     - dashBoard, 회원관리 페이지, 점포관리 페이지, 주문관리 페이지, 공지사항 페이지(CRUD), 커먼게시판 관리 페이지, 리뷰 관리 페이지
 
-사용 기술: spring, oracle, jquery, Ajax, chart.js, mybais  - dynamic query
+사용 기술: Spring, oracle, jQuery, Ajax, chart.js, mybais  - dynamic query, JavaScript, Html5, Css3, BootStrap
 
 
 https://github.com/jmaster1004
