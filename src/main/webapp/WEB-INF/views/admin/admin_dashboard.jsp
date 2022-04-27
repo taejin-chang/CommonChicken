@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +139,7 @@
                   <div class="card card-tale">
                     <div class="card-body">
                       <p class="mb-2" style="font-size: 20px; color:white;">매출</p>
-                      <p class="fs-30 mb-2" style="color:white;">${totalSales } 원 </p>
+                      <p class="fs-30 mb-2" style="color:white;"><fmt:formatNumber value="${totalSales }" pattern="#,###.##"/>원</p>
 <!--                       <p>10.00% (30 days)</p>
  -->                    </div>
                   </div>
@@ -182,10 +183,10 @@
                         <c:forEach var="i" items="${bestStore }">
                         <div class="mt-3">
                           <p class="mb-0">${i.STO_NAME }</p>
-                          <p class="mb-0">${i.SUM_VALUE } 원</p>
+                          <p class="mb-0"><fmt:formatNumber value="${i.SUM_VALUE }" pattern="#,###.##"/>원</p>
                           <div class="d-flex justify-content-between align-items-center">
                             <div class="progress progress-md flex-grow-1 mr-4">
-                              <div class="progress-bar bg-inf0" role="progressbar" style="width: ${i.SUM_VALUE /3000 }%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="progress-bar bg-inf0" role="progressbar" style="width: ${i.SUM_VALUE /20000 }%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
                         </div>
@@ -254,7 +255,7 @@
 										<td>${commonList.cmDeliveryTime}</td>
 										<td>${commonList.cmClose}</td>
 										<td>${commonList.cmGoalPeople}</td>
-										<td>${commonList.cmSales}</td>
+										<td><fmt:formatNumber value="${commonList.cmSales}" pattern="#,###.##"/></td>
 										<td>
 											<c:if test="${commonList.cmStatus==0}">진행중</c:if> 
 											<c:if test="${commonList.cmStatus==1}">만료</c:if> 
@@ -316,7 +317,7 @@
 																		<td>${productOrderList.productList.prdCode}</td>
 																		<td>${productOrderList.productList.prdUpload}</td>
 																		<td>${productOrderList.productList.prdName}</td>
-																		<td>${productOrderList.productList.prdPrice}</td>
+																		<td><fmt:formatNumber value="${productOrderList.productList.prdPrice}" pattern="#,###.##"/></td>
 																		<td>${productOrderList.ordQuantity}</td>
 																		<td>
 																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
@@ -451,7 +452,7 @@
 			             ticks: {
 			               display: true,
 			               min: 0,
-			               max: 500000,
+			               max: 2000000,
 			               callback: function(value, index, values) {
 			                 return  value + '₩' ;
 			               },
