@@ -188,7 +188,7 @@ STO_UPLOAD                VARCHAR2(100)
 	<select id="getBestStore" resultType="map">
 		<![CDATA[
 		select sto_name, sum_value from store_tb a join (select sto_num, sum_value from(select sto_num, sum(cm_sales) sum_value 
-		from common_tb group by sto_num order by sum_value desc) where rownum <=3) b on a.sto_num = b.sto_num
+		from common_tb group by sto_num order by sum_value desc) where rownum <=4) b on a.sto_num = b.sto_num order by sum_value desc 
 		]]>
 	</select>
 

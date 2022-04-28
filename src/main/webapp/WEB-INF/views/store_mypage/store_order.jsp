@@ -178,9 +178,9 @@
 								</c:when>
 								<c:otherwise>
 								<c:forEach var="commonList" items="${orderManager }">
-								<tbody style="text-align: center;">
+								<tbody style="text-align: center;" id="commonParent">
 									<tr style="background-color: #e1e1fa;">
-										<td>${commonList.cmNum}</td>
+										<td class="cmVal">${commonList.cmNum}</td>
 										<td>${commonList.storeDTO.stoName}</td>
 										<td>${commonList.cmDeliveryTime}</td>
 										<td>${commonList.cmClose}</td>
@@ -208,9 +208,9 @@
 													</tr>
 												</thead>
 												<c:forEach var="orderList" items="${commonList.orderList}">
-												<tbody style="text-align: center;">
+												<tbody style="text-align: center;" id="orderParent">
 													<tr style="background-color: #ffffff;">
-														<td>${orderList.ordBundleNum}</td>
+														<td class="bundleVal">${orderList.ordBundleNum}</td>
 														<td>${orderList.memEmail}</td>
 														<td>${orderList.ordAdd1} ${orderList.ordAdd2}</td>
 														<td>${orderList.ordPhone}</td>
@@ -240,8 +240,8 @@
 														</c:if> 
 														<c:if test="${orderList.ordStatus==3}">
 							                       	 	<p> 
-							                       	 		<a href="<c:url value='/store_order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');"
- 																class="btn btn-primary btn-xs" style="color: white;"> 
+							                       	 		<a<%--  href="<c:url value='/store_order/changeOrder/4/'/>${orderList.ordBundleNum}" onclick="return confirm('배송이 완료 되었습니다.');" --%>
+ 																id="sucess" class="btn btn-primary btn-xs" style="color: white;"> 
  																배송완료
 															</a>
 														</p>
@@ -257,7 +257,7 @@
 													</tr>
 													<tr>
 														<td colspan="8">
-															<table class="table table-striped">
+															<table class="table table-striped" id="mytab1">
 															<thead style="background: #7DA0FA; color: white; text-align: center;">
 																	<tr>
 																		<th style="text-align: center;">상품 번호</th>
@@ -275,8 +275,8 @@
 																		<td>${productOrderList.productList.prdCode}</td>
 																		<td>${productOrderList.productList.prdUpload}</td>
 																		<td>${productOrderList.productList.prdName}</td>
-																		<td>${productOrderList.productList.prdPrice}</td>
-																		<td>${productOrderList.ordQuantity}</td>
+																		<td class="priceVal">${productOrderList.productList.prdPrice}</td>
+																		<td class="quantityVal">${productOrderList.ordQuantity}</td>
 																		<td>
 																		<c:if test="${productOrderList.productList.prdCategory==0}">치킨</c:if> 
 																		<c:if test="${productOrderList.productList.prdCategory==1}">사이드</c:if> 
@@ -448,6 +448,73 @@
 	            });
 	        });
 	    });
+	})(jQuery); 
+
+  
+  </script> 
+  
+   <script type="text/javascript">
+
+  (function ($) {
+/* 	    $(document).on('click','.btn-pl', function(){
+	    	var quantity = $(this).parent('div').find('input').val();
+	    	$(this).parent("div").find("input").val(++quantity);
+	    	
+	    	var sum = 0;
+	    	$("input#orderprice").each(function(){
+	    		sum += (parseInt($(this).val()))*(parseInt($(this).parent().parent().next().find("input").val()));
+	    	});
+	    	$('input[id=order-total]').val(sum+'원');
+	    });'
+	    
+    	revNum = $(ths).parent().parent().parent().parent().parent().find('input[id=revNum_val]').val();
+    	ordDetailNum = $(ths).parent().parent().parent().parent().parent().find('input[id=ordDetailNum_val]').val();
+    	memEmail2 = $(ths).parent().parent().parent().parent().parent().find('input[id=memEmail2_val]').val();
+    	cmNum = $(ths).parent().parent().parent().parent().parent().find('input[id=cmNum_val]').val();
+    	rplContent = $(ths).parent().parent().find('textarea[id=rplContent_val]').val();
+	    
+	    
+	    */
+	   
+	  
+	 $(document).on('click','#sucess', function(){
+	//   var cm_num = $(this).parent().parent().parent().parent().parent().parent().parent().parent().find('.cmVal').text();
+	   var cm_num = $(this).parents('#commonParent').find('.cmVal').text();
+	   var bundle_num = $(this).parents('#orderParent').find('.bundleVal').text();
+	   var price = $(this).parent().parent().parent().parent().find('.priceVal').text();
+	  // var quantity = $(this).parent().parent().parent().parent().find('.quantityVal').text();
+	  	var multiply = price * quantity;
+	  	
+/* 	   var quantity = $(this).parent().parent().parent().next().find('.quantityVal').text();
+	   alert(quantity); */
+	   
+	   
+	   $(this).parent().parent().parent().next().find('td').each(function(){
+		   $(this).g
+ 	    })
+
+	   
+	   alert(quantity);
+
+	  	
+/* 	  	$(this).parent().parent().next() each(function(){
+	  	    $(this).find('td').each(function(){
+	  	    	price = $(this).parent().find('.priceVal').text();
+	  		   alert(price);
+
+	  	        //do your stuff, you can use $(this) to get current cell
+	  	    })
+	  	}) */
+	  	
+/* 	  	
+	  	alert(multiply);
+	   
+	   alert(cm_num);
+	   alert(bundle_num);
+	   alert(price);
+	   alert(quantity);
+		alert('히히'); */
+
 	})(jQuery); 
 
   
