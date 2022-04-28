@@ -393,7 +393,6 @@
 							<!-- /.signup-box -->
 						</div>
 						<!-- /.position-relative -->
-
 						<div class="navbar-fixed-top align-right">
 							<br /> &nbsp; <a id="btn-login-dark" href="#">Dark</a> &nbsp; <span
 								class="blue">/</span> &nbsp; <a id="btn-login-blur" href="#">Blur</a>
