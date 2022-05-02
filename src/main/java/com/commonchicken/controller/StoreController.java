@@ -25,7 +25,7 @@ public class StoreController {
 	private ReviewService reviewService;
 	//검색 상세페이지에서 점포 이름을 눌러서 들어온 점포페이지
 	@GetMapping("/store")
-	public String storeMove(@RequestParam String cmNum, int stoNum, Model model) throws SearchStoreFailException {
+	public String storeMove(@RequestParam String cmNum, @RequestParam String stoNum, Model model) throws SearchStoreFailException {
 		Map<String, Object> returnMap=new HashMap<String, Object>();
 		
 		String stoNumm = String.valueOf(stoNum);
@@ -33,9 +33,17 @@ public class StoreController {
 		returnMap.put("stoNum", stoNum);
 		model.addAttribute("commonStore", storeService.getCommonStore(returnMap));
 		model.addAttribute("storecommonlist", storeService.getStoreCommonlist(stoNum));
-		model.addAttribute("storereviewlist", reviewService.selectStoreReviewList(stoNumm));
-		model.addAttribute("selectStoreReviewAvg", storeService.selectStoreInfoReivewAvg(returnMap).getReviewDTO().getRevRated());
-		model.addAttribute("selectStoreReviewCount", storeService.selectStoreInfoReivewCount(returnMap).getReviewDTO().getRevRated());
+		model.addAttribute("storereviewlist", reviewService.selectStoreReviewList(stoNum));
+		if(storeService.selectStoreInfoReivewAvg(returnMap)==null) {
+			model.addAttribute("selectStoreReviewAvg", null);
+		} else {
+			model.addAttribute("selectStoreReviewAvg", storeService.selectStoreInfoReivewAvg(returnMap).getReviewDTO().getRevRated());
+		};
+		if(storeService.selectStoreInfoReivewCount(returnMap)==null) {
+			model.addAttribute("selectStoreReviewCount", null);
+		} else {
+			model.addAttribute("selectStoreReviewCount", storeService.selectStoreInfoReivewCount(returnMap).getReviewDTO().getRevRated());
+		};
 		model.addAttribute("cmNum", cmNum);
 		model.addAttribute("stoNum", stoNum);
 		

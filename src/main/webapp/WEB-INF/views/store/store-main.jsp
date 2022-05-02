@@ -69,35 +69,45 @@
                         </div>
                         <div class="blog__item__text">
                             <ul class="blog__item__tags">
-		                            	<c:choose>
-		                            		<c:when test="${selectStoreReviewAvg>=4.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=4.0 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=3.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=3.0 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=2.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=2.0 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=1.5 }">
-		                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
-		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
-		                            		<span class="icon_star"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
-		                            		<span class="icon_star-half_alt"></span></c:when>
-		                            		<c:when test="${selectStoreReviewAvg>0 }">
-		                            		<span>☆</span></c:when>
-		                                </c:choose>
+                            	<c:choose>
+                            		<c:when test="${empty(selectStoreReviewAvg)}">
+                            		<span>☆</span>
+                            		</c:when>
+                            		<c:when test="${selectStoreReviewAvg>=4.5 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=4.0 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=3.5 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=3.0 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=2.5 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=2.0 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=1.5 }">
+                            		<span class="icon_star"></span><span class="icon_star"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=1.0 }">
+                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=0.5 }">
+                            		<span class="icon_star"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>=0.0 }">
+                            		<span class="icon_star-half_alt"></span></c:when>
+                            		<c:when test="${selectStoreReviewAvg>0 }">
+                            		<span>☆</span></c:when>
+                                </c:choose>
                             </ul>
                             <h3><a href="#">${commons.storeDTO.stoAdd1}&nbsp;${commons.storeDTO.stoAdd2}</a></h3>
                             <ul class="blog__item__widget">
                                 <li><i class="fa fa-phone"></i> ${commons.storeDTO.stoPhone}</li>
-                                <li><i class="fa fa-user"></i> 후기 ${selectStoreReviewCount}개</li>
+                                <c:choose>
+	                                <c:when test="${empty(selectStoreReviewCount)}">
+	                                	<li><i class="fa fa-user"></i> 후기 0개</li>
+	                                </c:when>
+	                                <c:otherwise>
+	                                	<li><i class="fa fa-user"></i> 후기 ${selectStoreReviewCount}개</li>
+	                                </c:otherwise>
+								</c:choose>                                
                             </ul>
                             <div class="">
                             <ul class="blog__item__widget">
@@ -218,9 +228,18 @@
                                 <div class="listing__details__rating">
                             <h4>Rate</h4>
                             <div class="listing__details__rating__overall">
-                                <h2>${selectStoreReviewAvg}</h2>
+  	                            <c:choose> 
+	  	                            <c:when test="${empty(selectStoreReviewAvg) }">
+	  	                         	   <h2>0</h2>
+	  	                            </c:when>
+	  	                            <c:otherwise>
+	                              	  <h2>${selectStoreReviewAvg}</h2>
+	                                </c:otherwise>
+                                </c:choose>
                                 <div class="listing__details__rating__star">
 		                            	<c:choose>
+		                            		<c:when test="${empty(selectStoreReviewAvg) }">
+		                            		<span>☆</span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>=4.5 }">
 		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span></c:when>
 		                            		<c:when test="${selectStoreReviewAvg>=4.0 }">
@@ -245,7 +264,14 @@
 		                            		<span>☆</span></c:when>
 		                                </c:choose>
                                 </div>
-                                <span>(${selectStoreReviewCount} Rating)</span>
+                                <c:choose>
+	                                <c:when test="${empty(selectStoreReviewCount)}">
+	                             	   <span>(0 Rating)</span>
+	                                </c:when>
+	                                <c:otherwise>
+	                               		<span>(${selectStoreReviewCount} Rating)</span>
+	                                </c:otherwise>
+                                </c:choose>
                             </div>
                             <!--  
                             <div class="listing__details__rating__bar">
@@ -293,33 +319,43 @@
                         <div class="listing__details__comment">
                             <h4>Comment</h4>
                             <div class="listing__details__comment__item">
-                               <c:forEach var="review" items="${storereviewlist}">
-                                <div class="listing__details__comment__item__pic">
-                                    <img src="${pageContext.request.contextPath }/review/${review.revUpload}" alt="">
-                                </div>
-                                <div class="listing__details__comment__item__text">
-                                    <div class="listing__details__comment__item__rating">
-                                        <c:choose>
-		                            		<c:when test="${review.revRated==0 }">
-		                            		<span>☆</span></c:when>
-		                            		<c:when test="${review.revRated==1 }">
-		                            		<i class="fa fa-star"></i></c:when>
-		                            		<c:when test="${review.revRated==2 }">
-		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
-		                            		<c:when test="${review.revRated==3 }">
-		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
-		                            		<c:when test="${review.revRated==4 }">
-		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
-		                            		<c:otherwise>
-		                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:otherwise>
-		                                </c:choose>
-                                        
-                                    </div>
-                                    <span>${review.revDate }</span>
-                                    <h5>${review.memEmail }</h5>
-                                    <p>${review.revContent }</p>
-                                </div>
-                                </c:forEach>
+                            	<c:choose>
+                            		<c:when test="${empty(storereviewlist)}">
+                            			<div>
+                            				<h5>등록된 리뷰가 존재하지 않습니다.</h5>
+                            			</div>
+                            		</c:when>
+                            		<c:otherwise>
+                            			<c:forEach var="review" items="${storereviewlist}">
+			                                <div class="listing__details__comment__item__pic">
+			                                    <img src="${pageContext.request.contextPath }/review/${review.revUpload}" alt="">
+			                                </div>
+			                                <div class="listing__details__comment__item__text">
+			                                    <div class="listing__details__comment__item__rating">
+			                                        <c:choose>
+					                            		<c:when test="${review.revRated==0 }">
+					                            		<span>☆</span></c:when>
+					                            		<c:when test="${review.revRated==1 }">
+					                            		<i class="fa fa-star"></i></c:when>
+					                            		<c:when test="${review.revRated==2 }">
+					                            		<i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+					                            		<c:when test="${review.revRated==3 }">
+					                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+					                            		<c:when test="${review.revRated==4 }">
+					                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:when>
+					                            		<c:otherwise>
+					                            		<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></c:otherwise>
+					                                </c:choose>
+			                                        
+			                                    </div>
+			                                    <span>${review.revDate }</span>
+			                                    <h5>${review.memEmail }</h5>
+			                                    <p>${review.revContent }</p>
+			                                </div>
+		                                </c:forEach>
+                            		</c:otherwise>
+                            	</c:choose>
+                               
                             </div>
                         </div>
                             </div>

@@ -56,13 +56,13 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
-	public List<CommonStoreVO> selectStoreProductInfo(int stoNum) {
+	public List<CommonStoreVO> selectStoreProductInfo(String stoNum) {
 		// TODO Auto-generated method stub
 		return sqlSession.getMapper(StoreMapper.class).selectStoreProductInfo(stoNum);
 	}
 
 	@Override
-	public List<CommonStoreVO> selectStoreCommonlist(int stoNum) {
+	public List<CommonStoreVO> selectStoreCommonlist(String stoNum) {
 		return sqlSession.getMapper(StoreMapper.class).selectStoreCommonlist(stoNum);
 	}
 

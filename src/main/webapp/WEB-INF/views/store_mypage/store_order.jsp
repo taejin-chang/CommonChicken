@@ -440,16 +440,23 @@
 				 data : JSON.stringify({"ordStatus" : ordStatus, "ordBundleNum" : bundle_num}),
 				 dataType : 'text',
 				 success:function(data) {
+
+					 
 					 if(ws) {
 						console.log("reply.js::socket>>", ws)
 						console.log("sssssssmsg>>", email)
-						 ws.send(email)}
-					 
+						ws.send(email)}
+					 	
 				 }, 
 					error: function(xhr) {
 						alert("에러코드 = "+xhr.status);
 					}
-			 })
+			 });
+				var changebutton = $(this).parent().find('#deliverystart');
+				changebutton.removeAttr('onclick');
+				changebutton.text('배송완료');
+				changebutton.attr('id', 'sucess');
+				
 	 });
 	 //$.get("/store_order/changeOrder"), 
 	 //	{ordStatus : ordStatus, ordBundleNum : bundle_num},

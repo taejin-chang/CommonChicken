@@ -44,7 +44,8 @@
                                         <option value="">위치 API</option>
                                     </select>
                                 </div> -->
-                                <button type="button" style="width: 20%; background-color: #665D50;" onclick="alert('개발예정입니다.')"><!--  onclick="findLocation()"-->현재 위치</button>
+                                <!--  <button type="button" style="width: 20%; background-color: #665D50;" onclick="alert('개발예정입니다.')">현재 위치</button>-->
+                                <button type="button" style="width: 20%; background-color: #665D50;" onclick="findLocation();">현재 위치</button>
                                 <button type="button" onclick="search();" style="background-color:#E89321;"><font style="color: #FFFFFF">점포 검색</font></button>
                             </form>
                         </div>
@@ -316,8 +317,12 @@
 
 
         <script src="js/jquery.nice-select.min.js"></script>
+    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2bdfd8a73509ba9bbebd99bab1f0c0a8&libraries=services"></script>
+    
     
     	<script>
+    	var geocoder = new kakao.maps.services.Geocoder();
+
 		var loc = document.getElementById("myLocation");
 		function findLocation() {
 			if (navigator.geolocation) {
@@ -326,14 +331,33 @@
 				loc.innerHTML = "이 문장은 사용자의 웹 브라우저가 Geolocation API를 지원하지 않을 때 나타납니다!";
 			}
 		}
-
+		
 		function showYourLocation(position) {
+
 			var userLat = position.coords.latitude;
 			var userLng = position.coords.longitude;
-			document.getElementById("myLocation").value = userLat +'  '+ userLng ;
+		    var coord = new kakao.maps.LatLng(userLat, userLng);
+		    var callback = function(result, status) {
+		    var roadadd = null;
+		    if (status === kakao.maps.services.Status.OK) {
+		            console.log(result);
+		            if(result[0].road_address == null) {
+			            roadadd = result[0].address.region_2depth_name;
+		            } else {
+			            roadadd = result[0].road_address.address_name;
+		            }
+					document.getElementById("myLocation").value = roadadd ;
+					
+		        }
+		    }
+		    geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);         
+			//var realposition = geocoder.coord2RegionCode(coords.getLat());
+			//var realposition2 = geocoder.coord2RegionCode(coords.getLng());
+			
 /* 			var imgUrl = "http://maps.googleapis.com/maps/api/staticmap?center=" + userLat + "," + userLng + "&zoom=15&size=500x400&sensor=false";
 			document.getElementById("mapLocation").innerHTML = "<img src='"+imgUrl+"'>"; */
 		}
+		
 		function showErrorMsg(error) {
 			switch(error.code) {
 				case error.PERMISSION_DENIED:

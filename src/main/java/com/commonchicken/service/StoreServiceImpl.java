@@ -38,7 +38,10 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<CommonStoreVO> getCommonStore(Map<String, Object> map) {
+	public List<CommonStoreVO> getCommonStore(Map<String, Object> map) throws SearchStoreFailException {
+		if(storeDAO.selectCommonStore(map)==null) {
+			throw new SearchStoreFailException("등록된 커먼 상품 또는 주문가능한 상품이 없습니다.", map);
+		}
 		return storeDAO.selectCommonStore(map);
 	}
 
@@ -48,12 +51,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<CommonStoreVO> getStoreProductInfo(int stoNum) {
+	public List<CommonStoreVO> getStoreProductInfo(String stoNum) {
 		return storeDAO.selectStoreProductInfo(stoNum);
 	}
 
 	@Override
-	public List<CommonStoreVO> getStoreCommonlist(int stoNum) {
+	public List<CommonStoreVO> getStoreCommonlist(String stoNum) {
 		return storeDAO.selectStoreCommonlist(stoNum);
 	}
 
@@ -68,11 +71,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map) throws SearchStoreFailException {
-		if(storeDAO.selectStoreInfoReivewAvg(map)==null) {
-			throw new SearchStoreFailException("등록된 커먼 상품 또는 주문가능한 상품이 없습니다.", map);
-		}
-		
+	public CommonStoreVO selectStoreInfoReivewAvg(Map<String, Object> map)  {
 		return storeDAO.selectStoreInfoReivewAvg(map);
 	}
 

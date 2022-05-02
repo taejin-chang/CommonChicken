@@ -107,7 +107,7 @@ STO_UPLOAD                VARCHAR2(100)
 	<![CDATA[
 	select s.sto_num, c.cm_num, cm_delivery_time,cm_close from 
 	store_tb s left join common_tb c on s.sto_num = c.sto_num where s.sto_num = #{stoNum}
-	and substr(c.cm_delivery_time,0,10) = TO_DATE('2022-03-22','YYYY-MM-DD') order by c.cm_delivery_time
+	and substr(c.cm_delivery_time,0,10) = TO_DATE('2022-04-01','YYYY-MM-DD') order by c.cm_delivery_time
 	]]>
 	</select>
 	

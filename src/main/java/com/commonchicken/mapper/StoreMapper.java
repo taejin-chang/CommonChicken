@@ -16,9 +16,9 @@ public interface StoreMapper {
 	List<StoreDTO> selectStoreList(Map<String, Object> map);
 	
 	CommonStoreVO selectStoreInfo(Map<String, Object> map);
-	List<CommonStoreVO> selectStoreProductInfo(int stoNum);
+	List<CommonStoreVO> selectStoreProductInfo(String stoNum);
 	List<CommonStoreVO> selectCommonStore(Map<String, Object> map);
-	List<CommonStoreVO> selectStoreCommonlist(int stoNum);
+	List<CommonStoreVO> selectStoreCommonlist(String stoNum);
 	String selectStoreEmail(String memEmail);
 	int deleteStore(String stoNum);
 	int getStoreCount();

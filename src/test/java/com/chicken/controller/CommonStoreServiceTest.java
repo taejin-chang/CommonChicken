@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.commonchicken.dto.CommonStoreVO;
+import com.commonchicken.exception.SearchStoreFailException;
 import com.commonchicken.service.StoreService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,7 +28,7 @@ public class CommonStoreServiceTest {
 	private StoreService storeService;
 	
 	@Test
-	public void testCommonStoreService() throws ParseException {
+	public void testCommonStoreService() throws ParseException, SearchStoreFailException {
 		
 		Map<String, Object> returnMap1 = new HashMap<String, Object>();
 		//SimpleDateFormat input_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
