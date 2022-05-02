@@ -133,11 +133,11 @@ https://supersett-diary.tistory.com/
 - 메인 & 검색
     - 메인 검색 페이지, 상세 필터 검색 페이지, 전체 점포리스트 페이지
 - 주문
-    - 점포 상세 페이지, 주문페이지
+    - 점포 상세 페이지, 주문페이지, 실시간알림(배송출발)
 - 커뮤니티 
     - 커먼모집 게시판 페이지
 
-사용 기술: Spring, Spring restAPI, oracle, jQuery, Ajax, Handlebars, mybais  - dynamic query, JavaScript, Html5/Css3, Bootstrap, 
+사용 기술: Spring, Spring restAPI, oracle, jQuery, Ajax, WebSocket, SockJS, Handlebars, mybais  - dynamic query, JavaScript, Html5/Css3, Bootstrap
 
 https://github.com/taejin-chang
 
