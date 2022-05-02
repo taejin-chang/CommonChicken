@@ -60,7 +60,7 @@
                              		<input type="text" name="juso" id="myLocation" placeholder="Search..."><input name="returnjuso" type="hidden" value="${juso}">
                                 <div class="select__option">
                                    	<input type="hidden" name="returndeliveryTime" value="${deliveryTime }">
-                                    <select class="nice-select" name="deliveryTime">
+                                    <select class="nice-select" name="deliveryTime" id="selectdeliv">
                                         <option>배달출발시간</option>
 										  <option value="2022-04-01 13:00:00">13시</option>
 										  <option value="2022-04-01 14:00:00">14시</option>
@@ -73,7 +73,6 @@
 										  <option value="2022-04-01 21:00:00">21시</option>
 										  <option value="2022-04-01 22:00:00">22시</option>
 										  <option value="2022-04-01 23:00:00">23시</option>
-										  <option value="2022-04-01 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
@@ -419,14 +418,13 @@
 			dateType: "json",
 			success: 
 				function(text) {
-				/*if(text=="success") */
-				
-					//처음 위치로 돌아가기
-
-
-					//$("select[name=deliveryTime2]").val("");
-					//$("input[name=rate]").val("unchecked");
-					
+					if(text.detailSearchList.length=="0") {
+						$("#detailListDiv").html("<div class='listing__item'>"+
+								"<div class='listing__item__text__inside'>"+
+								"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
+								"</div></div>");
+						return;
+					}
 					//응답된 게시글 목록을 HTML로 변환하도록 Handlebars 자바스크립트 라이브러리 이용
 					var source=$("#template").html();//템플릿 코드를 반환받아 저장
 					//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
@@ -434,16 +432,8 @@
 					//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
 					$("#detailListDiv").html(template(text.detailSearchList));
 
-					//filterdisplay();
 
 			},
-				/*if(json.detailSearchList.length==0) {
-					$("#storeListDiv").html("<div class='listing__item'>"+
-							"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
-							"</div></div>");
-					return;
-				}*/
-				/*if(json=="success") */
 					
 			error: function(xhr) {
 				alert("에러코드 = "+xhr.status);
@@ -458,25 +448,63 @@
 	        for (var i = 0; i < obj.length; i++) {
 	            obj[i].checked = false;
 	        }
-
-		//$("#cmClose option:eq(0)").prop("selected", true);
-       // $("#deliveryTime2 option:eq(0)").prop("selected", true);
 	};
 
-					/*
-					//신규 게시글 입력 영역 초기화
-					$(".insert").val("");
-					$("#insertDiv").hide();
-					
-					//게시글 목록을 검색하여 출력하는 함수 호출
-					boardDisplay(1);
-					*/
 	
 					
 	function search() {
-		searchForm.method="post";
-		searchForm.action="${pageContext.request.contextPath}/listing_search";
-		searchForm.submit();
+    	Handlebars.registerHelper('trimString', function(passedString, startstring, endstring) {
+    		   var theString = passedString.substring( startstring, endstring );
+    		   return new Handlebars.SafeString(theString)
+    		});
+    	
+    	
+    	Handlebars.registerHelper('ifratestar', function(v1, v2, options) {
+        	if(v1 === v2){
+        		return options.fn(this);
+        	} 
+        		return options.inverse(this);
+        });				
+						
+		$("#storeListDiv").hide();
+		var mainjuso=$("input[name=juso]").val();
+
+		var maindeliveryTime=$("select[name=deliveryTime]").val();
+		console.log(maindeliveryTime);
+		console.log(mainjuso);
+		
+		$.ajax({
+			type: "post",
+			url: "listing_searchagain",
+			contentType: "application/json",
+			data: JSON.stringify({"deliveryTime":maindeliveryTime,"juso":mainjuso}),
+			dateType: "json",
+			success: 
+				function(text) {
+					console.log(text.mainSearchListAgain);
+					if(text.mainSearchListAgain.length=="0") {
+						$("#detailListDiv").html("<div class='listing__item'>"+
+								"<div class='listing__item__text__inside'>"+
+								"<h5>조건에 맞는 점포로 다시 검색해주세요</h5>"+
+								"</div></div>");
+						return;
+					}
+					var source=$("#template").html();//템플릿 코드를 반환받아 저장
+					//템플릿 코드를 전달받아 템플릿 객체로 생성하여 저장
+					var template=Handlebars.compile(source);
+					//템플릿 객체에 JavaScript 객체(게시글 목록)를 전달하여 HTML 태그로 변환하여 출력
+					$("#detailListDiv").html(template(text.mainSearchListAgain));
+					
+
+
+			},
+			error: function(xhr) {
+				alert("에러코드 = "+xhr.status);
+			}
+			
+		});		
+		$("#myLocation").val("");
+		$("#selectdeliv").val("").prop("selected", true);
 	};	
 
 

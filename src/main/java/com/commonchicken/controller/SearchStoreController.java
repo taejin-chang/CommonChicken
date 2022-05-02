@@ -34,6 +34,7 @@ public class SearchStoreController {
 	
 	
 	//메인페이지에서 검색을 통해 들어온 상세페이지
+	
 	@PostMapping("/listing_search")
 	public String searchMain(@RequestParam Map<String, Object> map, Model model) throws ParseException {
 
@@ -44,6 +45,16 @@ public class SearchStoreController {
 		model.addAttribute("juso", map.get("juso"));
 		
 		return "search/listing";
+	}	
+	//메인페이지에서 검색을 통해 들어온 상세페이지
+	@PostMapping("/listing_searchagain")
+	@ResponseBody
+	public Map<String, Object> searchMainAgain(@RequestBody Map<String, Object> map, Model model) throws ParseException {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		returnMap.put("mainSearchListAgain", searchStoreService.getDetailSearch(map));
+		model.addAttribute("deliveryTime", map.get("deliveryTime"));
+		model.addAttribute("juso", map.get("juso"));
+		return returnMap;
 	}	
 	
 	//상세페이지에서 REST 방식의 비동기식 검색

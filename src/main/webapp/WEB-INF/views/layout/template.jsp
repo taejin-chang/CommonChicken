@@ -64,6 +64,8 @@
     <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>	
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    
     <script type="text/javascript">
     var ws = null;
 
@@ -76,9 +78,7 @@
     function connectWS() {
         console.log("tttttttttttttt")
 
-    	//var ws = new WebSocket("ws:localhost:8000/echo/websocket");
         ws = new SockJS("<c:url value="/echo"/>");
-        //socket = sock;
     	ws.onopen = function() {
     		console.log('Info: connection opened.');
     		//setTimeout(function() { connect(); }, 1000);
@@ -101,10 +101,23 @@
     }
     function onMessage(evt){
         var data = evt.data;
+        
+        var today = new Date();   
+        
+        var year = today.getFullYear();
+        var month = ('0' + (today.getMonth() + 1)).slice(-2);
+        var day = ('0' + today.getDate()).slice(-2);
+        var hours = ('0' + today.getHours()).slice(-2); 
+        var minutes = ('0' + today.getMinutes()).slice(-2);
+        var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+        var datetimeString = year + '-' + month  + '-' + day + ' ' +hours + ':' + minutes  + ':' + seconds;
+
+        
         // toast
         let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
         toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
-        toast += "<small class='text-muted'>just now</small><button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
+        toast += "<small class='text-muted'>"+datetimeString+"</small><button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
         toast += "<span aria-hidden='true'>&times;</span></button>";
         toast += "</div> <div class='toast-body'>" + data + "</div></div>";
         $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가

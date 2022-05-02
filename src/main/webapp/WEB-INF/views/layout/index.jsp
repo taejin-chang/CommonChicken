@@ -37,7 +37,6 @@
 										  <option value="2022-04-01 21:00:00">21시</option>
 										  <option value="2022-04-01 22:00:00">22시</option>
 										  <option value="2022-04-01 23:00:00">23시</option>
-										  <option value="2022-04-01 24:00:00">24시</option>
                                     </select>
                                 </div>
 <!--                                 <div class="select__option">
