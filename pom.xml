@@ -242,6 +242,11 @@
 		    <!-- <scope>test</scope> -->
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>5.3.19</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-resources-plugin -->
 		<!-- => pom.xml에 에러가 발생된 경우 빌드 처리하여 해결하는 라이브러리 -->
 		<!-- 
@@ -276,6 +281,7 @@
 		    <version>1.4</version>
 		</dependency>
 		
+
 	</dependencies>
     <build>
         <plugins>

@@ -17,9 +17,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.commonchicken.dto.CommonDTO;
@@ -186,6 +188,19 @@ public class StoreManagerController {
 		System.out.println("배달 시작입니다람2");
 		map.put("ordStatus", ordStatus);
 		map.put("ordBundleNum", ordBundleNum);
+		
+		orderService.updateOrderStatus(map);
+		System.out.println("배달 시작입니다람3");
+		
+		return "redirect:/store/order";
+	}
+	@RequestMapping(value = "/store/startdeliv", method = RequestMethod.POST)
+	@ResponseBody
+	public String changeStoreOrder2(@RequestBody Map<String,Object> map ) {
+		System.out.println("배달 시작입니다람1");
+		System.out.println("배달 시작입니다람2");
+		//map.put("ordStatus", ordStatus);
+		//map.put("ordBundleNum", ordBundleNum);
 		
 		orderService.updateOrderStatus(map);
 		System.out.println("배달 시작입니다람3");

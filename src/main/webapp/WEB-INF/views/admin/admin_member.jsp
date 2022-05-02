@@ -138,6 +138,9 @@
 										<option value=9 <c:if test="${memberList.memStatus==9 }"> selected="selected"</c:if>>페이지 관리자</option>
 									</select>
 									<button type="button" id="update" class="btn btn-primary btn-sm" onclick=memberUpdate(this)>변경</button>
+
+			
+			
 			
  				<%-- 	<a href="<c:url value='/admin/modifymember/'/>+${memberList.memEmail }+${memStatus}" onclick="return confirm('정말로 삭제하시겠습니까?');"
  											class="btn btn-primary btn-sm" style="color: white;">수정</a> --%>
@@ -237,6 +240,12 @@
  		}
  		
 	  }
+	  
+	  
+	  
+	   
+	   
+
   </script>
   
   

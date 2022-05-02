@@ -40,12 +40,16 @@
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>
+	
 	</c:if>
 	<div id="content">
 		<tiles:insertAttribute name="content"/>
+		
+ 		<div id="msgStack" style="position: absolute; right: 0px; bottom: 0px;"></div>
 	</div>
 
  	<c:if test="${empty(listing||login) }">
+ 	
 		<div id="footer">
 			<tiles:insertAttribute name="footer"/>
 		</div>
@@ -60,5 +64,53 @@
     <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>	
+    <script type="text/javascript">
+    var ws = null;
+
+    $(document).ready( function() {
+    	if(${not empty(loginMember) }){
+        connectWS();	
+    	}
+    });
+
+    function connectWS() {
+        console.log("tttttttttttttt")
+
+    	//var ws = new WebSocket("ws:localhost:8000/echo/websocket");
+        ws = new SockJS("<c:url value="/echo"/>");
+        //socket = sock;
+    	ws.onopen = function() {
+    		console.log('Info: connection opened.');
+    		//setTimeout(function() { connect(); }, 1000);
+    	};
+    	
+    	ws.onmessage = function (event) {
+    		console.log('receive:', event.data+'\n');
+    		onMessage(event);
+    	};
+    	
+    	ws.onclose = function(event) { console.log('Info: connection closed.');};
+    	ws.onerror = function(event) { console.log('error: connection error.');};
+    	
+    	$('#btnSend').on('click',function(evt) {
+    		evt.preventDefault();
+    		if(socket.readyState !==1) return;
+    		let msg = $('input#msg').val();
+    		ws.send(msg);
+    	});
+    }
+    function onMessage(evt){
+        var data = evt.data;
+        // toast
+        let toast = "<div class='toast' role='alert' aria-live='assertive' aria-atomic='true'>";
+        toast += "<div class='toast-header'><i class='fas fa-bell mr-2'></i><strong class='mr-auto'>알림</strong>";
+        toast += "<small class='text-muted'>just now</small><button type='button' class='ml-2 mb-1 close' data-dismiss='toast' aria-label='Close'>";
+        toast += "<span aria-hidden='true'>&times;</span></button>";
+        toast += "</div> <div class='toast-body'>" + data + "</div></div>";
+        $("#msgStack").append(toast);   // msgStack div에 생성한 toast 추가
+        $(".toast").toast({"animation": true, "autohide": false});
+        $('.toast').toast('show');
+    };	
+    </script>
 </body>
 </html>

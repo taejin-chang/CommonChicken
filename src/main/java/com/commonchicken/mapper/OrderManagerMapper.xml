@@ -66,10 +66,10 @@
 
 	<select id="selectOrderTestList" resultMap="OrderManagerTestMap">
 		select a.cm_num, b.sto_name, cm_delivery_time, cm_close, cm_regdate, cm_goal_people, cm_sales, cm_status
-		, a.mem_email, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method
+		, c.mem_email, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method
 		from common_tb a left join store_tb b on a.sto_num = b.sto_num
-		left join (select cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method  from order_tb 
-		group by cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method) c on a.cm_num = c.cm_num
+		left join (select cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method, mem_email from order_tb 
+		group by cm_num, ord_bundle_num, ord_status, ord_add1, ord_add2, ord_phone, ord_request, ord_pay_method, mem_email ) c on a.cm_num = c.cm_num
 		where a.cm_status!=9 and ord_bundle_num is not null 
 		<if test="stoNum!=null and stoNum!=''"> 
 			and	a.sto_num = #{stoNum}

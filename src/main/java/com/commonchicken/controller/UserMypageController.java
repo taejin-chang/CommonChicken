@@ -96,9 +96,10 @@ public class UserMypageController {
 	}
 	
 	
-	@RequestMapping("logout")
+	@RequestMapping("/logout")
 	public String logOut(HttpSession session) {
 		session.invalidate();
+		System.out.println("로그아웃 성공");
 		return "redirect:/";
 	}
 	

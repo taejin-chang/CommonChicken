@@ -43,6 +43,8 @@
 	};
 </script>
 <script src="${pageContext.request.contextPath }/assets/js/pace.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
 	<div id="wrapper">
@@ -210,8 +212,8 @@
 												<c:forEach var="orderList" items="${commonList.orderList}">
 												<tbody style="text-align: center;" id="orderParent">
 													<tr style="background-color: #ffffff;">
-														<td class="bundleVal">${orderList.ordBundleNum}</td>
-														<td>${orderList.memEmail}</td>
+														<td id="bundleValue">${orderList.ordBundleNum}</td>
+														<td id="emailValue">${orderList.memEmail}</td>
 														<td>${orderList.ordAdd1} ${orderList.ordAdd2}</td>
 														<td>${orderList.ordPhone}</td>
 														<td>${orderList.ordRequest}</td>
@@ -226,8 +228,12 @@
 														<c:if test="${orderList.ordStatus==6}">주문취소 </c:if>
 														<c:if test="${orderList.ordStatus==0}">
 							                       	 	<p> 
-							                       	 		<a href="<c:url value='/store_order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
- 																class="btn btn-primary btn-xs" style="color: white;"> 
+							                       	 		<!--  <a href="<c:url value='/store_order/changeOrder/3/'/>${orderList.ordBundleNum}" onclick="return confirm('배송을 시작합니다');"
+ 																class="btn btn-primary btn-xs" id="deliverystart" style="color: white;"> 
+ 																배달시작 
+															</a>-->
+							                       	 		<a onclick="return confirm('배송을 시작합니다');"
+ 																class="btn btn-primary btn-xs" id="deliverystart" style="color: white;"> 
  																배달시작 
 															</a>
 														</p>
@@ -415,8 +421,45 @@
 	<script src="${pageContext.request.contextPath }/assets/js/script.js"></script>
 	
 	  <script src="${pageContext.request.contextPath }/admin/js/vendor.bundle.base.js"></script>
+	  
 	
+	<script type="text/javascript">
+	$(document).on('click','#deliverystart', function(){
+		 var bundle_num = $(this).parent().parent().parent().parent().find('#bundleValue').text();
+		 var ordStatus = 3;
+		 var email = $(this).parent().parent().parent().parent().find('#emailValue').text();
+		 var socketMsg = email+"님, 배달이 시작되었습니다. " ;
+		 console.log(bundle_num);
+		 console.log(ordStatus);
+		 console.log(email);
+		 console.log(socketMsg);
+			 $.ajax({
+				 type: 'post',
+				 url : 'startdeliv',
+				 contentType: "application/json",
+				 data : JSON.stringify({"ordStatus" : ordStatus, "ordBundleNum" : bundle_num}),
+				 dataType : 'text',
+				 success:function(data) {
+					 if(ws) {
+						console.log("reply.js::socket>>", ws)
+						console.log("sssssssmsg>>", email)
+						 ws.send(email)}
+					 
+				 }, 
+					error: function(xhr) {
+						alert("에러코드 = "+xhr.status);
+					}
+			 })
+	 });
+	 //$.get("/store_order/changeOrder"), 
+	 //	{ordStatus : ordStatus, ordBundleNum : bundle_num},
+	 //	function(data, status) {
+	 //		$("#text").html(data + "<br>" + status)
+ 	//	};
 	
+
+  
+	</script>
 	    <script type="text/javascript">
 /*     var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);
@@ -517,6 +560,7 @@
 
 	})(jQuery); 
 
+   
   
   </script> 
   
