@@ -65,7 +65,7 @@
                         <div class="sub-title">
                             <span><strong>${commons.storeDTO.stoName}</strong></span>
                     	</div>
-                        <div class="blog__item__pic set-bg" data-setbg="${pageContext.request.contextPath }/img/blog/bp-1.jpg">
+                        <div class="blog__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/storeImg/${commons.storeDTO.stoUpload}">
                         </div>
                         <div class="blog__item__text">
                             <ul class="blog__item__tags">
@@ -167,7 +167,7 @@
 		                                        <li><i class="fa fa-money"></i>${product.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/images/${product.prdUpload}" alt="" width="200px"></div>
                                     </div><br>
                                    </c:when>
                                 </c:choose>
@@ -189,7 +189,7 @@
 		                                        <li><i class="fa fa-money"></i>${product.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/images/${product.prdUpload}" alt="" width="200px"></div>
                                     </div><br>
                                    </c:when>
                                 </c:choose>
@@ -212,7 +212,7 @@
 		                                        <li><i class="fa fa-money"></i>${product.prdPrice}원</li>
 		                                    </ul>
 	                                    </div>
-		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/img/blog/bp-1.jpg" alt="" width="200px"></div>
+		                                <div class="col-xs-6 text-right"><img src="${pageContext.request.contextPath }/images/${product.prdUpload}" alt="" width="200px"></div>
                                     </div><br>
                                    </c:when>
                                 </c:choose>

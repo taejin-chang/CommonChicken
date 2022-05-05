@@ -40,10 +40,7 @@
 </head>
 
 <body class="ov-hid">
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+
 
     <!-- Header Section End -->
     <section class="hero set-bg" style="padding: 100px 0; padding-bottom: 0px;  border-bottom: 1px solid #EFEEEE">
@@ -209,7 +206,11 @@
     <!-- Filter End -->
 
     <!-- Listing Section Begin -->
-    <section class="listing nice-scroll" style="padding-top: 20px;">
+    <section>
+           <div class="container">
+        <div class="row">
+        <div class="col">
+    <!--  <section class="listing nice-scroll" style="padding-top: 20px;">-->
     <!--  
         <div class="listing__text__top">
             <div class="listing__text__top__left">
@@ -227,7 +228,8 @@
 
         
         <div class="listing__list" id="detailListDiv"></div>
-        <div class="listing__list" id="storeListDiv">
+ 
+        <div class="listing__list nice-scroll" id="storeListDiv">
         <!-- 점포리스트 -->        
         
         <c:choose>
@@ -244,7 +246,7 @@
 		            	<input name="stoNum" type="hidden" value="${searchStore.stoNum}">
 		            	<input name="cmNum" type="hidden" value="${searchStore.cmNum}">
 		                <!--  <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">-->
-		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/resources/storeImg/${searchStore.stoUpload}">
+		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/storeImg/${searchStore.stoUpload}">
 		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png" alt="">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
@@ -302,17 +304,24 @@
 		</c:choose>
             
         </div>
-    </section>
+    <!--  </section>-->
+        </div>
+        
+        <div class="col">
+        
+        		<div id="map" style="width:100%;height:100%;"></div>
+        </div>
+       </div>
+      </div>
+      </section>
     <!-- Listing Section End -->
 
-    <!-- Map Begin -->
-    <div class="listing__map" style="margin-top: 0px;">
-		<div id="map" style="width:100%;height:100%;"></div>
-		
-    
-       <!--  <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423283.43556031643!2d-118.69192431097179!3d34.020730495817475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1586670019340!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> -->
-    </div>
+    <!-- Map Begin 
+    <section class="listing nice-scroll" style="padding-top: 20px; float: right;">
+	    <div class="listing__map" style="margin-top: 0px;">
+			<div id="map" style="width:100%;height:100%;"></div>
+	    </div>
+    </section>-->
     <!-- Map End -->
 
 	<!-- handlebars template -->
@@ -321,7 +330,7 @@
 		            <div class="listing__item">
 		            	<input name="stoNum" type="hidden" value="{{stoNum}}">
 		            	<input name="cmNum" type="hidden" value="{{cmNum}}">
-		                <div class="listing__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/img/listing/list-1.jpg">
+		                <div class="listing__item__pic set-bg" data-setbg="{{baseUrl}}${pageContext.request.contextPath}/storeImg/{{stoUpload}}" style="background-image: url('/commonchicken/storeImg/{{stoUpload}}');">
 		                    <img src="${pageContext.request.contextPath}/img/listing/list_icon-1.png">
 		                    <div class="listing__item__pic__tag">Popular</div>
 		                    <div class="listing__item__pic__btns">
@@ -340,21 +349,21 @@
 											{{#ifratestar ratelist "1"}}
 		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span>{{/ifratestar}}
 											{{#ifratestar revRated 1.5}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "2"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "2.5"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated 3}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "3.5"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "4"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "4.5"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star-half_alt"></span>{{/ifratestar}}
 		                            		{{#ifratestar revRated "5"}}
-		                            		<span class="icon_star"><input type="hidden" value="{{revRated}}"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
+		                            		<span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span><span class="icon_star"></span>{{/ifratestar}}
 		                            </div>
 		                        </div>
 		                        <ul>
@@ -560,18 +569,19 @@
 		}
 		*/
 	</script>
-	<!--  
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3f2400bbaac1b16c5e6592a750160c2d"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+	 
+    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2bdfd8a73509ba9bbebd99bab1f0c0a8&libraries=services"></script>
+		<!--  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>-->
 		<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = { 
+		var mapContainer = document.getElementById('map'); // 지도를 표시할 div 
+			   
+		var mapOption = { 
 			        center: new kakao.maps.LatLng(37.498911, 127.031900), // 지도의 중심좌표
 			        level: 3 // 지도의 확대 레벨
 			    };
 			
-			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 			
 			// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 			var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -593,20 +603,20 @@
 			// 커스텀 오버레이에 표시할 컨텐츠 입니다
 			// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
 			// 별도의 이벤트 메소드를 제공하지 않습니다 
+			/*
 			var content = '<div class="wrap">' + 
 			            '    <div class="info">' + 
-			            '        <div class="title">' + 
-			            '            아이티' + 
-			            '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-			            '        </div>' + 
+			            //'        <div class="title">' + 
+			            //'            교촌치킨 강남역점' + 
+			            //'            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+			            //'        </div>' + 
 			            '        <div class="body">' + 
-			            '            <div class="img">' +
-			            '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-			            '           </div>' + 
-			            '            <div class="desc">' + 
-			            '                <div class="ellipsis">제주특별자치도 제주시 첨단로 242</div>' + 
-			            '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-			            '                <div><a href="https://itwill.co.kr" target="_blank" class="link">홈페이지</a></div>' + 
+			            //'            <div class="img">' +
+			            //'                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+			            //'           </div>' + 
+			            //'            <div class="desc">' + 
+			            //'                <div class="ellipsis">서울 강남구 강남대로 328 아이티윌</div>' + 
+			            //'                <div><a href="https://itwill.co.kr" target="_blank" class="link">점포페이지</a></div>' + 
 			            '            </div>' + 
 			            '        </div>' + 
 			            '    </div>' +    
@@ -629,9 +639,9 @@
 			function closeOverlay() {
 			    overlay.setMap(null);     
 			}
-			
+			*/
 		</script>
-		-->
+		
 	<script type="text/javascript">
 		$("#resetBtn").click(function() {
 			$("#deliveryTime2").val("").prop("selected", true);
