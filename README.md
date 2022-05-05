@@ -141,7 +141,8 @@ https://supersett-diary.tistory.com/
 - Language : Java, JavaScript
 - DBMS : Oracle
 - OS : Windows10
-- Framework : Spring, Mybatis, Bootstrap, Maven
+- Framework : Spring, Mybatis, Bootstrap
+- Buildtool : Maven
 - Tech : jQuery, Ajax, WebSocket, SockJS, Handlebars, Html5/Css3, KakaomapAPI geolocation
 
 https://github.com/taejin-chang
