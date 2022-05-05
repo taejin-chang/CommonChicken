@@ -49,12 +49,12 @@
 <br>
 
 ## Site Roadmap
-<img src="https://user-images.githubusercontent.com/93498907/165229572-47c56295-f6da-486f-a05a-25f4fb32c492.jpg" width="836" height="1056">
+<img src="https://user-images.githubusercontent.com/93498907/165229572-47c56295-f6da-486f-a05a-25f4fb32c492.jpg" width="773" height="1056">
 
 <br>
 
 ## DB ERD
-<img src="https://user-images.githubusercontent.com/93498907/165228825-e147dbe8-2a0c-47df-a622-010ab92dbd03.png"  width="837" height="806">
+<img src="https://user-images.githubusercontent.com/93498907/165228825-e147dbe8-2a0c-47df-a622-010ab92dbd03.png"  width="773" height="806">
 
 <br>
 
@@ -74,7 +74,7 @@
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/93498907/165244992-e0441643-843b-4ad2-b4e1-fc41eda824c5.png" width="745" height="564">
+<img src="https://user-images.githubusercontent.com/93498907/166867036-5354a879-1a56-4112-aacd-7acb46ca0aae.png" width="745" height="564">
 
 <br>
 
@@ -137,11 +137,12 @@ https://supersett-diary.tistory.com/
 - 커뮤니티 
     - 커먼모집 게시판 페이지
 
-언어 : Java, JavaScript
-DBMS : Oracle
-OS : Windows10
-Framework : Spring, Mybatis, Bootstrap, Maven, 
-기술 : jQuery, Ajax, WebSocket, SockJS, Handlebars, Html5/Css3
+기술스택 : 
+- Language : Java, JavaScript
+- DBMS : Oracle
+- OS : Windows10
+- Framework : Spring, Mybatis, Bootstrap, Maven
+- Tech : jQuery, Ajax, WebSocket, SockJS, Handlebars, Html5/Css3, KakaomapAPI geolocation
 
 https://github.com/taejin-chang
 
