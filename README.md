@@ -23,6 +23,7 @@
 
 프로젝트 의미 : 컴온(Come on) 과 커먼(Common)의 중의적 의미가 담긴 모두와 함께하는 중개플랫폼을 의미합니다. 
 
+프로젝트 기획서 : https://drive.google.com/file/d/1QUfX-4EbLRvlXR5jImQGMlLNTNoeB37Y/view?usp=sharing
 <br>
 
 ## Target
