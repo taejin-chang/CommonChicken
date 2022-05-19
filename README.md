@@ -106,23 +106,6 @@
 - 화면설계서
 
 <br>
-
-**[정현우]**
-
-담당페이지 : 
-
-- 회원 
-    - 로그인 페이지, 회원가입 페이지, 아이디 찾기 페이지, 비밀번호 찾기 페이지
-- 마이페이지 
-    - 회원정보 페이지, 주문 현황 페이지, 마이 리뷰 페이지, 점포등록 신청 페이지, 탈퇴하기 페이지, 
-- 커뮤니티 
-    - 리뷰 페이지, 공지사항 페이지
-
-https://github.com/supersett
-
-https://supersett-diary.tistory.com/
-
-<br>
 <img src="https://user-images.githubusercontent.com/93498907/165246556-8c8e3f05-7653-4847-ad34-996e3d7a68f7.png" width="117" height="143">
 
 **[장태진]**
@@ -149,6 +132,25 @@ https://supersett-diary.tistory.com/
 https://github.com/taejin-chang
 
 https://suonini.tistory.com/
+
+<br>
+
+**[정현우]**
+
+담당페이지 : 
+
+- 회원 
+    - 로그인 페이지, 회원가입 페이지, 아이디 찾기 페이지, 비밀번호 찾기 페이지
+- 마이페이지 
+    - 회원정보 페이지, 주문 현황 페이지, 마이 리뷰 페이지, 점포등록 신청 페이지, 탈퇴하기 페이지, 
+- 커뮤니티 
+    - 리뷰 페이지, 공지사항 페이지
+
+https://github.com/supersett
+
+https://supersett-diary.tistory.com/
+
+
 
 <br>
 
