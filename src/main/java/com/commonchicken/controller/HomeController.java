@@ -48,12 +48,12 @@ public class HomeController {
 		return "main";
 	}
 	
-	//상세 페이지
-	@RequestMapping("/listing")
-	public String listing(Model model) {
-		model.addAttribute("listing","listing_value");
-		return "search/listing";
-	}
+	/*
+	 * //상세 페이지
+	 * 
+	 * @RequestMapping("/listing") public String listing(Model model) {
+	 * model.addAttribute("listing","listing_value"); return "search/listing"; }
+	 */
 }
 
 

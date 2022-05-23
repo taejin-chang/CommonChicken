@@ -344,7 +344,7 @@
 		            if(result[0].road_address == null) {
 			            roadadd = result[0].address.region_2depth_name;
 		            } else {
-			            roadadd = result[0].road_address.address_name;
+			            roadadd = result[0].address.region_2depth_name;//road_address.address_name;
 		            }
 					document.getElementById("myLocation").value = roadadd ;
 					
