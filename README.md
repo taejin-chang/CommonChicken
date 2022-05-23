@@ -23,6 +23,7 @@
 
 프로젝트 의미 : 컴온(Come on) 과 커먼(Common)의 중의적 의미가 담긴 모두와 함께하는 중개플랫폼을 의미합니다. 
 
+프로젝트 기획서 : https://drive.google.com/file/d/1QUfX-4EbLRvlXR5jImQGMlLNTNoeB37Y/view?usp=sharing
 <br>
 
 ## Target
@@ -36,25 +37,22 @@
 
 <br>
 
-## URL: http://itwill.xyz/CommonChicken/
-
-<br>
 
 
 ## Tech Stack   <img src="https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apache%20maven&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=black"/> <img src="https://img.shields.io/badge/BootStrap-7952B3?style=flat&logo=BootStrap&logoColor=white"/> <img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white"/>
 
 
-<img src="https://user-images.githubusercontent.com/93498907/165247138-baeddee4-590c-45bc-83a3-f5233c1d142f.png" width="550" height="750">
+<img src="https://user-images.githubusercontent.com/93498907/166867871-7210477a-550d-4d8f-a411-47bfcadf361b.png" width="550" height="750">
 
 <br>
 
 ## Site Roadmap
-<img src="https://user-images.githubusercontent.com/93498907/165229572-47c56295-f6da-486f-a05a-25f4fb32c492.jpg" width="836" height="1056">
+<img src="https://user-images.githubusercontent.com/93498907/165229572-47c56295-f6da-486f-a05a-25f4fb32c492.jpg" width="773" height="1056">
 
 <br>
 
 ## DB ERD
-<img src="https://user-images.githubusercontent.com/93498907/165228825-e147dbe8-2a0c-47df-a622-010ab92dbd03.png"  width="837" height="806">
+<img src="https://user-images.githubusercontent.com/93498907/165228825-e147dbe8-2a0c-47df-a622-010ab92dbd03.png"  width="773" height="806">
 
 <br>
 
@@ -66,7 +64,7 @@
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/93498907/165244984-251fb9f6-b4b8-4d18-9494-eca2be888632.png" width="745" height="564">
+<img src="https://user-images.githubusercontent.com/93498907/166204206-108f7fd5-a1d2-4f08-989d-ab54df7c188e.png" width="745" height="564">
 
 <br>
 
@@ -74,7 +72,7 @@
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/93498907/165244992-e0441643-843b-4ad2-b4e1-fc41eda824c5.png" width="745" height="564">
+<img src="https://user-images.githubusercontent.com/93498907/166867036-5354a879-1a56-4112-aacd-7acb46ca0aae.png" width="745" height="564">
 
 <br>
 
@@ -93,6 +91,9 @@
 <img src="https://user-images.githubusercontent.com/93498907/165244980-4d2887c0-7e02-47e0-833d-c655b2cb9665.png" width="745" height="564">
 
 
+## URL: http://itwill.xyz/CommonChicken/
+
+<br>
 
 ## 팀원소개
 **[공통업무]**
@@ -104,6 +105,35 @@
 - 부트스트랩 UI 기획 및 구현
 - 화면설계서
 
+<br>
+<img src="https://user-images.githubusercontent.com/93498907/165246556-8c8e3f05-7653-4847-ad34-996e3d7a68f7.png" width="117" height="143">
+
+**[장태진]**
+
+<br>
+
+담당페이지 : 
+
+- 메인 & 검색
+    - 메인 검색 페이지, 상세 필터 검색 페이지, 전체 점포리스트 페이지
+- 주문
+    - 점포 상세 페이지, 주문페이지, 실시간알림(배송출발)
+- 커뮤니티 
+    - 커먼모집 게시판 페이지
+
+기술스택 : 
+- Language : Java, JavaScript
+- DBMS : Oracle
+- OS : Windows10
+- Framework : Spring, Mybatis, Bootstrap
+- Buildtool : Maven
+- Tech : jQuery, Ajax, WebSocket, SockJS, Handlebars, Html5/Css3, KakaomapAPI geolocation
+
+https://github.com/taejin-chang
+
+https://suonini.tistory.com/
+
+<br>
 <br>
 
 **[정현우]**
@@ -121,28 +151,8 @@ https://github.com/supersett
 
 https://supersett-diary.tistory.com/
 
-<br>
-<img src="https://user-images.githubusercontent.com/93498907/165246556-8c8e3f05-7653-4847-ad34-996e3d7a68f7.png" width="117" height="143">
-
-**[장태진]**
 
 <br>
-
-담당페이지 : 
-
-- 메인 & 검색
-    - 메인 검색 페이지, 상세 필터 검색 페이지, 전체 점포리스트 페이지
-- 주문
-    - 점포 상세 페이지, 주문페이지
-- 커뮤니티 
-    - 커먼모집 게시판 페이지
-
-사용 기술: Spring, Spring restAPI, oracle, jQuery, Ajax, Handlebars, mybais  - dynamic query, JavaScript, Html5/Css3, Bootstrap, 
-
-https://github.com/taejin-chang
-
-https://suonini.tistory.com/
-
 <br>
 
 **[임영진]** 
